@@ -1,5 +1,17 @@
 const { Category, Product, Review, User } = require("../db")
 
+const getApiInfo = async () => {
+  try {
+    const result = await fetch("https://fakestoreapi.com/products/1")
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+
+    return result
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const getCategory = async () => {
   try {
     return await Category.findAll()
@@ -30,6 +42,7 @@ const getUser = async () => {
 }
 
 module.exports = {
+  getApiInfo,
   getCategory,
   getProduct,
   getreview,
