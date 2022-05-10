@@ -11,9 +11,26 @@ const getApiInfo = async () => {
   }
 }
 
-const getProduct = async () => {
+const chargeProductsDb = async (arr) => {
   try {
-    return await Product.findAll()
+    arr.forEach(async (el) => {
+      let newProduct = await Product.create({
+        name: el.title,
+        price: el.price,
+        image: el.image,
+        description: el.description,
+        rating: el.rating.rate,
+      })
+
+      let categoriesDb = await Category.findAll({
+        where: { name: el.category },
+      })
+
+      console.log(categoriesDb)
+
+      // newProduct.addCategory(categoriesDb)
+    })
+    return "Products Charged"
   } catch (error) {
     console.log(error)
   }
@@ -70,7 +87,7 @@ const fillDbProducts = async () => {
 
 module.exports = {
   getApiInfo,
-  getProduct,
+  chargeProductsDb,
   postProduct,
   fillDbProducts,
 }

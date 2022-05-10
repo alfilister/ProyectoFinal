@@ -41,7 +41,7 @@ Product.hasMany(Review, {
   foreignKey: "product_id",
 })
 User.hasMany(Review, {
-  foreignKey: "review_id",
+  foreignKey: "user_id",
 })
 
 module.exports = {

@@ -1,20 +1,22 @@
 const {
   getApiInfo,
-  getProduct,
+  chargeProductsDb,
   postProduct,
   fillDbProducts,
 } = require("./product")
-const { getCategory } = require("./category")
+const { getCategory, chargeDb } = require("./category")
 const { getReview } = require("./review")
 const { getUser } = require("./user")
 
 module.exports = {
   getApiInfo,
-  getProduct,
+  chargeProductsDb,
   postProduct,
   fillDbProducts,
 
   getCategory,
+  chargeDb,
+  // postCategory,
 
   getReview,
 
