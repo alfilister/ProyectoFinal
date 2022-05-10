@@ -1,11 +1,15 @@
 const { Router } = require("express")
-const { getProduct } = require("../controllers")
+const { getApiInfo } = require("../controllers")
 
 const router = Router()
 
 router.get("/", async (req, res, next) => {
   try {
-    res.send(getProduct())
+    const result = await getApiInfo()
+    res.json({
+      status: "Api info loaded",
+      data: result,
+    })
   } catch (err) {
     next(err)
   }
