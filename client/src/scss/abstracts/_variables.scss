@@ -10,3 +10,24 @@ $dark-700: #1A1B1E;
 $dark-800: #141517; 
 $dark-900: #101113;
 
+/*paleta 1*/
+$red-000: #ffffff;
+$red-100: #ffc0c0;
+$red-200: #ff8080;
+$red-300: #ff4040;
+$red-400: #ff0000;
+$red-500: #c00000;
+$red-600: #800000;
+$red-700: #400000;
+$red-800: #00002b;
+
+/*variables light y dark mode*/
+$primary: $red-500;
+$secondary: $red-800;
+$succes-background: $red-100;
+$succes-primary: $red-200;
+$danger-background: $red-300; 
+$danger-primary: $red-000;
+$background: $dark-100;
+$background-dark: $dark-600;
+$background-amoled: $dark-900;
