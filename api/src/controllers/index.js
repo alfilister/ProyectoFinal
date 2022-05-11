@@ -5,7 +5,13 @@ const {
   postProduct,
   fillDbProducts,
 } = require("./product")
-const { getCategory, chargeCategoriesDb } = require("./category")
+const {
+  getCategory,
+  chargeCategoriesDb,
+  postCategory,
+  deleteCategory,
+  updateCategory,
+} = require("./category")
 const { getReview } = require("./review")
 const { getUser } = require("./user")
 
@@ -18,7 +24,9 @@ module.exports = {
 
   getCategory,
   chargeCategoriesDb,
-  // postCategory,
+  postCategory,
+  deleteCategory,
+  updateCategory,
 
   getReview,
 

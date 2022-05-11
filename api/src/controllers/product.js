@@ -88,16 +88,7 @@ const postProduct = async (body) => {
   })
   productCreated.addCategory(categoriesDb)
 
-  return await Product.findOne({
-    where: { id: productCreated.id },
-    include: {
-      model: Category,
-      attributes: ["name"],
-      through: {
-        attributes: [],
-      },
-    },
-  })
+  return "Producto Creado"
 }
 
 const fillDbProducts = async () => {

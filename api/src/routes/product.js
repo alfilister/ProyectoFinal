@@ -23,7 +23,7 @@ router.get("/", async (req, res, next) => {
   }
 })
 
-router.get("/test", async (req, res, next) => {
+router.get("/info", async (req, res, next) => {
   try {
     const dataDb = await getProductsDb()
 

@@ -30,11 +30,39 @@ const chargeCategoriesDb = async (array) => {
   }
 }
 
-// const postCategory = async () => {
-//   try {
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+const postCategory = async (string) => {
+  try {
+    await Category.create({ name: string })
+    return "Category created"
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-module.exports = { getCategory, chargeCategoriesDb }
+const deleteCategory = async (string) => {
+  try {
+    await Category.destroy({ where: { name: string } })
+    return "Category deleted"
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateCategory = async (integer, string) => {
+  try {
+    const selected = await Category.findByPk(integer)
+    selected.set({ name: string })
+    selected.save()
+    return "Category Updated"
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+module.exports = {
+  getCategory,
+  chargeCategoriesDb,
+  postCategory,
+  deleteCategory,
+  updateCategory,
+}
