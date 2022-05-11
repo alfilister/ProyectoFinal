@@ -1,14 +1,22 @@
 const { Router } = require("express")
-const { getReview } = require("../controllers")
-const { Review } = require("../db")
+const { getReviewByProduct, getReviewByUser, setReview, updateReview, deleteReview } = require("../controllers")
 
 const router = Router()
 
 
-//TRAER REVIEWS DE LA BASE DE DATOS
-router.get("/", async (req, res, next) => {
+//TRAER REVIEWS DE LA BASE DE DATOS POR PRODUCTO
+router.get("/product", async (req, res, next) => {
   try {
-    res.send( await getReview())
+    res.send( await getReviewByProduct())
+  } catch (err) {
+    next(err)
+  }
+})
+
+//TRAER REVIEWS DE LA BASE DE DATOS POR USUARIO
+router.get("/user", async (req, res, next) => {
+  try {
+    res.send( await getReviewByUser())
   } catch (err) {
     next(err)
   }
@@ -16,21 +24,34 @@ router.get("/", async (req, res, next) => {
 
 
 //GUARDAR REVIEWS
-router.post('', async (req, res, next) => {
-  const {user_id, product_id, product_review} = req.body;
+router.post('/', async (req, res, next) => {
+  const {user_id, product_id, product_review} = req.body; 
   try {
-    const review = await Review.create({
-      product_review,
-      product_id,
-      user_id
-    })
-    res.send(review);
+    res.send(setReview(user_id, product_id, product_review))
   } catch (error) {
     console.log(error)
   }
 })
 
 //EDITAR REVIEW
-router.update
+router.put('/', async (req, res, next) => {
+  const {id, product_review} = req.body; 
+  try {
+    res.send(updateReview(id, product_review))
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
+//ELIMINAR REVIEW
+router.delete('/', async (req, res, next) => {
+  const {id} = req.body
+  try {
+    res.send(await deleteReview(id));
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router

@@ -12,7 +12,7 @@ const {
   deleteCategory,
   updateCategory,
 } = require("./category")
-const { getReview } = require("./review")
+const { getReviewByProduct, getReviewByUser, setReview, updateReview, deleteReview } = require("./review")
 const { getUser } = require("./user")
 
 module.exports = {
@@ -28,7 +28,11 @@ module.exports = {
   deleteCategory,
   updateCategory,
 
-  getReview,
+  getReviewByProduct,
+  getReviewByUser,
+  setReview,
+  updateReview,
+  deleteReview,
 
   getUser,
 }
