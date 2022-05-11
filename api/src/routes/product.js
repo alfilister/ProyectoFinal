@@ -9,8 +9,6 @@ const { Category, Product, Review, User } = require("../db")
 
 const router = Router()
 
-const rela = "test"
-
 router.get("/", async (req, res, next) => {
   try {
     const result = await getApiInfo()
