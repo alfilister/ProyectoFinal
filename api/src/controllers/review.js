@@ -1,4 +1,4 @@
-const { Review } = require("../db")
+const {Review, User } = require("../db")
 
 const getReview = async () => {
   try {
