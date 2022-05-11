@@ -91,7 +91,7 @@ const postProduct = async (body) => {
   return "Producto Creado"
 }
 
-const fillDbProducts = async () => {
+const searchProductById = async () => {
   try {
   } catch (error) {
     console.log(error)
@@ -103,5 +103,5 @@ module.exports = {
   chargeProductsDb,
   getProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
 }
