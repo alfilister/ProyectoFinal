@@ -91,11 +91,51 @@ const postProduct = async (body) => {
   return "Producto Creado"
 }
 
-const fillDbProducts = async () => {
+const searchProductById = async (id) => {
   try {
+    const product = await Product.findByPk(id, {
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    })
+    return product
   } catch (error) {
     console.log(error)
   }
+}
+
+const updateProduct = async (integer, body) => {
+  const {
+    name,
+    image,
+    price,
+    aux_images,
+    description,
+    discount,
+    stock,
+    rating,
+    category,
+  } = body
+  const selected = await Product.findByPk(integer)
+  selected.set({
+    name,
+    image,
+    price,
+    aux_images,
+    description,
+    discount,
+    stock,
+    rating,
+    category,
+  })
+
+  selected.save()
+
+  return "Producto Modificado"
 }
 
 module.exports = {
@@ -103,5 +143,6 @@ module.exports = {
   chargeProductsDb,
   getProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
+  updateProduct,
 }
