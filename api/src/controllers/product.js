@@ -108,10 +108,41 @@ const searchProductById = async (id) => {
   }
 }
 
+const updateProduct = async (integer, body) => {
+  const {
+    name,
+    image,
+    price,
+    aux_images,
+    description,
+    discount,
+    stock,
+    rating,
+    category,
+  } = body
+  const selected = await Product.findByPk(integer)
+  selected.set({
+    name,
+    image,
+    price,
+    aux_images,
+    description,
+    discount,
+    stock,
+    rating,
+    category,
+  })
+
+  selected.save()
+
+  return "Producto Modificado"
+}
+
 module.exports = {
   getApiInfo,
   chargeProductsDb,
   getProductsDb,
   postProduct,
   searchProductById,
+  updateProduct,
 }

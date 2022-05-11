@@ -4,6 +4,7 @@ const {
   getProductsDb,
   postProduct,
   searchProductById,
+  updateProduct,
 } = require("./product")
 const {
   getCategory,
@@ -21,6 +22,7 @@ module.exports = {
   postProduct,
   searchProductById,
   getProductsDb,
+  updateProduct,
 
   getCategory,
   chargeCategoriesDb,

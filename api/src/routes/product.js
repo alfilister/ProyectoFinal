@@ -5,6 +5,7 @@ const {
   postProduct,
   getProductsDb,
   searchProductById,
+  updateProduct,
 } = require("../controllers")
 const { Category, Product, Review, User } = require("../db")
 
@@ -58,6 +59,15 @@ router.post("/", async (req, res, next) => {
     })
   } catch (err) {
     next(err)
+  }
+})
+
+router.put("/:id", async (req, res, next) => {
+  const { id } = req.params
+  try {
+    updateProduct(id, req.body)
+  } catch (error) {
+    next(error)
   }
 })
 
