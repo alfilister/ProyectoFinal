@@ -1,3 +1,5 @@
+const { Review } = require("../db")
+
 const getReview = async () => {
   try {
     return await Review.findAll()

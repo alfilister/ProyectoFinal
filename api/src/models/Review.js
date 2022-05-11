@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
     "review",
     {
       product_review: {
-        type: DataTypes.STRING(140),
+        type: DataTypes.STRING(200),
       },
     },
     { timestamps: false, createdAt: false, updatedAt: false }
