@@ -1,4 +1,4 @@
-const {Review, User } = require("../db")
+const { Review, User } = require("../db")
 
 const getReview = async () => {
   try {
@@ -7,5 +7,7 @@ const getReview = async () => {
     console.log(error)
   }
 }
+
+let test = "test"
 
 module.exports = { getReview }
