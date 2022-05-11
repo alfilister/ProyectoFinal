@@ -6,9 +6,9 @@ const userRoute = require("./user")
 
 const router = Router()
 
-router.use("/category", categoryRoute)
-router.use("/product", productRoute)
-router.use("/review", reviewRoute)
-router.use("/user", userRoute)
+router.use("/categories", categoryRoute)
+router.use("/products", productRoute)
+router.use("/reviews", reviewRoute)
+router.use("/users", userRoute)
 
 module.exports = router
