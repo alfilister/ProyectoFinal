@@ -1,12 +1,12 @@
 const { Router } = require("express")
-const { getCategory, chargeDb } = require("../controllers")
+const { getCategory, chargeCategoriesDb } = require("../controllers")
 
 const router = Router()
 
 router.get("/", async (req, res, next) => {
   try {
     const categories = await getCategory()
-    await chargeDb(categories)
+    await chargeCategoriesDb(categories)
 
     res.json({
       status: "api info loaded",

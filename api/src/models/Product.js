@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         },
       },
       aux_images: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
       },
       description: {
         type: DataTypes.TEXT,
@@ -36,6 +36,7 @@ module.exports = (sequelize) => {
       },
       featured: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
       rating: {
         type: DataTypes.FLOAT,

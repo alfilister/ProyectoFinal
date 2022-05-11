@@ -16,7 +16,7 @@ const getCategory = async () => {
   }
 }
 
-const chargeDb = async (array) => {
+const chargeCategoriesDb = async (array) => {
   try {
     await array.forEach((el) => {
       Category.findOrCreate({
@@ -37,4 +37,4 @@ const chargeDb = async (array) => {
 //   }
 // }
 
-module.exports = { getCategory, chargeDb }
+module.exports = { getCategory, chargeCategoriesDb }

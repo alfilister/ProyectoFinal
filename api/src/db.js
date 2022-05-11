@@ -35,8 +35,10 @@ sequelize.models = Object.fromEntries(capsEntries)
 
 const { Category, Product, Review, User } = sequelize.models
 
+Product.belongsToMany(Category, { through: "product_category" })
 Category.belongsToMany(Product, { through: "product_category" })
 Product.belongsToMany(User, { through: "product_user" })
+User.belongsToMany(Product, { through: "product_user" })
 Product.hasMany(Review, {
   foreignKey: "product_id",
 })

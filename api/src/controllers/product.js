@@ -22,42 +22,65 @@ const chargeProductsDb = async (arr) => {
         rating: el.rating.rate,
       })
 
-      let categoriesDb = await Category.findAll({
+      let categoriesDb = await Category.findOne({
         where: { name: el.category },
       })
-
-      console.log(categoriesDb)
-
-      // newProduct.addCategory(categoriesDb)
+      newProduct.addCategory(categoriesDb)
     })
-    return "Products Charged"
+
+    return await Product.findAll({
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    })
   } catch (error) {
     console.log(error)
   }
 }
 
-const postProduct = async (data) => {
+const getProductsDb = async () => {
+  try {
+    return await Product.findAll({
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const postProduct = async (body) => {
   const {
     name,
-    main_image,
+    image,
+    price,
     aux_images,
     description,
     discount,
     stock,
     rating,
     category,
-    user,
-    review,
-  } = data
+  } = body
 
   let productCreated = await Product.create({
     name,
-    main_image,
+    image,
+    price,
     aux_images,
     description,
     discount,
     stock,
     rating,
+    category,
   })
 
   let categoriesDb = await Category.findAll({
@@ -65,17 +88,16 @@ const postProduct = async (data) => {
   })
   productCreated.addCategory(categoriesDb)
 
-  let usersDb = await User.findAll({
-    where: { name: user },
+  return await Product.findOne({
+    where: { id: productCreated.id },
+    include: {
+      model: Category,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
   })
-  productCreated.addUser(usersDb)
-
-  let reviewsDb = await Review.findAll({
-    where: { name: review },
-  })
-  productCreated.addReview(reviewsDb)
-
-  return videoCreated
 }
 
 const fillDbProducts = async () => {
@@ -88,6 +110,7 @@ const fillDbProducts = async () => {
 module.exports = {
   getApiInfo,
   chargeProductsDb,
+  getProductsDb,
   postProduct,
   fillDbProducts,
 }
