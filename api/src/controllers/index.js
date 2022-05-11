@@ -3,7 +3,7 @@ const {
   chargeProductsDb,
   getProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
 } = require("./product")
 const {
   getCategory,
@@ -19,7 +19,7 @@ module.exports = {
   getApiInfo,
   chargeProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
   getProductsDb,
 
   getCategory,

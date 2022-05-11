@@ -91,8 +91,18 @@ const postProduct = async (body) => {
   return "Producto Creado"
 }
 
-const searchProductById = async () => {
+const searchProductById = async (id) => {
   try {
+    const product = await Product.findByPk(id, {
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    })
+    return product
   } catch (error) {
     console.log(error)
   }

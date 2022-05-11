@@ -4,6 +4,7 @@ const {
   chargeProductsDb,
   postProduct,
   getProductsDb,
+  searchProductById,
 } = require("../controllers")
 const { Category, Product, Review, User } = require("../db")
 
@@ -33,6 +34,18 @@ router.get("/info", async (req, res, next) => {
     })
   } catch (err) {
     next(err)
+  }
+})
+
+router.get("/:id", async (req, res, next) => {
+  try {
+    const response = await searchProductById(req.params.id)
+    res.json({
+      status: "Found",
+      data: response,
+    })
+  } catch (error) {
+    next(error)
   }
 })
 
