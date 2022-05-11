@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const {Review, User, Product } = require("../db")
+=======
+const { Review, User } = require("../db")
+>>>>>>> 6c4f4b16dc57a6f5cfd26f12efdeb7c504cf410f
 
 const getReviewByProduct = async () => {
   try {
@@ -10,6 +14,7 @@ const getReviewByProduct = async () => {
   }
 }
 
+<<<<<<< HEAD
 const getReviewByUser = async () => {
   try {
     return await User.findAll({
@@ -54,3 +59,8 @@ const deleteReview = async (id) => {
 }
 
 module.exports = { getReviewByUser,  getReviewByProduct, setReview, updateReview, deleteReview}
+=======
+let test = "test"
+
+module.exports = { getReview }
+>>>>>>> 6c4f4b16dc57a6f5cfd26f12efdeb7c504cf410f
