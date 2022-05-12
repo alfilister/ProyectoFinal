@@ -20,10 +20,11 @@ const getReviewByUser = async () => {
   }
 }
 
-const setReview = async (user_id, product_id, product_review) => {
+const setReview = async (user_id, product_id, product_review, score_review) => {
   try {
     const review = await Review.create({
       product_review,
+      score_review,
       product_id,
       user_id,
     })
@@ -33,10 +34,11 @@ const setReview = async (user_id, product_id, product_review) => {
   }
 }
 
-const updateReview = async (id, product_review) => {
+const updateReview = async (id, product_review, score_review) => {
   try {
     const review = await Review.findByPk(id)
     review.product_review = product_review
+    review.score_review = score_review
     await review.save()
     return review
   } catch (error) {
