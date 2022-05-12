@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_PRODUCTS } from "../actions/constantes";
+import { GET_CATEGORIES, GET_PRODUCTS } from "../actions";
 
 const initialState = {
   products: [],
