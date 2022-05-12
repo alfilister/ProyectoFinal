@@ -4,7 +4,7 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 
 export function get_products() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/products");
+    var json = await axios.get("http://localhost:3001/api/products");
 
     return dispatch({
       type: GET_PRODUCTS,
@@ -16,7 +16,7 @@ export function get_products() {
 
 export function getCategories() {
   return async function (dispatch) {
-    var json = await axios.get("http://localhost:3001/categories");
+    var json = await axios.get("http://localhost:3001/ap/categories");
     return dispatch({
       type: GET_CATEGORIES,
       payload: json.data,
