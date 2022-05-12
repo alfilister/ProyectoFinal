@@ -6,6 +6,7 @@ export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME"
 
 export function get_products() {
   return async function (dispatch) {
+
     try {
       await axios.get("http://localhost:3001/api/categories")
       await axios.get("http://localhost:3001/api/products")
@@ -28,9 +29,11 @@ export function getCategories() {
     var json = await axios.get("http://localhost:3001/api/categories")
     return dispatch({
       type: GET_CATEGORIES,
+
       payload: json.data,
     })
   }
+
 }
 
 export function getProductsById(id) {
