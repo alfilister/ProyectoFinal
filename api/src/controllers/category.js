@@ -1,5 +1,5 @@
 const axios = require("axios")
-const { Category } = require("../db")
+const { Category, Product } = require("../db")
 
 const getCategory = async () => {
   try {
@@ -59,10 +59,38 @@ const updateCategory = async (integer, string) => {
   }
 }
 
+const filterByCategory = async (string) => {
+  try {
+    let filteredProducts = []
+
+    const allData = await Product.findAll({
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    })
+
+    allData.map((el) => {
+      const catProduct = el.categories.map((el) => el.name)
+      if (catProduct.includes(string)) {
+        filteredProducts.push(el)
+      }
+    })
+
+    return filteredProducts
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   getCategory,
   chargeCategoriesDb,
   postCategory,
   deleteCategory,
   updateCategory,
+  filterByCategory,
 }

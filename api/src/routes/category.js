@@ -5,6 +5,7 @@ const {
   postCategory,
   deleteCategory,
   updateCategory,
+  filterByCategory,
 } = require("../controllers")
 
 const router = Router()
@@ -66,6 +67,18 @@ router.put("/", async (req, res, next) => {
     })
   } catch (err) {
     next(err)
+  }
+})
+
+router.get("/filter/:categoryName", async (req, res, next) => {
+  try {
+    const result = await filterByCategory(req.params.categoryName)
+
+    result[0]
+      ? res.json({ quantity: result.length, data: result })
+      : res.status(404).send("No coincidences")
+  } catch (error) {
+    next(error)
   }
 })
 

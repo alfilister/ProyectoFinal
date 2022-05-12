@@ -14,6 +14,7 @@ const {
   postCategory,
   deleteCategory,
   updateCategory,
+  filterByCategory,
 } = require("./category")
 const {
   getReviewByProduct,
@@ -39,6 +40,7 @@ module.exports = {
   postCategory,
   deleteCategory,
   updateCategory,
+  filterByCategory,
 
   getReviewByProduct,
   getReviewByUser,
