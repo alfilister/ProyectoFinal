@@ -3,7 +3,8 @@ const {
   chargeProductsDb,
   getProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
+  updateProduct,
 } = require("./product")
 const {
   getCategory,
@@ -12,15 +13,16 @@ const {
   deleteCategory,
   updateCategory,
 } = require("./category")
-const { getReview } = require("./review")
+const { getReviewByProduct, getReviewByUser, setReview, updateReview, deleteReview } = require("./review")
 const { getUser } = require("./user")
 
 module.exports = {
   getApiInfo,
   chargeProductsDb,
   postProduct,
-  fillDbProducts,
+  searchProductById,
   getProductsDb,
+  updateProduct,
 
   getCategory,
   chargeCategoriesDb,
@@ -28,7 +30,11 @@ module.exports = {
   deleteCategory,
   updateCategory,
 
-  getReview,
+  getReviewByProduct,
+  getReviewByUser,
+  setReview,
+  updateReview,
+  deleteReview,
 
   getUser,
 }
