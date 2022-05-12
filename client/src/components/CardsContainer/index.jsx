@@ -54,12 +54,14 @@ const CardsContainer = () => {
                   id={el.id}
                   name={el.name}
                   image={el.image}
+                  price={el.price}
                   rating={el.rating}
-                  genres={
-                    !currentProducts[0].createdInDb
-                      ? el.genres
-                      : currentProducts[0].genres.join(" - ")
-                  }
+                  // categories={el.categories}
+                  // genres={
+                  //   !currentProducts[0].createdInDb
+                  //     ? el.genres
+                  //     : currentProducts[0].genres.join(" - ")
+                  // }
                 />
               </div>
             );
