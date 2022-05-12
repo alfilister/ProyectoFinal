@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
   try {
     res.send(setReview(user_id, product_id, product_review))
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 
@@ -39,7 +39,7 @@ router.put('/', async (req, res, next) => {
   try {
     res.send(updateReview(id, product_review))
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 
@@ -50,7 +50,7 @@ router.delete('/', async (req, res, next) => {
   try {
     res.send(await deleteReview(id));
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 
