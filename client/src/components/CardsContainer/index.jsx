@@ -35,7 +35,7 @@ const CardsContainer = () => {
         fullProducts={fullProducts.length}
         paginado={paginado}
       />
-      <div className="cards">
+      <div className="cardContainer">
         {!currentProducts[0] ? (
           <div>
             <h2 className="h2">CARGANDO PRODUCTOS...</h2>
