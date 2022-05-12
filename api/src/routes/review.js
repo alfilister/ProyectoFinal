@@ -25,9 +25,9 @@ router.get("/user", async (req, res, next) => {
 
 //GUARDAR REVIEWS
 router.post('/', async (req, res, next) => {
-  const {user_id, product_id, product_review} = req.body; 
+  const {user_id, product_id, product_review, score_review} = req.body; 
   try {
-    res.send(setReview(user_id, product_id, product_review))
+    res.send(setReview(user_id, product_id, product_review, score_review))
   } catch (error) {
     console.log(error)
   }
@@ -35,9 +35,9 @@ router.post('/', async (req, res, next) => {
 
 //EDITAR REVIEW
 router.put('/', async (req, res, next) => {
-  const {id, product_review} = req.body; 
+  const {id, product_review, score_review} = req.body; 
   try {
-    res.send(updateReview(id, product_review))
+    res.send(updateReview(id, product_review, score_review))
   } catch (error) {
     console.log(error)
   }
