@@ -5,6 +5,7 @@ const {
   postProduct,
   getProductsDb,
   searchProductById,
+  searchProductByName,
   updateProduct,
   deleteProduct,
 } = require("../controllers")
@@ -29,18 +30,30 @@ router.get("/", async (req, res, next) => {
 // RUTA PARA CARGAR Y MOSTRAR LOS PRODUCTOS TAL COMO QUEDAN EN LA BASE DE DATOS (INCLUYENDO CATEGORÍA ÚNICAMENTE, PARA VER LOS REVIEWS DE PRODUCTO DEBEN HACER LA SOLICITUD DE PRODUCT BY ID)
 router.get("/info", async (req, res, next) => {
   try {
-    const dataDb = await getProductsDb()
+    const { name } = req.query
 
-    res.json({
-      status: "Api info loaded",
-      data: dataDb,
-    })
+    if (name) {
+      const response = searchProductByName(name)
+      response.length
+        ? res.status(200).json({
+            status: "found",
+            quantity_found: response.response.length,
+            data: response,
+          })
+        : res.status(404).json({ status: "notFound" })
+    } else {
+      const dataDb = await getProductsDb()
+      res.json({
+        status: "Api info loaded",
+        data: dataDb,
+      })
+    }
   } catch (err) {
     next(err)
   }
 })
 
-// RUTA QUE TRAE LOS DETALLES DEL PRODUCTO, INCLUYENDO LAS CATEGORÍAS Y REVIEWS
+// RUTA QUE TRAE LOS DETALLES DEL PRODUCTO POR ID, INCLUYENDO LAS CATEGORÍAS Y REVIEWS
 router.get("/:id", async (req, res, next) => {
   try {
     const response = await searchProductById(req.params.id)

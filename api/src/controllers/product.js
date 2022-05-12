@@ -110,6 +110,24 @@ const searchProductById = async (id) => {
   }
 }
 
+const searchProductByName = async (string) => {
+  try {
+    const product = await Product.findAll(string, {
+      include: [
+        {
+          model: Category,
+          attributes: ["name"],
+          through: { attributes: [] },
+        },
+        Review,
+      ],
+    })
+    return product
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const updateProduct = async (
   integer,
   name,
@@ -154,6 +172,7 @@ module.exports = {
   getProductsDb,
   postProduct,
   searchProductById,
+  searchProductByName,
   updateProduct,
   deleteProduct,
 }
