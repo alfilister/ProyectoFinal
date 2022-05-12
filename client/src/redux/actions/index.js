@@ -3,6 +3,8 @@ export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_CATEGORIES = "GET_CATEGORIES"
 export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID"
 export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME"
+export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME"
+export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
 
 export function get_products() {
   return async function (dispatch) {
@@ -62,6 +64,32 @@ export function getProductsByName(payload) {
       })
     } catch (error) {
       alert("No existe el producto, recarga la pagina")
+    }
+  }
+}
+
+export function sortByName(payload){
+  return function (dispatch){
+    try {
+      return dispatch({
+        type: SORT_PRODUCTS_BY_NAME,
+        payload: payload
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export function sortByRating(payload){
+  return function (dispatch){
+    try {
+      return dispatch({
+        type: SORT_PRODUCTS_BY_RATING,
+        payload: payload
+      })
+    } catch (error) {
+      console.log(error)
     }
   }
 }
