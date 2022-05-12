@@ -18,12 +18,13 @@
 }
   
 /* Las adaptamos al modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root{
-      --negro         : #ececec;
-  }
-}
+// @media (prefers-color-scheme: dark) {
+  //   :root{
+    //       --negro         : #ececec;
+    //   }
+    // }
 
+    
 /* Opcional */
 /* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
 // @media (prefers-contrast: high){

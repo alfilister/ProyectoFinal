@@ -1,10 +1,26 @@
 import React from "react";
 
-const Pagination = () => {
+const Pagination = ({ productsPerPage, fullProducts, paginado }) => {
+  const pageNumber = [];
+
+  for (let i = 1; i <= Math.ceil(fullProducts / productsPerPage); i++) {
+    pageNumber.push(i);
+  }
+
   return (
-    <div>
-      <h1>soy logica paginado</h1>
-    </div>
+    <nav>
+      <ul className="pagination">
+        {pageNumber?.map((number) => {
+          return (
+            <li className="number" key={number}>
+              <a onClick={() => paginado(number)} href="#">
+                {number}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 };
 
