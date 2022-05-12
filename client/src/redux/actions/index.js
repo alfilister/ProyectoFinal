@@ -1,5 +1,6 @@
-import { GET_CATEGORIES, GET_PRODUCTS } from "./constantes";
 import axios from "axios";
+export const GET_PRODUCTS = "GET_PRODUCTS";
+export const GET_CATEGORIES = "GET_CATEGORIES";
 
 export function get_products() {
   return async function (dispatch) {
