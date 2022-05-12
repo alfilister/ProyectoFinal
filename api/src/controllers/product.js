@@ -112,16 +112,15 @@ const searchProductById = async (id) => {
 
 const searchProductByName = async (string) => {
   try {
-    const product = await Product.findAll(string, {
-      include: [
-        {
-          model: Category,
-          attributes: ["name"],
-          through: { attributes: [] },
-        },
-        Review,
-      ],
+    const product = await Product.findAll({
+      where: { name: string },
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: { attributes: [] },
+      },
     })
+    console.log(product)
     return product
   } catch (error) {
     console.log(error)

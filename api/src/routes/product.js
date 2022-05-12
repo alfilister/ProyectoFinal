@@ -33,11 +33,12 @@ router.get("/info", async (req, res, next) => {
     const { name } = req.query
 
     if (name) {
-      const response = searchProductByName(name)
-      response.length
+      const response = await searchProductByName(name)
+
+      response[0]
         ? res.status(200).json({
             status: "found",
-            quantity_found: response.response.length,
+            quantity_found: response.length,
             data: response,
           })
         : res.status(404).json({ status: "notFound" })
