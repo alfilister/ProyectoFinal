@@ -1,3 +1,5 @@
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op
 const axios = require("axios")
 const { Category, Product, Review, User } = require("../db")
 
@@ -113,7 +115,7 @@ const searchProductById = async (id) => {
 const searchProductByName = async (string) => {
   try {
     const product = await Product.findAll({
-      where: { name: string },
+      where: { name: { [Op.iLike]: "%" + string + "%" } },
       include: {
         model: Category,
         attributes: ["name"],
