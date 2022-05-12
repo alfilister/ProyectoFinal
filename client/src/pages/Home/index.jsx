@@ -1,9 +1,14 @@
 import React from "react";
 
+import Nav from "../../components/Nav";
+import CardsContainer from "../../components/CardsContainer";
+
 const Home = () => {
   return (
     <div>
-      <h1>estoy en home</h1>
+      <Nav />
+      <h2>titulo random</h2>
+      <CardsContainer />
     </div>
   );
 };
