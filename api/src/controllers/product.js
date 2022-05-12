@@ -1,3 +1,5 @@
+const Sequelize = require("sequelize")
+const Op = Sequelize.Op
 const axios = require("axios")
 const { Category, Product, Review, User } = require("../db")
 
@@ -28,7 +30,7 @@ const chargeProductsDb = async (arr) => {
       newProduct.addCategory(categoriesDb)
     })
 
-    return await Product.findAll({
+    await Product.findAll({
       include: {
         model: Category,
         attributes: ["name"],
@@ -37,6 +39,7 @@ const chargeProductsDb = async (arr) => {
         },
       },
     })
+    return "Info loaded in DB"
   } catch (error) {
     console.log(error)
   }
@@ -94,13 +97,14 @@ const postProduct = async (body) => {
 const searchProductById = async (id) => {
   try {
     const product = await Product.findByPk(id, {
-      include: {
-        model: Category,
-        attributes: ["name"],
-        through: {
-          attributes: [],
+      include: [
+        {
+          model: Category,
+          attributes: ["name"],
+          through: { attributes: [] },
         },
-      },
+        Review,
+      ],
     })
     return product
   } catch (error) {
@@ -108,18 +112,35 @@ const searchProductById = async (id) => {
   }
 }
 
-const updateProduct = async (integer, body) => {
-  const {
-    name,
-    image,
-    price,
-    aux_images,
-    description,
-    discount,
-    stock,
-    rating,
-    category,
-  } = body
+const searchProductByName = async (string) => {
+  try {
+    const product = await Product.findAll({
+      where: { name: { [Op.iLike]: "%" + string + "%" } },
+      include: {
+        model: Category,
+        attributes: ["name"],
+        through: { attributes: [] },
+      },
+    })
+    console.log(product)
+    return product
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const updateProduct = async (
+  integer,
+  name,
+  image,
+  price,
+  aux_images,
+  description,
+  discount,
+  stock,
+  rating,
+  category
+) => {
   const selected = await Product.findByPk(integer)
   selected.set({
     name,
@@ -132,10 +153,18 @@ const updateProduct = async (integer, body) => {
     rating,
     category,
   })
-
   selected.save()
 
-  return "Producto Modificado"
+  return selected
+}
+
+const deleteProduct = async (id) => {
+  try {
+    await Product.destroy({ where: { id: id } })
+    return "Product deleted"
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 module.exports = {
@@ -144,5 +173,7 @@ module.exports = {
   getProductsDb,
   postProduct,
   searchProductById,
+  searchProductByName,
   updateProduct,
+  deleteProduct,
 }

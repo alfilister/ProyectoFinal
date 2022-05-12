@@ -5,6 +5,7 @@ const initialState = {
   copyProducts: [],
   categories: [],
 };
+
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case GET_PRODUCTS:

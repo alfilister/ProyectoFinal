@@ -9,6 +9,7 @@ const {
 
 const router = Router()
 
+// RUTA PARA CARGAR Y OBTENER LAS CATEGORÍAS
 router.get("/", async (req, res, next) => {
   try {
     const categories = await getCategory()
@@ -23,6 +24,7 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+// RUTA PARA CREAR CATEGORÍAS
 router.post("/", async (req, res, next) => {
   try {
     const { name } = req.body
@@ -37,6 +39,7 @@ router.post("/", async (req, res, next) => {
   }
 })
 
+//RUTA PARA BORRAR CATEGORÍAS
 router.delete("/", async (req, res, next) => {
   try {
     const { name } = req.body
@@ -51,6 +54,7 @@ router.delete("/", async (req, res, next) => {
   }
 })
 
+// RUTA PARA ACTUALIZAR CATEGORÍAS
 router.put("/", async (req, res, next) => {
   try {
     const { id, name } = req.body
