@@ -5,7 +5,13 @@ import NavBar from "../NavBar";
 
 const Nav = ({ setCurrentPage }) => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+      }}
+    >
       <NavLink
         to="/"
         style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}

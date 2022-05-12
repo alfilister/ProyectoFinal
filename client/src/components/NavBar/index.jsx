@@ -20,10 +20,10 @@ const NavBar = ({ setCurrentPage }) => {
   }
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "row" }}>
       <input
         type="text"
-        placeholder="Encontra tu articulo favorito..."
+        placeholder="Encontra tu articulo..."
         value={name}
         onChange={(e) => handleInputChange(e)}
       />
