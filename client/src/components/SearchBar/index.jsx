@@ -37,7 +37,7 @@ const SearchBar = () => {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "row" }}>
+    <div className="searchBar">
       <input
         type="text"
         placeholder="Encuentra tu articulo..."
