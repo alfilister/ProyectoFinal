@@ -1,0 +1,22 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
+    width: 550px;
+    background-color: rgba(125, 187, 241, 0.308);
+    border: 1px solid aliceblue;
+    border-radius: 14px;
+    transition: transform 0.15s;
+    margin: 0 auto;
+  }
+  .input {
+    background-color: rgb(9, 11, 14);
+    height: 1.9rem;
+    border-radius: 10px 0px 0px 10px;
+    color: yellow;
+    font-family: cursive;
+    color :yellow;
+    font-size: 13px;
+  }
