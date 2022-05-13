@@ -25,6 +25,7 @@ function App() {
         <Route path="*" element={<Error404 />} />
         <Route path="/publicar" element={<Create />} />
         <Route path="/producto/:id" element={<Detail />} />
+        <Route path="/createProduct" element={<Create/>} />
       </Routes>
     </div>
   )
