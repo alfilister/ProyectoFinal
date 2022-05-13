@@ -40,14 +40,29 @@
 
 
 }
-.textosNav{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    padding: 0.5rem;
-   
+.logeo img{
+    
+    width: 4rem;
+   border-radius: 4rem;
+   padding: 0.3rem;
     
 
+}
+.logeo {
+    position: relative;
+    right: 7rem;
+    margin-right: 1rem;
+
+    
+}
+.loginButton{
+    position: relative;
+    top: 2rem;
+    right: -5rem;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    cursor: pointer;
 }
 .tituloPag{
    position: relative;
@@ -57,26 +72,5 @@
  font-weight: 600;
    
 }
-.estiloSesion{
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: large;
-}
-.estiloRegistro{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: large;
-}
-.estiloSesion  :hover{
-    background-color: rgba(35, 35, 36, 0.698);
-        color: white;
-        border-radius: 5px;
-}
-.estiloRegistro :hover{
-    background-color: rgba(35, 35, 36, 0.698);
-    color: white;
-    border-radius: 5px;
-}
-.imgProfile{
-    width: '10px' ; 
-    height: '10px';
-    border-radius: '50px';
-}
+
+

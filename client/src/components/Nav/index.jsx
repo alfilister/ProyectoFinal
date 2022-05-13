@@ -9,7 +9,6 @@ import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 const Nav = ({ setCurrentPage }) => {
-
   const { isAuthenticated } = useAuth0();
 
   return (
@@ -27,8 +26,8 @@ const Nav = ({ setCurrentPage }) => {
       <div className="searchBarStylo">
         <SearchBar setCurrentPage={setCurrentPage} />
       </div>
-      <div className="textosNav">
-       {/*  <NavLink to="#" className="estiloSesion">
+      <div className="logeo">
+        {/*  <NavLink to="#" className="estiloSesion">
           <h2>inicia sesion</h2>
         </NavLink>
         <NavLink to="#" className="estiloRegistro">
@@ -36,13 +35,15 @@ const Nav = ({ setCurrentPage }) => {
         </NavLink> */}
 
         {isAuthenticated ? (
-        <>
-          <LogOutButton   className="estiloSesion"/>
-          <Profile className = "imgProfile" />
-        </>
-      ) : (
-        <LoginButton />
-      )}
+          <>
+            <LogOutButton className="estiloSesion" />
+            <Profile className="estiloProfile" />
+          </>
+        ) : (
+          <div className="loginButton">
+            <LoginButton />
+          </div>
+        )}
       </div>
     </div>
   );
