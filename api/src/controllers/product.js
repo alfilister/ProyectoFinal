@@ -122,7 +122,6 @@ const searchProductByName = async (string) => {
         through: { attributes: [] },
       },
     })
-    console.log(product)
     return product
   } catch (error) {
     console.log(error)
