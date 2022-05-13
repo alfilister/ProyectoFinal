@@ -36,7 +36,7 @@ function rootReducer(state = initialState, action) {
     case GET_PRODUCTS_ID:
       return {
         ...state,
-        productsDetail: [action.payload],
+        productsDetail: action.payload,
       };
     case SORT_PRODUCTS_BY_NAME:
       let sortByName =
