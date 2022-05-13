@@ -4,7 +4,8 @@ import {
   GET_PRODUCTS_ID,
   GET_PRODUCTS_NAME,
   SORT_PRODUCTS_BY_NAME,
-  SORT_PRODUCTS_BY_RATING
+  SORT_PRODUCTS_BY_RATING,
+  FILTER_PRODUCTS
 } from "../actions";
 
 const initialState = {
@@ -39,18 +40,18 @@ function rootReducer(state = initialState, action) {
       };
     case SORT_PRODUCTS_BY_NAME:
       let sortByName = action.payload === 'a-z'? state.products.sort((a, b)=>{
-        if(a.name > b.name){
+        if(a.name.toLowerCase() > b.name.toLowerCase()){
           return 1
         }
-        if(a.name < b.name){
+        if(a.name.toLowerCase() < b.name.toLowerCase()){
           return -1
         }
         return 0
       }):state.products.sort((a, b)=>{
-        if(a.name > b.name){
+        if(a.name.toLowerCase() > b.name.toLowerCase()){
             return -1
         }
-        if(a.name < b.name){
+        if(a.name.toLowerCase() < b.name.toLowerCase()){
             return 1
         }
         return 0
@@ -67,7 +68,12 @@ function rootReducer(state = initialState, action) {
       })
       return{
         ...state,
-        videogames: sortByRating
+        products: sortByRating
+      }
+    case FILTER_PRODUCTS:
+      return{
+        ...state,
+        products: action.payload
       }
     default:
       return state;

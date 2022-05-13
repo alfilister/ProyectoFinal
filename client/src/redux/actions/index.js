@@ -5,6 +5,7 @@ export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID"
 export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME"
 export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME"
 export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
+export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 
 export function get_products() {
   return async function (dispatch) {
@@ -87,6 +88,21 @@ export function sortByRating(payload){
       return dispatch({
         type: SORT_PRODUCTS_BY_RATING,
         payload: payload
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export function filtres(payload){
+  return async function (dispatch){
+    const json = await axios.get(`http://localhost:3001/api/categories/filter?categoryName=${payload.category}&price=${payload.price}`)
+
+    try {
+      return dispatch({
+        type: FILTER_PRODUCTS,
+        payload: json.data.data
       })
     } catch (error) {
       console.log(error)

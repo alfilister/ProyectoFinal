@@ -3,54 +3,31 @@ import { useDispatch, useSelector } from "react-redux"
 
 import Nav from "../../components/Nav"
 import Card from "../../components/Card"
+import Filters from "../../components/Filters"
 // import CardsContainer from "../../components/CardsContainer";
 // <CardsContainer />
 
-import { get_products, getCategories, sortByName, sortByRating } from "../../redux/actions"
+import { get_products, getCategories} from "../../redux/actions"
 
 const Home = () => {
   const dispatch = useDispatch()
-  const [sorted, setSorted] = useState(''); 
 
   useEffect(() => {
     dispatch(get_products())
     dispatch(getCategories())
   }, [dispatch])
 
+  const [sorted, setSorted] = useState('');
+
   const fullProducts = useSelector((state) => state.products)
-
-  //Ordenamiento por nombre
-  const handleSortByName = (event) => {
-    dispatch(sortByName(event.target.value));
-    // para cambiar el paginado a la primer pagina luego de ordenar
-    //setCurrentPage(1);
-    setSorted(event.target.value)
-  }
-
-  const handleSortByRating = (event) => {
-    dispatch(sortByRating(event.target.value));
-    // para cambiar el paginado a la primer pagina luego de ordenar
-    //setCurrentPage(1);
-    setSorted(event.target.value)
-    console.log(fullProducts);
-  }
 
   return (
     <div>
       <Nav />
       <h2>titulo random</h2>
-      {/* Filtros */}
       <div>
-        {/* Por nombre A-Z */}
-        <select onChange={(event) => {handleSortByName(event)}}>
-          <option value="a-z">A - Z</option>
-          <option value="z-a">Z - A</option>
-        </select>
-        {/* Por puntuacion */}
-        <select onChange={(event) => {handleSortByRating(event)}}>
-          <option value="asc">Ascendente</option>
-          <option value="des">Descendente</option>
-        </select>
+      {/* Filtros */}
+        <Filters setSorted={setSorted}></Filters>
       </div>
       <div className="cards">
         {!fullProducts[0] ? (

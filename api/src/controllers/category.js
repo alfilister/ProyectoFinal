@@ -77,16 +77,13 @@ const filterProducts = async (category, price) => {
 
     filteredProducts = allData.map(el => el.toJSON()).filter((el) => {
       for(let i=0; el.categories.length > i; i++){
-        console.log(el.categories.name, category)
-        if(el.categories[i].name === category){
+        if(el.categories[i].name === category || 'all' === category){
           if(el.price <= price){
             return el;
           }
         }
       }
     })
-
-    console.log(filteredProducts);
 
     // const allData = await Product.findAll({
     //   include: {
