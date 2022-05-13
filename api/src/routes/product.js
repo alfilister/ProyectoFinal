@@ -52,7 +52,7 @@ router.get("/:id", async (req, res, next) => {
 })
 
 //RUTA PARA CREAR LOS PRODUCTOS (EN LOS CONTROLADORES DE PRODUCT EN LA LÍNEA 62 ENCUENTRAN LA DATA QUE DEBEN SUMINISTRAR (IMPORTANTE QUE LA CATEGORÍA A INCLUIR EXISTA DENTRO DE LA BASE DE DATOS))
-router.post("/", async (req, res, next) => {
+router.post("/createProduct", async (req, res, next) => {
   try {
     const productCreate = await postProduct(req.body)
     res.status(201).json({

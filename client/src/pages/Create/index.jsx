@@ -1,19 +1,18 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../../redux/actions";
+import { useState } from "react";
+import { Link  } from "react-router-dom";
+import {  useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import {postProduct } from "../../redux/actions";
 import styleCV from '../Create/Create.module.css'
 
 //funcion validadora para hacer el formulario controlado
-const Create = () => {
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-    dispatch(getCategories())
-  }, [dispatch]);
+const Create = () => {  
   
   const categories = useSelector((state) => state.categories.data) 
+  const dispatch = useDispatch();
+  //const history = useHistory()
+
 
 
   //console.log('esto son categorias', categories)
@@ -52,6 +51,26 @@ const Create = () => {
    
   }
 
+  function handleSubmit (e){
+    e.preventDefault();
+    console.log(input);
+    dispatch(postProduct(input));
+    alert('tu Producto se creo con exito')
+    setInput({
+      name: "",
+      image: "",
+      price: "",
+      aux_images: "",
+      description: "",
+      discount: "",
+      stock : "" ,
+      rating: "",
+      category: [],
+    })
+    //history.push('/')
+
+  }
+
   return (
 
     <div className={styleCV.contenedor}>
@@ -60,7 +79,7 @@ const Create = () => {
       </Link>
       <h1 >Crear tu producto</h1>
       
-<form >
+<form onSubmit={e => handleSubmit(e)}>
 
 
 <div >
@@ -116,7 +135,7 @@ const Create = () => {
 </div>
 
 <div >
-    <label>discount </label>
+    <label>discount : </label>
     <input className={styleCV.input}
     type="number"
     step="5"
@@ -130,7 +149,7 @@ const Create = () => {
 </div>
 
 <div >
-    <label>Stock </label>
+    <label>Stock : </label>
     <input className={styleCV.input}
     type="number"
     step="1"
@@ -162,10 +181,10 @@ const Create = () => {
    <div > 
 
    <label> Categorias :  </label>
-   <select onChange={e => handleSelect(e)}>
+   <select className={styleCV.select} onChange={e => handleSelect(e)} >
    {
       categories.map(el => (
-        <option value={input.el}>{el}</option>
+        <option key = {el} value={input.el}>{el}</option>
       ))
     }
      
