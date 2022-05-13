@@ -1,7 +1,5 @@
 const {
-  getApiInfo,
-  chargeProductsDb,
-  getProductsDb,
+  getProductInfo,
   postProduct,
   searchProductById,
   searchProductByName,
@@ -14,7 +12,7 @@ const {
   postCategory,
   deleteCategory,
   updateCategory,
-  filterProducts
+  filterProducts,
 } = require("./category")
 const {
   getReviewByProduct,
@@ -26,12 +24,10 @@ const {
 const { getUser } = require("./user")
 
 module.exports = {
-  getApiInfo,
-  chargeProductsDb,
+  getProductInfo,
   postProduct,
   searchProductById,
   searchProductByName,
-  getProductsDb,
   updateProduct,
   deleteProduct,
 

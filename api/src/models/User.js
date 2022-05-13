@@ -10,12 +10,11 @@ module.exports = (sequelize) => {
       },
       email: {
         type: DataTypes.STRING,
-      },
-      password: {
-        type: DataTypes.STRING,
+        allowNull: false,
       },
       id_document: {
         type: DataTypes.INTEGER,
+        allowNull: false,
       },
     },
     { timestamps: false, createdAt: false, updatedAt: false }

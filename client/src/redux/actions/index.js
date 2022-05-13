@@ -11,7 +11,6 @@ export function get_products() {
   return async function (dispatch) {
     try {
       await axios.get("http://localhost:3001/api/categories")
-      await axios.get("http://localhost:3001/api/products")
       const productsDb = await axios.get(
         "http://localhost:3001/api/products/info"
       )
@@ -67,12 +66,12 @@ export function getProductsByName(payload) {
   }
 }
 
-export function sortByName(payload){
-  return function (dispatch){
+export function sortByName(payload) {
+  return function (dispatch) {
     try {
       return dispatch({
         type: SORT_PRODUCTS_BY_NAME,
-        payload: payload
+        payload: payload,
       })
     } catch (error) {
       console.log(error)
@@ -80,12 +79,12 @@ export function sortByName(payload){
   }
 }
 
-export function sortByRating(payload){
-  return function (dispatch){
+export function sortByRating(payload) {
+  return function (dispatch) {
     try {
       return dispatch({
         type: SORT_PRODUCTS_BY_RATING,
-        payload: payload
+        payload: payload,
       })
     } catch (error) {
       console.log(error)
@@ -93,14 +92,16 @@ export function sortByRating(payload){
   }
 }
 
-export function filtres(payload){
-  return async function (dispatch){
-    const json = await axios.get(`http://localhost:3001/api/categories/filter?categoryName=${payload.category}&price=${payload.price}`)
+export function filtres(payload) {
+  return async function (dispatch) {
+    const json = await axios.get(
+      `http://localhost:3001/api/categories/filter?categoryName=${payload.category}&price=${payload.price}`
+    )
 
     try {
       return dispatch({
         type: FILTER_PRODUCTS,
-        payload: json.data.data
+        payload: json.data.data,
       })
     } catch (error) {
       console.log(error)
