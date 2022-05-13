@@ -15,7 +15,7 @@ const Card = ({ id, name, image, categories, price, rating, aux_images }) => {
 
       <div className="info">
         <span>💲 {price}</span>
-        <span>{` |${categories}| `}</span>
+        <span>{` | ${categories} | `}</span>
         <span>⭐ {rating}</span>
       </div>
       <div className="btn">

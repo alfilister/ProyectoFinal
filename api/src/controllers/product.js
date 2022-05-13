@@ -137,28 +137,9 @@ const getProductInfo = async () => {
         let categoriesDb = await Category.findAll({
           where: { name: el.categories },
         })
+
         newProduct.addCategory(categoriesDb)
       }
-    })
-
-    await Product.findAll({
-      include: {
-        model: Category,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
-    })
-
-    await Product.findAll({
-      include: {
-        model: Category,
-        attributes: ["name"],
-        through: {
-          attributes: [],
-        },
-      },
     })
 
     return await Product.findAll({
