@@ -4,8 +4,14 @@ import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import "../../scss/components/_nav.scss";
 import logo from "../../scss/assets/logo.png";
-
+import LoginButton from "../User/Login";
+import LogOutButton from "../User/LogOut";
+import Profile from "../User/profileUser";
+import { useAuth0 } from "@auth0/auth0-react";
 const Nav = ({ setCurrentPage }) => {
+
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
@@ -22,12 +28,21 @@ const Nav = ({ setCurrentPage }) => {
         <SearchBar setCurrentPage={setCurrentPage} />
       </div>
       <div className="textosNav">
-        <NavLink to="#" className="estiloSesion">
+       {/*  <NavLink to="#" className="estiloSesion">
           <h2>inicia sesion</h2>
         </NavLink>
         <NavLink to="#" className="estiloRegistro">
           <h2>registrate</h2>
-        </NavLink>
+        </NavLink> */}
+
+        {isAuthenticated ? (
+        <>
+          <LogOutButton   className="estiloSesion"/>
+          <Profile className = "imgProfile" />
+        </>
+      ) : (
+        <LoginButton />
+      )}
       </div>
     </div>
   );
