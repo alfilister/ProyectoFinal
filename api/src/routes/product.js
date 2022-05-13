@@ -1,9 +1,7 @@
 const { Router } = require("express")
 const {
-  getApiInfo,
-  chargeProductsDb,
+  getProductInfo,
   postProduct,
-  getProductsDb,
   searchProductById,
   searchProductByName,
   updateProduct,
@@ -11,21 +9,6 @@ const {
 } = require("../controllers")
 
 const router = Router()
-
-// RUTA PARA TRAER LOS PRODUCTOS DE LA API (IMPORTANTE QUE ANTES DE HACER ESTE LLAMADO SE HAGA EL GET DE LAS CATEGORÍAS, YA QUE ELLAS ALIMENTAN ESA TABLA INTERMEDIA)
-router.get("/", async (req, res, next) => {
-  try {
-    const result = await getApiInfo()
-    const dataDb = await chargeProductsDb(result)
-
-    res.json({
-      status: "Api info loaded",
-      data: dataDb,
-    })
-  } catch (err) {
-    next(err)
-  }
-})
 
 // RUTA PARA CARGAR Y MOSTRAR LOS PRODUCTOS TAL COMO QUEDAN EN LA BASE DE DATOS (INCLUYENDO CATEGORÍA ÚNICAMENTE, PARA VER LOS REVIEWS DE PRODUCTO DEBEN HACER LA SOLICITUD DE PRODUCT BY ID)
 router.get("/info", async (req, res, next) => {
@@ -43,9 +26,10 @@ router.get("/info", async (req, res, next) => {
           })
         : res.status(404).json({ status: "notFound" })
     } else {
-      const dataDb = await getProductsDb()
+      const dataDb = await getProductInfo()
       res.json({
         status: "Api info loaded",
+        quantity_found: dataDb.length,
         data: dataDb,
       })
     }

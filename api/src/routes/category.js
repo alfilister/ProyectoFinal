@@ -5,7 +5,7 @@ const {
   postCategory,
   deleteCategory,
   updateCategory,
-  filterByCategory,
+  filterProducts,
 } = require("../controllers")
 
 const router = Router()
@@ -70,9 +70,11 @@ router.put("/", async (req, res, next) => {
   }
 })
 
-router.get("/filter/:categoryName", async (req, res, next) => {
+//FILTRO POR CATEGORIAS Y PRECIO PARA EL HOME
+router.get("/filter", async (req, res, next) => {
+  const { categoryName, price } = req.query
   try {
-    const result = await filterByCategory(req.params.categoryName)
+    const result = await filterProducts(categoryName, price)
 
     result[0]
       ? res.json({ quantity: result.length, data: result })

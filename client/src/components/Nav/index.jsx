@@ -1,32 +1,51 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-import SearchBar from "../SearchBar"
-
+import SearchBar from "../SearchBar";
+import "../../scss/components/_nav.scss";
+import logo from "../../scss/assets/logo.png";
+import LoginButton from "../User/Login";
+import LogOutButton from "../User/LogOut";
+import Profile from "../User/profileUser";
+import { useAuth0 } from "@auth0/auth0-react";
 const Nav = ({ setCurrentPage }) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-      }}
-    >
-      <NavLink
-        to="/"
-        style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
-      >
-        <h1>LOGO</h1>
-      </NavLink>
-      <SearchBar setCurrentPage={setCurrentPage} />
-      <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
-        <h2>inicia sesion</h2>
-      </NavLink>
-      <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
-        <h2>registrate</h2>
-      </NavLink>
-    </div>
-  )
-}
 
-export default Nav
+  const { isAuthenticated } = useAuth0();
+
+  return (
+    <div className="divNavbar">
+      <div className="divSeachYLogo">
+        <NavLink
+          to="/"
+          style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
+          className="logo"
+        >
+          <h2 className="tituloPag">E-comerce Cell</h2>
+          <img className="logoImg" src={logo} alt="imagenLogo" />
+        </NavLink>
+      </div>
+      <div className="searchBarStylo">
+        <SearchBar setCurrentPage={setCurrentPage} />
+      </div>
+      <div className="textosNav">
+       {/*  <NavLink to="#" className="estiloSesion">
+          <h2>inicia sesion</h2>
+        </NavLink>
+        <NavLink to="#" className="estiloRegistro">
+          <h2>registrate</h2>
+        </NavLink> */}
+
+        {isAuthenticated ? (
+        <>
+          <LogOutButton   className="estiloSesion"/>
+          <Profile className = "imgProfile" />
+        </>
+      ) : (
+        <LoginButton />
+      )}
+      </div>
+    </div>
+  );
+};
+
+export default Nav;

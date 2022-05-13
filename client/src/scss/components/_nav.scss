@@ -1,0 +1,79 @@
+@use "../abstracts/_variables.scss" as *;
+
+.divNavbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    background-color: rgba(46, 44, 44, 0.232);
+    border-radius: 0.5rem;
+    
+    height: 5.2rem;
+}
+.divSeachYLogo{
+    display: flex;
+    flex-wrap: wrap;
+    
+    margin-left: -19rem; 
+    padding: 1rem;
+    
+}
+ 
+
+.logoImg{
+    float: right;
+    display: block;
+    width: 4rem;
+    
+    border-radius: 1rem;
+    box-shadow: 9px 0px 25px -15px rgba(0,0,0,0.58);
+
+}
+
+.searchBarStylo{
+    position: fixed;
+    right: 0.3rem;
+   padding: 2rem;
+
+
+}
+.textosNav{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    padding: 0.5rem;
+   
+    
+
+}
+.tituloPag{
+   position: fixed;
+   left: 1.8rem;
+   top: 2.8rem;
+ font-size: x-large;
+ font-weight: 600;
+   
+}
+.estiloSesion{
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: large;
+}
+.estiloRegistro{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+.estiloSesion  :hover{
+    background-color: rgba(35, 35, 36, 0.698);
+        color: white;
+        border-radius: 5px;
+}
+.estiloRegistro :hover{
+    background-color: rgba(35, 35, 36, 0.698);
+    color: white;
+    border-radius: 5px;
+}
+.imgProfile{
+    width: '10px' ; 
+    height: '10px';
+    border-radius: '50px';
+}

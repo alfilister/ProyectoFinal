@@ -1,13 +1,17 @@
-import React, { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState } from "react"
 
 import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
+import Filters from "../../components/Filters"
 
 const Home = () => {
+  const [sorted, setSorted] = useState("")
+
   return (
     <div>
       <Nav />
+      {/* Filtros */}
+      <Filters setSorted={setSorted} />
       <CardsContainer />
     </div>
   )
