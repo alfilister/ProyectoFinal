@@ -59,9 +59,11 @@ const updateCategory = async (integer, string) => {
   }
 }
 
-const filterByCategory = async (string) => {
+
+//FILTRO POT CATEGORIA Y PRECIO
+const filterProducts = async (category, price) => {
   try {
-    let filteredProducts = []
+    let filteredProducts;
 
     const allData = await Product.findAll({
       include: {
@@ -73,12 +75,32 @@ const filterByCategory = async (string) => {
       },
     })
 
-    allData.map((el) => {
-      const catProduct = el.categories.map((el) => el.name)
-      if (catProduct.includes(string)) {
-        filteredProducts.push(el)
+    filteredProducts = allData.map(el => el.toJSON()).filter((el) => {
+      for(let i=0; el.categories.length > i; i++){
+        if(el.categories[i].name === category || 'all' === category){
+          if(el.price <= price){
+            return el;
+          }
+        }
       }
     })
+
+    // const allData = await Product.findAll({
+    //   include: {
+    //     model: Category,
+    //     attributes: ["name"],
+    //     through: {
+    //       attributes: [],
+    //     },
+    //   },
+    // })
+
+    // allData.map((el) => {
+    //   const catProduct = el.categories.map((el) => el.name)
+    //   if (catProduct.includes(category)) {
+    //     filteredProducts.push(el)
+    //   }
+    // })
 
     return filteredProducts
   } catch (error) {
@@ -92,5 +114,5 @@ module.exports = {
   postCategory,
   deleteCategory,
   updateCategory,
-  filterByCategory,
+  filterProducts
 }
