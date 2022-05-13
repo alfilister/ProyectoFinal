@@ -96,7 +96,6 @@ export function filtres(payload) {
     const json = await axios.get(
       `http://localhost:3001/api/categories/filter?categoryName=${payload.category}&price=${payload.price}`
     );
-
     try {
       return dispatch({
         type: FILTER_PRODUCTS,
@@ -106,4 +105,21 @@ export function filtres(payload) {
       console.log(error);
     }
   };
+}
+
+export function postProduct (payload) {
+  return async function (dispatch){
+    const json = await axios.post('http://localhost:3001/api/products/createProduct',payload);
+
+    try {
+      console.log(json)
+      return json
+      
+    } catch (error) {
+      console.log(error)
+      
+    }
+
+
+  }
 }
