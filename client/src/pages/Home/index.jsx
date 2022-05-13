@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import Nav from "../../components/Nav"
+import CardsContainer from "../../components/CardsContainer"
 import Card from "../../components/Card"
 import Filters from "../../components/Filters"
 // import CardsContainer from "../../components/CardsContainer";
@@ -10,58 +11,14 @@ import Filters from "../../components/Filters"
 import { get_products, getCategories} from "../../redux/actions"
 
 const Home = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(get_products())
-    dispatch(getCategories())
-  }, [dispatch])
-
   const [sorted, setSorted] = useState('');
-
-  const fullProducts = useSelector((state) => state.products)
 
   return (
     <div>
       <Nav />
-      <h2>titulo random</h2>
-      <div>
       {/* Filtros */}
-        <Filters setSorted={setSorted}></Filters>
-      </div>
-      <div className="cards">
-        {!fullProducts[0] ? (
-          <div>
-            <h2 className="h2">CARGANDO PRODUCTOS...</h2>
-            <img
-              src="https://i.imgur.com/EQSYdeQ.gif"
-              alt="Loading..."
-              className="loaderHome"
-            />
-          </div>
-        ) : (
-          fullProducts.map((el) => {
-            return (
-              <div key={el.id}>
-                <Card
-                  key={el.id}
-                  id={el.id}
-                  name={el.name}
-                  image={el.image}
-                  price={el.price}
-                  rating={el.rating}
-                  // categories={el.categories}
-                  // genres={
-                  //   !currentProducts[0].createdInDb
-                  //     ? el.genres
-                  //     : currentProducts[0].genres.join(" - ")
-                  // }
-                />
-              </div>
-            )
-          })
-        )}
-      </div>
+       <Filters setSorted={setSorted}></Filters>
+      <CardsContainer />
     </div>
   )
 }

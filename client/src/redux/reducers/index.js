@@ -13,7 +13,7 @@ const initialState = {
   copyProducts: [],
   categories: [],
   productsDetail: [],
-};
+}
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -22,17 +22,17 @@ function rootReducer(state = initialState, action) {
         ...state,
         products: action.payload,
         copyProducts: action.payload,
-      };
+      }
     case GET_CATEGORIES:
       return {
         ...state,
         categories: action.payload,
-      };
+      }
     case GET_PRODUCTS_NAME:
       return {
         ...state,
-        products: [action.payload],
-      };
+        products: action.payload,
+      }
     case GET_PRODUCTS_ID:
       return {
         ...state,
@@ -76,7 +76,7 @@ function rootReducer(state = initialState, action) {
         products: action.payload
       }
     default:
-      return state;
+      return state
   }
 }
-export default rootReducer;
+export default rootReducer

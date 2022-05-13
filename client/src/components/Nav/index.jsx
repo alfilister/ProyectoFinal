@@ -1,7 +1,7 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React from "react"
+import { NavLink } from "react-router-dom"
 
-import NavBar from "../NavBar";
+import SearchBar from "../SearchBar"
 
 const Nav = ({ setCurrentPage }) => {
   return (
@@ -18,7 +18,7 @@ const Nav = ({ setCurrentPage }) => {
       >
         <h1>LOGO</h1>
       </NavLink>
-      <NavBar setCurrentPage={setCurrentPage} />
+      <SearchBar setCurrentPage={setCurrentPage} />
       <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
         <h2>inicia sesion</h2>
       </NavLink>
@@ -26,7 +26,7 @@ const Nav = ({ setCurrentPage }) => {
         <h2>registrate</h2>
       </NavLink>
     </div>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav

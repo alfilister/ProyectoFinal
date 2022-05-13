@@ -9,7 +9,6 @@ export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 
 export function get_products() {
   return async function (dispatch) {
-
     try {
       await axios.get("http://localhost:3001/api/categories")
       await axios.get("http://localhost:3001/api/products")
@@ -36,7 +35,6 @@ export function getCategories() {
       payload: json.data,
     })
   }
-
 }
 
 export function getProductsById(id) {
@@ -46,7 +44,7 @@ export function getProductsById(id) {
       console.log(json.data)
       return dispatch({
         type: GET_PRODUCTS_ID,
-        payload: json.data,
+        payload: json.data.data,
       })
     } catch (error) {
       console.log(error)
@@ -57,11 +55,11 @@ export function getProductsByName(payload) {
   return async function (dispatch) {
     try {
       const json = await axios.get(
-        `http://localhost:3001/api/products?name=${payload}`
+        `http://localhost:3001/api/products/info?name=${payload}`
       )
       return dispatch({
         type: GET_PRODUCTS_NAME,
-        payload: json.data,
+        payload: json.data.data,
       })
     } catch (error) {
       alert("No existe el producto, recarga la pagina")
