@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useState } from "react"
+import { useSelector } from "react-redux"
 
 import Pagination from "../Pagination"
 import Card from "../Card"
-import { getCategories, get_products } from "../../redux/actions"
 
 const CardsContainer = () => {
-  const dispatch = useDispatch()
-
   const fullProducts = useSelector((state) => state.products)
   const [currentPage, setCurrentPage] = useState(1)
   const [productsPerPage, setProductsPerPage] = useState(6)
@@ -22,11 +19,6 @@ const CardsContainer = () => {
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber)
   }
-
-  useEffect(() => {
-    dispatch(getCategories())
-    dispatch(get_products())
-  }, [dispatch])
 
   return (
     <div>
@@ -52,6 +44,7 @@ const CardsContainer = () => {
                 <Card
                   key={el.id}
                   id={el.id}
+                  aux_images={el.aux_images}
                   name={el.name}
                   image={el.image}
                   price={el.price}

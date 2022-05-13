@@ -24,10 +24,26 @@
     margin: 10px 5px;
   }
 
-  img {
-    height: 100%;
+  .img {
+    position: relative;
     width: 100%;
-    margin-bottom: 10px;
+    max-width: 100%;
+
+    .image-hover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.2s;
+
+      &:hover {
+        opacity: 1;
+        background-color: white;
+      }
+    }
   }
 
   .info {

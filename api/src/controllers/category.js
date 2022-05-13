@@ -3,14 +3,15 @@ const { Category, Product } = require("../db")
 
 const getCategory = async () => {
   try {
-    var categoryList = []
-    const result = await axios("https://fakestoreapi.com/products/")
-    const data = result.data.map(
-      (el) =>
-        !categoryList.includes(el.category) && categoryList.push(el.category)
-    )
-
-    return categoryList
+    const mockReviews = [
+      // MOCKING INFO TO LOAD
+      "cellphones",
+      "laptops",
+      "tablets",
+      "gamers",
+      "accessories",
+    ]
+    return mockReviews
   } catch (error) {
     console.log(error)
   }
@@ -32,7 +33,7 @@ const chargeCategoriesDb = async (array) => {
 
 const postCategory = async (string) => {
   try {
-    await Category.create({ name: string })
+    await Category.findOrCreate({ name: string })
     return "Category created"
   } catch (error) {
     console.log(error)
@@ -59,11 +60,10 @@ const updateCategory = async (integer, string) => {
   }
 }
 
-
 //FILTRO POT CATEGORIA Y PRECIO
 const filterProducts = async (category, price) => {
   try {
-    let filteredProducts;
+    let filteredProducts
 
     const allData = await Product.findAll({
       include: {
@@ -75,15 +75,17 @@ const filterProducts = async (category, price) => {
       },
     })
 
-    filteredProducts = allData.map(el => el.toJSON()).filter((el) => {
-      for(let i=0; el.categories.length > i; i++){
-        if(el.categories[i].name === category || 'all' === category){
-          if(el.price <= price){
-            return el;
+    filteredProducts = allData
+      .map((el) => el.toJSON())
+      .filter((el) => {
+        for (let i = 0; el.categories.length > i; i++) {
+          if (el.categories[i].name === category || "all" === category) {
+            if (el.price <= price) {
+              return el
+            }
           }
         }
-      }
-    })
+      })
 
     // const allData = await Product.findAll({
     //   include: {
@@ -114,5 +116,5 @@ module.exports = {
   postCategory,
   deleteCategory,
   updateCategory,
-  filterProducts
+  filterProducts,
 }
