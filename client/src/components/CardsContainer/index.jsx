@@ -24,7 +24,7 @@ const CardsContainer = () => {
   }
 
   useEffect(() => {
-    dispatch(getCategories)
+    dispatch(getCategories())
     dispatch(get_products())
   }, [dispatch])
 

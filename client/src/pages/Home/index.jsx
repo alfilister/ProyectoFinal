@@ -17,7 +17,7 @@ const Home = () => {
     <div>
       <Nav />
       {/* Filtros */}
-       <Filters setSorted={setSorted}></Filters>
+      <Filters setSorted={setSorted}/>
       <CardsContainer />
     </div>
   )
