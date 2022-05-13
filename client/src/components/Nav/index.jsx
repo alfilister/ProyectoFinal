@@ -1,9 +1,14 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import LoginButton from "../User/Login";
+import LogOutButton from "../User/LogOut";
+import Profile from "../User/profileUser";
+import { useAuth0 } from "@auth0/auth0-react";
 
-import SearchBar from "../SearchBar"
+import SearchBar from "../SearchBar";
 
 const Nav = ({ setCurrentPage }) => {
+  const { isAuthenticated } = useAuth0();
   return (
     <div
       style={{
@@ -19,14 +24,26 @@ const Nav = ({ setCurrentPage }) => {
         <h1>LOGO</h1>
       </NavLink>
       <SearchBar setCurrentPage={setCurrentPage} />
-      <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
+      {/* <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
         <h2>inicia sesion</h2>
-      </NavLink>
-      <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
-        <h2>registrate</h2>
-      </NavLink>
-    </div>
-  )
-}
+      </NavLink> */}
 
-export default Nav
+      {/*    <NavLink to="#" style={{ textDecoration: "none", color: "black" }}>
+        <h2>registrate</h2>
+      </NavLink> */}
+      {/* 
+      <LoginButton />
+      <LogOutButton /> */}
+      {isAuthenticated ? (
+        <>
+          <LogOutButton />
+          <Profile />
+        </>
+      ) : (
+        <LoginButton />
+      )}
+    </div>
+  );
+};
+
+export default Nav;
