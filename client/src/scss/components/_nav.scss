@@ -15,6 +15,7 @@
     flex-wrap: wrap;
     
     margin-left: -19rem; 
+    
     padding: 1rem;
     
 }
@@ -27,53 +28,49 @@
     
     border-radius: 1rem;
     box-shadow: 9px 0px 25px -15px rgba(0,0,0,0.58);
+    margin-top: -2rem;
 
 }
 
 .searchBarStylo{
-    position: fixed;
-    right: 0.3rem;
+    position: relative;
+    left: 58rem;
+    top: -0.10rem;
    padding: 2rem;
 
 
 }
-.textosNav{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    padding: 0.5rem;
-   
+.logeo img{
+    
+    width: 4rem;
+   border-radius: 4rem;
+   padding: 0.3rem;
     
 
 }
+.logeo {
+    position: relative;
+    right: 7rem;
+    margin-right: 1rem;
+
+    
+}
+.loginButton{
+    position: relative;
+    top: 2rem;
+    right: -5rem;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-large;
+    cursor: pointer;
+}
 .tituloPag{
-   position: fixed;
-   left: 1.8rem;
-   top: 2.8rem;
+   position: relative;
+   left: 12rem;
+   top: 1.4rem;
  font-size: x-large;
  font-weight: 600;
    
 }
-.estiloSesion{
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: large;
-}
-.estiloRegistro{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: large;
-}
-.estiloSesion  :hover{
-    background-color: rgba(35, 35, 36, 0.698);
-        color: white;
-        border-radius: 5px;
-}
-.estiloRegistro :hover{
-    background-color: rgba(35, 35, 36, 0.698);
-    color: white;
-    border-radius: 5px;
-}
-.imgProfile{
-    width: '10px' ; 
-    height: '10px';
-    border-radius: '50px';
-}
+
+

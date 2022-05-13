@@ -1,0 +1,21 @@
+@use "../abstracts/_variables.scss" as *;
+
+.cerrarSesion{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: large;
+cursor: pointer;
+}
+.divDataUser{
+    background-color: rgba(30, 30, 30, 0.219);
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    position: relative;
+    right: -4rem;
+    top: -3.8rem;
+    color: rgb(232, 223, 223);
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+}
+.logButton{
+    cursor: pointer;
+}
