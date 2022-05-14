@@ -2,13 +2,13 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 // const axios = require("axios")
 const { Category, Product, Review, User } = require("../db")
-const db_moch_data = require('../../db_mock_data.json');//DATA MOCK
+const db_mock_data = require('../../db_mock_data.json');//DATA MOCK
 
 //GET ALL PRODUCTS IN DB
 const getProductInfo = async () => {
   try {
     //DATA MOCK
-    db_moch_data.products.forEach(async product => {
+    db_mock_data.products.forEach(async product => {
       const [p, created] = await Product.findOrCreate({
         where: {
           name: product.name.toLowerCase(),
@@ -22,8 +22,10 @@ const getProductInfo = async () => {
           rating: product.rating
         }
       })
-      const cat = await Category.findOne({where: {name: product.categories}})
-      p.addCategory(cat?.toJSON().id)
+      if(created){
+        const cat = await Category.findOne({where: {name: product.categories}})
+        p.addCategory(cat?.toJSON().id)
+      }
     });
 
     const products = await Product.findAll({

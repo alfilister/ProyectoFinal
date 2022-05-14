@@ -1,11 +1,11 @@
 const axios = require("axios")
 const { User } = require("../db")
-const db_moch_data = require('../../db_mock_data.json');//DATA MOCK
+const db_mock_data = require('../../db_mock_data.json');//DATA MOCK
 
 const getUser = async () => {
   try {
     //GET DATA MOCK
-    db_moch_data.users.forEach(async (user)=>{
+    db_mock_data.users.forEach(async (user)=>{
       await User.findOrCreate({
         where: {
           fullName: user.fullName,

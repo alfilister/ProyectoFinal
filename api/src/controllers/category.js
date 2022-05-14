@@ -1,12 +1,12 @@
 const axios = require("axios")
 const { Category, Product } = require("../db")
-const db_moch_data = require('../../db_mock_data.json');//DATA MOCK
+const db_mock_data = require('../../db_mock_data.json');//DATA MOCK
 
 //DATABASE INFO - CATEGORY
 const getCategories = async () => {
   try {
     //GET DATA MOCK
-    db_moch_data.categories.forEach(async (category)=>{
+    db_mock_data.categories.forEach(async (category)=>{
        await Category.findOrCreate({
         where: {name: category}
       })
