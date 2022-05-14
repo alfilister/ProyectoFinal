@@ -1,0 +1,19 @@
+.categoryPage {
+  .categoryTitle {
+    h1 {
+      text-align: center;
+    }
+  }
+
+  body {
+    .filter {
+      display: flex;
+    }
+    .cardContainer {
+      display: flex;
+    }
+    .suggestedProduct {
+      display: flex;
+    }
+  }
+}
