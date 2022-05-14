@@ -1,23 +1,27 @@
 const { Router } = require("express")
-const { getUser } = require("../controllers")
+const userController = require("../controllers/user")
 const { User } = require("../db")
 
 const router = Router()
 
 router.get("/", async (req, res, next) => {
   try {
-    res.send(getUser())
+    res.json({
+      status: "Users loaded",
+      results: await userController.getUser(),
+    })
   } catch (err) {
     next(err)
   }
 })
 
 router.post("/", async (req, res, next) => {
-  const mockUsers = ["Juan", "Pedro", "Mafalda", "Cristobal"]
+  const { user } = req.body
   try {
-    mockUsers.map(async (el) => await User.create({ fullName: el }))
-
-    res.send("OK makey")
+    res.json({
+      status: "Users created",
+      results: await userController.postUser( user ),
+    })
   } catch (err) {
     next(err)
   }

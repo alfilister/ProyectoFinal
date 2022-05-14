@@ -1,50 +1,45 @@
 const { Router } = require("express")
-const {
-  getProductInfo,
-  postProduct,
-  searchProductById,
-  searchProductByName,
-  updateProduct,
-  deleteProduct,
-} = require("../controllers")
+const productController = require("../controllers/product")
 
 const router = Router()
 
 // RUTA PARA CARGAR Y MOSTRAR LOS PRODUCTOS TAL COMO QUEDAN EN LA BASE DE DATOS (INCLUYENDO CATEGORÍA ÚNICAMENTE, PARA VER LOS REVIEWS DE PRODUCTO DEBEN HACER LA SOLICITUD DE PRODUCT BY ID)
-router.get("/info", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
+
+  const { nameProduct } = req.query
+
   try {
-    const { name } = req.query
-
-    if (name) {
-      const response = await searchProductByName(name)
-
-      response[0]
-        ? res.status(200).json({
-            status: "found",
-            quantity_found: response.length,
-            data: response,
-          })
-        : res.status(404).json({ status: "notFound" })
-    } else {
-      const dataDb = await getProductInfo()
+    if(!nameProduct){
+      const info = await productController.getProductInfo()
       res.json({
         status: "Api info loaded",
-        quantity_found: dataDb.length,
-        data: dataDb,
+        quantity_found: info.length,
+        results: info,
+      })
+    }else{
+      const info = await productController.searchProductByName(nameProduct.toLowerCase())
+      info.length>0?res.json({
+        status: "Api info loaded",
+        quantity_found: info.length,
+        results: info,
+      })
+      :res.status(404).json({
+        status: "notFound",
+        results: []
       })
     }
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 })
 
 // RUTA QUE TRAE LOS DETALLES DEL PRODUCTO POR ID, INCLUYENDO LAS CATEGORÍAS Y REVIEWS
-router.get("/:id", async (req, res, next) => {
+router.get("/detail/:idProduct", async (req, res, next) => {
   try {
-    const response = await searchProductById(req.params.id)
+    const response = await productController.searchProductById(req.params.idProduct)
     res.json({
       status: "Found",
-      data: response,
+      results: response,
     })
   } catch (error) {
     next(error)
@@ -54,10 +49,10 @@ router.get("/:id", async (req, res, next) => {
 //RUTA PARA CREAR LOS PRODUCTOS (EN LOS CONTROLADORES DE PRODUCT EN LA LÍNEA 62 ENCUENTRAN LA DATA QUE DEBEN SUMINISTRAR (IMPORTANTE QUE LA CATEGORÍA A INCLUIR EXISTA DENTRO DE LA BASE DE DATOS))
 router.post("/", async (req, res, next) => {
   try {
-    const productCreate = await postProduct(req.body)
+    const productCreate = await productController.postProduct(req.body)
     res.status(201).json({
       status: "Product succesfully reated",
-      dataProvided: productCreate,
+      results: productCreate,
     })
   } catch (err) {
     next(err)
@@ -65,8 +60,8 @@ router.post("/", async (req, res, next) => {
 })
 
 // RUTA PARA MODIFICAR UN PRODUCTO (EN EL FRONT CUANDO SE ENTRE A ESTA INSTANCIA SE DEBEN CARGAR LOS DATOS PREVIOS EN LOS CAMPOS PARA QUE AL MOMENTO DE HACER EL LLAMADO A LA RUTA LA INFO ESTÉ COMPLETA Y SEA MÁS AMABLE AL USUARIO VER LO QUE HAY Y LO QUE VA A CAMBIAR)
-router.put("/:id", async (req, res, next) => {
-  const { id } = req.params
+router.put("/:idProduct", async (req, res, next) => {
+  const { idProduct } = req.params
   const {
     name,
     image,
@@ -76,11 +71,12 @@ router.put("/:id", async (req, res, next) => {
     discount,
     stock,
     rating,
-    category,
+    categories,
   } = req.body
+  
   try {
-    const update = await updateProduct(
-      id,
+    const updated = await productController.updateProduct(
+      idProduct,
       name,
       image,
       price,
@@ -89,20 +85,34 @@ router.put("/:id", async (req, res, next) => {
       discount,
       stock,
       rating,
-      category
+      categories
     )
-    res.json({ data: update })
+    res.json({ results: updated })
   } catch (error) {
     next(error)
   }
 })
 
 // RUTA PARA ELIMINAR PRODUCTO
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:idProduct", async (req, res, next) => {
+  const { idProduct } = req.params
   try {
-    const { id } = req.params
-    await deleteProduct(id)
-    res.send("Product succesfully deleted")
+    const result = await productController.deleteProduct(idProduct)
+    res.send({results: result})
+  } catch (error) {
+    next(error)
+  }
+})
+
+//FILTRO POR CATEGORIAS Y PRECIO PARA EL HOME
+router.get("/filter", async (req, res, next) => {
+  const { categoryName, price } = req.query
+  try {
+    const result = await productController.filterProducts(categoryName, price)
+
+    result[0]
+      ? res.json({ quantity: result.length, data: result })
+      : res.status(404).send("No coincidences")
   } catch (error) {
     next(error)
   }

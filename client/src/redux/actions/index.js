@@ -7,17 +7,16 @@ export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME";
 export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING";
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 
-export function get_products() {
+export function getProducts() {
   return async function (dispatch) {
     try {
-      await axios.get("http://localhost:3001/api/categories");
       const productsDb = await axios.get(
-        "http://localhost:3001/api/products/info"
+        "http://localhost:3001/api/products"
       );
 
       return dispatch({
         type: GET_PRODUCTS,
-        payload: productsDb.data.data,
+        payload: productsDb.data.results,
       });
     } catch (error) {
       console.log(error);
@@ -31,7 +30,7 @@ export function getCategories() {
     return dispatch({
       type: GET_CATEGORIES,
 
-      payload: json.data,
+      payload: json.data.results,
     });
   };
 }
@@ -39,10 +38,10 @@ export function getCategories() {
 export function getProductsById(id) {
   return async (dispatch) => {
     try {
-      const json = await axios.get(`http://localhost:3001/api/products/${id}`);
+      const json = await axios.get(`http://localhost:3001/api/products/detail/${id}`);
       return dispatch({
         type: GET_PRODUCTS_ID,
-        payload: json.data.data,
+        payload: json.data.results,
       });
     } catch (error) {
       console.log(error);
@@ -53,7 +52,7 @@ export function getProductsByName(payload) {
   return async function (dispatch) {
     try {
       const json = await axios.get(
-        `http://localhost:3001/api/products/info?name=${payload}`
+        `http://localhost:3001/api/products?nameProduct=${payload}`
       );
       return dispatch({
         type: GET_PRODUCTS_NAME,
@@ -91,10 +90,10 @@ export function sortByRating(payload) {
   };
 }
 
-export function filtres(payload) {
+export function filters(payload) {
   return async function (dispatch) {
     const json = await axios.get(
-      `http://localhost:3001/api/categories/filter?categoryName=${payload.category}&price=${payload.price}`
+      `http://localhost:3001/api/products/filter?categoryName=${payload.category}&price=${payload.price}`
     );
 
     try {

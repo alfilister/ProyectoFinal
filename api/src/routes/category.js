@@ -1,24 +1,16 @@
 const { Router } = require("express")
-const {
-  getCategory,
-  chargeCategoriesDb,
-  postCategory,
-  deleteCategory,
-  updateCategory,
-  filterProducts,
-} = require("../controllers")
+const categoryController = require('../controllers/category')
 
 const router = Router()
 
 // RUTA PARA CARGAR Y OBTENER LAS CATEGORÍAS
 router.get("/", async (req, res, next) => {
   try {
-    const categories = await getCategory()
-    await chargeCategoriesDb(categories)
+    const categories = await categoryController.getCategories()
 
     res.json({
-      status: "api info loaded",
-      data: categories,
+      status: "Api info loaded",
+      results: categories,
     })
   } catch (err) {
     next(err)
@@ -28,12 +20,13 @@ router.get("/", async (req, res, next) => {
 // RUTA PARA CREAR CATEGORÍAS
 router.post("/", async (req, res, next) => {
   try {
-    const { name } = req.body
-    const categories = await postCategory(name)
+    const { nameCategory } = req.body
+
+    const categories = await categoryController.postCategory(nameCategory)
 
     res.json({
-      status: "Category Created",
-      data: categories,
+      status: "Category created",
+      results: categories,
     })
   } catch (err) {
     next(err)
@@ -43,13 +36,15 @@ router.post("/", async (req, res, next) => {
 //RUTA PARA BORRAR CATEGORÍAS
 router.delete("/", async (req, res, next) => {
   try {
-    const { name } = req.body
-    const categories = await deleteCategory(name)
+    const { idCategory } = req.body
+
+    const categories = await categoryController.deleteCategory(idCategory)
 
     res.json({
-      status: "Category Deleted",
-      data: categories,
+      status: "Category deleted",
+      results: categories,
     })
+
   } catch (err) {
     next(err)
   }
@@ -58,29 +53,15 @@ router.delete("/", async (req, res, next) => {
 // RUTA PARA ACTUALIZAR CATEGORÍAS
 router.put("/", async (req, res, next) => {
   try {
-    const { id, name } = req.body
-    const categories = await updateCategory(id, name)
+    const { idCategory, newCateogry } = req.body
+    const categories = await categoryController.updateCategory(idCategory, newCateogry)
 
     res.json({
-      status: "Category Updated",
-      data: categories,
+      status: "Category updated",
+      results: categories,
     })
   } catch (err) {
     next(err)
-  }
-})
-
-//FILTRO POR CATEGORIAS Y PRECIO PARA EL HOME
-router.get("/filter", async (req, res, next) => {
-  const { categoryName, price } = req.query
-  try {
-    const result = await filterProducts(categoryName, price)
-
-    result[0]
-      ? res.json({ quantity: result.length, data: result })
-      : res.status(404).send("No coincidences")
-  } catch (error) {
-    next(error)
   }
 })
 

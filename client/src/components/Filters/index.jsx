@@ -1,12 +1,12 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { sortByName, sortByRating, filtres } from "../../redux/actions"
+import { sortByName, sortByRating, filters } from "../../redux/actions"
 
 const Filters = ({setSorted}) => {
 
     const dispatch = useDispatch()
-    const category = useSelector((state) => state.categories);
+    const categories = useSelector((state) => state.categories);
 
     const [filtros, setFiltros] = useState({
         category: 'all',
@@ -30,7 +30,7 @@ const Filters = ({setSorted}) => {
 
     const handleFilters = (event) => {
         event.preventDefault();
-        dispatch(filtres(filtros));
+        dispatch(filters(filtros));
     }
 
     const handleInputRange = (event) => {
@@ -62,10 +62,10 @@ const Filters = ({setSorted}) => {
             <form>
             <select onChange={(event) => handleInputCategory(event)}>
                 <option value='all'>All</option>
-                {category.data?.map(c => {
+                {categories?.map(c => {
                     return (
-                        <option key={c} value={c}>
-                            {c}
+                        <option key={c.id} value={c.name}>
+                            {c.name}
                         </option>
                         )
                     })}
