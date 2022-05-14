@@ -6,7 +6,6 @@ export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME"
 export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME"
 export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
-export const SUGGESTED_PRODUCT = "SUGGESTED_PRODUCT"
 
 export function get_products() {
   return async function (dispatch) {
@@ -121,11 +120,5 @@ export function postProduct(payload) {
     } catch (error) {
       console.log(error)
     }
-  }
-}
-
-export function suggestedProduct() {
-  return {
-    type: SUGGESTED_PRODUCT,
   }
 }

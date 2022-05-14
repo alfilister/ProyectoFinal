@@ -14,7 +14,7 @@ const initialState = {
   categories: [],
   productsDetail: [],
   featProducts: [],
-  suggestedRandom: {},
+  suggestedRandom: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -36,7 +36,7 @@ function rootReducer(state = initialState, action) {
         products: action.payload,
         copyProducts: action.payload,
         featProducts: featuredFilter,
-        suggestedRandom: chargeSuggest(),
+        suggestedRandom: [chargeSuggest()],
       }
 
     case GET_CATEGORIES:

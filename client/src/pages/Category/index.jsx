@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
 import Filters from "../../components/Filters"
 import Card from "../../components/Card"
-import { useDispatch, useSelector } from "react-redux"
-import { suggestedProduct } from "../../redux/actions"
+import { useSelector } from "react-redux"
 
 function Category() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(suggestedProduct())
-  }, [dispatch])
-
   const [sorted, setSorted] = useState("")
 
   const suggestedOne = useSelector((state) => state.suggestedRandom)
-  console.log(suggestedOne)
 
   const { categoryName } = useParams()
 
@@ -35,15 +27,32 @@ function Category() {
           <CardsContainer />
         </div>
         <div className="suggestedProduct">
-          {/* <Card
-            id={el.id}
-            aux_images={el.aux_images}
-            name={el.name}
-            image={el.image}
-            price={el.price}
-            rating={el.rating}
-            categories={el.categories.map((el) => el.name).join(" | ")}
-          /> */}
+          {!suggestedOne[0] ? (
+            <div>
+              <img
+                src="https://i.imgur.com/EQSYdeQ.gif"
+                alt="Loading..."
+                className="loaderHome"
+              />
+            </div>
+          ) : (
+            suggestedOne.map((el) => {
+              return (
+                <div key={el.id}>
+                  <Card
+                    key={el.id}
+                    id={el.id}
+                    aux_images={el.aux_images}
+                    name={el.name}
+                    image={el.image}
+                    price={el.price}
+                    rating={el.rating}
+                    categories={el.categories.map((el) => el.name).join(" | ")}
+                  />
+                </div>
+              )
+            })
+          )}
         </div>
       </body>
     </div>
