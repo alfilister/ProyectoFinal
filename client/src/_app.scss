@@ -9,6 +9,7 @@
 @use "./scss/components/card";
 @use "./scss/components/cardsContainer";
 @use "./scss/components/pagination";
+@use "./scss/components/filterBar";
 /* pages */
 @use "./scss/components/detail";
-
+@use "./scss/pages/category";

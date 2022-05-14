@@ -3,79 +3,123 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { sortByName, sortByRating, filtres } from "../../redux/actions"
 
-const Filters = ({setSorted}) => {
+const Filters = () => {
+  const dispatch = useDispatch()
+  const category = useSelector((state) => state.categories)
 
-    const dispatch = useDispatch()
-    const category = useSelector((state) => state.categories);
+  const [sortOrder, setOrder] = useState({
+    name: "Alphabet AZ",
+    rating: "By Rating ⭐",
+  })
 
-    const [filtros, setFiltros] = useState({
-        category: 'all',
-        price: 1000
-    });
+  const [filtros, setFiltros] = useState({
+    category: "all",
+    price: 1000,
+  })
 
-    // Ordenamiento por nombre
-    const handleSortByName = (event) => {
-        dispatch(sortByName(event.target.value));
-        // para cambiar el paginado a la primer pagina luego de ordenar
-        //setCurrentPage(1);
-        setSorted(event.target.value)
-    }
+  // Ordenamiento por nombre
+  const handleSortByName = (event) => {
+    dispatch(sortByName(event.target.value))
+    // setCurrentPage(1)
+    setOrder({
+      name: event.target.value,
+      rating: "By Rating ⭐",
+    })
+  }
 
-    const handleSortByRating = (event) => {
-        dispatch(sortByRating(event.target.value));
-        // para cambiar el paginado a la primer pagina luego de ordenar
-        //setCurrentPage(1);
-        setSorted(event.target.value)
-    }
+  // Ordenamiento por nombre
+  const handleSortByRating = (event) => {
+    dispatch(sortByRating(event.target.value))
+    // setCurrentPage(1)
 
-    const handleFilters = (event) => {
-        event.preventDefault();
-        dispatch(filtres(filtros));
-    }
+    setOrder({
+      name: "Alphabet AZ",
+      rating: event.target.value,
+    })
+  }
 
-    const handleInputRange = (event) => {
-        setFiltros({
-            ...filtros,
-            price: event.target.value
-        })
-    }
+  const handleFilters = (event) => {
+    event.preventDefault()
+    dispatch(filtres(filtros))
+  }
 
-    const handleInputCategory = (event) => {
-        setFiltros({
-            ...filtros,
-            category: event.target.value
-        })
-    }
+  const handleInputRange = (event) => {
+    setFiltros({
+      ...filtros,
+      price: event.target.value,
+    })
+  }
 
-    return (
-        <div>
-            {/* Por nombre A-Z */}
-            <select onChange={(event) => {handleSortByName(event)}}>
-                <option value="a-z">A - Z</option>
-                <option value="z-a">Z - A</option>
-            </select>
-            {/* Por puntuacion */}
-            <select onChange={(event) => {handleSortByRating(event)}}>
-                <option value="asc">Ascendente</option>
-                <option value="des">Descendente</option>
-            </select>
-            <form>
-            <select onChange={(event) => handleInputCategory(event)}>
-                <option value='all'>All</option>
-                {category.data?.map(c => {
-                    return (
-                        <option key={c} value={c}>
-                            {c}
-                        </option>
-                        )
-                    })}
-                </select>
-                <input onChangeCapture={(event) => handleInputRange(event)} type='range' min="0" max="1000"></input>
-                <label>{filtros.price}</label>
-                <button type="submit" onClick={(event) => handleFilters(event)}>Filtrar</button>
-            </form>
-        </div>
-    )
+  const handleInputCategory = (event) => {
+    setFiltros({
+      ...filtros,
+      category: event.target.value,
+    })
+  }
+
+  return (
+    <div className="filterBar">
+      <div className="sortsBy">
+        <h3>Sort By</h3>
+
+        <select
+          onChange={(event) => {
+            handleSortByName(event)
+          }}
+          value={sortOrder.name}
+        >
+          <option disabled>Alphabet AZ</option>
+          <option value="a-z">A - Z</option>
+          <option value="z-a">Z - A</option>
+        </select>
+
+        <select
+          onChange={(event) => {
+            handleSortByRating(event)
+          }}
+          value={sortOrder.rating}
+        >
+          <option disabled>By Rating ⭐</option>
+          <option value="asc">Asc</option>
+          <option value="des">Des</option>
+        </select>
+      </div>
+
+      <div className="filterBy">
+        <h3>Filter By</h3>
+
+        <form>
+          <label>Category</label>
+          <select
+            className="categoryFilter"
+            onChange={(event) => handleInputCategory(event)}
+          >
+            <option value="all">All</option>
+            {category.data?.map((c) => {
+              return (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              )
+            })}
+          </select>
+
+          <label>Max price</label>
+          <input
+            className="priceFilter"
+            onChangeCapture={(event) => handleInputRange(event)}
+            type="range"
+            min="0"
+            max="1000"
+          ></input>
+          <label>{filtros.price}</label>
+          <button type="submit" onClick={(event) => handleFilters(event)}>
+            Apply filters
+          </button>
+        </form>
+      </div>
+    </div>
+  )
 }
 
-export default Filters;
+export default Filters
