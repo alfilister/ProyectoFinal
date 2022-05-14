@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 
 import { sortByName, sortByRating, filtres } from "../../redux/actions"
 
-const Filters = () => {
+const Filters = ({ setSorted }) => {
   const dispatch = useDispatch()
   const category = useSelector((state) => state.categories)
 
@@ -25,6 +25,7 @@ const Filters = () => {
       name: event.target.value,
       rating: "By Rating ⭐",
     })
+    setSorted(event.target.value)
   }
 
   // Ordenamiento por nombre
@@ -36,6 +37,7 @@ const Filters = () => {
       name: "Alphabet AZ",
       rating: event.target.value,
     })
+    setSorted(event.target.value)
   }
 
   const handleFilters = (event) => {

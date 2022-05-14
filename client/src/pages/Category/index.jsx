@@ -10,7 +10,7 @@ function Category() {
   const suggestedOne = useSelector((state) => state.suggestedRandom)
 
   const { categoryName } = useParams()
-
+  const [sorted, setSorted] = useState("")
   return (
     <div className="categoryPage">
       {/* <Nav /> */}
@@ -20,7 +20,7 @@ function Category() {
       <body>
         <div className="leftColumn">
           <div className="filter">
-            <Filters />
+            <Filters setSorted={setSorted} />
           </div>
           <h2>Don't leave without inspect this beauty!</h2>
           <div className="suggestedProduct">
