@@ -1,0 +1,222 @@
+{
+    "categories": [
+        "cellphones",
+        "laptops",
+        "tablets",
+        "gamers",
+        "accessories"
+      ],
+    "products": [
+      {
+        "name": "Phone X",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best product ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 7.95,
+        "featured": false,
+        "rating": 4.5,
+        "categories": ["cellphones", "tablets"]
+      },
+      {
+        "name": "SendPhone X",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best product ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 17.95,
+        "featured": false,
+        "rating": 4.5,
+        "categories": ["cellphones"]
+      },
+      {
+        "name": "Phone XX",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best product ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 95,
+        "featured": true,
+        "rating": 4.5,
+        "categories": ["cellphones"]
+      },
+      {
+        "name": "Super Product 2000",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best product ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 995,
+        "featured": true,
+        "rating": 5,
+        "categories": ["laptops", "tablets", "gamers", "accessories"]
+      },
+      {
+        "name": "Chair Game Aspect Phone X",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The not good product",
+        "discount": 20,
+        "stock": 5,
+        "price": 7.95,
+        "featured": false,
+        "rating": 2,
+        "categories": ["gamers", "accessories"]
+      },
+      {
+        "name": "headPhones for Iphone X",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best headphones ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 2.95,
+        "featured": false,
+        "rating": 3,
+        "categories": ["accessories"]
+      },
+      {
+        "name": "Lap 8000",
+        "image":
+          "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The medium product",
+        "discount": 20,
+        "stock": 5,
+        "price": 7.95,
+        "featured": false,
+        "rating": 3.5,
+        "categories": ["laptops"]
+      }
+    ],
+    "users": [
+      {
+        "fullName": "Cristian",
+        "password": "Cristian12",
+        "email": "Cristian@correo.com",
+        "id_document": 12,
+        "role": "Admin"
+      },
+      {
+        "fullName": "Danilo",
+        "password": "Danilo23",
+        "email": "Danilo@correo.com",
+        "id_document": 23,
+        "role": "User"
+      },
+      {
+        "fullName": "Jota",
+        "password": "Jota34",
+        "email": "Jota@correo.com",
+        "id_document": 34,
+        "role": "Admin"
+      },
+      {
+        "fullName": "Rodri",
+        "password": "Rodri45",
+        "email": "Rodri@correo.com",
+        "id_document": 45,
+        "role": "User"
+      },
+      {
+        "fullName": "Camilo",
+        "password": "Camilo56",
+        "email": "Camilo@correo.com",
+        "id_document": 56,
+        "role": "Admin"
+      }
+    ],
+    "reviews":[
+      {
+        "product_review": "Me gusta",
+        "score_review": 5,
+        "product_id":1,
+        "user_id":1
+      },
+      {
+        "product_review": "No me gusta",
+        "score_review": 1,
+        "product_id":2,
+        "user_id":1
+      },
+      {
+        "product_review": "Ok",
+        "score_review": 3,
+        "product_id":3,
+        "user_id":2
+      },
+      {
+        "product_review": "Me gusta",
+        "score_review": 4,
+        "product_id":4,
+        "user_id":2
+      },
+      {
+        "product_review": "Nah",
+        "score_review": 2,
+        "product_id":4,
+        "user_id":3
+      },
+      {
+        "product_review": "Esta bien",
+        "score_review": 3,
+        "product_id":5,
+        "user_id":3
+      },
+      {
+        "product_review": "Me gusta",
+        "score_review": 5,
+        "product_id":5,
+        "user_id":4
+      },
+      {
+        "product_review": "Me gusta",
+        "score_review": 5,
+        "product_id":3,
+        "user_id":4
+      },
+      {
+        "product_review": "Me gusta",
+        "score_review": 5,
+        "product_id":7,
+        "user_id":5
+      },
+      {
+        "product_review": "Me gusta",
+        "score_review": 5,
+        "product_id":7,
+        "user_id":5
+      }
+    ]
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { sortByName, sortByRating, filtres } from "../../redux/actions"
+import { sortByName, sortByRating, filters } from "../../redux/actions"
 
 const Filters = ({ setSorted }) => {
   const dispatch = useDispatch()
@@ -22,20 +22,20 @@ const Filters = ({ setSorted }) => {
     dispatch(sortByName(event.target.value))
     // setCurrentPage(1)
     setOrder({
-      name: event.target.value,
-      rating: "By Rating ⭐",
+      name: "Alphabet AZ",
+      rating: event.target.value,
     })
     setSorted(event.target.value)
   }
 
-  // Ordenamiento por nombre
+  // Ordenamiento por rating
   const handleSortByRating = (event) => {
     dispatch(sortByRating(event.target.value))
     // setCurrentPage(1)
 
     setOrder({
-      name: "Alphabet AZ",
-      rating: event.target.value,
+      name: event.target.value,
+      rating: "By Rating ⭐",
     })
     setSorted(event.target.value)
   }
@@ -99,8 +99,8 @@ const Filters = ({ setSorted }) => {
             <option value="all">All</option>
             {category.data?.map((c) => {
               return (
-                <option key={c} value={c}>
-                  {c}
+                <option key={c.id} value={c.name}>
+                  {c.name}
                 </option>
               )
             })}

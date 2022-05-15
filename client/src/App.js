@@ -9,14 +9,14 @@ import Create from "./pages/Create"
 import Error404 from "./pages/Error404"
 import Category from "./pages/Category"
 
-import { get_products, getCategories } from "./redux/actions"
+import { getProducts, getCategories } from "./redux/actions"
 
 function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getCategories())
-    dispatch(get_products())
+    dispatch(getProducts())
   }, [dispatch])
 
   return (

@@ -11,7 +11,7 @@ const CardsContainer = () => {
   const indexOfLastProduct = currentPage * productsPerPage //15
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage // 0
 
-  const currentProducts = fullProducts.slice(
+  const currentProducts = fullProducts?.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   )
@@ -24,7 +24,7 @@ const CardsContainer = () => {
     <div>
       <Pagination
         productsPerPage={productsPerPage}
-        fullProducts={fullProducts.length}
+        fullProducts={fullProducts?.length}
         paginado={paginado}
       />
       <div className="cardContainer">
