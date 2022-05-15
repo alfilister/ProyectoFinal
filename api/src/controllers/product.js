@@ -2,13 +2,13 @@ const Sequelize = require("sequelize")
 const Op = Sequelize.Op
 // const axios = require("axios")
 const { Category, Product, Review, User } = require("../db")
-const db_mock_data = require('../../db_mock_data.json');//DATA MOCK
+const db_mock_data = require("../../db_mock_data.json") //DATA MOCK
 
 //GET ALL PRODUCTS IN DB
 const getProductInfo = async () => {
   try {
     //DATA MOCK
-    db_mock_data.products.forEach(async product => {
+    db_mock_data.products.forEach(async (product) => {
       const [p, created] = await Product.findOrCreate({
         where: {
           name: product.name.toLowerCase(),
@@ -19,14 +19,16 @@ const getProductInfo = async () => {
           stock: product.stock,
           price: product.price,
           featured: product.featured,
-          rating: product.rating
-        }
+          rating: product.rating,
+        },
       })
-      if(created){
-        const cat = await Category.findOne({where: {name: product.categories}})
-        p.addCategory(cat?.toJSON().id)
+      if (created) {
+        const cat = await Category.findAll({
+          where: { name: product.categories },
+        })
+        p.addCategory(cat)
       }
-    });
+    })
 
     const products = await Product.findAll({
       include: [
@@ -36,10 +38,10 @@ const getProductInfo = async () => {
           through: { attributes: [] },
         },
         Review,
-      ]
-    });
+      ],
+    })
 
-    return products.map(p => p.toJSON())
+    return products.map((p) => p.toJSON())
   } catch (error) {
     console.log(error)
   }
@@ -54,7 +56,7 @@ const searchProductByName = async (nameProduct) => {
         model: Category,
         attributes: ["name"],
         through: { attributes: [] },
-      }
+      },
     })
     return products
   } catch (error) {
@@ -90,7 +92,7 @@ const postProduct = async (body) => {
     stock,
     price,
     rating,
-    categories
+    categories,
   } = body
 
   let productCreated = await Product.create({
@@ -101,11 +103,11 @@ const postProduct = async (body) => {
     discount,
     stock,
     price,
-    rating
+    rating,
   })
 
-  categories.forEach(async (c)=>{
-    const cat = await Category.findOne({where: {name: c}})
+  categories.forEach(async (c) => {
+    const cat = await Category.findOne({ where: { name: c } })
     productCreated.addCategory(cat.toJSON().id)
   })
 
@@ -133,11 +135,11 @@ const updateProduct = async (
     description,
     discount,
     stock,
-    rating
+    rating,
   })
 
-  categories.forEach(async (c)=>{
-    const cat = await Category.findOne({where: {name: c}})
+  categories.forEach(async (c) => {
+    const cat = await Category.findOne({ where: { name: c } })
     selected.setCategories(cat.toJSON().id)
   })
 
