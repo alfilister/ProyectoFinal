@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import SearchBar from "../SearchBar";
 import "../../scss/components/_nav.scss";
@@ -19,8 +19,10 @@ const Nav = ({ setCurrentPage }) => {
           style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
           className="logo"
         >
-           <Link to='/createProduct'  className="searchBarStylo">CREA TU PRODUCTO</Link>
-          <h2 className="tituloPag">E-comerce Cell</h2>
+          <Link to="/createProduct" className="searchBarStylo">
+            Vender Articulo
+          </Link>
+          <h2 className="tituloPag">E-comerCell</h2>
           <img className="logoImg" src={logo} alt="imagenLogo" />
         </NavLink>
       </div>
