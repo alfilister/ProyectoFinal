@@ -5,7 +5,7 @@ import { sortByName, sortByRating, filters } from "../../redux/actions"
 
 const Filters = ({ setSorted }) => {
   const dispatch = useDispatch()
-  const category = useSelector((state) => state.categories)
+  const categories = useSelector((state) => state.categories)
 
   const [sortOrder, setOrder] = useState({
     name: "Alphabet AZ",
@@ -22,27 +22,27 @@ const Filters = ({ setSorted }) => {
     dispatch(sortByName(event.target.value))
     // setCurrentPage(1)
     setOrder({
-      name: "Alphabet AZ",
-      rating: event.target.value,
-    })
-    setSorted(event.target.value)
-  }
-
-  // Ordenamiento por rating
-  const handleSortByRating = (event) => {
-    dispatch(sortByRating(event.target.value))
-    // setCurrentPage(1)
-
-    setOrder({
       name: event.target.value,
       rating: "By Rating ⭐",
     })
     setSorted(event.target.value)
   }
 
+  // Ordenamiento por nombre
+  const handleSortByRating = (event) => {
+    dispatch(sortByRating(event.target.value))
+    // setCurrentPage(1)
+
+    setOrder({
+      name: "Alphabet AZ",
+      rating: event.target.value,
+    })
+    setSorted(event.target.value)
+  }
+
   const handleFilters = (event) => {
     event.preventDefault()
-    dispatch(filtres(filtros))
+    dispatch(filters(filtros))
   }
 
   const handleInputRange = (event) => {
@@ -97,7 +97,7 @@ const Filters = ({ setSorted }) => {
             onChange={(event) => handleInputCategory(event)}
           >
             <option value="all">All</option>
-            {category.data?.map((c) => {
+            {categories?.map((c) => {
               return (
                 <option key={c.id} value={c.name}>
                   {c.name}
