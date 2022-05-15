@@ -15,7 +15,7 @@ const Nav = ({ setCurrentPage }) => {
     <div className="divNavbar">
       <div className="divSeachYLogo">
         <NavLink
-          to="/hola"
+          to="/"
           style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
           className="logo"
         >
