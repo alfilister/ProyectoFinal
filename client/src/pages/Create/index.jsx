@@ -37,17 +37,17 @@ function validate(input) {
   } else if (!urlValidate.test(input.image)) {
     errors.image = "Coloque un URL valida";
   }
-  if (input.category.length === 0) {
-    errors.category = "Se requiere al menos una categoria";
+  if (input.categories.length === 0) {
+    errors.categories = "Se requiere al menos una categoria";
   }
   return errors;
 }
 const Create = () => {
-  const categories = useSelector((state) => state.categories.data);
+  const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   //const history = useHistory()
 
-  console.log("esto son categorias", categories);
+  // console.log("esto son categorias", categories);
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     name: "",
@@ -58,9 +58,8 @@ const Create = () => {
     discount: "",
     stock: "",
     rating: "",
-    category: [],
+    categories: [],
   });
-  const isEnabled = Object.keys(errors).length === 0 && input.name !== "";
 
   function handleChangeInput(e) {
     setInput({
@@ -80,7 +79,7 @@ const Create = () => {
   function handleSelect(e) {
     setInput({
       ...input,
-      category: [...input.category, e.target.value],
+      categories: [...input.categories, e.target.value],
     });
   }
 
@@ -98,7 +97,7 @@ const Create = () => {
       discount: "",
       stock: "",
       rating: "",
-      category: [],
+      categories: [],
     });
     //history.push('/')
   }
@@ -244,10 +243,7 @@ const Create = () => {
               </select>
             </div>
 
-            <button type="submit" disabled={!isEnabled}>
-              {" "}
-              Publicar Producto{" "}
-            </button>
+            <button type="submit"> Publicar Producto </button>
           </form>
         </div>
       </div>
