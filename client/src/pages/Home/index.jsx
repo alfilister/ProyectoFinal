@@ -1,18 +1,15 @@
-import React, { useState } from "react"
-import {Link} from 'react-router-dom'
+import React from "react"
 import Nav from "../../components/Nav"
-import CardsContainer from "../../components/CardsContainer"
-import Filters from "../../components/Filters"
+import CardSlider from "../../components/CardSlider"
+import CategoryGrid from "../../components/CategoryGrid"
 
 const Home = () => {
-  const [sorted, setSorted] = useState("")
-
   return (
-    <div>
+    <div className="home">
       <Nav />
-      {/* Filtros */}
-      <Filters setSorted={setSorted} />
-      <CardsContainer />
+      <br></br>
+      <CategoryGrid />
+      <CardSlider />
     </div>
   )
 }

@@ -1,0 +1,15 @@
+@use "../abstracts/_variables.scss" as *;
+
+.home {
+  background-color: $dark-700;
+
+  .catText {
+    background-color: $dark-000;
+    height: 2em;
+    padding-top: 0.7em;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    margin: 0;
+  }
+}

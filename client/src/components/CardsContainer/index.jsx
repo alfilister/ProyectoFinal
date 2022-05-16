@@ -49,6 +49,7 @@ const CardsContainer = () => {
                   image={el.image}
                   price={el.price}
                   rating={el.rating}
+                  featured={el.featured}
                   categories={el.categories.map((el) => el.name).join(" | ")}
                 />
               </div>
