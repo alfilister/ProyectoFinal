@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
 import Nav from "../../components/Nav";
 import "../../scss/pages/_created.scss";
+import { useNavigate } from "react-router-dom";
 
 //funcion validadora para hacer el formulario controlado
 function validate(input) {
@@ -45,7 +46,7 @@ function validate(input) {
 const Create = () => {
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
-  //const history = useHistory()
+  const navigate = useNavigate();
 
   // console.log("esto son categorias", categories);
   const [errors, setErrors] = useState({});
@@ -77,17 +78,24 @@ const Create = () => {
   }
 
   function handleSelect(e) {
-    setInput({
-      ...input,
-      categories: [...input.categories, e.target.value],
-    });
+    if (e.target.checked) {
+      setInput({
+        ...input,
+        categories: [...input.categories, e.target.value],
+      });
+    } else {
+      setInput({
+        ...input,
+        categories: input.categories.filter((el) => el !== e.target.value),
+      });
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log(input);
     dispatch(postProduct(input));
-    alert("tu Producto se creo con exito");
+
     setInput({
       name: "",
       image: "",
@@ -99,19 +107,14 @@ const Create = () => {
       rating: "",
       categories: [],
     });
-    //history.push('/')
+    alert("tu Producto se creo con exito");
+    navigate("/");
   }
 
   return (
     <div className="formContainer">
-      {/* <div className="btnVolver">
-        <Link to="/">
-          <button>VOLVER</button>
-        </Link>
-      </div> */}
-      <div>
-        <Nav />
-      </div>
+      <Nav />
+      <br />
       <div className="form">
         <div className="tituloCargar">
           <h1>Cargar datos de articulo</h1>
@@ -221,14 +224,23 @@ const Create = () => {
           </div>
 
           <div className="elementosForm">
-            <label> Categorias : </label>
-            <select onChange={(e) => handleSelect(e)}>
-              {categories?.map((el) => (
-                <option key={el} value={input.el}>
-                  {el.name}
-                </option>
-              ))}
-            </select>
+            <div className="form-group-cb">
+              {categories.map((e) => {
+                return (
+                  <div className="divgroup" key={e.id}>
+                    <input
+                      type="checkbox"
+                      name={e.name}
+                      value={e.name}
+                      id={e.id}
+                      key={e.name}
+                      onChange={(e) => handleSelect(e)}
+                    ></input>
+                    <label key={e.id * 100}>{e.name}</label>
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <button type="submit"> Publicar Producto </button>
