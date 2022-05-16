@@ -1,12 +1,24 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
 import Filters from "../../components/Filters"
 import Card from "../../components/Card"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { filters } from "../../redux/actions"
 
 function Category() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(
+      filters({
+        category: categoryName,
+        price: 1000,
+      })
+    )
+  }, [dispatch])
+
   const suggestedOne = useSelector((state) => state.suggestedRandom)
 
   const { categoryName } = useParams()
