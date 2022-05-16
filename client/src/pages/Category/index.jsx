@@ -22,7 +22,9 @@ function Category() {
           <div className="filter">
             <Filters setSorted={setSorted} />
           </div>
-          <h2>Don't leave without inspect this beauty!</h2>
+          <div className="textInvite">
+            <h2>Don't leave without inspect this beauty!</h2>
+          </div>
           <div className="suggestedProduct">
             {!suggestedOne[0] ? (
               <div>

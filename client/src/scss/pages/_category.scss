@@ -40,10 +40,12 @@
         border-radius: 20px;
       }
 
-      h2 {
-        color: $dark-000;
-        text-align: center;
-        margin: 1em 0 0.5em 0;
+      .textInvite {
+        h2 {
+          color: $dark-000;
+          text-align: center;
+          margin: 1em 0 0.5em 0;
+        }
       }
 
       .suggestedProduct {
