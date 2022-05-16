@@ -12,7 +12,7 @@ const Detail = () => {
   const productId = useSelector((state) => state.productsDetail);
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 2000);
+    setTimeout(() => dispatch(getProductsById(id)), 3000);
     return () => dispatch(getProductsById());
   }, [dispatch, id]);
 
@@ -20,7 +20,7 @@ const Detail = () => {
     <div className="contenedorDetalleLoader">
       <Nav />
       <div className="detailContainer">
-        {!productId ? (
+        {productId.length === 0 ? (
           <img
             src="https://i.imgur.com/EQSYdeQ.gif"
             alt="Loading..."
@@ -52,7 +52,7 @@ const Detail = () => {
                   <h2 className="precio">{`$ ${productId.price}`}</h2>
                   <p className="descuento">{`${
                     productId.discount
-                      ? `${productId.discount} %`
+                      ? `${productId.discount} % OFF`
                       : "No hay descuentos aún!"
                   }`}</p>
                 </div>
