@@ -51,19 +51,15 @@ const getProductInfo = async () => {
 const searchProductByName = async (nameProduct) => {
   try {
     const products = await Product.findAll({
-      
       where: { name: { [Op.substring]: nameProduct } },
       include: {
         model: Category,
         attributes: ["name"],
         through: { attributes: [] },
       },
-      
     })
     return products
-  } catch (error) {
-    
-  }
+  } catch (error) {}
 }
 
 const searchProductById = async (idProduct) => {
@@ -197,3 +193,5 @@ module.exports = {
   deleteProduct,
   filterProducts,
 }
+
+//Este es el archivo que voy a editar
