@@ -6,8 +6,12 @@ export default function LoginButton() {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <button className="logButton" onClick={() => loginWithRedirect()}>
+    <div className="containerLogin">
+      <div >
+    <button id='button' className="log" onClick={() => loginWithRedirect()}>
       Iniciar Sesion
     </button>
+      </div>
+    </div>
   );
 }
