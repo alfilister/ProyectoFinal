@@ -51,16 +51,18 @@ const getProductInfo = async () => {
 const searchProductByName = async (nameProduct) => {
   try {
     const products = await Product.findAll({
+      
       where: { name: { [Op.substring]: nameProduct } },
       include: {
         model: Category,
         attributes: ["name"],
         through: { attributes: [] },
       },
+      
     })
     return products
   } catch (error) {
-    console.log(error)
+    
   }
 }
 
