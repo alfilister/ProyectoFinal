@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
 import Filters from "../../components/Filters"
@@ -32,7 +32,7 @@ function Category() {
 
   return (
     <div className="categoryPage">
-      {/* <Nav /> */}
+      <Nav />
       <div className="categoryTitle">
         <h1>{categoryName.toUpperCase()}</h1>
       </div>

@@ -1,5 +1,4 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import React from "react"
 import Nav from "../../components/Nav"
 import CardSlider from "../../components/CardSlider"
 import CategoryGrid from "../../components/CategoryGrid"

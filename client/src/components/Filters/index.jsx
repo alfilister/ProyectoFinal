@@ -1,9 +1,11 @@
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
 import { sortByName, sortByRating, filters } from "../../redux/actions"
 
 const Filters = ({ setSorted }) => {
+  const { categoryName } = useParams()
   const dispatch = useDispatch()
   const categories = useSelector((state) => state.categories)
 
@@ -43,6 +45,16 @@ const Filters = ({ setSorted }) => {
   const handleFilters = (event) => {
     event.preventDefault()
     dispatch(filters(filtros))
+  }
+
+  const handleReset = (event) => {
+    event.preventDefault()
+    dispatch(
+      filters({
+        category: categoryName,
+        price: 1000,
+      })
+    )
   }
 
   const handleInputRange = (event) => {
@@ -118,6 +130,7 @@ const Filters = ({ setSorted }) => {
           <button type="submit" onClick={(event) => handleFilters(event)}>
             Apply filters
           </button>
+          <button onClick={(event) => handleReset(event)}>Reset filters</button>
         </form>
       </div>
     </div>
