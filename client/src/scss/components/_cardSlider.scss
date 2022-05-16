@@ -14,10 +14,11 @@
   }
   .cardSpace {
     display: flex;
-    animation: loop 20s 2s ease-out infinite;
+    animation: loop 70s 70s ease-out infinite;
+
     .slideCard {
       height: 100vh;
-      flex-basis: 100vw;
+      flex-basis: 500px;
       flex-shrink: 0;
       margin-left: 1.5em;
     }
@@ -28,16 +29,16 @@
       transform: translateX(0);
     }
     20% {
-      transform: translateX(-100vw);
+      transform: translateX(-25vw);
     }
     40% {
-      transform: translateX(-200vw);
+      transform: translateX(-50vw);
     }
     60% {
-      transform: translateX(-300vw);
+      transform: translateX(-75vw);
     }
     80% {
-      transform: translateX(-400vw);
+      transform: translateX(-100vw);
     }
     100% {
       transform: translateX(0);
