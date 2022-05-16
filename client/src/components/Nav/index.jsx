@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import SearchBar from "../SearchBar";
 import "../../scss/components/_nav.scss";
 import logo from "../../scss/assets/logo.png";
 import LoginButton from "../User/Login";
@@ -14,30 +13,25 @@ const Nav = ({ setCurrentPage }) => {
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
-        <NavLink
-          to="/"
-          className="logo">
+        <NavLink to="/" className="logo">
           <img className="logoImg" src={logo} alt="imagenLogo" />
         </NavLink>
-        <NavLink
-        to="/"
-        className='tituloPag'>
+        <NavLink to="/" className="tituloPag">
           <h2 className="tituloPag">E-commerCell</h2>
         </NavLink>
       </div>
       <div className="searchBarStylo">
-        <SearchBar setCurrentPage={setCurrentPage} />
-          <Link to="/createProduct" className="linkVender">
-            Vender Articulo
-          </Link>
+        <Link to="/createProduct" className="linkVender">
+          Vender Articulo
+        </Link>
       </div>
       <div className="logeo">
         {isAuthenticated ? (
           <>
-          <div className="autenticated">
-            <LogOutButton className="estiloSesion" /> 
-            <Profile className="estiloProfile" />
-          </div>
+            <div className="autenticated">
+              <LogOutButton className="estiloSesion" />
+              <Profile className="estiloProfile" />
+            </div>
           </>
         ) : (
           <div className="loginButton">
