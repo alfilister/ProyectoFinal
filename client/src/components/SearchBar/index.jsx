@@ -24,6 +24,7 @@ const SearchBar = () => {
     e.preventDefault()
     setName(e.target.value)
     setErrors(validate(e.target.value))
+    console.log(e.target.value)
   }
 
   const handleSubmit = (e) => {

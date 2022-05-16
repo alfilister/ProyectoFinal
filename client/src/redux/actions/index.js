@@ -55,7 +55,7 @@ export function getProductsByName(payload) {
       );
       return dispatch({
         type: GET_PRODUCTS_NAME,
-        payload: json.data.data,
+        payload: json.data.results,
       })
     } catch (error) {
       alert("No existe el producto, recarga la pagina")
@@ -97,7 +97,7 @@ export function filters(payload) {
     try {
       return dispatch({
         type: FILTER_PRODUCTS,
-        payload: json.data.data,
+        payload: json.data.results,
       })
     } catch (error) {
       console.log(error)
