@@ -6,6 +6,7 @@ export const GET_PRODUCTS_NAME = "GET_PRODUCTS_NAME"
 export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME"
 export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
+export const CLEAR_DETAIL = "CLEAR_DETAIL"
 
 export function getProducts() {
   return async function (dispatch) {
@@ -124,5 +125,11 @@ export function postProduct(payload) {
     } catch (error) {
       console.log(error)
     }
+  }
+}
+
+export function clearDetail() {
+  return {
+    type: CLEAR_DETAIL,
   }
 }
