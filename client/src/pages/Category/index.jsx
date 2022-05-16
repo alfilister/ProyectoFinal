@@ -35,20 +35,17 @@ function Category() {
             ) : (
               suggestedOne.map((el) => {
                 return (
-                  <div key={el.id}>
-                    <Card
-                      key={el.id}
-                      id={el.id}
-                      aux_images={el.aux_images}
-                      name={el.name}
-                      image={el.image}
-                      price={el.price}
-                      rating={el.rating}
-                      categories={el.categories
-                        .map((el) => el.name)
-                        .join(" | ")}
-                    />
-                  </div>
+                  <Card
+                    key={el.id}
+                    id={el.id}
+                    aux_images={el.aux_images}
+                    name={el.name}
+                    image={el.image}
+                    price={el.price}
+                    rating={el.rating}
+                    fetured={el.featured}
+                    categories={el.categories.map((el) => el.name).join(" | ")}
+                  />
                 )
               })
             )}

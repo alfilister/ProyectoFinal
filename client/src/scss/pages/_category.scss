@@ -31,7 +31,8 @@
 
       .filter {
         height: fit-content;
-        width: fit-content;
+        width: 98%;
+        max-width: 300px;
 
         background-color: $dark-600;
 
@@ -50,14 +51,12 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        margin: 0 0 0 0.5em;
-        border-radius: 15px;
       }
     }
 
     .cardContainer {
       background-color: inherit;
-      margin-left: 2vw;
+      margin-left: 0.5vw;
     }
   }
 }
