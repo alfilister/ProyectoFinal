@@ -8,7 +8,7 @@
   margin: 1em;
 
   button {
-    background-color: $red-800;
+    background-color: $dark-500;
     color: $dark-000;
     width: 2rem;
     height: 2rem;
@@ -19,13 +19,13 @@
     font-size: 1.3rem;
 
     &:hover {
-      color: $red-800;
-      background-color: $red-000;
+      color: $dark-800;
+      background-color: $dark-000;
     }
 
     &:focus {
-      color: $red-800;
-      background-color: $red-000;
+      color: $dark-800;
+      background-color: $dark-000;
     }
   }
 }

@@ -1,5 +1,5 @@
 const { Router } = require("express")
-const { getReviewByProduct, getReviewByUser, setReview, updateReview, deleteReview } = require("../controllers")
+const reviewController = require("../controllers/review")
 
 const router = Router()
 
@@ -7,7 +7,7 @@ const router = Router()
 //TRAER REVIEWS DE LA BASE DE DATOS POR PRODUCTO
 router.get("/product", async (req, res, next) => {
   try {
-    res.send( await getReviewByProduct())
+    res.send( await reviewController.getReviewByProduct())
   } catch (err) {
     next(err)
   }
@@ -16,7 +16,7 @@ router.get("/product", async (req, res, next) => {
 //TRAER REVIEWS DE LA BASE DE DATOS POR USUARIO
 router.get("/user", async (req, res, next) => {
   try {
-    res.send( await getReviewByUser())
+    res.send( await reviewController.getReviewByUser())
   } catch (err) {
     next(err)
   }
@@ -27,7 +27,7 @@ router.get("/user", async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   const {user_id, product_id, product_review, score_review} = req.body; 
   try {
-    res.send(setReview(user_id, product_id, product_review, score_review))
+    res.send(await reviewController.setReview(user_id, product_id, product_review, score_review))
   } catch (error) {
     next(error)
   }
@@ -37,7 +37,7 @@ router.post('/', async (req, res, next) => {
 router.put('/', async (req, res, next) => {
   const {id, product_review, score_review} = req.body; 
   try {
-    res.send(updateReview(id, product_review, score_review))
+    res.send(await reviewController.updateReview(id, product_review, score_review))
   } catch (error) {
     next(error)
   }
