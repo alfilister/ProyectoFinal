@@ -1,21 +1,63 @@
 @use "../abstracts/_variables.scss" as *;
 
-.cerrarSesion{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-font-size: large;
-cursor: pointer;
-}
-.divDataUser{
-    background-color: rgba(30, 30, 30, 0.219);
-    border-radius: 0.5rem;
-    padding: 0.2rem;
-    position: relative;
-    right: -4rem;
-    top: -3.8rem;
-    color: rgb(232, 223, 223);
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 800;
-}
-.logButton{
+.containerLogin {
+    border: 1px solid black;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    text-align: center;
+  }
+  
+  #button  {
+    border: 0;
+    border-radius: 20px;
+    font-weight: 600;
+    margin: 0 10px;
+    width: 8.5rem;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+  }
+  
+  .log {
+    border-radius: 20px;
+    color:$red-800;
+    background-color: $red-000;
+    border: 1px solid $red-800;
+    padding: 0.4rem;
+    
+  }
+  
+  button:hover {
     cursor: pointer;
-}
+    color: white;
+    box-shadow: 0 0 20px $red-600;
+    background-color: $red-600;
+  }
+  .reg {
+    color: white;
+    background-color: rgba(104, 85, 224, 1);
+  }
+ 
+   .containerProfile{
+       display: flex;
+       flex-direction: row;
+       border: 1px solid rgb(51, 13, 141);
+
+       img{
+
+           border-radius: 50%;
+           height: 30px;
+           width: fit-content;
+           h2{
+               font-size: 16px;
+           }
+       }
+       .datos{
+           background-color: aqua;
+         
+           font-size: 10px;
+       }
+   }
+      
+  

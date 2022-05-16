@@ -3,74 +3,82 @@
 .divNavbar{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    
-    background-color: rgba(46, 44, 44, 0.232);
-    border-radius: 0.5rem;
-    
-    height: 5.2rem;
+    width: 100%;
+    background-color: $red-700;
+    height: 5rem;
 }
 .divSeachYLogo{
-    display: flex;
-    flex-wrap: wrap;
-    
-    margin-left: -19rem; 
-    
-    padding: 1rem;
-    
+    height: 100%;
+    width: 33.33%;
+    display: flex ;
+    justify-content: flex-start;
+    align-items: center;
+    .logo{
+        .logoImg{
+            height: 3rem;
+            width: fit-content;
+            border-radius: 50%;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+    }
 }
- 
-
-.logoImg{
-    float: right;
-    display: block;
-    width: 4rem;
-    
-    border-radius: 1rem;
-    box-shadow: 9px 0px 25px -15px rgba(0,0,0,0.58);
-    margin-top: -2rem;
-
+.tituloPag{
+    text-transform: uppercase;
+    font-family: $fuente-titulo ; 
+    color: $red-000 ;
+    text-decoration: none;
 }
 
 .searchBarStylo{
-    position: relative;
-    left: 58rem;
-    top: -0.10rem;
-   padding: 2rem;
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .linkVender{
+        color: $red-000;
+        font-family: $fuente-parrafos;
+        text-decoration: none;
+        padding-top: 0.6rem;
+    }
+}
+.logeo{
+    border: 1px solid blue;
+
+    width: 33.33%;
+    height: 100%;
+   /*  display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0.6rem ; */
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    
+
+    .autenticated{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+       /*  .estiloSesion{
+            justify-content: flex-end;
+            border : 1px solid black
+         
+        }
+       
+        .estiloProfile{
+            border : 1px solid black;
+            justify-content: center;
+        } */
+    }
+}
 
 
-}
-.logeo img{
-    
-    width: 4rem;
-   border-radius: 4rem;
-   padding: 0.3rem;
-    
 
-}
-.logeo {
-    position: relative;
-    right: 7rem;
-    margin-right: 1rem;
 
-    
-}
-.loginButton{
-    position: relative;
-    top: 2rem;
-    right: -5rem;
-    
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-large;
-    cursor: pointer;
-}
-.tituloPag{
-   position: relative;
-   left: 12rem;
-   top: 1.4rem;
- font-size: x-large;
- font-weight: 600;
-   
-}
+
 
 
