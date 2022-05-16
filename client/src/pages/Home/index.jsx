@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import Nav from "../../components/Nav"
-import CardsContainer from "../../components/CardsContainer"
-import Filters from "../../components/Filters"
+import CardSlider from "../../components/CardSlider"
+import CategoryGrid from "../../components/CategoryGrid"
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       {/* <Nav /> */}
-      <CardsContainer />
+      <br></br>
+      <CategoryGrid />
+      <CardSlider />
     </div>
   )
 }
