@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
 import Filters from "../../components/Filters"
@@ -11,6 +11,13 @@ function Category() {
 
   const { categoryName } = useParams()
   const [sorted, setSorted] = useState("")
+
+  const navigate = useNavigate()
+  const handleBack = (e) => {
+    e.preventDefault()
+    navigate("/")
+  }
+
   return (
     <div className="categoryPage">
       {/* <Nav /> */}
@@ -20,6 +27,9 @@ function Category() {
       <body>
         <div className="leftColumn">
           <div className="filter">
+            <div className="blackBtn">
+              <button onClick={(e) => handleBack(e)}>Back to home</button>
+            </div>
             <Filters setSorted={setSorted} />
           </div>
           <div className="textInvite">

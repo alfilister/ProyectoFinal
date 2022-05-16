@@ -38,6 +38,12 @@
 
         margin: 5em 0 0 0.5em;
         border-radius: 20px;
+
+        .blackBtn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
 
       .textInvite {
