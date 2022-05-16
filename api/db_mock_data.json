@@ -118,6 +118,65 @@
         "featured": false,
         "rating": 3.5,
         "categories": ["laptops"]
+      },      {
+        "name": "Tablet XXI",
+        "image":"https://s1.eestatic.com/2021/12/03/actualidad/631948900_217191977_1024x576.jpg",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best tablet ever",
+        "discount": 50,
+        "stock": 5,
+        "price": 507.95,
+        "featured": true,
+        "rating": 3.9,
+        "categories": ["tablets"]
+      },
+      {
+        "name": "PadMouse Milenium",
+        "image":"https://www.pulsovideojuegos.com/wp-content/uploads/2019/12/mousepad-gaming-asus-rog-sheath.jpg",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best product ever",
+        "discount": 20,
+        "stock": 5,
+        "price": 155.95,
+        "featured": true,
+        "rating": 4,
+        "categories": ["gamers", "accessories"]
+      },
+      {
+        "name": "Headphones Bose",
+        "image":"https://assets-prd.ignimgs.com/2021/11/04/11043-1636052445439.jpg",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best sound ever",
+        "discount": 5,
+        "stock": 100,
+        "price": 798.95,
+        "featured": true,
+        "rating": 5,
+        "categories": ["accessories"]
+      },
+      {
+        "name": "Pc gamer Vengeance II",
+        "image":"https://hardzone.es/app/uploads-hardzone.es/2019/05/CORSAIR-VENGEANCE-5180-Gaming-PC.jpg",
+        "aux_images": [
+          "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+          "https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+        ],
+        "description": "The best setUp ever",
+        "discount": 0,
+        "stock": 2,
+        "price": 999,
+        "featured": true,
+        "rating": 4.5,
+        "categories": ["gamers"]
       }
     ],
     "users": [

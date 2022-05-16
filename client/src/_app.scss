@@ -10,7 +10,13 @@
 @use "./scss/components/cardsContainer";
 @use "./scss/components/pagination";
 @use "./scss/components/filterBar";
+@use "./scss/components/cardSlider";
+@use "./scss/components/categoryGrid";
+@use "./scss/components/nav";
+
+
 /* pages */
 @use "./scss/pages/created";
 @use "./scss/components/detail";
 @use "./scss/pages/category";
+@use "./scss/pages/home";

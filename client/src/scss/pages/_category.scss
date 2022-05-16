@@ -31,18 +31,27 @@
 
       .filter {
         height: fit-content;
-        width: fit-content;
+        width: 98%;
+        max-width: 300px;
 
         background-color: $dark-600;
 
         margin: 5em 0 0 0.5em;
         border-radius: 20px;
+
+        .blackBtn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
       }
 
-      h2 {
-        color: $dark-000;
-        text-align: center;
-        margin: 1em 0 0.5em 0;
+      .textInvite {
+        h2 {
+          color: $dark-000;
+          text-align: center;
+          margin: 1em 0 0.5em 0;
+        }
       }
 
       .suggestedProduct {
@@ -50,14 +59,12 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        margin: 0 0 0 0.5em;
-        border-radius: 15px;
       }
     }
 
     .cardContainer {
       background-color: inherit;
-      margin-left: 2vw;
+      margin-left: 0.5vw;
     }
   }
 }

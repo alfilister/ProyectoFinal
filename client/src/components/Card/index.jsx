@@ -1,9 +1,25 @@
 import React from "react"
-import { NavLink } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-const Card = ({ id, name, image, categories, price, rating, aux_images }) => {
+const Card = ({
+  id,
+  name,
+  image,
+  categories,
+  price,
+  rating,
+  aux_images,
+  featured,
+}) => {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/producto/${id}`)
+  }
+
   return (
-    <div className="card">
+    <div className={featured === false ? "card" : "cardFeatured"}>
+      {featured && <div className="featTag">⭐</div>}
       <h3>{name}</h3>
       <div className="img">
         <img src={image} />
@@ -14,14 +30,12 @@ const Card = ({ id, name, image, categories, price, rating, aux_images }) => {
       </div>
 
       <div className="info">
-        <span>💲 {price}</span>
+        <span> $ {price}</span>
         <span>{` | ${categories} | `}</span>
         <span>⭐ {rating}</span>
       </div>
       <div className="btn">
-        <NavLink to={`/producto/${id}`}>
-          <button>Details</button>
-        </NavLink>
+        <button onClick={(e) => handleClick(e)}>Details</button>
       </div>
     </div>
   )
