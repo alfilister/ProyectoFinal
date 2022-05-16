@@ -1,15 +1,14 @@
 @use "../abstracts/_variables.scss" as *;
 
 .divNavbar{
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    background-color: $red-700;
+    background-color: $red-800;
     height: 5rem;
 }
 .divSeachYLogo{
     height: 100%;
-    width: 33.33%;
     display: flex ;
     justify-content: flex-start;
     align-items: center;
@@ -31,7 +30,6 @@
 }
 
 .searchBarStylo{
-    width: 33.33%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -42,38 +40,21 @@
         font-family: $fuente-parrafos;
         text-decoration: none;
         padding-top: 0.6rem;
-    }
-}
-.logeo{
-    border: 1px solid blue;
-
-    width: 33.33%;
-    height: 100%;
-   /*  display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 0.6rem ; */
-    display:grid;
-    grid-template-columns: repeat(2,1fr);
-    
-
-    .autenticated{
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
-
-       /*  .estiloSesion{
-            justify-content: flex-end;
-            border : 1px solid black
-         
+        &:hover {
+            color: $red-500;
+            transition: ease-in-out 0.3s;        }
         }
-       
-        .estiloProfile{
-            border : 1px solid black;
-            justify-content: center;
-        } */
     }
+
+    .logeo{
+        height: 100%;
+        display: flex;
+        justify-content: flex-end;
+        
+        .autenticated{
+            display: flex;
+            flex-direction: row;
+        }
 }
 
 

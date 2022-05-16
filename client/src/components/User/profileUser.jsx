@@ -9,16 +9,17 @@ export default function Profile() {
     return <div>loading...</div>;
   }
   return (
-    isAuthenticated && (
-      <div className="containerProfile">
-        <div className="datos" >
-          <p>Usuario:</p>
-          <p>{user.name}</p>
-          <p>Mail:</p>
-          <p>{user.email}</p>
-        </div>
-        <img src={user.picture} alt={user.name} />
-      </div>
-    )
+    <div className="containerProfile">
+      {isAuthenticated && (
+        <>
+          <div className="infoUsuario">
+            <p>{user.name}</p>
+            <p>{user.email}</p>
+          </div>
+          <img src={user.picture} alt={user.name} className="img" />
+          {/* <div className="infoImg"></div> */}
+        </>
+      )}
+    </div>
   );
 }
