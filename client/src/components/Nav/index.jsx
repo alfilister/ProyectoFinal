@@ -16,31 +16,28 @@ const Nav = ({ setCurrentPage }) => {
       <div className="divSeachYLogo">
         <NavLink
           to="/"
-          style={{ textDecoration: "none", color: "black", fontWeight: "bold" }}
-          className="logo"
-        >
-          <Link to="/createProduct" className="searchBarStylo">
-            Vender Articulo
-          </Link>
-          <h2 className="tituloPag">E-comerCell</h2>
+          className="logo">
           <img className="logoImg" src={logo} alt="imagenLogo" />
+        </NavLink>
+        <NavLink
+        to="/"
+        className='tituloPag'>
+          <h2 className="tituloPag">E-commerCell</h2>
         </NavLink>
       </div>
       <div className="searchBarStylo">
         <SearchBar setCurrentPage={setCurrentPage} />
+          <Link to="/createProduct" className="linkVender">
+            Vender Articulo
+          </Link>
       </div>
       <div className="logeo">
-        {/*  <NavLink to="#" className="estiloSesion">
-          <h2>inicia sesion</h2>
-        </NavLink>
-        <NavLink to="#" className="estiloRegistro">
-          <h2>registrate</h2>
-        </NavLink> */}
-
         {isAuthenticated ? (
           <>
-            <LogOutButton className="estiloSesion" />
+          <div className="autenticated">
+            <LogOutButton className="estiloSesion" /> 
             <Profile className="estiloProfile" />
+          </div>
           </>
         ) : (
           <div className="loginButton">
