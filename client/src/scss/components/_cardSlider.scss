@@ -1,0 +1,21 @@
+@use "../abstracts/_variables.scss" as *;
+
+.cardSlider {
+  background-color: $dark-700;
+  padding: 1em;
+
+  .invitation {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+    margin: 0.5em 0;
+  }
+  .cardSpace {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    div {
+      height: fit-content;
+    }
+  }
+}

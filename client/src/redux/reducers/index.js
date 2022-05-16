@@ -6,6 +6,7 @@ import {
   SORT_PRODUCTS_BY_NAME,
   SORT_PRODUCTS_BY_RATING,
   FILTER_PRODUCTS,
+  CLEAR_DETAIL,
 } from "../actions"
 
 const initialState = {
@@ -101,6 +102,13 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
+      case CLEAR_DETAIL:
+        return{
+          ...state,
+          productsDetail: []
+        }
+
+      
 
     default:
       return state

@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
-import Nav from "../../components/Nav";
+import Nav from "../../components/Nav"
 
-import { getProductsById } from "../../redux/actions";
+import { clearDetail, getProductsById } from "../../redux/actions"
 
 const Detail = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const productId = useSelector((state) => state.productsDetail);
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const productId = useSelector((state) => state.productsDetail)
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 3000);
-    return () => dispatch(getProductsById());
-  }, [dispatch, id]);
+    setTimeout(() => dispatch(getProductsById(id)), 50)
+    dispatch(getProductsById())
+    dispatch(clearDetail())
+  }, [dispatch, id])
 
   return (
     <div className="contenedorDetalleLoader">
@@ -41,7 +42,7 @@ const Detail = () => {
                           <img src={el} alt="imagenes auxiliares" />;
                         </div>
                       </>
-                    );
+                    )
                   })}
                 </div>
               </div>
@@ -218,7 +219,7 @@ const Detail = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Detail;
+export default Detail
