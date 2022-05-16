@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Roboto:wght@300;400;500&display=swap');
+
 /* COLORS */
 $dark-000: #C1C2C5; 
 $dark-100: #A6A7AB; 
@@ -12,6 +14,7 @@ $dark-900: #101113;
 
 /*paleta 1*/
 $red-000: #ffffff;
+$red-050: #eeeeee;
 $red-100: #ffc0c0;
 $red-200: #ff8080;
 $red-300: #ff4040;
@@ -22,6 +25,8 @@ $red-700: #400000;
 $red-800: #00002b;
 
 /*variables light y dark mode*/
+$fuente-titulo: 'Roboto Slab', serif;
+$fuente-parrafos: 'Roboto', sans-serif;
 $primary: $red-500;
 $secondary: $red-800;
 $succes-background: $red-100;
