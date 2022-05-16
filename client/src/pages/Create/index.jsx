@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
+import Nav from "../../components/Nav";
 import "../../scss/pages/_created.scss";
-import styleCV from "../Create/Create.module.css";
 
 //funcion validadora para hacer el formulario controlado
 function validate(input) {
@@ -103,149 +103,136 @@ const Create = () => {
   }
 
   return (
-    <div className="view">
-      <div className="formContainer">
-        <div className="message">
-          <Link to="/">
-            <button>VOLVER</button>
-          </Link>
+    <div className="formContainer">
+      {/* <div className="btnVolver">
+        <Link to="/">
+          <button>VOLVER</button>
+        </Link>
+      </div> */}
+      <div>
+        <Nav />
+      </div>
+      <div className="form">
+        <div className="tituloCargar">
           <h1>Cargar datos de articulo</h1>
         </div>
-        <div className="form">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <div>
-              <label>Nombre : </label>
-              <input
-                className={styleCV.input}
-                type="text"
-                placeholder="ingrese nombre producto"
-                value={input.name}
-                name="name"
-                required
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              {errors.name && <div className="form-errors">{errors.name}</div>}
-            </div>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          <div className="elementosForm">
+            <label>Nombre : </label>
+            <input
+              type="text"
+              placeholder="ingrese nombre producto"
+              value={input.name}
+              name="name"
+              required
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div className="form-group">
+            {errors.name && <div className="form-errors">{errors.name}</div>}
+          </div>
 
-            <div>
-              <label>imagen : </label>
-              <input
-                className={styleCV.input}
-                type="text"
-                placeholder="image"
-                value={input.image}
-                name="image"
-                required
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              {errors.image && (
-                <div className="form-errors">{errors.image}</div>
-              )}
-            </div>
+          <div className="elementosForm">
+            <label>imagen : </label>
+            <input
+              type="text"
+              placeholder="image"
+              value={input.image}
+              name="image"
+              required
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div className="form-group">
+            {errors.image && <div className="form-errors">{errors.image}</div>}
+          </div>
 
-            <div>
-              <label>precio : </label>
-              <input
-                className={styleCV.input}
-                type="text"
-                placeholder="precio"
-                value={input.price}
-                required
-                name="price"
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              {errors.price && (
-                <div className="form-errors">{errors.price}</div>
-              )}
-            </div>
+          <div className="elementosForm">
+            <label>precio : </label>
+            <input
+              type="text"
+              placeholder="precio"
+              value={input.price}
+              required
+              name="price"
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div className="form-group">
+            {errors.price && <div className="form-errors">{errors.price}</div>}
+          </div>
 
-            <div>
-              <label>descripcion : </label>
-              <input
-                className={styleCV.input}
-                type="text"
-                placeholder="ingrese descripcion"
-                value={input.description}
-                name="description"
-                required
-                onChange={handleChangeInput}
-              />
-            </div>
+          <div className="elementosForm">
+            <label>descripcion : </label>
+            <input
+              type="text"
+              placeholder="ingrese descripcion"
+              value={input.description}
+              name="description"
+              required
+              onChange={handleChangeInput}
+            />
+          </div>
 
-            <div>
-              <label>discount : </label>
-              <input
-                className={styleCV.input}
-                type="number"
-                step="5"
-                min="0"
-                max="10"
-                placeholder="rating"
-                value={input.discount}
-                name="discount"
-                onChange={handleChangeInput}
-              />
-            </div>
+          <div className="elementosForm">
+            <label>discount : </label>
+            <input
+              type="number"
+              step="5"
+              min="0"
+              max="10"
+              placeholder="rating"
+              value={input.discount}
+              name="discount"
+              onChange={handleChangeInput}
+            />
+          </div>
 
-            <div>
-              <label>Stock : </label>
-              <input
-                className={styleCV.input}
-                type="number"
-                step="1"
-                min="0"
-                max="5"
-                placeholder="rating"
-                value={input.stock}
-                name="stock"
-                required
-                onChange={handleChangeInput}
-              />
-            </div>
-            <div className="form-group">
-              {errors.stock && (
-                <div className="form-errors">{errors.stock}</div>
-              )}
-            </div>
+          <div className="elementosForm">
+            <label>Stock : </label>
+            <input
+              type="number"
+              step="1"
+              min="0"
+              max="5"
+              placeholder="rating"
+              value={input.stock}
+              name="stock"
+              required
+              onChange={handleChangeInput}
+            />
+          </div>
+          <div className="form-group">
+            {errors.stock && <div className="form-errors">{errors.stock}</div>}
+          </div>
 
-            <div>
-              <label>Rating : </label>
-              <input
-                className={styleCV.input}
-                type="number"
-                step="0.1"
-                min="0"
-                max="5"
-                placeholder="rating"
-                value={input.rating}
-                name="rating"
-                onChange={handleChangeInput}
-              />
-            </div>
+          <div className="elementosForm">
+            <label>Rating : </label>
+            <input
+              type="number"
+              step="0.1"
+              min="0"
+              max="5"
+              placeholder="rating"
+              value={input.rating}
+              name="rating"
+              onChange={handleChangeInput}
+            />
+          </div>
 
-            <div>
-              <label> Categorias : </label>
-              <select
-                className={styleCV.select}
-                onChange={(e) => handleSelect(e)}
-              >
-                {categories?.map((el) => (
-                  <option key={el} value={input.el}>
-                    {el.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="elementosForm">
+            <label> Categorias : </label>
+            <select onChange={(e) => handleSelect(e)}>
+              {categories?.map((el) => (
+                <option key={el} value={input.el}>
+                  {el.name}
+                </option>
+              ))}
+            </select>
+          </div>
 
-            <button type="submit"> Publicar Producto </button>
-          </form>
-        </div>
+          <button type="submit"> Publicar Producto </button>
+        </form>
       </div>
     </div>
   );
