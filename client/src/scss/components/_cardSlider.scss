@@ -4,18 +4,43 @@
   background-color: $dark-700;
   padding: 1em;
 
+  overflow-x: hidden;
+
   .invitation {
     text-align: center;
     font-size: 2em;
-    font-weight: 600;
+    text-shadow: 0.5px 0.5px 0.5px rgba(255, 243, 243, 0.383);
     margin: 0.5em 0;
   }
   .cardSpace {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    animation: loop 20s 2s ease-out infinite;
+    .slideCard {
+      height: 100vh;
+      flex-basis: 100vw;
+      flex-shrink: 0;
+      margin-left: 1.5em;
+    }
+  }
 
-    div {
-      height: fit-content;
+  @keyframes loop {
+    0% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-100vw);
+    }
+    40% {
+      transform: translateX(-200vw);
+    }
+    60% {
+      transform: translateX(-300vw);
+    }
+    80% {
+      transform: translateX(-400vw);
+    }
+    100% {
+      transform: translateX(0);
     }
   }
 }

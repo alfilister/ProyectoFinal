@@ -21,7 +21,7 @@ function CardSlider() {
         ) : (
           featuredOnes.map((el) => {
             return (
-              <div key={el.id}>
+              <div className="slideCard" key={el.id}>
                 <Card
                   key={el.id}
                   id={el.id}
