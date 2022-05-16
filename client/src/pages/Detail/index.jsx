@@ -12,15 +12,15 @@ const Detail = () => {
   const productId = useSelector((state) => state.productsDetail);
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 2000);
+    setTimeout(() => dispatch(getProductsById(id)), 3000);
     return () => dispatch(getProductsById());
   }, [dispatch, id]);
 
   return (
-    <>
+    <div className="contenedorDetalleLoader">
       <Nav />
       <div className="detailContainer">
-        {!productId ? (
+        {productId.length === 0 ? (
           <img
             src="https://i.imgur.com/EQSYdeQ.gif"
             alt="Loading..."
@@ -30,34 +30,48 @@ const Detail = () => {
           <div className="detail">
             <div className="contenedorImagenDescription">
               <div className="imagenDetalle">
-                <img src={productId.image} alt="" className="imgDetail" />
+                <div className="imgGrande">
+                  <img src={productId.image} alt="" />
+                </div>
+                <div className="imagesAux">
+                  {productId.aux_images?.map((el) => {
+                    return (
+                      <>
+                        <div className="imgChicas">
+                          <img src={el} alt="imagenes auxiliares" />;
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
               </div>
-              <div className="contenedorDescription">
-                <h1>{productId.name}</h1>
-                <h1>{`$ ${productId.price}`}</h1>
-                <label className="subtitle">Rating:</label>
-                <p className="text">{productId.rating}</p>
-                <br />
-                <label className="subtitle">Cantidad en Stock:</label>
-                <p className="text">{productId.stock}</p>
-                <br />
-                <label className="subtitle">Descuento:</label>
-                <p className="text">
-                  {productId.discount
-                    ? productId.discount
-                    : "No hay descuentos!"}
-                </p>
-                <label className="subtitle">Categorias:</label>
-                <p className="text">
-                  {productId.categories?.map((el) => el.name)}
-                </p>
-                <br />
 
-                <label className="subtitle">Descripción:</label>
-                <p className="text">{productId.description}</p>
-                <label className="subtitle">Reviews:</label>
+              <div className="contenedorDescription">
+                <h1 className="tituloDetail">{productId.name}</h1>
+                <div className="precioDescuento">
+                  <h2 className="precio">{`$ ${productId.price}`}</h2>
+                  <p className="descuento">{`${
+                    productId.discount
+                      ? `${productId.discount} % OFF`
+                      : "No hay descuentos aún!"
+                  }`}</p>
+                </div>
+                <p>{`⭐ ${productId.rating}`}</p>
+                <label>Stock:</label>
+                <p className="stock" style={{ border: "1px solid black" }}>
+                  {productId.stock}
+                </p>
+                <label>Categorias:</label>
+                <p className="categorias">{`| ${productId.categories?.map(
+                  (el) => ` ${el.name}`
+                )} |`}</p>
+                <div className="descripcion">
+                  <h2>Descripción:</h2>
+                  <p className="text">{productId.description}</p>
+                </div>
               </div>
             </div>
+
             <div className="reviews">
               <br />
               <div className="usuario">
@@ -203,7 +217,7 @@ const Detail = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

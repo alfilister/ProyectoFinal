@@ -10,12 +10,14 @@ export default function Profile() {
   }
   return (
     isAuthenticated && (
-      <div>
-        <img src={user.picture} alt={user.name} />
-        <div className="divDataUser">
-          <h2> Usuario: {user.name}</h2>
-          <p> Mail: {user.email}</p>
+      <div className="containerProfile">
+        <div className="datos" >
+          <p>Usuario:</p>
+          <p>{user.name}</p>
+          <p>Mail:</p>
+          <p>{user.email}</p>
         </div>
+        <img src={user.picture} alt={user.name} />
       </div>
     )
   );
