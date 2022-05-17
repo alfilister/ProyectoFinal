@@ -10,6 +10,7 @@ import Error404 from "./pages/Error404"
 import Category from "./pages/Category"
 
 import { getProducts, getCategories } from "./redux/actions"
+import CartPage from "./pages/CartPage"
 
 function App() {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ function App() {
         <Route path="/producto/:id" element={<Detail />} />
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/createProduct" element={<Create />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </div>
   )
