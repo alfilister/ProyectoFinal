@@ -5,28 +5,30 @@ const router = Router()
 
 // RUTA PARA CARGAR Y MOSTRAR LOS PRODUCTOS TAL COMO QUEDAN EN LA BASE DE DATOS (INCLUYENDO CATEGORÍA ÚNICAMENTE, PARA VER LOS REVIEWS DE PRODUCTO DEBEN HACER LA SOLICITUD DE PRODUCT BY ID)
 router.get("/", async (req, res, next) => {
-
   const { nameProduct } = req.query
 
   try {
-    if(!nameProduct){
+    if (!nameProduct) {
       const info = await productController.getProductInfo()
       res.json({
         status: "Api info loaded",
         quantity_found: info.length,
         results: info,
       })
-    }else{
-      const info = await productController.searchProductByName(nameProduct.toLowerCase())
-      info.length>0?res.json({
-        status: "Api info loaded",
-        quantity_found: info.length,
-        results: info,
-      })
-      :res.status(404).json({
-        status: "notFound",
-        results: []
-      })
+    } else {
+      const info = await productController.searchProductByName(
+        nameProduct.toLowerCase()
+      )
+      info.length > 0
+        ? res.json({
+            status: "Api info loaded",
+            quantity_found: info.length,
+            results: info,
+          })
+        : res.status(404).json({
+            status: "notFound",
+            results: [],
+          })
     }
   } catch (error) {
     next(error)
@@ -36,7 +38,9 @@ router.get("/", async (req, res, next) => {
 // RUTA QUE TRAE LOS DETALLES DEL PRODUCTO POR ID, INCLUYENDO LAS CATEGORÍAS Y REVIEWS
 router.get("/detail/:idProduct", async (req, res, next) => {
   try {
-    const response = await productController.searchProductById(req.params.idProduct)
+    const response = await productController.searchProductById(
+      req.params.idProduct
+    )
     res.json({
       status: "Found",
       results: response,
@@ -73,7 +77,7 @@ router.put("/:idProduct", async (req, res, next) => {
     rating,
     categories,
   } = req.body
-  
+
   try {
     const updated = await productController.updateProduct(
       idProduct,
@@ -98,7 +102,7 @@ router.delete("/:idProduct", async (req, res, next) => {
   const { idProduct } = req.params
   try {
     const result = await productController.deleteProduct(idProduct)
-    res.send({results: result})
+    res.send({ results: result })
   } catch (error) {
     next(error)
   }
@@ -106,9 +110,13 @@ router.delete("/:idProduct", async (req, res, next) => {
 
 //FILTRO POR CATEGORIAS Y PRECIO PARA EL HOME
 router.get("/filter", async (req, res, next) => {
-  const { categoryName, price } = req.query
+  const { categoryName, min, max } = req.query
   try {
-    const result = await productController.filterProducts(categoryName, price)
+    const result = await productController.filterProducts(
+      categoryName,
+      min,
+      max
+    )
 
     result[0]
       ? res.json({ quantity: result.length, data: result })

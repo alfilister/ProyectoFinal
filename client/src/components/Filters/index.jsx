@@ -1,77 +1,86 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
 
-import SearchBar from "../SearchBar";
+import SearchBar from "../SearchBar"
 
-import { sortByName, sortByRating, filters } from "../../redux/actions";
+import { sortByName, sortByRating, filters } from "../../redux/actions"
 
 const Filters = ({ setSorted }) => {
-  const { categoryName } = useParams();
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.categories);
+  const { categoryName } = useParams()
+  const dispatch = useDispatch()
+  const categories = useSelector((state) => state.categories)
 
   const [sortOrder, setOrder] = useState({
     name: "Alphabet AZ",
     rating: "By Rating ⭐",
-  });
+  })
 
   const [filtros, setFiltros] = useState({
     category: "all",
-    price: 1000,
-  });
+    min: 0,
+    max: 1000,
+  })
 
   // Ordenamiento por nombre
   const handleSortByName = (event) => {
-    dispatch(sortByName(event.target.value));
+    dispatch(sortByName(event.target.value))
     // setCurrentPage(1)
     setOrder({
       name: event.target.value,
       rating: "By Rating ⭐",
-    });
-    setSorted(event.target.value);
-  };
+    })
+    setSorted(event.target.value)
+  }
 
   // Ordenamiento por nombre
   const handleSortByRating = (event) => {
-    dispatch(sortByRating(event.target.value));
+    dispatch(sortByRating(event.target.value))
     // setCurrentPage(1)
 
     setOrder({
       name: "Alphabet AZ",
       rating: event.target.value,
-    });
-    setSorted(event.target.value);
-  };
+    })
+    setSorted(event.target.value)
+  }
 
   const handleFilters = (event) => {
-    event.preventDefault();
-    dispatch(filters(filtros));
-  };
+    event.preventDefault()
+    dispatch(filters(filtros))
+  }
 
   const handleReset = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     dispatch(
       filters({
         category: categoryName,
-        price: 1000,
+        min: 0,
+        max: 1000,
       })
-    );
-  };
+    )
+  }
 
-  const handleInputRange = (event) => {
+  const handleInputMin = (event) => {
     setFiltros({
       ...filtros,
-      price: event.target.value,
-    });
-  };
+      min: event.target.value,
+    })
+  }
+
+  const handleInputMax = (event) => {
+    setFiltros({
+      ...filtros,
+      max: event.target.value,
+    })
+  }
 
   const handleInputCategory = (event) => {
     setFiltros({
       ...filtros,
       category: event.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <div className="filterBar">
@@ -81,7 +90,7 @@ const Filters = ({ setSorted }) => {
 
         <select
           onChange={(event) => {
-            handleSortByName(event);
+            handleSortByName(event)
           }}
           value={sortOrder.name}
         >
@@ -92,7 +101,7 @@ const Filters = ({ setSorted }) => {
 
         <select
           onChange={(event) => {
-            handleSortByRating(event);
+            handleSortByRating(event)
           }}
           value={sortOrder.rating}
         >
@@ -117,19 +126,24 @@ const Filters = ({ setSorted }) => {
                 <option key={c.id} value={c.name}>
                   {c.name}
                 </option>
-              );
+              )
             })}
           </select>
 
-          <label>Max price</label>
-          <input
-            className="priceFilter"
-            onChangeCapture={(event) => handleInputRange(event)}
-            type="range"
-            min="0"
-            max="1000"
-          ></input>
-          <label>{filtros.price}</label>
+          <label>Price Range</label>
+          <div className="priceSelector">
+            <input
+              type="text"
+              placeholder={filtros.min}
+              onChange={(event) => handleInputMin(event)}
+            />
+            <p>to</p>
+            <input
+              type="text"
+              placeholder={filtros.max}
+              onChange={(event) => handleInputMax(event)}
+            />
+          </div>
           <button type="submit" onClick={(event) => handleFilters(event)}>
             Apply filters
           </button>
@@ -137,7 +151,7 @@ const Filters = ({ setSorted }) => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Filters;
+export default Filters

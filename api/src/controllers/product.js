@@ -156,7 +156,7 @@ const deleteProduct = async (idProduct) => {
 }
 
 //FILTRO POR CATEGORIA Y PRECIO
-const filterProducts = async (category, price) => {
+const filterProducts = async (category, min, max) => {
   try {
     const allData = await Product.findAll({
       include: {
@@ -171,7 +171,7 @@ const filterProducts = async (category, price) => {
     const filteredProducts = allData.filter((el) => {
       for (let i = 0; el.categories.length > i; i++) {
         if (el.categories[i].name === category || "all" === category) {
-          if (el.price <= price) {
+          if (el.price >= min && el.price <= max) {
             return el
           }
         }
