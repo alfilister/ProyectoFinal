@@ -16,6 +16,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCategories())
+    setTimeout(() => dispatch(getProducts()), 1000)
     dispatch(getProducts())
   }, [dispatch])
 

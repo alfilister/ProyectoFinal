@@ -8,6 +8,9 @@ export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 export const CLEAR_DETAIL = "CLEAR_DETAIL"
 
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
+export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART"
+
 export function getProducts() {
   return async function (dispatch) {
     try {
@@ -131,5 +134,19 @@ export function postProduct(payload) {
 export function clearDetail() {
   return {
     type: CLEAR_DETAIL,
+  }
+}
+
+export function addItemToCart(payload) {
+  return {
+    type: ADD_ITEM_TO_CART,
+    payload: payload,
+  }
+}
+
+export function removeItemFromCart(payload) {
+  return {
+    type: REMOVE_ITEM_FROM_CART,
+    payload: payload,
   }
 }
