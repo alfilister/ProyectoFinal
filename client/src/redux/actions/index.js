@@ -99,7 +99,7 @@ export function sortByRating(payload) {
 export function filters(payload) {
   return async function (dispatch) {
     const json = await axios.get(
-      `http://localhost:3001/api/products/filter?categoryName=${payload.category}&price=${payload.price}`
+      `http://localhost:3001/api/products/filter?categoryName=${payload.category}&min=${payload.min}&max=${payload.max}`
     )
     try {
       return dispatch({

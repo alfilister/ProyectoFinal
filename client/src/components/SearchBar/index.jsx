@@ -41,7 +41,7 @@ const SearchBar = () => {
     <div className="searchBar">
       <input
         type="text"
-        placeholder="Encuentra tu articulo..."
+        placeholder="Write an item to find..."
         value={name}
         onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => handleInputChange(e)}
@@ -51,7 +51,7 @@ const SearchBar = () => {
         type="submit"
         onClick={(e) => handleSubmit(e)}
       >
-        Buscar
+        Search
       </button>
     </div>
   )
