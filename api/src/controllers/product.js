@@ -193,5 +193,3 @@ module.exports = {
   deleteProduct,
   filterProducts,
 }
-
-//Este es el archivo que voy a editar
