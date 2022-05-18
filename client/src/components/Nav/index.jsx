@@ -13,6 +13,8 @@ const Nav = ({ setCurrentPage }) => {
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
 
+  var cartCounter = useSelector((state) => state.cartCounter)
+
   const handleCart = (e) => {
     e.preventDefault()
     navigate("/cart")
@@ -48,7 +50,7 @@ const Nav = ({ setCurrentPage }) => {
         )}
         <div className="cartBtnNav">
           <button onClick={(e) => handleCart(e)}>Cart</button>
-          <p className="cartCounter">0</p>
+          <p className="cartCounter">{cartCounter}</p>
         </div>
       </div>
     </div>
