@@ -67,7 +67,12 @@ const Detail = () => {
                       : "No hay descuentos aún!"
                   }`}</p>
                 </div>
-                <p>{`⭐ ${productId.rating}`}</p>
+                <p>
+                  ⭐
+                  {!productId.rating
+                    ? "Este producto todavia no tiene calificacion"
+                    : productId.rating}
+                </p>
                 <label>Stock:</label>
                 <p className="stock" style={{ border: "1px solid black" }}>
                   {productId.stock}
