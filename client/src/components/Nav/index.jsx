@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
 import { NavLink, Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 
 import "../../scss/components/_nav.scss"
@@ -47,6 +48,7 @@ const Nav = ({ setCurrentPage }) => {
         )}
         <div className="cartBtnNav">
           <button onClick={(e) => handleCart(e)}>Cart</button>
+          <p className="cartCounter">0</p>
         </div>
       </div>
     </div>

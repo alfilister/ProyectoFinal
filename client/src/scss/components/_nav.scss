@@ -60,8 +60,10 @@
   .cartBtnNav {
     display: flex;
     align-items: center;
+    position: relative;
     button {
-      color: $dark-800;
+      background-color: transparent;
+      color: $dark-000;
       font-weight: 600;
       height: 3em;
       width: 3em;
@@ -72,6 +74,15 @@
         color: $red-000;
         transition: ease 0.5s;
       }
+    }
+
+    p {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+
+      font-weight: bold;
+      color: $red-000;
     }
   }
 }
