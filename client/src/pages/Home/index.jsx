@@ -6,7 +6,6 @@ import CategoryGrid from "../../components/CategoryGrid"
 const Home = () => {
   return (
     <div className="home">
-      <Nav />
       <br></br>
       <CategoryGrid />
       <CardSlider />
