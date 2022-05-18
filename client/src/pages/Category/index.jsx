@@ -14,7 +14,8 @@ function Category() {
     dispatch(
       filters({
         category: categoryName,
-        price: 1000,
+        min: 0,
+        max: 1000,
       })
     )
   }, [dispatch])
