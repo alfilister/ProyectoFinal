@@ -1,21 +1,21 @@
-import React from "react"
-import { NavLink, Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import "../../scss/components/_nav.scss"
-import logo from "../../scss/assets/logo.png"
-import LoginButton from "../User/Login"
-import LogOutButton from "../User/LogOut"
-import Profile from "../User/profileUser"
-import { useAuth0 } from "@auth0/auth0-react"
+import "../../scss/components/_nav.scss";
+import logo from "../../scss/assets/logo.png";
+import LoginButton from "../User/Login";
+import LogOutButton from "../User/LogOut";
+import Profile from "../User/profileUser";
+import { useAuth0 } from "@auth0/auth0-react";
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated } = useAuth0()
-  const navigate = useNavigate()
+  const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
 
   const handleCart = (e) => {
-    e.preventDefault()
-    navigate("/cart")
-  }
+    e.preventDefault();
+    navigate("/cart");
+  };
 
   return (
     <div className="divNavbar">
@@ -48,7 +48,7 @@ const Nav = ({ setCurrentPage }) => {
         <button onClick={(e) => handleCart(e)}>Cart</button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;
