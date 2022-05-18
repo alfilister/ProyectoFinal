@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
-import Nav from "../Nav";
+
 import "../../scss/pages/_created.scss";
 import { useNavigate } from "react-router-dom";
 
 //funcion validadora para hacer el formulario controlado
 function validate(input) {
   let errors = {};
-  let nameRequiere = /^[a-zA-Z]+$/;
+  let nameRequiere = /^[.@&]?[a-zA-Z0-9 ]+[ !.@&()]?[ a-zA-Z0-9!()]+/;
   let numbers = /^[0-9]*[1-9][0-9]*$/;
   let urlValidate = /\.(gif|jpeg|jpg|png|webp)$/i;
 
@@ -20,7 +20,7 @@ function validate(input) {
   } else if (input.name.length < 2 || input.name.length > 50) {
     errors.name = "Minimo 2 caracteres";
   } else if (!nameRequiere.test(input.name)) {
-    errors.name = "El nombre solo pueden ser letras";
+    errors.name = "Solo letras, numeros y guiones";
   }
   if (!input.price || input.price === 0) {
     errors.price = "Ingrese precio";
@@ -111,7 +111,6 @@ const Create = () => {
 
   return (
     <div className="formContainer">
-      <Nav />
       <br />
       <div className="form">
         <div className="tituloCargar">
