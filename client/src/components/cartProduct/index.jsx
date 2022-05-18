@@ -31,15 +31,24 @@ const CartProduct = ({ id, quantity, product, total, setTotal }) => {
     }
   }
 
+  const handleClickImg = (e, id) => {
+    e.preventDefault()
+    navigate(`/producto/${id}`)
+  }
+
   return (
     <div className="cartProduct">
       <div className="imgCart">
-        <img src={product.image} alt="product" />
+        <img
+          onClick={(e) => handleClickImg(e, id)}
+          src={product.image}
+          alt="product"
+        />
       </div>
       <div className="cartInfo">
         <h3>{product.name}</h3>
-        <h3>{product.price}</h3>
-        <h3>Available stock {product.stock}</h3>
+        <h3>$ {product.price} per unit</h3>
+        <h3>Available stock: {product.stock}</h3>
       </div>
       <div className="btnsCart">
         <button onClick={(e) => handleMinus(e, id)}>-</button>
@@ -47,7 +56,7 @@ const CartProduct = ({ id, quantity, product, total, setTotal }) => {
         <button onClick={(e) => handlePlus(e, id)}>+</button>
       </div>
       <div className="subTotal">
-        <h2>{(product.price * state).toFixed(2)}</h2>
+        <h2>$ {(product.price * state).toFixed(2)}</h2>
       </div>
     </div>
   )
