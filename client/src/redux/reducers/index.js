@@ -134,6 +134,7 @@ function rootReducer(state = initialState, action) {
           return { ...state }
         } else {
           alert("There is no available stock for this item")
+          return { ...state }
         }
       } else {
         const result = product.filter((el) => el.id === action.payload)[0]
@@ -151,13 +152,12 @@ function rootReducer(state = initialState, action) {
         (el) => el.id === action.payload
       )[0]
 
-      if (itemToremove.quantity > 1) {
+      if (itemToremove.quantity > 0) {
         itemToremove.quantity--
         return { ...state }
       } else {
         return {
           ...state,
-          cart: state.cart.filter((el) => el.id !== action.payload),
         }
       }
 
