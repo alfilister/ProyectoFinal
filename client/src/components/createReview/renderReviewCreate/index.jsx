@@ -5,7 +5,8 @@ import ChangeRating from "../changeRating/index";
 import { postReview } from "../../../redux/actions";
 
 export default function Rating() {
-  // Rating
+  // Rating esto es un cambio para subir a la dev branch
+
   const [avgRating, setAvgRating] = useState(0);
 
   const handleRating = (input) => {
