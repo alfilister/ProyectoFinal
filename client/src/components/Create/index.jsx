@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
-import Nav from "../Nav";
 import "../../scss/pages/_created.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -111,7 +110,6 @@ const Create = () => {
 
   return (
     <div className="formContainer">
-      <Nav />
       <br />
       <div className="form">
         <div className="tituloCargar">

@@ -21,8 +21,6 @@ function ControlPanel(idUser) {
         return (userRef.role)
     }
 
-    console.log(menu)
-
     return (
         <div>
             <MenuAdmin setMenu={setMenu} menu={menu}/>
