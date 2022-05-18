@@ -7,9 +7,8 @@ import {
   SORT_PRODUCTS_BY_RATING,
   FILTER_PRODUCTS,
   CLEAR_DETAIL,
-
+  GET_USER_BY_ID,
   GET_REVIEWS_PRODUCT,
-
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
 } from "../actions"
@@ -22,6 +21,7 @@ const initialState = {
   productsDetail: [],
   featProducts: [],
   suggestedRandom: [],
+  user: {},
   reviewProduct: [],
   cart: [],
 }
@@ -145,6 +145,11 @@ function rootReducer(state = initialState, action) {
             { quantity: 1, id: result.id, product: result },
           ],
         }
+
+    case GET_USER_BY_ID:
+      return{
+        ...state,
+        user: action.payload
       }
 
     case REMOVE_ITEM_FROM_CART:
@@ -161,7 +166,7 @@ function rootReducer(state = initialState, action) {
         }
       }
 
-      return { ...state }
+      //return { ...state }
     default:
       return state;
   }
