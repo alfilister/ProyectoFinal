@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import "../../scss/components/_nav.scss";
 import logo from "../../scss/assets/logo.png";
@@ -9,6 +11,14 @@ import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 const Nav = ({ setCurrentPage }) => {
   const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+
+  var cartCounter = useSelector((state) => state.cartCounter);
+
+  const handleCart = (e) => {
+    e.preventDefault();
+    navigate("/cart");
+  };
 
   return (
     <div className="divNavbar">
@@ -21,9 +31,9 @@ const Nav = ({ setCurrentPage }) => {
         </NavLink>
       </div>
       <div className="searchBarStylo">
-        <Link to="/createProduct" className="linkVender">
+        {/* <Link to="/createProduct" className="linkVender">
           Vender Articulo
-        </Link>
+        </Link> */}
       </div>
       <div className="logeo">
         {isAuthenticated ? (
@@ -38,6 +48,10 @@ const Nav = ({ setCurrentPage }) => {
             <LoginButton />
           </div>
         )}
+        <div className="cartBtnNav">
+          <button onClick={(e) => handleCart(e)}>Cart</button>
+          <p className="cartCounter">{cartCounter}</p>
+        </div>
       </div>
     </div>
   );

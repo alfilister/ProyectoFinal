@@ -1,5 +1,7 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { addItemToCart } from "../../redux/actions"
 
 const Card = ({
   id,
@@ -12,9 +14,16 @@ const Card = ({
   featured,
 }) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
-  const handleClick = () => {
+  const handleDetail = (e) => {
+    e.preventDefault()
     navigate(`/producto/${id}`)
+  }
+
+  const handleCart = (e) => {
+    e.preventDefault()
+    dispatch(addItemToCart(id))
   }
 
   return (
@@ -35,7 +44,8 @@ const Card = ({
         <span>⭐ {rating}</span>
       </div>
       <div className="btn">
-        <button onClick={(e) => handleClick(e)}>Details</button>
+        <button onClick={(e) => handleDetail(e)}>Details</button>
+        <button onClick={(e) => handleCart(e)}>Add To Cart</button>
       </div>
     </div>
   )

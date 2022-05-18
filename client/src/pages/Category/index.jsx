@@ -14,7 +14,8 @@ function Category() {
     dispatch(
       filters({
         category: categoryName,
-        price: 1000,
+        min: 0,
+        max: 1000,
       })
     )
   }, [dispatch])
@@ -32,7 +33,6 @@ function Category() {
 
   return (
     <div className="categoryPage">
-      <Nav />
       <div className="categoryTitle">
         <h1>{categoryName.toUpperCase()}</h1>
       </div>

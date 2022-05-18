@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
-import Nav from "../../components/Nav";
+import Nav from "../Nav";
 import "../../scss/pages/_created.scss";
 import { useNavigate } from "react-router-dom";
 
@@ -58,7 +58,6 @@ const Create = () => {
     description: "",
     discount: "",
     stock: "",
-    rating: "",
     categories: [],
   });
 
@@ -104,7 +103,6 @@ const Create = () => {
       description: "",
       discount: "",
       stock: "",
-      rating: "",
       categories: [],
     });
     alert("tu Producto se creo con exito");
@@ -207,20 +205,6 @@ const Create = () => {
           </div>
           <div className="form-group">
             {errors.stock && <div className="form-errors">{errors.stock}</div>}
-          </div>
-
-          <div className="elementosForm">
-            <label>Rating : </label>
-            <input
-              type="number"
-              step="0.1"
-              min="0"
-              max="5"
-              placeholder="rating"
-              value={input.rating}
-              name="rating"
-              onChange={handleChangeInput}
-            />
           </div>
 
           <div className="elementosForm">

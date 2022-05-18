@@ -13,7 +13,7 @@
 @use "./scss/components/cardSlider";
 @use "./scss/components/categoryGrid";
 @use "./scss/components/nav";
-
+@use "./scss/components/cartProduct";
 
 /* pages */
 @use "./scss/pages/created";
@@ -21,3 +21,4 @@
 @use "./scss/pages/category";
 @use "./scss/pages/home";
 @use "./scss/pages/error";
+@use "./scss/pages/cart";

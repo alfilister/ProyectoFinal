@@ -15,6 +15,18 @@ router.get("/", async (req, res, next) => {
   }
 })
 
+router.get("/:idUser", async (req, res, next) => {
+  const {idUser} = req.params
+  try {
+    res.json({
+      status: "Users loaded",
+      results: await userController.getUserById(idUser),
+    })
+  } catch (err) {
+    next(err)
+  }
+})
+
 router.post("/", async (req, res, next) => {
   const { user } = req.body
   try {

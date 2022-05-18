@@ -7,6 +7,10 @@ import {
   SORT_PRODUCTS_BY_RATING,
   FILTER_PRODUCTS,
   CLEAR_DETAIL,
+  GET_USER_BY_ID,
+  GET_REVIEWS_PRODUCT,
+  ADD_ITEM_TO_CART,
+  REMOVE_ITEM_FROM_CART,
 } from "../actions"
 
 const initialState = {
@@ -16,6 +20,10 @@ const initialState = {
   productsDetail: [],
   featProducts: [],
   suggestedRandom: [],
+  user: {},
+  reviewProduct: [],
+  cart: [],
+  cartCounter: 0,
 }
 
 function rootReducer(state = initialState, action) {
@@ -102,14 +110,63 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
-      case CLEAR_DETAIL:
-        return{
-          ...state,
-          productsDetail: []
+
+    case CLEAR_DETAIL:
+      return {
+        ...state,
+        productsDetail: [],
+      }
+    case GET_REVIEWS_PRODUCT:
+      return {
+        ...state,
+        reviewProduct: action.payload,
+      }
+
+    case ADD_ITEM_TO_CART:
+      const product = state.copyProducts
+      const validation = state.cart.filter((e) => e.id === action.payload)
+
+      if (validation[0]) {
+        if (validation[0].product.stock > validation[0].quantity) {
+          validation[0].quantity++
+          return { ...state, cartCounter: ++state.cartCounter }
+        } else {
+          alert("There is no available stock for this item")
+          return { ...state }
         }
+      } else {
+        const result = product.filter((el) => el.id === action.payload)[0]
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            { quantity: 1, id: result.id, product: result },
+          ],
+          cartCounter: ++state.cartCounter,
+        }
+      }
 
-      
+    case REMOVE_ITEM_FROM_CART:
+      const itemToremove = state.cart.filter(
+        (el) => el.id === action.payload
+      )[0]
 
+      if (itemToremove.quantity > 0) {
+        itemToremove.quantity--
+        return { ...state, cartCounter: --state.cartCounter }
+      } else {
+        return {
+          ...state,
+        }
+      }
+
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        user: action.payload,
+      }
+
+    //return { ...state }
     default:
       return state
   }
