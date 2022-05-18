@@ -33,12 +33,20 @@ const CartProduct = ({ id, quantity, product, total, setTotal }) => {
 
   return (
     <div className="cartProduct">
-      <div>
-        {/* <img src={product.image} alt="product" /> */}
-        <p>{product.name}</p>
+      <div className="imgCart">
+        <img src={product.image} alt="product" />
+      </div>
+      <div className="cartInfo">
+        <h3>{product.name}</h3>
+        <h3>{product.price}</h3>
+        <h3>Available stock {product.stock}</h3>
+      </div>
+      <div className="btnsCart">
         <button onClick={(e) => handleMinus(e, id)}>-</button>
         <h3>{state}</h3>
         <button onClick={(e) => handlePlus(e, id)}>+</button>
+      </div>
+      <div className="subTotal">
         <h2>{(product.price * state).toFixed(2)}</h2>
       </div>
     </div>
