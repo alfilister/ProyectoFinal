@@ -45,7 +45,9 @@ const Nav = ({ setCurrentPage }) => {
             <LoginButton />
           </div>
         )}
-        <button onClick={(e) => handleCart(e)}>Cart</button>
+        <div className="cartBtnNav">
+          <button onClick={(e) => handleCart(e)}>Cart</button>
+        </div>
       </div>
     </div>
   )

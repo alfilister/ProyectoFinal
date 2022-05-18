@@ -1,65 +1,77 @@
 @use "../abstracts/_variables.scss" as *;
 
-.divNavbar{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 100%;
-    background-color: $red-800;
-    height: 5rem;
+.divNavbar {
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  width: 100%;
+  background-color: $red-800;
+  height: 5rem;
 }
-.divSeachYLogo{
-    height: 100%;
-    display: flex ;
-    justify-content: flex-start;
-    align-items: center;
-    .logo{
-        .logoImg{
-            height: 3rem;
-            width: fit-content;
-            border-radius: 50%;
-            padding-left: 0.5rem;
-            padding-right: 0.5rem;
-        }
+.divSeachYLogo {
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  .logo {
+    .logoImg {
+      height: 3rem;
+      width: fit-content;
+      border-radius: 50%;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
+  }
 }
-.tituloPag{
-    text-transform: uppercase;
-    font-family: $fuente-titulo ; 
-    color: $red-000 ;
-    text-decoration: none;
+.tituloPag {
+  text-transform: uppercase;
+  font-family: $fuente-titulo;
+  color: $red-000;
+  text-decoration: none;
 }
 
-.searchBarStylo{
-    height: 100%;
+.searchBarStylo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  .linkVender {
+    color: $red-000;
+    font-family: $fuente-parrafos;
+    text-decoration: none;
+    padding-top: 0.6rem;
+    &:hover {
+      color: $red-500;
+      transition: ease-in-out 0.3s;
+    }
+  }
+}
+
+.logeo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+
+  .autenticated {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .cartBtnNav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    .linkVender{
+    button {
+      color: $dark-800;
+      font-weight: 600;
+      height: 3em;
+      width: 3em;
+      border-radius: 50%;
+      border: none;
+      &:hover {
+        background-color: $primary;
         color: $red-000;
-        font-family: $fuente-parrafos;
-        text-decoration: none;
-        padding-top: 0.6rem;
-        &:hover {
-            color: $red-500;
-            transition: ease-in-out 0.3s;        }
-        }
+        transition: ease 0.5s;
+      }
     }
-
-    .logeo{
-        height: 100%;
-        display: flex;
-        justify-content: flex-end;
-        
-        .autenticated{
-            display: flex;
-            flex-direction: row;
-        }
+  }
 }
-
-
-
-
-
-
-
