@@ -8,9 +8,9 @@ export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING";
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
-export const GET_USER_BY_ID = "GET_USER_BY_ID"
-export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
-export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART"
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
+export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -160,22 +160,38 @@ export function addItemToCart(payload) {
   return {
     type: ADD_ITEM_TO_CART,
     payload: payload,
-  }
+  };
 }
 
 export function removeItemFromCart(payload) {
   return {
     type: REMOVE_ITEM_FROM_CART,
     payload: payload,
-  }
+  };
 }
 
-export function getUserById(idUser){
-  return async function(dispatch){
-    const json = await axios.get(`http://localhost:3001/api/users/${idUser}`)
+export function getUserById(idUser) {
+  return async function (dispatch) {
+    const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
     return dispatch({
       type: GET_USER_BY_ID,
       payload: json.data.results,
-    })
-  }
+    });
+  };
+}
+
+export function postReview(payload) {
+  return async function (dispatch) {
+    const json = await axios.post(
+      "http://localhost:3001/api/reviews/",
+      payload
+    );
+
+    try {
+      console.log(json);
+      return json;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }

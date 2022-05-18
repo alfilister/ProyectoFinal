@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import StarRating from "../startRating/index";
 import ChangeRating from "../changeRating/index";
+import { postReview } from "../../../redux/actions";
 
 export default function Rating() {
   // Rating

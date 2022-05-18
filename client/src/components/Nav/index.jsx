@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React from "react"
+import { NavLink, Link } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 
-import "../../scss/components/_nav.scss";
-import logo from "../../scss/assets/logo.png";
-import LoginButton from "../User/Login";
-import LogOutButton from "../User/LogOut";
-import Profile from "../User/profileUser";
-import { useAuth0 } from "@auth0/auth0-react";
+import "../../scss/components/_nav.scss"
+import logo from "../../scss/assets/logo.png"
+import LoginButton from "../User/Login"
+import LogOutButton from "../User/LogOut"
+import Profile from "../User/profileUser"
+import { useAuth0 } from "@auth0/auth0-react"
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth0()
+  const navigate = useNavigate()
 
-  var cartCounter = useSelector((state) => state.cartCounter);
+  var cartCounter = useSelector((state) => state.cartCounter)
 
   const handleCart = (e) => {
-    e.preventDefault();
-    navigate("/cart");
-  };
+    e.preventDefault()
+    navigate("/cart")
+  }
 
   return (
     <div className="divNavbar">
@@ -31,9 +31,9 @@ const Nav = ({ setCurrentPage }) => {
         </NavLink>
       </div>
       <div className="searchBarStylo">
-        {/* <Link to="/createProduct" className="linkVender">
+        <Link to="/createProduct" className="linkVender">
           Vender Articulo
-        </Link> */}
+        </Link>
       </div>
       <div className="logeo">
         {isAuthenticated ? (
@@ -54,7 +54,7 @@ const Nav = ({ setCurrentPage }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Nav;
+export default Nav
