@@ -1,5 +1,11 @@
 @use "../abstracts/_variables.scss" as *;
 
+.emptyCart {
+  h2 {
+    text-align: center;
+  }
+}
+
 .cartPage {
   display: flex;
   justify-content: center;
@@ -12,7 +18,7 @@
   .totalAmount {
     padding-top: 1.5em;
     border-radius: 20px;
-    width: 290px;
+    min-width: 200px;
 
     background-color: $dark-500;
     display: flex;
