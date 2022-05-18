@@ -28,9 +28,9 @@ const Nav = ({ setCurrentPage }) => {
         </NavLink>
       </div>
       <div className="searchBarStylo">
-        <Link to="/createProduct" className="linkVender">
+        {/* <Link to="/createProduct" className="linkVender">
           Vender Articulo
-        </Link>
+        </Link> */}
       </div>
       <div className="logeo">
         {isAuthenticated ? (
