@@ -1,24 +1,24 @@
-import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
-import Pagination from "../Pagination"
-import Card from "../Card"
+import Pagination from "../Pagination";
+import Card from "../Card";
 
 const CardsContainer = () => {
-  const fullProducts = useSelector((state) => state.products)
-  const [currentPage, setCurrentPage] = useState(1)
-  const [productsPerPage, setProductsPerPage] = useState(6)
-  const indexOfLastProduct = currentPage * productsPerPage //15
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage // 0
+  const fullProducts = useSelector((state) => state.products);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(6);
+  const indexOfLastProduct = currentPage * productsPerPage; //15
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 0
 
   const currentProducts = fullProducts?.slice(
     indexOfFirstProduct,
     indexOfLastProduct
-  )
+  );
 
   const paginado = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div>
@@ -53,12 +53,12 @@ const CardsContainer = () => {
                   categories={el.categories.map((el) => el.name).join(" | ")}
                 />
               </div>
-            )
+            );
           })
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CardsContainer
+export default CardsContainer;
