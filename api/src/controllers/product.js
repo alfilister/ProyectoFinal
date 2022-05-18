@@ -1,8 +1,8 @@
-const Sequelize = require("sequelize")
-const Op = Sequelize.Op
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 // const axios = require("axios")
-const { Category, Product, Review, User } = require("../db")
-const db_mock_data = require("../../db_mock_data.json") //DATA MOCK
+const { Category, Product, Review, User } = require("../db");
+const db_mock_data = require("../../db_mock_data.json"); //DATA MOCK
 
 //GET ALL PRODUCTS IN DB
 const getProductInfo = async () => {
@@ -21,14 +21,14 @@ const getProductInfo = async () => {
           featured: product.featured,
           rating: product.rating,
         },
-      })
+      });
       if (created) {
         const cat = await Category.findAll({
           where: { name: product.categories },
-        })
-        p.addCategory(cat)
+        });
+        p.addCategory(cat);
       }
-    })
+    });
 
     const products = await Product.findAll({
       include: [
@@ -39,13 +39,13 @@ const getProductInfo = async () => {
         },
         Review,
       ],
-    })
+    });
 
-    return products.map((p) => p.toJSON())
+    return products.map((p) => p.toJSON());
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 //GET PRODUCTS BY NAME
 const searchProductByName = async (nameProduct) => {
@@ -57,10 +57,10 @@ const searchProductByName = async (nameProduct) => {
         attributes: ["name"],
         through: { attributes: [] },
       },
-    })
-    return products
+    });
+    return products;
   } catch (error) {}
-}
+};
 
 const searchProductById = async (idProduct) => {
   try {
@@ -73,12 +73,12 @@ const searchProductById = async (idProduct) => {
         },
         Review,
       ],
-    })
-    return product
+    });
+    return product;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const postProduct = async (body) => {
   const {
@@ -91,7 +91,7 @@ const postProduct = async (body) => {
     price,
     rating,
     categories,
-  } = body
+  } = body;
 
   let productCreated = await Product.create({
     name,
@@ -102,15 +102,15 @@ const postProduct = async (body) => {
     stock,
     price,
     rating,
-  })
+  });
 
   categories.forEach(async (c) => {
-    const cat = await Category.findOne({ where: { name: c } })
-    productCreated.addCategory(cat.toJSON().id)
-  })
+    const cat = await Category.findOne({ where: { name: c } });
+    productCreated.addCategory(cat.toJSON().id);
+  });
 
-  return productCreated
-}
+  return productCreated;
+};
 
 const updateProduct = async (
   idProduct,
@@ -124,7 +124,7 @@ const updateProduct = async (
   rating,
   categories
 ) => {
-  const selected = await Product.findByPk(idProduct)
+  const selected = await Product.findByPk(idProduct);
   selected.set({
     name,
     image,
@@ -134,26 +134,26 @@ const updateProduct = async (
     discount,
     stock,
     rating,
-  })
+  });
 
   categories.forEach(async (c) => {
-    const cat = await Category.findOne({ where: { name: c } })
-    selected.setCategories(cat.toJSON().id)
-  })
+    const cat = await Category.findOne({ where: { name: c } });
+    selected.setCategories(cat.toJSON().id);
+  });
 
-  await selected.save()
+  await selected.save();
 
-  return selected
-}
+  return selected;
+};
 
 const deleteProduct = async (idProduct) => {
   try {
-    const productDeleted = await Product.destroy({ where: { id: idProduct } })
-    return productDeleted
+    const productDeleted = await Product.destroy({ where: { id: idProduct } });
+    return productDeleted;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 //FILTRO POR CATEGORIA Y PRECIO
 const filterProducts = async (category, min, max) => {
@@ -166,23 +166,23 @@ const filterProducts = async (category, min, max) => {
           attributes: [],
         },
       },
-    })
+    });
 
     const filteredProducts = allData.filter((el) => {
       for (let i = 0; el.categories.length > i; i++) {
         if (el.categories[i].name === category || "all" === category) {
           if (el.price >= min && el.price <= max) {
-            return el
+            return el;
           }
         }
       }
-    })
+    });
 
-    return filteredProducts
+    return filteredProducts;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 module.exports = {
   getProductInfo,
@@ -192,4 +192,4 @@ module.exports = {
   updateProduct,
   deleteProduct,
   filterProducts,
-}
+};

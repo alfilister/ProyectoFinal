@@ -1,24 +1,29 @@
-import "./_app.scss"
-import React, { useEffect } from "react"
-import { Routes, Route } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import "./_app.scss";
+import React, { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import Home from "./pages/Home"
-import Detail from "./pages/Detail"
-import Create from "./pages/Create"
-import Error404 from "./pages/Error404"
-import Category from "./pages/Category"
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+import Create from "./pages/Create";
+import Error404 from "./pages/Error404";
+import Category from "./pages/Category";
 
-import { getProducts, getCategories } from "./redux/actions"
+
+
 import CartPage from "./pages/CartPage"
 
+import { getProducts, getCategories, getReviewsProduct } from "./redux/actions";
+
+
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories())
     setTimeout(() => dispatch(getProducts()), 1000)
     dispatch(getProducts())
+    dispatch(getReviewsProduct());
   }, [dispatch])
 
   return (
@@ -33,7 +38,7 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
