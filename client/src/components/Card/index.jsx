@@ -21,7 +21,7 @@ const Card = ({
     navigate(`/producto/${id}`)
   }
 
-  const handleCart = (e) => {
+  const handleCart = (e, id) => {
     e.preventDefault()
     dispatch(addItemToCart(id))
   }
@@ -31,10 +31,11 @@ const Card = ({
       {featured && <div className="featTag">⭐</div>}
       <h3>{name}</h3>
       <div className="img">
-        <img src={image} />
+        <img src={image} alt="Main" />
         <img
           className="image-hover"
           src={aux_images[0] ? aux_images[0] : image}
+          alt="Alt"
         />
       </div>
 
@@ -45,7 +46,7 @@ const Card = ({
       </div>
       <div className="btn">
         <button onClick={(e) => handleDetail(e)}>Details</button>
-        <button onClick={(e) => handleCart(e)}>Add To Cart</button>
+        <button onClick={(e) => handleCart(e, id)}>Add To Cart</button>
       </div>
     </div>
   )

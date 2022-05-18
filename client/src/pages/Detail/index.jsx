@@ -2,12 +2,11 @@ import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 
-import Nav from "../../components/Nav"
-
 import {
   clearDetail,
   getProductsById,
   getReviewsProduct,
+  addItemToCart,
 } from "../../redux/actions"
 
 const Detail = () => {
@@ -24,9 +23,15 @@ const Detail = () => {
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
-    .filter((el) => id == el.id)
+    .filter((el) => Number(id) === el.id)
     .map((el) => el.reviews)
     .flat()
+
+  const handleCart = (e, id) => {
+    e.preventDefault()
+    console.log("agregado desde details")
+    dispatch(addItemToCart(Number(id)))
+  }
 
   return (
     <div className="contenedorDetalleLoader">
@@ -64,7 +69,7 @@ const Detail = () => {
                   <p className="descuento">{`${
                     productId.discount
                       ? `${productId.discount} % OFF`
-                      : "No hay descuentos aún!"
+                      : "No discounts at the moment!"
                   }`}</p>
                 </div>
                 <p>
@@ -77,12 +82,18 @@ const Detail = () => {
                 <p className="stock" style={{ border: "1px solid black" }}>
                   {productId.stock}
                 </p>
-                <label>Categorias:</label>
+                <label>Categories:</label>
                 <p className="categorias">{`| ${productId.categories?.map(
                   (el) => ` ${el.name}`
                 )} |`}</p>
+                <div className="btnCrt">
+                  <button onClick={(e) => handleCart(e, id)}>
+                    Add To Cart
+                  </button>
+                </div>
                 <div className="descripcion">
-                  <h2>Descripción:</h2>
+                  <h2>Description:</h2>
+
                   <p className="text">{productId.description}</p>
                 </div>
               </div>
@@ -103,8 +114,8 @@ const Detail = () => {
                       <div>
                         <label className="label">
                           <span className="span">
-                            <h3>NombreUsuario</h3>
-                            <p> dice...</p>
+                            <h3>UserName</h3>
+                            <p> Says...</p>
                           </span>
                           <span className="span">⭐{r.score_review}</span>
                         </label>
@@ -115,7 +126,10 @@ const Detail = () => {
                 })
               ) : (
                 <div>
-                  <h1>No hay reviews aún! Se el primero en opinar!!</h1>
+                  <h1>
+                    There are no yet reviews, buy the item and be the first in
+                    comment!
+                  </h1>
                 </div>
               )}
             </div>

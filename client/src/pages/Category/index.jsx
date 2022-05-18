@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import Nav from "../../components/Nav"
 import CardsContainer from "../../components/CardsContainer"
 import Filters from "../../components/Filters"
 import Card from "../../components/Card"
@@ -9,6 +8,7 @@ import { filters } from "../../redux/actions"
 
 function Category() {
   const dispatch = useDispatch()
+  const { categoryName } = useParams()
 
   useEffect(() => {
     dispatch(
@@ -18,11 +18,10 @@ function Category() {
         max: 1000,
       })
     )
-  }, [dispatch])
+  }, [dispatch, categoryName])
 
   const suggestedOne = useSelector((state) => state.suggestedRandom)
 
-  const { categoryName } = useParams()
   const [sorted, setSorted] = useState("")
 
   const navigate = useNavigate()
@@ -42,7 +41,7 @@ function Category() {
             <div className="blackBtn">
               <button onClick={(e) => handleBack(e)}>Back to home</button>
             </div>
-            <Filters setSorted={setSorted} />
+            <Filters setSorted={setSorted} sorted={sorted} />
           </div>
           <div className="textInvite">
             <h2>Don't leave without inspect this beauty!</h2>
@@ -67,7 +66,7 @@ function Category() {
                     image={el.image}
                     price={el.price}
                     rating={el.rating}
-                    fetured={el.featured}
+                    featured={el.featured}
                     categories={el.categories.map((el) => el.name).join(" | ")}
                   />
                 )
