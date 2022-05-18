@@ -145,7 +145,7 @@ function rootReducer(state = initialState, action) {
             { quantity: 1, id: result.id, product: result },
           ],
         }
-
+      }
     case GET_USER_BY_ID:
       return{
         ...state,
