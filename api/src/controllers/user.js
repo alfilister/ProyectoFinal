@@ -24,6 +24,15 @@ const getUser = async () => {
   }
 }
 
+const getUserById = async (idUser)=> {
+  try {
+    const userRef = await User.findByPk(idUser)
+    return userRef.toJSON()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const postUser = async (user) => {
   try {
     const userCreated = await User.create({
@@ -40,4 +49,4 @@ const postUser = async (user) => {
   }
 }
 
-module.exports = { getUser, postUser }
+module.exports = { getUser, postUser, getUserById }

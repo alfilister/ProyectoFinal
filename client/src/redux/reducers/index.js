@@ -7,6 +7,7 @@ import {
   SORT_PRODUCTS_BY_RATING,
   FILTER_PRODUCTS,
   CLEAR_DETAIL,
+  GET_USER_BY_ID
 } from "../actions"
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   productsDetail: [],
   featProducts: [],
   suggestedRandom: [],
+  user: {}
 }
 
 function rootReducer(state = initialState, action) {
@@ -107,7 +109,11 @@ function rootReducer(state = initialState, action) {
           ...state,
           productsDetail: []
         }
-
+    case GET_USER_BY_ID:
+      return{
+        ...state,
+        user: action.payload
+      }
       
 
     default:

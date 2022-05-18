@@ -7,6 +7,7 @@ export const SORT_PRODUCTS_BY_NAME = "SORT_PRODUCTS_BY_NAME"
 export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING"
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS"
 export const CLEAR_DETAIL = "CLEAR_DETAIL"
+export const GET_USER_BY_ID = "GET_USER_BY_ID"
 
 export function getProducts() {
   return async function (dispatch) {
@@ -131,5 +132,15 @@ export function postProduct(payload) {
 export function clearDetail() {
   return {
     type: CLEAR_DETAIL,
+  }
+}
+
+export function getUserById(idUser){
+  return async function(dispatch){
+    const json = await axios.get(`http://localhost:3001/api/users/${idUser}`)
+    return dispatch({
+      type: GET_USER_BY_ID,
+      payload: json.data.results,
+    })
   }
 }
