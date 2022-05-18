@@ -9,6 +9,9 @@ export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
 
+export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
+export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART"
+
 export function getProducts() {
   return async function (dispatch) {
     try {
@@ -151,4 +154,18 @@ export function getReviewsProduct(payload) {
       console.log(error);
     }
   };
+}
+
+export function addItemToCart(payload) {
+  return {
+    type: ADD_ITEM_TO_CART,
+    payload: payload,
+  }
+}
+
+export function removeItemFromCart(payload) {
+  return {
+    type: REMOVE_ITEM_FROM_CART,
+    payload: payload,
+  }
 }

@@ -7,8 +7,13 @@ import {
   SORT_PRODUCTS_BY_RATING,
   FILTER_PRODUCTS,
   CLEAR_DETAIL,
+
   GET_REVIEWS_PRODUCT,
-} from "../actions";
+
+  ADD_ITEM_TO_CART,
+  REMOVE_ITEM_FROM_CART,
+} from "../actions"
+
 
 const initialState = {
   products: [],
@@ -18,7 +23,9 @@ const initialState = {
   featProducts: [],
   suggestedRandom: [],
   reviewProduct: [],
-};
+  cart: [],
+}
+
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -103,18 +110,58 @@ function rootReducer(state = initialState, action) {
     case "POST_PRODUCT":
       return {
         ...state,
-      };
+      }
+
     case CLEAR_DETAIL:
       return {
         ...state,
         productsDetail: [],
-      };
+
+      }
     case GET_REVIEWS_PRODUCT:
       return {
         ...state,
         reviewProduct: action.payload,
-      };
+      }
 
+    case ADD_ITEM_TO_CART:
+      const product = state.copyProducts
+      const validation = state.cart.filter((e) => e.id === action.payload)
+
+      if (validation[0]) {
+        if (validation[0].product.stock > validation[0].quantity) {
+          validation[0].quantity++
+          return { ...state }
+        } else {
+          alert("There is no available stock for this item")
+        }
+      } else {
+        const result = product.filter((el) => el.id === action.payload)[0]
+        return {
+          ...state,
+          cart: [
+            ...state.cart,
+            { quantity: 1, id: result.id, product: result },
+          ],
+        }
+      }
+
+    case REMOVE_ITEM_FROM_CART:
+      const itemToremove = state.cart.filter(
+        (el) => el.id === action.payload
+      )[0]
+
+      if (itemToremove.quantity > 1) {
+        itemToremove.quantity--
+        return { ...state }
+      } else {
+        return {
+          ...state,
+          cart: state.cart.filter((el) => el.id !== action.payload),
+        }
+      }
+
+      return { ...state }
     default:
       return state;
   }

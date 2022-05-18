@@ -15,10 +15,11 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getProducts());
+    dispatch(getCategories())
+    setTimeout(() => dispatch(getProducts()), 1000)
+    dispatch(getProducts())
     dispatch(getReviewsProduct());
-  }, [dispatch]);
+  }, [dispatch])
 
   return (
     <div>
