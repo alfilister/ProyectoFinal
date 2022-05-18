@@ -18,7 +18,6 @@ function CartPage() {
 
   return (
     <div>
-      <Nav />
       {!initialCart[0] ? (
         <div className="emptyCart">
           <h2>Empty cart, feel free to explore our categories</h2>

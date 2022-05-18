@@ -1,36 +1,35 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react"
+import { useParams } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
 
-import Nav from "../../components/Nav";
+import Nav from "../../components/Nav"
 
 import {
   clearDetail,
   getProductsById,
   getReviewsProduct,
-} from "../../redux/actions";
+} from "../../redux/actions"
 
 const Detail = () => {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const productId = useSelector((state) => state.productsDetail);
-  const productReview = useSelector((state) => state.reviewProduct);
+  const dispatch = useDispatch()
+  const { id } = useParams()
+  const productId = useSelector((state) => state.productsDetail)
+  const productReview = useSelector((state) => state.reviewProduct)
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 50);
-    setTimeout(() => dispatch(getReviewsProduct()), 50);
-    dispatch(clearDetail());
-  }, [dispatch, id]);
+    setTimeout(() => dispatch(getProductsById(id)), 50)
+    setTimeout(() => dispatch(getReviewsProduct()), 50)
+    dispatch(clearDetail())
+  }, [dispatch, id])
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
     .filter((el) => id == el.id)
     .map((el) => el.reviews)
-    .flat();
+    .flat()
 
   return (
     <div className="contenedorDetalleLoader">
-      <Nav />
       <div className="detailContainer">
         {productId.length === 0 ? (
           <img
@@ -53,7 +52,7 @@ const Detail = () => {
                           <img src={el} alt="imagenes auxiliares" />;
                         </div>
                       </>
-                    );
+                    )
                   })}
                 </div>
               </div>
@@ -107,7 +106,7 @@ const Detail = () => {
                         <p className="p">{r.product_review}</p>
                       </div>
                     </div>
-                  );
+                  )
                 })
               ) : (
                 <div>
@@ -119,7 +118,7 @@ const Detail = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Detail;
+export default Detail

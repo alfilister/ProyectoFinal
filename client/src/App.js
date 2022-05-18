@@ -11,6 +11,7 @@ import ControlPanel from "./pages/Admin"
 import CartPage from "./pages/CartPage"
 
 import { getProducts, getCategories, getReviewsProduct } from "./redux/actions"
+import Nav from "./components/Nav"
 
 function App() {
   const dispatch = useDispatch()
@@ -22,12 +23,9 @@ function App() {
     dispatch(getReviewsProduct())
   }, [dispatch])
 
-  const initialCart = useSelector((state) => state.cart)
-
-  const [cartCount, setCartCount] = useState(initialCart.length)
-
   return (
     <div>
+      <Nav />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error404 />} />

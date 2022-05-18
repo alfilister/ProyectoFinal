@@ -33,7 +33,6 @@ function Category() {
 
   return (
     <div className="categoryPage">
-      <Nav />
       <div className="categoryTitle">
         <h1>{categoryName.toUpperCase()}</h1>
       </div>
