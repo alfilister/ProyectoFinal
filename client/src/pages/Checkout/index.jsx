@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { useDispatch, useSelector } from "react-redux"
-import { completeDataOrder, setOrderCheckout } from "../../redux/actions"
+import { useDispatch, useSelector } from "react-redux";
+import { completeDataOrder, setOrderCheckout } from "../../redux/actions";
 
 function Checkout() {
-  const dispatch = useDispatch()
-  const finalOrder = useSelector((state) => state.order)
+  const dispatch = useDispatch();
+  const finalOrder = useSelector((state) => state.order);
 
   const [fields, setFields] = useState({
     receiver_phone: "",
@@ -15,25 +15,28 @@ function Checkout() {
     shipping_address: "",
     zip_code: "",
     status: "attempted",
-  })
+  });
+
+  const [showPay, setShowPay] = useState(false);
 
   const handleChange = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setFields({
       ...fields,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const handleConfirm = (e, fields) => {
-    e.preventDefault()
-    dispatch(completeDataOrder(fields))
-  }
+    e.preventDefault();
+    setShowPay(true);
+    dispatch(completeDataOrder(fields));
+  };
 
   const handlePay = (e) => {
-    e.preventDefault()
-    dispatch(setOrderCheckout(finalOrder))
-  }
+    e.preventDefault();
+    dispatch(setOrderCheckout(finalOrder));
+  };
 
   return (
     <div className="checkoutPage">
@@ -81,9 +84,9 @@ function Checkout() {
           value="Confirm Shipping Information"
         />
       </form>
-      <button onClick={(e) => handlePay(e)}>Pay</button>
+      {showPay && <button onClick={(e) => handlePay(e)}>Pay</button>}
     </div>
-  )
+  );
 }
 
-export default Checkout
+export default Checkout;
