@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+
+import StarRating from "../../components/createReview/startRating";
 
 import {
   clearDetail,
@@ -75,11 +77,13 @@ const Detail = () => {
                       : "No discounts at the moment!"
                   }`}</p>
                 </div>
-                <p>
-                  {!productId.rating
-                    ? "Este producto todavia no tiene calificacion"
-                    : `⭐ ${productId.rating}`}
-                </p>
+                {!productId.rating ? (
+                  <p>Este producto todavia no tiene calificacion</p>
+                ) : (
+                  <div>
+                    <StarRating stars={productId.rating} />
+                  </div>
+                )}
                 <label>Stock:</label>
                 <p className="stock" style={{ border: "1px solid black" }}>
                   {productId.stock}
@@ -113,16 +117,18 @@ const Detail = () => {
                         height="30px"
                         width="30px"
                       />
-                      <div>
+                      <div className="ConteinerUser">
                         <label className="label">
                           <span className="span">
                             {usersReview?.map((el) => {
                               if (el.id === r.user_id)
                                 return <h3>{el.fullName}</h3>;
                             })}
-                            <p> Says...</p>
+                            <p>Says...</p>
                           </span>
-                          <span className="span">⭐{r.score_review}</span>
+                          <div className="starReview">
+                            <StarRating stars={r.score_review} />
+                          </div>
                         </label>
                         <p className="p">{r.product_review}</p>
                       </div>
@@ -137,6 +143,9 @@ const Detail = () => {
                   </h1>
                 </div>
               )}
+              <Link to="/reviewsPost">
+                <button>Add Review</button>
+              </Link>
             </div>
           </div>
         )}
