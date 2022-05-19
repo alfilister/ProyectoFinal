@@ -1,10 +1,13 @@
-import React, { useState } from "react"
-import Nav from "../../components/Nav"
-import { useSelector } from "react-redux"
+import React, { useState, useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
 import CartProduct from "../../components/cartProduct"
 import CategoryGrid from "../../components/CategoryGrid"
+import { createOrderFromCart } from "../../redux/actions"
 
 function CartPage() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const initialCart = useSelector((state) => state.cart)
 
   var subTotal = []
@@ -15,6 +18,12 @@ function CartPage() {
   const [total, setTotal] = useState(finalValue)
   var taxIva = (Number(total) * 0.19).toFixed(2)
   var final = (Number(total) + Number(taxIva)).toFixed(2)
+
+  const handleClickCheckout = async (e) => {
+    e.preventDefault()
+    dispatch(createOrderFromCart(final))
+    navigate("/checkout")
+  }
 
   return (
     <div>
@@ -46,7 +55,9 @@ function CartPage() {
             <h3>SubTotal $ {total}</h3>
             <h3>Taxes $ {taxIva}</h3>
             <h2>Total $ {final}</h2>
-            <button>Proceed to checkout</button>
+            <button onClick={(e) => handleClickCheckout(e)}>
+              Proceed to checkout
+            </button>
           </div>
         </div>
       )}
