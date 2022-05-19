@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements, CardElement } from "@stripe/react-stripe-js";
 
 import { useDispatch, useSelector } from "react-redux";
 import { completeDataOrder, setOrderCheckout } from "../../redux/actions";
 
 function Checkout() {
+  const stripePromise = loadStripe(
+    "pk_test_51L1HPsAYXX7Bavv4uDeTk9tUjSb4ZzVcVDYWs7nw8gkmrlJGtHTI5O6CmiEqRadAWwBaCcc3j0b8v1bZAyKx1wy300bjsAkEqi"
+  );
+
   const dispatch = useDispatch();
   const finalOrder = useSelector((state) => state.order);
 
@@ -85,6 +91,10 @@ function Checkout() {
         />
       </form>
       {showPay && <button onClick={(e) => handlePay(e)}>Pay</button>}
+
+      <Elements stripe={stripePromise}>
+        <CardElement />
+      </Elements>
     </div>
   );
 }
