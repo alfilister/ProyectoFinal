@@ -277,5 +277,32 @@
         "product_id":7,
         "user_id":5
       }
+    ],
+    "orders":[
+      {
+        "cart_list":[["40", "Super Product 2000", "995", "2"], ["2", "sendphone x", "17.95", "1"]],
+        "products_id":[4, 2],
+        "total_purchase":2389.46,
+        "receiver_phone": "3008481060",
+        "state": "GA",
+        "city": "Atlanta",
+        "shipping_address": "Charles St. Brook 587",
+        "zip_code": 111311,
+        "status": "active",
+        "user_id":2
+      },
+      {
+        "cart_list":[["04", "Super Product 2000", "995", "2"], ["2", "sendphone x", "17.95", "4"]],
+        "products_id":[4, 2],
+        "total_purchase":2453.54,
+        "receiver_phone": "6668481060",
+        "state": "CA",
+        "city": "San Diego",
+        "shipping_address": "Charles St. Brook 587",
+        "zip_code": 111311,
+        "status": "active",
+        "user_id":4
+      }
     ]
+
 }
