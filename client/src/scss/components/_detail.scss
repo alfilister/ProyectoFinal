@@ -157,45 +157,60 @@
     }
   }
 }
-
-.reviews {
-  margin-top: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  .usuario {
-    width: 70%;
+ 
+  .reviews {
+    margin-top: 2rem;
     display: flex;
-    margin: 5px;
-    background-color: $red-100;
+    flex-direction: column;
     align-items: center;
-    padding-right: 10px;
-    .img {
-      background-color: $red-300;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      margin-left: 30px;
-      margin-right: 30px;
-    }
-    .label {
-      color: $red-800;
+    height: 100%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    .usuario {
+      width: 70%;
       display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-right: 10px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      .span {
+      margin: 5px;
+      background-color: $red-300;
+      align-items: center;
+      padding-right: 10px;
+      margin-bottom: 4rem;
+      .img {
+        background-color: $red-100;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      .label {
+        color: $red-800;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        margin-right: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        width: 43rem;
+        align-items: center;
+        .span {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          p{
+            padding-left: 0.4rem;
+          }
+        }
+        .starReview {
+          float: right;
+        }
+      }
+      .p {
+        color: $red-800;
+        margin-bottom: 10px;
+        padding-left: 5px;
+        padding-bottom: 20px;
+  
       }
     }
-    .p {
-      color: $red-800;
-      margin-bottom: 10px;
-    }
-  }
-}
+  }  
+
