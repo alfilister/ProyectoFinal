@@ -1,18 +1,18 @@
 const { Review, User, Product } = require("../db")
-const db_mock_data = require('../../db_mock_data.json');//DATA MOCK
+const db_mock_data = require("../../db_mock_data.json") //DATA MOCK
 
 const getReviewByProduct = async () => {
   try {
     //GET DATA MOCK
-    db_mock_data.reviews.forEach(async (review)=>{
+    db_mock_data.reviews.forEach(async (review) => {
       await Review.findOrCreate({
-       where: {
-        product_review: review.product_review,
-        score_review: review.score_review,
-        product_id: review.product_id,
-        user_id: review.user_id
-       }
-     })
+        where: {
+          product_review: review.product_review,
+          score_review: review.score_review,
+          product_id: review.product_id,
+          user_id: review.user_id,
+        },
+      })
     })
 
     return await Product.findAll({
@@ -26,14 +26,14 @@ const getReviewByProduct = async () => {
 const getReviewByUser = async () => {
   try {
     //GET DATA MOCK
-    db_mock_data.reviews.forEach(async (review)=>{
+    db_mock_data.reviews.forEach(async (review) => {
       await Review.findOrCreate({
-       where: {
-        product_review: review.product_review,
-        score_review: review.score_review,
-        product_id: review.product_id,
-        user_id: review.user_id
-        }
+        where: {
+          product_review: review.product_review,
+          score_review: review.score_review,
+          product_id: review.product_id,
+          user_id: review.user_id,
+        },
       })
     })
 

@@ -11,18 +11,28 @@ import ControlPanel from "./pages/Admin";
 import CartPage from "./pages/CartPage";
 import ProductReview from "./components/createReview/renderReviewCreate/index";
 
-import { getProducts, getCategories, getReviewsProduct } from "./redux/actions";
-import Nav from "./components/Nav";
+
+import {
+  getProducts,
+  getCategories,
+  getReviewsProduct,
+  getOrdersFromDb,
+} from "./redux/actions"
+import Nav from "./components/Nav"
+import Checkout from "./pages/Checkout"
+
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
-    setTimeout(() => dispatch(getProducts()), 1000);
-    dispatch(getProducts());
-    dispatch(getReviewsProduct());
-  }, [dispatch]);
+    dispatch(getCategories())
+    setTimeout(() => dispatch(getProducts()), 1000)
+    dispatch(getProducts())
+    dispatch(getReviewsProduct())
+    dispatch(getOrdersFromDb())
+  }, [dispatch])
+
 
   return (
     <div>
@@ -34,7 +44,9 @@ function App() {
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/controlPanel" element={<ControlPanel />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/reviewsPost" element={<ProductReview />} />
+
       </Routes>
     </div>
   );

@@ -1,3 +1,4 @@
+import axios from "axios"
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -11,8 +12,13 @@ import {
   GET_REVIEWS_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
+  SET_ORDER_CHECKOUT,
+  CREATE_ORDER_FROM_CART,
+  GET_ORDERS_FROM_DB,
+  COMPLETE_DATA_ORDER,
   GET_USERS_REVIEW,
 } from "../actions";
+
 
 const initialState = {
   products: [],
@@ -26,7 +32,11 @@ const initialState = {
   usersReview: [],
   cart: [],
   cartCounter: 0,
-};
+  ordersDb: [],
+  order: {},
+  orderSent: {},
+}
+
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -179,6 +189,65 @@ function rootReducer(state = initialState, action) {
         ...state,
         usersReview: usersFilterNameId,
       };
+
+    case GET_ORDERS_FROM_DB:
+      return {
+        ...state,
+        ordersDb: action.payload,
+      }
+
+    case SET_ORDER_CHECKOUT:
+      return {
+        ...state,
+        orderSent: action.payload,
+      }
+
+    case CREATE_ORDER_FROM_CART:
+      const input = {
+        cart_list: state.cart.map((el) => [
+          el.id,
+          el.product.name,
+          el.product.price,
+          el.quantity,
+        ]),
+        products_id: state.cart.map((el) => el.id),
+        total_purchase: action.payload,
+        user_id: "1",
+      }
+
+      return {
+        ...state,
+        order: input,
+      }
+
+    case COMPLETE_DATA_ORDER:
+      const {
+        receiver_phone,
+        shipping_state,
+        city,
+        shipping_address,
+        zip_code,
+      } = action.payload
+
+      const { cart_list, products_id, user_id, total_purchase } = state.order
+
+      const attemptedData = {
+        cart_list,
+        products_id,
+        total_purchase,
+        user_id,
+        receiver_phone,
+        state: shipping_state,
+        city,
+        shipping_address,
+        zip_code,
+        status: "attempted",
+      }
+
+      return {
+        ...state,
+        order: attemptedData,
+      }
 
     //return { ...state }
     default:
