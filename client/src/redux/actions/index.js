@@ -13,7 +13,7 @@ export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART"
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART"
 export const GET_ORDERS_FROM_DB = "GET_ORDERS_FROM_DB"
 export const COMPLETE_DATA_ORDER = "COMPLETE_DATA_ORDER"
-export const UPDATE_DATA_CHECKOUT = "UPDATE_DATA_CHECKOUT"
+export const SET_ORDER_CHECKOUT = "UPDATE_DATA_CHECKOUT"
 export const CREATE_ORDER_FROM_CART = "CREATE_ORDER_FROM_CART"
 
 export function getProducts() {
@@ -194,14 +194,12 @@ export function getOrdersFromDb() {
   }
 }
 
-export function updateDataCheckout(id, payload) {
+export function setOrderCheckout(payload) {
   return async function (dispatch) {
-    const json = await axios.put(
-      `http://localhost:3001/api/orders/${id}`,
-      payload
-    )
+    const json = await axios.post("http://localhost:3001/api/orders", payload)
+
     return dispatch({
-      type: UPDATE_DATA_CHECKOUT,
+      type: SET_ORDER_CHECKOUT,
       payload: json.data.results,
     })
   }

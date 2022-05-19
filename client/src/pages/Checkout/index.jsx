@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import Filters from "../../components/Filters"
-import Card from "../../components/Card"
+
 import { useDispatch, useSelector } from "react-redux"
-import { completeDataOrder } from "../../redux/actions"
+import { completeDataOrder, setOrderCheckout } from "../../redux/actions"
 
 function Checkout() {
   const dispatch = useDispatch()
+  const finalOrder = useSelector((state) => state.order)
 
   const [fields, setFields] = useState({
     receiver_phone: "",
@@ -25,9 +25,14 @@ function Checkout() {
     })
   }
 
-  const handleSubmit = (e, fields) => {
+  const handleConfirm = (e, fields) => {
     e.preventDefault()
     dispatch(completeDataOrder(fields))
+  }
+
+  const handlePay = (e) => {
+    e.preventDefault()
+    dispatch(setOrderCheckout(finalOrder))
   }
 
   return (
@@ -70,12 +75,13 @@ function Checkout() {
         />
 
         <input
-          onClick={(e) => handleSubmit(e, fields)}
+          onClick={(e) => handleConfirm(e, fields)}
           className="btnSbmt"
           type="submit"
-          value="Proceed to pay"
+          value="Confirm Shipping Information"
         />
       </form>
+      <button onClick={(e) => handlePay(e)}>Pay</button>
     </div>
   )
 }

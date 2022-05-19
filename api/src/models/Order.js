@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       total_purchase: {
-        type: DataTypes.FLOAT,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       receiver_phone: {
@@ -33,7 +33,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       zip_code: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       status: {
         type: DataTypes.ENUM(

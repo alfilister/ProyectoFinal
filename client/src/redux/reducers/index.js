@@ -1,3 +1,4 @@
+import axios from "axios"
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -11,7 +12,7 @@ import {
   GET_REVIEWS_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
-  UPDATE_DATA_CHECKOUT,
+  SET_ORDER_CHECKOUT,
   CREATE_ORDER_FROM_CART,
   GET_ORDERS_FROM_DB,
   COMPLETE_DATA_ORDER,
@@ -30,6 +31,7 @@ const initialState = {
   cartCounter: 0,
   ordersDb: [],
   order: {},
+  orderSent: {},
 }
 
 function rootReducer(state = initialState, action) {
@@ -178,10 +180,10 @@ function rootReducer(state = initialState, action) {
         ordersDb: action.payload,
       }
 
-    case UPDATE_DATA_CHECKOUT:
+    case SET_ORDER_CHECKOUT:
       return {
         ...state,
-        order: action.payload,
+        orderSent: action.payload,
       }
 
     case CREATE_ORDER_FROM_CART:
@@ -194,7 +196,7 @@ function rootReducer(state = initialState, action) {
         ]),
         products_id: state.cart.map((el) => el.id),
         total_purchase: action.payload,
-        user_id: null,
+        user_id: "1",
       }
 
       return {
@@ -211,14 +213,15 @@ function rootReducer(state = initialState, action) {
         zip_code,
       } = action.payload
 
-      const { cart_list, products_id, user_id } = state.order
+      const { cart_list, products_id, user_id, total_purchase } = state.order
 
       const attemptedData = {
         cart_list,
         products_id,
+        total_purchase,
         user_id,
         receiver_phone,
-        shipping_state,
+        state: shipping_state,
         city,
         shipping_address,
         zip_code,
