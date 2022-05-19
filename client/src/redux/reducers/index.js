@@ -11,6 +11,7 @@ import {
   GET_REVIEWS_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
+  GET_USERS_REVIEW,
 } from "../actions";
 
 const initialState = {
@@ -22,6 +23,7 @@ const initialState = {
   suggestedRandom: [],
   user: {},
   reviewProduct: [],
+  usersReview: [],
   cart: [],
   cartCounter: 0,
 };
@@ -168,6 +170,14 @@ function rootReducer(state = initialState, action) {
     case "POST_REVIEWS":
       return {
         ...state,
+      };
+    case GET_USERS_REVIEW:
+      const usersFilterNameId = action.payload.map((el) => {
+        return { id: el.id, fullName: el.fullName };
+      });
+      return {
+        ...state,
+        usersReview: usersFilterNameId,
       };
 
     //return { ...state }

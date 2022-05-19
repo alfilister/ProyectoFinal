@@ -11,6 +11,7 @@ export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
+export const GET_USERS_REVIEW = "GET_USERS_REVIEW";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -190,6 +191,21 @@ export function postReview(payload) {
     try {
       console.log(json);
       return json;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getUsersReview() {
+  return async function (dispatch) {
+    try {
+      const user = await axios.get("http://localhost:3001/api/users");
+
+      return dispatch({
+        type: GET_USERS_REVIEW,
+        payload: user.data.results,
+      });
     } catch (error) {
       console.log(error);
     }
