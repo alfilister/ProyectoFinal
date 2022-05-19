@@ -11,6 +11,10 @@ import {
   GET_REVIEWS_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
+  UPDATE_DATA_CHECKOUT,
+  CREATE_ORDER_FROM_CART,
+  GET_ORDERS_FROM_DB,
+  COMPLETE_DATA_ORDER,
 } from "../actions"
 
 const initialState = {
@@ -24,6 +28,8 @@ const initialState = {
   reviewProduct: [],
   cart: [],
   cartCounter: 0,
+  ordersDb: [],
+  order: {},
 }
 
 function rootReducer(state = initialState, action) {
@@ -164,6 +170,64 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      }
+
+    case GET_ORDERS_FROM_DB:
+      return {
+        ...state,
+        ordersDb: action.payload,
+      }
+
+    case UPDATE_DATA_CHECKOUT:
+      return {
+        ...state,
+        order: action.payload,
+      }
+
+    case CREATE_ORDER_FROM_CART:
+      const input = {
+        cart_list: state.cart.map((el) => [
+          el.id,
+          el.product.name,
+          el.product.price,
+          el.quantity,
+        ]),
+        products_id: state.cart.map((el) => el.id),
+        total_purchase: action.payload,
+        user_id: null,
+      }
+
+      return {
+        ...state,
+        order: input,
+      }
+
+    case COMPLETE_DATA_ORDER:
+      const {
+        receiver_phone,
+        shipping_state,
+        city,
+        shipping_address,
+        zip_code,
+      } = action.payload
+
+      const { cart_list, products_id, user_id } = state.order
+
+      const attemptedData = {
+        cart_list,
+        products_id,
+        user_id,
+        receiver_phone,
+        shipping_state,
+        city,
+        shipping_address,
+        zip_code,
+        status: "attempted",
+      }
+
+      return {
+        ...state,
+        order: attemptedData,
       }
 
     //return { ...state }

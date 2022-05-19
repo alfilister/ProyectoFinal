@@ -9,7 +9,7 @@ router.get("/", async (req, res, next) => {
 
     res.json({
       status: "Orders info loaded",
-      quantity_found: info.length,
+      // quantity_found: info.length,
       results: info,
     })
   } catch (error) {
@@ -38,7 +38,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const orderPost = await orderController.postOrder(req.body)
-    console.log(orderPost)
+
     res.status(201).json({
       status: "Product succesfully reated",
       results: orderPost,

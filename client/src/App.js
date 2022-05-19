@@ -10,8 +10,14 @@ import Category from "./pages/Category"
 import ControlPanel from "./pages/Admin"
 import CartPage from "./pages/CartPage"
 
-import { getProducts, getCategories, getReviewsProduct } from "./redux/actions"
+import {
+  getProducts,
+  getCategories,
+  getReviewsProduct,
+  getOrdersFromDb,
+} from "./redux/actions"
 import Nav from "./components/Nav"
+import Checkout from "./pages/Checkout"
 
 function App() {
   const dispatch = useDispatch()
@@ -21,6 +27,7 @@ function App() {
     setTimeout(() => dispatch(getProducts()), 1000)
     dispatch(getProducts())
     dispatch(getReviewsProduct())
+    dispatch(getOrdersFromDb())
   }, [dispatch])
 
   return (
@@ -33,6 +40,7 @@ function App() {
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/controlPanel" element={<ControlPanel />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
     </div>
   )
