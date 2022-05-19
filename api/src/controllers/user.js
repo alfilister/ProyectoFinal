@@ -33,17 +33,32 @@ const getUserById = async (idUser)=> {
   }
 }
 
-const postUser = async (user) => {
-  try {
-    const userCreated = await User.create({
-        fullName: user.fullName,
-        password: user.password,
-        email: user.email,
-        id_document: user.id_document,
-        role: user.role
-   })
 
-   return userCreated
+const postUser = async (body) => {
+  try {
+    const{
+        fullName,
+        password,
+        email,
+        id_document,
+        role,
+   } = body   
+
+   // const hashContra 
+   let userCreated = await User.create({
+
+        fullName,
+        password,
+        email,
+        id_document,
+        role,
+  });
+
+  console.log(userCreated)
+
+  return userCreated
+
+
   } catch (error) {
     console.log(error)
   }

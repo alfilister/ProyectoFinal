@@ -1,16 +1,18 @@
 import React from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import "../../scss/components/_user.scss";
 
+import "../../scss/components/_user.scss";
+import {NavLink} from 'react-router-dom'
 export default function LoginButton() {
-  const { loginWithRedirect } = useAuth0();
+
 
   return (
     <div className="containerLogin">
       <div >
-    <button id='button' className="log" onClick={() => loginWithRedirect()}>
-      Iniciar Sesion
-    </button>
+        <NavLink to='/Login'>
+          <button id='button' className="log" >
+            Iniciar Sesion
+          </button>
+        </NavLink>
       </div>
     </div>
   );
