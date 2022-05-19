@@ -1,3 +1,4 @@
+
 import axios from "axios"
 export const GET_PRODUCTS = "GET_PRODUCTS"
 export const GET_CATEGORIES = "GET_CATEGORIES"
@@ -15,6 +16,8 @@ export const GET_ORDERS_FROM_DB = "GET_ORDERS_FROM_DB"
 export const COMPLETE_DATA_ORDER = "COMPLETE_DATA_ORDER"
 export const SET_ORDER_CHECKOUT = "UPDATE_DATA_CHECKOUT"
 export const CREATE_ORDER_FROM_CART = "CREATE_ORDER_FROM_CART"
+export const GET_USERS_REVIEW = "GET_USERS_REVIEW";
+
 
 export function getProducts() {
   return async function (dispatch) {
@@ -164,24 +167,56 @@ export function addItemToCart(payload) {
   return {
     type: ADD_ITEM_TO_CART,
     payload: payload,
-  }
+  };
 }
 
 export function removeItemFromCart(payload) {
   return {
     type: REMOVE_ITEM_FROM_CART,
     payload: payload,
-  }
+  };
 }
 
 export function getUserById(idUser) {
   return async function (dispatch) {
+
     const json = await axios.get(`http://localhost:3001/api/users/${idUser}`)
     return dispatch({
       type: GET_USER_BY_ID,
       payload: json.data.results,
-    })
-  }
+    });
+  };
+}
+
+export function postReview(payload) {
+  return async function (dispatch) {
+    const json = await axios.post(
+      "http://localhost:3001/api/reviews/",
+      payload
+    );
+
+    try {
+      console.log(json);
+      return json;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getUsersReview() {
+  return async function (dispatch) {
+    try {
+      const user = await axios.get("http://localhost:3001/api/users");
+
+      return dispatch({
+        type: GET_USERS_REVIEW,
+        payload: user.data.results,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 export function getOrdersFromDb() {

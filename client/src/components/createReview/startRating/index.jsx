@@ -1,3 +1,4 @@
+import "../../../scss/components/_starReview.scss";
 export default function StarRating({ stars }) {
   // Star maximum
   const maxStars = 5;

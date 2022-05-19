@@ -1,37 +1,40 @@
-import React, { useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   clearDetail,
   getProductsById,
   getReviewsProduct,
   addItemToCart,
-} from "../../redux/actions"
+  getUsersReview,
+} from "../../redux/actions";
 
 const Detail = () => {
-  const dispatch = useDispatch()
-  const { id } = useParams()
-  const productId = useSelector((state) => state.productsDetail)
-  const productReview = useSelector((state) => state.reviewProduct)
-
-  useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 50)
-    setTimeout(() => dispatch(getReviewsProduct()), 50)
-    dispatch(clearDetail())
-  }, [dispatch, id])
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const productId = useSelector((state) => state.productsDetail);
+  const productReview = useSelector((state) => state.reviewProduct);
+  const usersReview = useSelector((state) => state.usersReview);
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
     .filter((el) => Number(id) === el.id)
     .map((el) => el.reviews)
-    .flat()
+    .flat();
+
+  useEffect(() => {
+    setTimeout(() => dispatch(getProductsById(id)), 50);
+    setTimeout(() => dispatch(getReviewsProduct()), 50);
+    setTimeout(() => dispatch(getUsersReview()), 50);
+    dispatch(clearDetail());
+  }, [dispatch, id]);
 
   const handleCart = (e, id) => {
-    e.preventDefault()
-    console.log("agregado desde details")
-    dispatch(addItemToCart(Number(id)))
-  }
+    e.preventDefault();
+    console.log("agregado desde details");
+    dispatch(addItemToCart(Number(id)));
+  };
 
   return (
     <div className="contenedorDetalleLoader">
@@ -57,7 +60,7 @@ const Detail = () => {
                           <img src={el} alt="imagenes auxiliares" />;
                         </div>
                       </>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -73,10 +76,9 @@ const Detail = () => {
                   }`}</p>
                 </div>
                 <p>
-                  ⭐
                   {!productId.rating
                     ? "Este producto todavia no tiene calificacion"
-                    : productId.rating}
+                    : `⭐ ${productId.rating}`}
                 </p>
                 <label>Stock:</label>
                 <p className="stock" style={{ border: "1px solid black" }}>
@@ -114,7 +116,10 @@ const Detail = () => {
                       <div>
                         <label className="label">
                           <span className="span">
-                            <h3>UserName</h3>
+                            {usersReview?.map((el) => {
+                              if (el.id === r.user_id)
+                                return <h3>{el.fullName}</h3>;
+                            })}
                             <p> Says...</p>
                           </span>
                           <span className="span">⭐{r.score_review}</span>
@@ -122,7 +127,7 @@ const Detail = () => {
                         <p className="p">{r.product_review}</p>
                       </div>
                     </div>
-                  )
+                  );
                 })
               ) : (
                 <div>
@@ -137,7 +142,7 @@ const Detail = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;
