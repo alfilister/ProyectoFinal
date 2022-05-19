@@ -173,7 +173,7 @@ function rootReducer(state = initialState, action) {
       };
     case GET_USERS_REVIEW:
       const usersFilterNameId = action.payload.map((el) => {
-        el.id, el.fullName;
+        return { id: el.id, fullName: el.fullName };
       });
       return {
         ...state,

@@ -16,7 +16,6 @@ const Detail = () => {
   const productId = useSelector((state) => state.productsDetail);
   const productReview = useSelector((state) => state.reviewProduct);
   const usersReview = useSelector((state) => state.usersReview);
-  console.log("users", usersReview);
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
@@ -117,7 +116,10 @@ const Detail = () => {
                       <div>
                         <label className="label">
                           <span className="span">
-                            <h3>UserName</h3>
+                            {usersReview?.map((el) => {
+                              if (el.id === r.user_id)
+                                return <h3>{el.fullName}</h3>;
+                            })}
                             <p> Says...</p>
                           </span>
                           <span className="span">⭐{r.score_review}</span>
