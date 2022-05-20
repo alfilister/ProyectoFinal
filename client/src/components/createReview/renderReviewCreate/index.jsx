@@ -5,7 +5,7 @@ import StarRating from "../startRating/index";
 
 import { postReview } from "../../../redux/actions";
 
-export default function Rating() {
+export default function RenderReviewCreate({ idProduct, idUser }) {
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -28,8 +28,8 @@ export default function Rating() {
     e.preventDefault();
     dispatch(postReview(input));
     setInput({
-      id_product: null,
-      id_user: null,
+      id_product: idProduct || null,
+      id_user: idUser || null,
       product_review: "",
       score_review: 0,
     });
@@ -61,7 +61,7 @@ export default function Rating() {
           className="scoreStar"
         />
 
-        <button type="submit"> Publicar reseña </button>
+        <button type="submit"> Send </button>
       </form>
     </div>
   );

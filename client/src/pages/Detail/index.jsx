@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import StarRating from "../../components/createReview/startRating";
+import RenderReviewCreate from "../../components/createReview/renderReviewCreate";
+import Modal from "../../components/Modal";
 
 import {
   clearDetail,
@@ -18,6 +20,9 @@ const Detail = () => {
   const productId = useSelector((state) => state.productsDetail);
   const productReview = useSelector((state) => state.reviewProduct);
   const usersReview = useSelector((state) => state.usersReview);
+
+  //Estado local para el Modal Reviews (abrir cerrar modal)
+  const [modalReview, setModalReview] = useState(false);
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
@@ -143,12 +148,24 @@ const Detail = () => {
                   </h1>
                 </div>
               )}
-              <Link to="/reviewsPost">
-                <button>Add Review</button>
-              </Link>
+              <button onClick={() => setModalReview(!modalReview)}>
+                Add Review
+              </button>
             </div>
           </div>
         )}
+        <Modal
+          estado={modalReview}
+          cambiarEstado={setModalReview}
+          titulo="Send your review!"
+        >
+          <div className="contenidoModal">
+            <RenderReviewCreate
+              idProduct={id}
+              // idUser={}
+            />
+          </div>
+        </Modal>
       </div>
     </div>
   );
