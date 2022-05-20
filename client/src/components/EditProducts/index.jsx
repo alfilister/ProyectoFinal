@@ -13,6 +13,7 @@ function EditProduct() {
 	});
 
 	const [productsShow, setProductsShow] = useState(allProducts);
+	const [searching, setSearching] = useState(allProducts);
 	const [editModal, setEditModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
 	const [productSelected, setProductSelected] = useState({
@@ -27,6 +28,7 @@ function EditProduct() {
 		featured: "",
 		categories: [],
 	});
+	const [search, setSearch] = useState("");
 
 	const productToEdit = (p, acction) => {
 		setProductSelected(p);
@@ -87,8 +89,24 @@ function EditProduct() {
 		setDeleteModal(false);
 	};
 
+	const searchProduct = (event) => {
+		const { value } = event.target;
+		setSearch(value);
+		setProductsShow(() => searching.filter((p) => p.name.includes(value)));
+	};
+
 	return (
 		<div>
+			<div>
+				<label>Buscar</label>
+				<input
+					type="text"
+					value={search}
+					onChange={(event) => {
+						searchProduct(event);
+					}}
+				></input>
+			</div>
 			<table>
 				<thead>
 					<tr>
