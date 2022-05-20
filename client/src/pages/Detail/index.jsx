@@ -1,32 +1,42 @@
-import React, { useEffect } from "react"
-import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
+import React, { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import Nav from "../../components/Nav"
+import StarRating from "../../components/createReview/startRating";
 
 import {
   clearDetail,
   getProductsById,
   getReviewsProduct,
-} from "../../redux/actions"
+  addItemToCart,
+  getUsersReview,
+} from "../../redux/actions";
 
 const Detail = () => {
-  const dispatch = useDispatch()
-  const { id } = useParams()
-  const productId = useSelector((state) => state.productsDetail)
-  const productReview = useSelector((state) => state.reviewProduct)
-
-  useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 50)
-    setTimeout(() => dispatch(getReviewsProduct()), 50)
-    dispatch(clearDetail())
-  }, [dispatch, id])
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const productId = useSelector((state) => state.productsDetail);
+  const productReview = useSelector((state) => state.reviewProduct);
+  const usersReview = useSelector((state) => state.usersReview);
 
   //Filtro los Reviews del producto en DETAIL
   const reviewId = productReview
-    .filter((el) => id == el.id)
+    .filter((el) => Number(id) === el.id)
     .map((el) => el.reviews)
-    .flat()
+    .flat();
+
+  useEffect(() => {
+    setTimeout(() => dispatch(getProductsById(id)), 50);
+    setTimeout(() => dispatch(getReviewsProduct()), 50);
+    setTimeout(() => dispatch(getUsersReview()), 50);
+    dispatch(clearDetail());
+  }, [dispatch, id]);
+
+  const handleCart = (e, id) => {
+    e.preventDefault();
+    console.log("agregado desde details");
+    dispatch(addItemToCart(Number(id)));
+  };
 
   return (
     <div className="contenedorDetalleLoader">
@@ -52,7 +62,7 @@ const Detail = () => {
                           <img src={el} alt="imagenes auxiliares" />;
                         </div>
                       </>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -64,20 +74,32 @@ const Detail = () => {
                   <p className="descuento">{`${
                     productId.discount
                       ? `${productId.discount} % OFF`
-                      : "No hay descuentos aún!"
+                      : "No discounts at the moment!"
                   }`}</p>
                 </div>
-                <p>{`⭐ ${productId.rating}`}</p>
+                {!productId.rating ? (
+                  <p>Este producto todavia no tiene calificacion</p>
+                ) : (
+                  <div>
+                    <StarRating stars={productId.rating} />
+                  </div>
+                )}
                 <label>Stock:</label>
                 <p className="stock" style={{ border: "1px solid black" }}>
                   {productId.stock}
                 </p>
-                <label>Categorias:</label>
+                <label>Categories:</label>
                 <p className="categorias">{`| ${productId.categories?.map(
                   (el) => ` ${el.name}`
                 )} |`}</p>
+                <div className="btnCrt">
+                  <button onClick={(e) => handleCart(e, id)}>
+                    Add To Cart
+                  </button>
+                </div>
                 <div className="descripcion">
-                  <h2>Descripción:</h2>
+                  <h2>Description:</h2>
+
                   <p className="text">{productId.description}</p>
                 </div>
               </div>
@@ -95,30 +117,41 @@ const Detail = () => {
                         height="30px"
                         width="30px"
                       />
-                      <div>
+                      <div className="ConteinerUser">
                         <label className="label">
                           <span className="span">
-                            <h3>NombreUsuario</h3>
-                            <p> dice...</p>
+                            {usersReview?.map((el) => {
+                              if (el.id === r.user_id)
+                                return <h3>{el.fullName}</h3>;
+                            })}
+                            <p>Says...</p>
                           </span>
-                          <span className="span">⭐{r.score_review}</span>
+                          <div className="starReview">
+                            <StarRating stars={r.score_review} />
+                          </div>
                         </label>
                         <p className="p">{r.product_review}</p>
                       </div>
                     </div>
-                  )
+                  );
                 })
               ) : (
                 <div>
-                  <h1>No hay reviews aún! Se el primero en opinar!!</h1>
+                  <h1>
+                    There are no yet reviews, buy the item and be the first in
+                    comment!
+                  </h1>
                 </div>
               )}
+              <Link to="/reviewsPost">
+                <button>Add Review</button>
+              </Link>
             </div>
           </div>
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Detail
+export default Detail;

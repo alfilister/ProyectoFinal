@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
 	GET_CATEGORIES,
 	GET_PRODUCTS,
@@ -14,6 +15,12 @@ import {
 	UPDATE_PRODUCT,
 	DELETE_PRODUCT,
 	CREATE_CATEGORY,
+  SET_ORDER_CHECKOUT,
+  GET_ORDERS_FROM_DB,
+  CONFIRM_ORDER_CHECKOUT,
+  GET_USERS_REVIEW,
+  RESET_CART,
+  RESET_ORDER,
 } from "../actions";
 
 const initialState = {
@@ -26,7 +33,9 @@ const initialState = {
 	user: {},
 	reviewProduct: [],
 	cart: [],
-	cartCounter: 0,
+	cartCounter: "",//Antes era un 0
+  ordersDb: [],
+  orderSent: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -168,8 +177,6 @@ function rootReducer(state = initialState, action) {
 				...state,
 				user: action.payload,
 			};
-
-		//return { ...state }
 		case UPDATE_PRODUCT:
 			return {
 				...state,
@@ -183,6 +190,45 @@ function rootReducer(state = initialState, action) {
 				...state,
 				categories: [...state.categories, action.payload[0]],
 			};
+     case GET_USERS_REVIEW:
+      const usersFilterNameId = action.payload.map((el) => {
+        return { id: el.id, fullName: el.fullName };
+      });
+      return {
+        ...state,
+        usersReview: usersFilterNameId,
+      };
+
+    case GET_ORDERS_FROM_DB:
+      return {
+        ...state,
+        ordersDb: action.payload,
+      };
+
+    case SET_ORDER_CHECKOUT:
+      return {
+        ...state,
+        orderSent: action.payload,
+      };
+
+    case CONFIRM_ORDER_CHECKOUT:
+      return {
+        ...state,
+        orderSent: action.payload,
+      };
+
+    case RESET_CART:
+      return {
+        ...state,
+        cart: [],
+        cartCounter: "",
+      };
+
+    case RESET_ORDER:
+      return {
+        ...state,
+        orderSent: {},
+      };
 		default:
 			return state;
 	}
