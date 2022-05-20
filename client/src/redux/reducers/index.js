@@ -227,6 +227,11 @@ function rootReducer(state = initialState, action) {
         userEmailId: action.payload,
       };
 
+      case "POST_USER":
+      return {
+        ...state,
+      };
+
     //return { ...state }
     default:
       return state;

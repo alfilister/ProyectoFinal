@@ -212,6 +212,23 @@ export function getUsersReview() {
         type: GET_USERS_REVIEW,
         payload: user.data.results,
       });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function postUser(payload) {
+  return async function (dispatch) {
+    const json = await axios.post(
+      "http://localhost:3001/api/users/created",
+      payload
+    );
+
+    try {
+      //posible bug que hace que se repita cada peticion htpp debe ser en la configuracion de cada  routa cuando entra a localhost:3001/.../...  y asi en varias peticiones htpp
+      console.log("soy la accion y esto me llego del front ", json);
+      return json;
     } catch (error) {
       console.log(error);
     }

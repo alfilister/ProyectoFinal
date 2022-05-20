@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const userController = require("../controllers/user");
-const { User } = require("../db");
 
 const router = Router();
 
@@ -27,12 +26,13 @@ router.get("/:idUser", async (req, res, next) => {
   }
 });
 
-router.post("/", async (req, res, next) => {
-  const { user } = req.body;
+router.post("/created", async (req, res, next) => {
+
   try {
+    const userCreate = await userController.postUser(req.body) ;
     res.json({
       status: "Users created",
-      results: await userController.postUser(user),
+      results: userCreate,
     });
   } catch (err) {
     next(err);
