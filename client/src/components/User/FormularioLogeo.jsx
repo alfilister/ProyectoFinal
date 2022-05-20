@@ -1,11 +1,11 @@
 import React from "react";
 
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { postUser } from "../../redux/actions";
-export default function FormularioLogeo() {
+//import { postUser } from "../../redux/actions";
+export default function FormularioLogeoo() {
 
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
 
 
 
@@ -30,7 +30,7 @@ export default function FormularioLogeo() {
       function handleSubmit(e) {
         e.preventDefault();
         console.log(input);
-        dispatch(postUser(input));
+     
     
         setInput({
 

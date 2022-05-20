@@ -1,4 +1,4 @@
-import React from "react"
+import React, {  useEffect } from 'react';
 import { NavLink, Link } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
@@ -11,30 +11,43 @@ import Profile from "../User/profileUser"
 import { useAuth0 } from "@auth0/auth0-react"
 
 import { postUser } from "../../redux/actions";
-const Nav = ({ setCurrentPage }) => {
+const Nav =  ({ setCurrentPage }) => {
 
   const { isAuthenticated , user } = useAuth0()
   const dispatch = useDispatch() ; 
 
+ 
 
-  
+  useEffect(() => {
+    if(isAuthenticated){
+      let objUser = {
+        fullName : user.nickname,
+        password : user.sub,
+        email : user.email,
+      }
+
+      dispatch(postUser(objUser))
+     }
+  },)
   if(isAuthenticated){
-    /* 
-    var userName = user.nickname ;
-    var userEmail = user.email;
-    var user1 = user ; 
-    var contraseña = user.sub ; */
     
-    dispatch(postUser({
-      fullName : user.nickname,
-      password : user.sub,
-      email : user.email,
-    }))
-  
+    var contador = 0 ;
+    console.log('1er console ' ,contador)
+    
+    console.log('2do console ' ,contador)
+    
+ 
+      if(contador <= 0){
+        
+        
+     
+      contador ++
 
-
-
-      //console.log(contraseña , userName)
+      console.log(contador , 'se aumento contador despues de disparar accion')
+    }
+    
+    
+      console.log('datos que se envian por body al post', user.sub , user.nickname)
   }else{
       console.log('Aun no hay nadie logeado')
     }
