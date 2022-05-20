@@ -22,15 +22,15 @@ const Detail = () => {
   //info del usuario para conseguir Id, y para postear reviews o registrarse en caso de no estar loggeado
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
 
-  const productId = useSelector((state) => state.productsDetail);
-  const productReview = useSelector((state) => state.reviewProduct);
-  const usersReview = useSelector((state) => state.usersReview);
+  const productId = useSelector((state) => state.productsDetail); //producto por id (detail)
+  const productReview = useSelector((state) => state.reviewProduct); //productos con reviews
+  const usersReview = useSelector((state) => state.usersReview); //id de usuario y nombre review
 
   //CAPTURAR ID Y EMAIL DE USUARIO AUTENTICADO
   const bucket = [];
   isAuthenticated && bucket.push({ email: user.email, name: user.name });
   //ingreso al bucket, que tiene tanto el email como el name y consigo el email
-  const emailUser = bucket[0].email;
+  const emailUser = bucket[0] && bucket[0].email;
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
 
@@ -40,7 +40,7 @@ const Detail = () => {
   //(abrir cerrar modal) NO ESTA AUTENTICADO
   const [modalLogin, setModalLogin] = useState(false);
 
-  //Filtro los Reviews del producto en DETAIL
+  //Filtro las Reviews del producto DETAIL
   const reviewId = productReview
     .filter((el) => Number(id) === el.id)
     .map((el) => el.reviews)
@@ -172,7 +172,7 @@ const Detail = () => {
                   Add Review
                 </button>
               ) : (
-                <button onClick={() => setModalReview(!modalLogin)}>
+                <button onClick={() => setModalLogin(!modalLogin)}>
                   Add Review
                 </button>
               )}

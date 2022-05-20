@@ -234,22 +234,6 @@ export function getUsersReview() {
   };
 }
 
-export function postUser(payload) {
-  return async function (dispatch) {
-    const json = await axios.post(
-      "http://localhost:3001/api/users/created",
-      payload
-    );
-    try {
-      //posible bug que hace que se repita cada peticion htpp debe ser en la configuracion de cada  routa cuando entra a localhost:3001/.../...  y asi en varias peticiones htpp
-      console.log("soy la accion y esto me llego del front ", json);
-      return json;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
-
 export function getOrdersFromDb() {
   return async function (dispatch) {
     const json = await axios.get(`http://localhost:3001/api/orders`);
@@ -340,17 +324,17 @@ export function getUsersByEmail(emailUser) {
 }
 // esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
-	return async function (dispatch) {
-	  const json = await axios.post(
-		"http://localhost:3001/api/users/created",payload);
-  
-	  try {
-	   
-		console.log('soy la accion y esto me llego del front ' ,json);
-		return json;
-	  } catch (error) {
-		console.log(error);
-	  }
-	};
-  }
+  return async function (dispatch) {
+    const json = await axios.post(
+      "http://localhost:3001/api/users/created",
+      payload
+    );
 
+    try {
+      console.log("soy la accion y esto me llego del front ", json);
+      return json;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

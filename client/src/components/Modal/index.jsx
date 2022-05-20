@@ -14,7 +14,7 @@ const Modal = ({ children, estado, cambiarEstado, titulo = "Alerta" }) => {
               className="botonCerrar"
               onClick={() => cambiarEstado(false)}
             >
-              
+              <i class="fa-solid fa-xmark"></i>
             </button>
 
             {children}
