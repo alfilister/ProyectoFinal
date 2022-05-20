@@ -9,7 +9,7 @@ import Error404 from "./pages/Error404"
 import Category from "./pages/Category"
 import ControlPanel from "./pages/Admin"
 import CartPage from "./pages/CartPage"
-import FormularioLogeo from "./components/User/FormularioLogeo"
+
 import { getProducts, getCategories, getReviewsProduct } from "./redux/actions"
 import Nav from "./components/Nav"
 
@@ -33,7 +33,6 @@ function App() {
         <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/controlPanel" element={<ControlPanel />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/Login" element={<FormularioLogeo/>} />
       </Routes>
     </div>
   )

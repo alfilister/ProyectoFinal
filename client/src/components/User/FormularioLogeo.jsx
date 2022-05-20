@@ -1,5 +1,5 @@
 import React from "react";
-import {NavLink} from 'react-router-dom'
+
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { postUser } from "../../redux/actions";
@@ -33,14 +33,13 @@ export default function FormularioLogeo() {
         dispatch(postUser(input));
     
         setInput({
-          name: "",
-          image: "",
-          price: "",
-          aux_images: [],
-          description: "",
-          discount: "",
-          stock: "",
-          categories: [],
+
+         fullName: "",
+         password: "",
+         email: "",
+         id_document: "",
+         role: "",
+
         });
         alert("registro Exitoso");
        
@@ -51,7 +50,7 @@ export default function FormularioLogeo() {
 
             <h1>Registrarse</h1>
 
-            <form >
+            <form onSubmit={e => handleSubmit(e)}>
             <div className="elementosForm">
             <label>FullName : </label>
             <input
@@ -109,7 +108,7 @@ export default function FormularioLogeo() {
             />
           </div>
 
-          <button type="submit" onSubmit={e => handleSubmit(e)}>Registrarse </button>
+          <button type="submit" >Registrarse </button>
 
             </form>
 

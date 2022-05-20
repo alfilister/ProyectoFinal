@@ -170,6 +170,11 @@ function rootReducer(state = initialState, action) {
         ...state,
       };
 
+      case "POST_USER":
+      return {
+        ...state,
+      };
+
     //return { ...state }
     default:
       return state;

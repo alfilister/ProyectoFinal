@@ -17,7 +17,11 @@ const getUser = async () => {
      })
    })
 
+   
+
    //DB INFO
+ /*   const getUser = await User.findAll()
+   return await getUser */
    return await User.findAll()
   } catch (error) {
     console.log(error)
@@ -35,26 +39,24 @@ const getUserById = async (idUser)=> {
 
 
 const postUser = async (body) => {
+
   try {
     const{
         fullName,
-        password,
         email,
-        id_document,
-        role,
+        password
    } = body   
 
-   // const hashContra 
-   let userCreated = await User.create({
+  
+   let userCreated = await User.findOrCreate({
 
-        fullName,
-        password,
-        email,
-        id_document,
-        role,
+    where: {
+      fullName: fullName,
+      password: password,
+      email: email,
+    }
+
   });
-
-  console.log(userCreated)
 
   return userCreated
 
