@@ -13,6 +13,7 @@ export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const CREATE_CATEGORY = "CREATE_CATEGORY";
 
 export function getProducts() {
 	return async function (dispatch) {
@@ -176,7 +177,7 @@ export function getUserById(idUser) {
 	return async function (dispatch) {
 		const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
 		return dispatch({
-			type: UPDATE_PRODUCT,
+			type: GET_USER_BY_ID,
 			payload: json.data.results,
 		});
 	};
@@ -189,7 +190,7 @@ export function updateProduct(product) {
 			product
 		);
 		return {
-			type: DELETE_PRODUCT,
+			type: UPDATE_PRODUCT,
 			payload: json.data.results,
 		};
 	};
@@ -201,7 +202,20 @@ export function deleteProduct(idProduct) {
 			`http://localhost:3001/api/products/${idProduct}`
 		);
 		return {
-			type: GET_USER_BY_ID,
+			type: DELETE_PRODUCT,
+			payload: json.data.results,
+		};
+	};
+}
+
+export function createCategory(payload) {
+	return async function () {
+		const json = await axios.post(
+			`http://localhost:3001/api/categories`,
+			payload
+		);
+		return {
+			type: CREATE_CATEGORY,
 			payload: json.data.results,
 		};
 	};

@@ -13,6 +13,7 @@ import {
 	REMOVE_ITEM_FROM_CART,
 	UPDATE_PRODUCT,
 	DELETE_PRODUCT,
+	CREATE_CATEGORY,
 } from "../actions";
 
 const initialState = {
@@ -176,6 +177,11 @@ function rootReducer(state = initialState, action) {
 		case DELETE_PRODUCT:
 			return {
 				...state,
+			};
+		case CREATE_CATEGORY:
+			return {
+				...state,
+				categories: [...state.categories, action.payload[0]],
 			};
 		default:
 			return state;

@@ -7,6 +7,7 @@ function EditProduct() {
 	const dispatch = useDispatch();
 
 	const allProducts = useSelector((state) => state.products);
+	const allCategories = useSelector((state) => state.categories);
 	allProducts.sort((a, b) => {
 		return a.id - b.id;
 	});
@@ -39,6 +40,23 @@ function EditProduct() {
 			[name]: value,
 		}));
 	};
+
+	function handleSelect(e) {
+		if (e.target.checked) {
+			setProductSelected({
+				...productSelected,
+				categories: [...productSelected.categories, { name: e.target.value }],
+			});
+		} else {
+			e.target.checked = false;
+			setProductSelected({
+				...productSelected,
+				categories: productSelected.categories.filter(
+					(el) => el.name !== e.target.value
+				),
+			});
+		}
+	}
 
 	const postData = () => {
 		dispatch(updateProduct(productSelected));
@@ -202,17 +220,42 @@ function EditProduct() {
 							}}
 						></input>
 					</div>
-					{/* <div>
+					<div>
 						<label>categories</label>
-						<input
-							type="text"
-							name="categories"
-							value={productSelected?.categories}
-							onChange={(event) => {
-								handleInput(event);
-							}}
-						></input>
-					</div> */}
+						{allCategories?.map((category) => {
+							for (let i = 0; i < productSelected.categories.length; i++) {
+								if (category.name === productSelected.categories[i].name) {
+									return (
+										<div>
+											<label>{category.name}</label>
+											<input
+												checked={true}
+												type="checkbox"
+												value={category.name}
+												name="categories"
+												onChange={(event) => {
+													handleSelect(event);
+												}}
+											></input>
+										</div>
+									);
+								}
+							}
+							return (
+								<div>
+									<label>{category.name}</label>
+									<input
+										type="checkbox"
+										value={category.name}
+										name="categories"
+										onChange={(event) => {
+											handleSelect(event);
+										}}
+									></input>
+								</div>
+							);
+						})}
+					</div>
 				</ModalBody>
 				<ModalFooter>
 					<button
