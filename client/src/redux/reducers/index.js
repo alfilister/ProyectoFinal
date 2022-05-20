@@ -229,6 +229,11 @@ function rootReducer(state = initialState, action) {
         ...state,
         orderSent: {},
       };
+//Esto fue lo que hice en ultimo pull Danilo.
+	case "POST_USER":
+      return {
+        ...state,
+      };
 		default:
 			return state;
 	}

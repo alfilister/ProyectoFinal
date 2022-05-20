@@ -303,3 +303,19 @@ export function createCategory(payload) {
 		};
 	};
 }
+// esto fue lo que acabe de hacer Danilo.
+export function postUser(payload) {
+	return async function (dispatch) {
+	  const json = await axios.post(
+		"http://localhost:3001/api/users/created",payload);
+  
+	  try {
+	   
+		console.log('soy la accion y esto me llego del front ' ,json);
+		return json;
+	  } catch (error) {
+		console.log(error);
+	  }
+	};
+  }
+

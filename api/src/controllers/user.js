@@ -33,17 +33,30 @@ const getUserById = async (idUser)=> {
   }
 }
 
-const postUser = async (user) => {
-  try {
-    const userCreated = await User.create({
-        fullName: user.fullName,
-        password: user.password,
-        email: user.email,
-        id_document: user.id_document,
-        role: user.role
-   })
 
-   return userCreated
+const postUser = async (body) => {
+
+  try {
+    const{
+        fullName,
+        email,
+        password
+   } = body   
+
+  
+   let userCreated = await User.findOrCreate({
+
+    where: {
+      fullName: fullName,
+      password: password,
+      email: email,
+    }
+
+  });
+
+  return userCreated
+
+
   } catch (error) {
     console.log(error)
   }

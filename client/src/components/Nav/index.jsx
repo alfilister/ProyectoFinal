@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import "../../scss/components/_nav.scss";
 import logo from "../../scss/assets/logo.png";
 import LoginButton from "../User/Login";
@@ -10,10 +9,47 @@ import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
+
+//esto fue lo que hice en ultimo Pull Danilo 
+
+import { useEffect } from "react";
+import { postUser } from "../../redux/actions";
+
+
+
 const Nav = ({ setCurrentPage }) => {
-	const { isAuthenticated } = useAuth0();
+
+	
+
+	const { isAuthenticated , user } = useAuth0();
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+
+	//esto fue lo que hice ultimo pull Danilo
+
+	useEffect(() => {
+		if(isAuthenticated){
+		  let objUser = {
+			fullName : user.nickname,
+			password : user.sub,
+			email : user.email,
+		  }
+		  dispatch(postUser(objUser))
+		 }
+	  },)
+
+	  if(isAuthenticated){
+   
+		console.log('Estas Logeado')
+	 
+	  }else{
+		  console.log('Aun no hay nadie logeado')
+		}
+	  
+	  
+      /////////
+
+	
 
 	var cartCounter = useSelector((state) => state.cartCounter);
 
