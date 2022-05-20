@@ -24,6 +24,7 @@ const Card = ({
   const handleCart = (e, id) => {
     e.preventDefault()
     dispatch(addItemToCart(id))
+    
   }
 
   return (
