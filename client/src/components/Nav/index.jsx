@@ -1,24 +1,27 @@
-import React from "react"
-import { NavLink, Link } from "react-router-dom"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import "../../scss/components/_nav.scss"
-import logo from "../../scss/assets/logo.png"
-import LoginButton from "../User/Login"
-import LogOutButton from "../User/LogOut"
-import Profile from "../User/profileUser"
-import { useAuth0 } from "@auth0/auth0-react"
+import "../../scss/components/_nav.scss";
+import logo from "../../scss/assets/logo.png";
+import LoginButton from "../User/Login";
+import LogOutButton from "../User/LogOut";
+import Profile from "../User/profileUser";
+import { useAuth0 } from "@auth0/auth0-react";
+import { resetOrder } from "../../redux/actions";
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated } = useAuth0()
-  const navigate = useNavigate()
+  const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  var cartCounter = useSelector((state) => state.cartCounter)
+  var cartCounter = useSelector((state) => state.cartCounter);
 
   const handleCart = (e) => {
-    e.preventDefault()
-    navigate("/cart")
-  }
+    e.preventDefault();
+    dispatch(resetOrder());
+    navigate("/cart");
+  };
 
   return (
     <div className="divNavbar">
@@ -54,7 +57,7 @@ const Nav = ({ setCurrentPage }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

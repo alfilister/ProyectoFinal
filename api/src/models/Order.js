@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -36,16 +36,12 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       status: {
-        type: DataTypes.ENUM(
-          "attempted",
-          "active",
-          "dispatched",
-          "recieved",
-          "returned",
-          "complete"
-        ),
+        type: DataTypes.ENUM("attempted", "active", "dispatched", "complete"),
+      },
+      payment_id: {
+        type: DataTypes.STRING,
       },
     },
     { timestamps: false, createdAt: false, updatedAt: false }
-  )
-}
+  );
+};

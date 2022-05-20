@@ -1,100 +1,87 @@
-import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import { Elements, CardElement } from "@stripe/react-stripe-js";
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
 
-import { useDispatch, useSelector } from "react-redux";
-import { completeDataOrder, setOrderCheckout } from "../../redux/actions";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  confirmOrderCheckout,
+  resetCart,
+  resetOrder,
+} from "../../redux/actions";
 
-function Checkout() {
-  const stripePromise = loadStripe(
-    "pk_test_51L1HPsAYXX7Bavv4uDeTk9tUjSb4ZzVcVDYWs7nw8gkmrlJGtHTI5O6CmiEqRadAWwBaCcc3j0b8v1bZAyKx1wy300bjsAkEqi"
-  );
+const stripePromise = loadStripe(
+  "pk_test_51L1HPsAYXX7Bavv4uDeTk9tUjSb4ZzVcVDYWs7nw8gkmrlJGtHTI5O6CmiEqRadAWwBaCcc3j0b8v1bZAyKx1wy300bjsAkEqi"
+);
 
+const Wrapper = () => (
+  <Elements stripe={stripePromise}>
+    <MyComponent />
+  </Elements>
+);
+
+const MyComponent = () => {
   const dispatch = useDispatch();
-  const finalOrder = useSelector((state) => state.order);
+  const navigate = useNavigate();
+  const stripe = useStripe();
+  const elements = useElements();
 
-  const [fields, setFields] = useState({
-    receiver_phone: "",
-    shipping_state: "",
-    city: "",
-    shipping_address: "",
-    zip_code: "",
-    status: "attempted",
-  });
+  const order_id = useSelector((state) => state.orderSent[0].id);
+  const amount = useSelector((state) => state.orderSent[0].total_purchase);
+  const order = useSelector((state) => state.orderSent[0]);
 
-  const [showPay, setShowPay] = useState(false);
-
-  const handleChange = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFields({
-      ...fields,
-      [e.target.name]: e.target.value,
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: "card",
+      card: elements.getElement(CardElement),
     });
-  };
+    if (!error) {
+      const { id } = paymentMethod;
+      const { data } = await axios.post(
+        "http://localhost:3001/api/orders/checkout",
+        {
+          order_id,
+          id,
+          amount: amount * 100,
+        }
+      );
 
-  const handleConfirm = (e, fields) => {
-    e.preventDefault();
-    setShowPay(true);
-    dispatch(completeDataOrder(fields));
-  };
-
-  const handlePay = (e) => {
-    e.preventDefault();
-    dispatch(setOrderCheckout(finalOrder));
+      if (data.status !== "payment recieved") {
+        alert("not proccess payment");
+      } else {
+        order.payment_id = data.payment_id;
+        order.status = "active";
+        dispatch(confirmOrderCheckout(order_id, order));
+        alert("order taken succesfully");
+        dispatch(resetCart());
+        dispatch(resetOrder());
+        navigate("/");
+      }
+    }
   };
 
   return (
-    <div className="checkoutPage">
-      <form>
-        <input
-          type="text"
-          name="receiver_phone"
-          placeholder="receiver phone"
-          value={fields.receiver_phone}
-          onChange={(e) => handleChange(e)}
-        />
-        <input
-          type="text"
-          name="shipping_state"
-          placeholder="state US"
-          value={fields.shipping_state}
-          onChange={(e) => handleChange(e)}
-        />
-        <input
-          type="text"
-          name="shipping_address"
-          placeholder="shipping address"
-          value={fields.shipping_address}
-          onChange={(e) => handleChange(e)}
-        />
-        <input
-          type="text"
-          name="city"
-          placeholder="city"
-          value={fields.city}
-          onChange={(e) => handleChange(e)}
-        />
-        <input
-          type="text"
-          name="zip_code"
-          placeholder="zip code"
-          value={fields.zip_code}
-          onChange={(e) => handleChange(e)}
-        />
-
-        <input
-          onClick={(e) => handleConfirm(e, fields)}
-          className="btnSbmt"
-          type="submit"
-          value="Confirm Shipping Information"
-        />
-      </form>
-      {showPay && <button onClick={(e) => handlePay(e)}>Pay</button>}
-
-      <Elements stripe={stripePromise}>
+    <div>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <CardElement />
-      </Elements>
+        <h1>{amount}</h1>
+        <input type="submit" value="checkout" />
+      </form>
+    </div>
+  );
+};
+
+function Checkout() {
+  return (
+    <div className="checkoutPage">
+      <Wrapper />
     </div>
   );
 }
