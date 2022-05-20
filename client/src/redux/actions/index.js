@@ -195,3 +195,20 @@ export function postReview(payload) {
     }
   };
 }
+
+export function postUser(payload) {
+  return async function (dispatch) {
+    const json = await axios.post(
+      "http://localhost:3001/api/users/created",
+      payload
+    );
+
+    try {
+      console.log(json);
+      return json;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
