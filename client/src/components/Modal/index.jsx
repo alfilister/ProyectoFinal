@@ -14,7 +14,7 @@ const Modal = ({ children, estado, cambiarEstado, titulo = "Alerta" }) => {
               className="botonCerrar"
               onClick={() => cambiarEstado(false)}
             >
-              <FontAwesomeIcon className="close" icon="fa-solid fa-xmark" />
+              
             </button>
 
             {children}

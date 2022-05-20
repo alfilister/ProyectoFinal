@@ -18,6 +18,7 @@ import {
   GET_USERS_REVIEW,
   RESET_CART,
   RESET_ORDER,
+  GET_USERS_BY_EMAIL,
 } from "../actions";
 
 const initialState = {
@@ -34,6 +35,7 @@ const initialState = {
   cartCounter: "",
   ordersDb: [],
   orderSent: {},
+  userEmailId: {},
 };
 
 function rootReducer(state = initialState, action) {
@@ -217,6 +219,12 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         orderSent: {},
+      };
+
+    case GET_USERS_BY_EMAIL:
+      return {
+        ...state,
+        userEmailId: action.payload,
       };
 
     //return { ...state }

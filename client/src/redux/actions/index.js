@@ -17,6 +17,7 @@ export const SET_ORDER_CHECKOUT = "SET_ORDER_CHECKOUT";
 export const CONFIRM_ORDER_CHECKOUT = "CONFIRM_ORDER_CHECKOUT";
 export const RESET_CART = "RESET_CART";
 export const RESET_ORDER = "RESET_ORDER";
+export const GET_USERS_BY_EMAIL = "GET_USERS_BY_EMAIL";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -260,5 +261,23 @@ export function resetCart() {
 export function resetOrder() {
   return {
     type: RESET_ORDER,
+  };
+}
+
+export function getUsersByEmail(emailUser) {
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get("http://localhost:3001/api/users");
+      const usuarioFiltrado = data.results.filter(
+        (el) => el.email === emailUser
+      );
+
+      return dispatch({
+        type: GET_USERS_BY_EMAIL,
+        payload: usuarioFiltrado,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
