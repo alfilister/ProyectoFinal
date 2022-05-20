@@ -3,7 +3,7 @@
 .contenedorDetalleLoader {
   background-color: $red-800;
   height: 100%;
-}
+
 
 .loaderDetail {
   display: flex;
@@ -214,3 +214,9 @@
     }
   }  
 
+  .contenidoModal {
+    display: flex;
+	  flex-direction: column;
+	  align-items: center;
+  }
+}
