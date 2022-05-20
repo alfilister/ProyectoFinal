@@ -14,6 +14,7 @@ import {
   confirmOrderCheckout,
   resetCart,
   resetOrder,
+  updateProduct,
 } from "../../redux/actions";
 
 const stripePromise = loadStripe(
@@ -35,13 +36,32 @@ const MyComponent = () => {
   const order_id = useSelector((state) => state.orderSent[0].id);
   const amount = useSelector((state) => state.orderSent[0].total_purchase);
   const order = useSelector((state) => state.orderSent[0]);
+  const currentCart = useSelector((state) => state.cart);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
     });
+
+    const modifyStock = (currentCart) => {
+      currentCart.forEach((el) => {
+        el.product.stock = el.product.stock - el.quantity;
+      });
+      console.log(currentCart);
+      return currentCart;
+    };
+
+    const itemsToUpdateStock = modifyStock(currentCart);
+
+    const applyStockChange = (itemsToUpdateStock) => {
+      itemsToUpdateStock.forEach((el) => {
+        dispatch(updateProduct(el.product));
+      });
+    };
+
     if (!error) {
       const { id } = paymentMethod;
       const { data } = await axios.post(
@@ -59,6 +79,7 @@ const MyComponent = () => {
         order.payment_id = data.payment_id;
         order.status = "active";
         dispatch(confirmOrderCheckout(order_id, order));
+        applyStockChange(itemsToUpdateStock);
         alert("order taken succesfully");
         dispatch(resetCart());
         dispatch(resetOrder());
