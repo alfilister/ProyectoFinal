@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -13,12 +13,12 @@ import {
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
   SET_ORDER_CHECKOUT,
-  CREATE_ORDER_FROM_CART,
   GET_ORDERS_FROM_DB,
-  COMPLETE_DATA_ORDER,
+  CONFIRM_ORDER_CHECKOUT,
   GET_USERS_REVIEW,
+  RESET_CART,
+  RESET_ORDER,
 } from "../actions";
-
 
 const initialState = {
   products: [],
@@ -31,12 +31,10 @@ const initialState = {
   reviewProduct: [],
   usersReview: [],
   cart: [],
-  cartCounter: 0,
+  cartCounter: "",
   ordersDb: [],
-  order: {},
   orderSent: {},
-}
-
+};
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -194,60 +192,32 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         ordersDb: action.payload,
-      }
+      };
 
     case SET_ORDER_CHECKOUT:
       return {
         ...state,
         orderSent: action.payload,
-      }
+      };
 
-    case CREATE_ORDER_FROM_CART:
-      const input = {
-        cart_list: state.cart.map((el) => [
-          el.id,
-          el.product.name,
-          el.product.price,
-          el.quantity,
-        ]),
-        products_id: state.cart.map((el) => el.id),
-        total_purchase: action.payload,
-        user_id: "1",
-      }
-
+    case CONFIRM_ORDER_CHECKOUT:
       return {
         ...state,
-        order: input,
-      }
+        orderSent: action.payload,
+      };
 
-    case COMPLETE_DATA_ORDER:
-      const {
-        receiver_phone,
-        shipping_state,
-        city,
-        shipping_address,
-        zip_code,
-      } = action.payload
-
-      const { cart_list, products_id, user_id, total_purchase } = state.order
-
-      const attemptedData = {
-        cart_list,
-        products_id,
-        total_purchase,
-        user_id,
-        receiver_phone,
-        state: shipping_state,
-        city,
-        shipping_address,
-        zip_code,
-        status: "attempted",
-      }
-
+    case RESET_CART:
       return {
         ...state,
-        order: attemptedData,
-      }
+        cart: [],
+        cartCounter: "",
+      };
+
+    case RESET_ORDER:
+      return {
+        ...state,
+        orderSent: {},
+      };
 
     //return { ...state }
     default:

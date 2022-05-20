@@ -1,5 +1,5 @@
-const { User, Order } = require("../db")
-const db_mock_data = require("../../db_mock_data.json") //DATA MOCK
+const { User, Order } = require("../db");
+const db_mock_data = require("../../db_mock_data.json"); //DATA MOCK
 
 const getAllOrders = async () => {
   db_mock_data.orders.forEach(async (order) => {
@@ -16,36 +16,30 @@ const getAllOrders = async () => {
         status: order.status,
         user_id: order.user_id,
       },
-    })
-  })
+    });
+  });
 
   Order.findAll().then((orders) => {
     orders.forEach((order) => {
-      console.log(order.dataValues.cart_list)
-    })
-  })
+      console.log(order.dataValues.cart_list);
+    });
+  });
 
-  const ordersDb = await Order.findAll()
-
-  return ordersDb
-}
-
-const get2all = async () => {
   const ordersDb = await Order.findAll({
     include: User,
-  })
+  });
 
-  return ordersDb
-}
+  return ordersDb;
+};
 
 const getOrderById = async (id) => {
   try {
-    const newProduct = await Order.findByPk(id, { include: User })
-    return newProduct
+    const newProduct = await Order.findByPk(id, { include: User });
+    return newProduct;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const postOrder = async (body) => {
   try {
@@ -60,7 +54,7 @@ const postOrder = async (body) => {
       zip_code,
       status,
       user_id,
-    } = body
+    } = body;
 
     let orderCreated = await Order.findOrCreate({
       where: {
@@ -75,12 +69,12 @@ const postOrder = async (body) => {
         status,
         user_id,
       },
-    })
-    return orderCreated
+    });
+    return orderCreated;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 const updateOrder = async (idOrder, body) => {
   const {
@@ -93,9 +87,10 @@ const updateOrder = async (idOrder, body) => {
     shipping_address,
     zip_code,
     status,
-  } = body
+    payment_id,
+  } = body;
 
-  const selected = await Order.findByPk(idOrder)
+  const selected = await Order.findByPk(idOrder);
   selected.set({
     cart_list,
     products_id,
@@ -106,16 +101,16 @@ const updateOrder = async (idOrder, body) => {
     shipping_address,
     zip_code,
     status,
-  })
-  await selected.save()
+    payment_id,
+  });
+  await selected.save();
 
-  return selected
-}
+  return selected;
+};
 
 module.exports = {
   getAllOrders,
-  get2all,
   getOrderById,
   postOrder,
   updateOrder,
-}
+};
