@@ -191,13 +191,13 @@ export function getUserById(idUser) {
 }
 
 export function postReview(payload) {
-  return async function (dispatch) {
-    const json = await axios.post(
-      "http://localhost:3001/api/reviews/",
-      payload
-    );
-
+  return async function () {
     try {
+      const json = await axios.post(
+        "http://localhost:3001/api/reviews/",
+        payload
+      );
+
       console.log(json);
       return json;
     } catch (error) {

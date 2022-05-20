@@ -33,6 +33,7 @@ const Detail = () => {
   const emailUser = bucket[0] && bucket[0].email;
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
+  const sentIdUser = idUserAuth[0] && idUserAuth[0].id;
 
   //ESTADO LOCAL PARA CONTROLAR VENTANAS MODALES
   //(abrir cerrar modal) SI ESTA AUTENTICADO
@@ -190,7 +191,7 @@ const Detail = () => {
           titulo="Send your review!"
         >
           <div className="contenidoModal">
-            <RenderReviewCreate idProduct={id} idUser={idUserAuth.id} />
+            <RenderReviewCreate idProduct={id} idUser={sentIdUser} />
           </div>
         </Modal>
         {/* Modal para usuario NO autenticado */}

@@ -4,13 +4,15 @@ import { useDispatch } from "react-redux";
 import StarRating from "../startRating/index";
 
 import { postReview } from "../../../redux/actions";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function RenderReviewCreate({ idProduct, idUser }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [input, setInput] = useState({
-    id_product: null,
-    id_user: null,
+    product_id: idProduct,
+    user_id: idUser,
     product_review: "",
     score_review: 0,
   });
@@ -35,6 +37,7 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     });
 
     alert("Reseña publicada");
+    navigate("/");
   }
 
   return (
