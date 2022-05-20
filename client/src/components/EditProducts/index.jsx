@@ -32,7 +32,13 @@ function EditProduct() {
 
 	const productToEdit = (p, acction) => {
 		setProductSelected(p);
-		acction === "edit" ? setEditModal(true) : setDeleteModal(true);
+		if (acction === "edit") {
+			setEditModal(true);
+			setDeleteModal(false);
+		} else {
+			setEditModal(false);
+			setDeleteModal(true);
+		}
 	};
 
 	const handleInput = (event) => {
@@ -78,6 +84,7 @@ function EditProduct() {
 			}
 		});
 		setProductsShow(newData);
+		setSearching(newData);
 		setEditModal(false);
 	};
 
@@ -86,6 +93,7 @@ function EditProduct() {
 		setProductsShow(
 			productsShow.filter((pro) => pro.id !== productSelected.id)
 		);
+		setSearching(productsShow.filter((pro) => pro.id !== productSelected.id));
 		setDeleteModal(false);
 	};
 
