@@ -1,60 +1,259 @@
-import { useState } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import {getProductsById} from "../../redux/actions"
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { updateProduct, deleteProduct } from "../../redux/actions";
 
 function EditProduct() {
+	const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
-    const allProducts = useSelector((state)=>state.products)
-    const productDetail = useSelector((state)=>state.productsDetail)
+	const allProducts = useSelector((state) => state.products);
+	allProducts.sort((a, b) => {
+		return a.id - b.id;
+	});
 
-    useEffect(() => {
-        dispatch(getProductsById(target.value))
-        dispatch(clearDetail())
-      }, [dispatch])
+	const [productsShow, setProductsShow] = useState(allProducts);
+	const [editModal, setEditModal] = useState(false);
+	const [deleteModal, setDeleteModal] = useState(false);
+	const [productSelected, setProductSelected] = useState({
+		id: "",
+		name: "",
+		image: "",
+		aux_images: [],
+		description: "",
+		discount: 0,
+		stock: 0,
+		price: 0,
+		featured: "",
+		categories: [],
+	});
 
-    const list = <div>
-    {allProducts?.map((product)=>{
-        return <div key={product.id}>
-            {product.name}
-            <button onClick={(event)=>{onController(event)}} value={product.id}>🖊</button>
-            <button value={product.id}>❌</button>
-        </div>
-        })}
-    </div>
+	const productToEdit = (p, acction) => {
+		setProductSelected(p);
+		acction === "edit" ? setEditModal(true) : setDeleteModal(true);
+	};
 
-    const [stateLocal, setStateLocal] = useState({
-        display: list,
-        editableProduct: {}
-    })
+	const handleInput = (event) => {
+		const { value, name } = event.target;
+		setProductSelected((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
 
-    const onController = (event)=> {
-        event.preventDefault()
-        switch (event.target.value) {
-            case "back":
-                return setStateLocal({
-                    ...stateLocal,
-                    display: list
-                })
-            case "4":
-                console.log(event.target.value)
-                return setStateLocal({
-                    ...stateLocal,
-                    editableProduct: {name: "prueba"},
-                    display: editForm,
-                })
-            default:
-                
-                break;
-        }
-    }
+	const postData = () => {
+		dispatch(updateProduct(productSelected));
+		//local
+		var newData = productsShow;
+		newData.map((pro) => {
+			if (pro.id === productSelected.id) {
+				pro.name = productSelected.name;
+				pro.image = productSelected.image;
+				pro.aux_images = productSelected.aux_images;
+				pro.description = productSelected.description;
+				pro.discount = productSelected.discount;
+				pro.stock = productSelected.stock;
+				pro.price = productSelected.price;
+				pro.featured = productSelected.featured;
+				pro.categories = productSelected.categories;
+			}
+		});
+		setProductsShow(newData);
+		setEditModal(false);
+	};
 
-    const editForm = <div>
-        <button onClick={(event)=>{onController(event)}} value="back">Regresar</button>
-        <span>{productDetail.name}</span>
-    </div>
+	const deleteData = () => {
+		dispatch(deleteProduct(productSelected.id));
+		setProductsShow(
+			productsShow.filter((pro) => pro.id !== productSelected.id)
+		);
+		setDeleteModal(false);
+	};
 
-    return (stateLocal.display)
+	return (
+		<div>
+			<table>
+				<thead>
+					<tr>
+						<td>Id</td>
+						<td>Nombre</td>
+						<td>Imagen</td>
+						<td>Opciones</td>
+					</tr>
+				</thead>
+				<tbody>
+					{productsShow?.map((product) => {
+						return (
+							<tr key={product.id}>
+								<td>{product.id}</td>
+								<td>{product.name}</td>
+								<td>
+									<img
+										src={product.image}
+										style={{ width: "100px", height: "100px" }}
+									/>
+								</td>
+								<td>
+									<button
+										onClick={(event) => {
+											productToEdit(product, "edit");
+										}}
+									>
+										editar
+									</button>
+								</td>
+								<td>
+									<button
+										onClick={() => {
+											productToEdit(product, "delete");
+										}}
+									>
+										eliminar
+									</button>
+								</td>
+							</tr>
+						);
+					})}
+				</tbody>
+			</table>
+
+			<Modal isOpen={editModal}>
+				<ModalHeader>
+					<div>
+						<h3>Editar Producto</h3>
+					</div>
+				</ModalHeader>
+				<ModalBody>
+					<div>
+						<label>Id</label>
+						<input
+							readOnly
+							type="text"
+							name="id"
+							value={productSelected?.id}
+						></input>
+					</div>
+					<div>
+						<label>Nombre</label>
+						<input
+							type="text"
+							name="name"
+							value={productSelected?.name}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					<div>
+						<label>Imagen</label>
+						<input
+							type="text"
+							name="image"
+							value={productSelected?.image}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					{/* <div>
+						<label>Aux_images</label>
+                        <input></input>
+					</div> */}
+					<div>
+						<label>Description</label>
+						<input
+							type="text"
+							name="description"
+							value={productSelected?.description}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					<div>
+						<label>Discount</label>
+						<input
+							type="number"
+							name="discount"
+							value={productSelected?.discount}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					<div>
+						<label>Stock</label>
+						<input
+							type="number"
+							name="stock"
+							value={productSelected?.stock}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					<div>
+						<label>Price</label>
+						<input
+							type="number"
+							name="price"
+							value={productSelected?.price}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div>
+					{/* <div>
+						<label>categories</label>
+						<input
+							type="text"
+							name="categories"
+							value={productSelected?.categories}
+							onChange={(event) => {
+								handleInput(event);
+							}}
+						></input>
+					</div> */}
+				</ModalBody>
+				<ModalFooter>
+					<button
+						onClick={() => {
+							postData();
+						}}
+					>
+						Actualizar
+					</button>
+					<button
+						onClick={() => {
+							setEditModal(false);
+						}}
+					>
+						Cancelar
+					</button>
+				</ModalFooter>
+			</Modal>
+
+			<Modal isOpen={deleteModal}>
+				<ModalBody>
+					Estas seguro de que deseas borrar el producto {productSelected?.name}
+				</ModalBody>
+				<ModalFooter>
+					<button
+						onClick={() => {
+							deleteData();
+						}}
+					>
+						Si
+					</button>
+					<button
+						onClick={() => {
+							setDeleteModal(false);
+						}}
+					>
+						No
+					</button>
+				</ModalFooter>
+			</Modal>
+		</div>
+	);
 }
-
-export default EditProduct
+export default EditProduct;
