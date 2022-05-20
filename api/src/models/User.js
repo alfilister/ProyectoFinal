@@ -19,6 +19,9 @@ module.exports = (sequelize) => {
         type: DataTypes.BIGINT,
         // allowNull: false,
       },
+      role : {
+        type : DataTypes.STRING
+      }
       
     },
     { timestamps: false, createdAt: false, updatedAt: false }
