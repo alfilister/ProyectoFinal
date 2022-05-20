@@ -19,12 +19,6 @@ const getAllOrders = async () => {
     });
   });
 
-  Order.findAll().then((orders) => {
-    orders.forEach((order) => {
-      console.log(order.dataValues.cart_list);
-    });
-  });
-
   const ordersDb = await Order.findAll({
     include: User,
   });
