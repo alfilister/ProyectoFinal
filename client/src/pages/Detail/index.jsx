@@ -114,11 +114,15 @@ const Detail = () => {
                 <p className="categorias">{`| ${productId.categories?.map(
                   (el) => ` ${el.name}`
                 )} |`}</p>
-                <div className="btnCrt">
-                  <button onClick={(e) => handleCart(e, id)}>
-                    Add To Cart
-                  </button>
-                </div>
+                {productId.stock ? (
+                  <div className="btnCrt">
+                    <button onClick={(e) => handleCart(e, id)}>
+                      Add To Cart
+                    </button>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
                 <div className="descripcion">
                   <h2>Description:</h2>
 
