@@ -11,6 +11,9 @@ export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const DELETE_PRODUCT = "DELETE_PRODUCT";
+export const CREATE_CATEGORY = "CREATE_CATEGORY";
 export const GET_USERS_REVIEW = "GET_USERS_REVIEW";
 export const GET_ORDERS_FROM_DB = "GET_ORDERS_FROM_DB";
 export const SET_ORDER_CHECKOUT = "SET_ORDER_CHECKOUT";
@@ -203,6 +206,19 @@ export function postReview(payload) {
   };
 }
 
+export function updateProduct(product) {
+  return async function () {
+    const json = await axios.put(
+      `http://localhost:3001/api/products/${product.id}`,
+      product
+    );
+    return {
+      type: UPDATE_PRODUCT,
+      payload: json.data.results,
+    };
+  };
+}
+
 export function getUsersReview() {
   return async function (dispatch) {
     try {
@@ -224,7 +240,6 @@ export function postUser(payload) {
       "http://localhost:3001/api/users/created",
       payload
     );
-
     try {
       //posible bug que hace que se repita cada peticion htpp debe ser en la configuracion de cada  routa cuando entra a localhost:3001/.../...  y asi en varias peticiones htpp
       console.log("soy la accion y esto me llego del front ", json);
@@ -278,6 +293,31 @@ export function resetCart() {
 export function resetOrder() {
   return {
     type: RESET_ORDER,
+  };
+}
+
+export function deleteProduct(idProduct) {
+  return async function () {
+    const json = await axios.delete(
+      `http://localhost:3001/api/products/${idProduct}`
+    );
+    return {
+      type: DELETE_PRODUCT,
+      payload: json.data.results,
+    };
+  };
+}
+
+export function createCategory(payload) {
+  return async function () {
+    const json = await axios.post(
+      `http://localhost:3001/api/categories`,
+      payload
+    );
+    return {
+      type: CREATE_CATEGORY,
+      payload: json.data.results,
+    };
   };
 }
 

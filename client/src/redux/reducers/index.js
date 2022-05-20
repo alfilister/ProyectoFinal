@@ -12,6 +12,9 @@ import {
   GET_REVIEWS_PRODUCT,
   ADD_ITEM_TO_CART,
   REMOVE_ITEM_FROM_CART,
+  UPDATE_PRODUCT,
+  DELETE_PRODUCT,
+  CREATE_CATEGORY,
   SET_ORDER_CHECKOUT,
   GET_ORDERS_FROM_DB,
   CONFIRM_ORDER_CHECKOUT,
@@ -30,9 +33,8 @@ const initialState = {
   suggestedRandom: [],
   user: {},
   reviewProduct: [],
-  usersReview: [],
   cart: [],
-  cartCounter: "",
+  cartCounter: "", //Antes era un 0
   ordersDb: [],
   orderSent: {},
   userEmailId: {},
@@ -177,9 +179,18 @@ function rootReducer(state = initialState, action) {
         ...state,
         user: action.payload,
       };
-    case "POST_REVIEWS":
+    case UPDATE_PRODUCT:
       return {
         ...state,
+      };
+    case DELETE_PRODUCT:
+      return {
+        ...state,
+      };
+    case CREATE_CATEGORY:
+      return {
+        ...state,
+        categories: [...state.categories, action.payload[0]],
       };
     case GET_USERS_REVIEW:
       const usersFilterNameId = action.payload.map((el) => {
@@ -227,7 +238,7 @@ function rootReducer(state = initialState, action) {
         userEmailId: action.payload,
       };
 
-      case "POST_USER":
+    case "POST_USER":
       return {
         ...state,
       };

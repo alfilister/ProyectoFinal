@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { postProduct } from "../../redux/actions";
-
 import "../../scss/pages/_created.scss";
 import { useNavigate } from "react-router-dom";
 
