@@ -11,53 +11,49 @@ import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated } = useAuth0();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+	const { isAuthenticated } = useAuth0();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
-  var cartCounter = useSelector((state) => state.cartCounter);
+	var cartCounter = useSelector((state) => state.cartCounter);
 
-  const handleCart = (e) => {
-    e.preventDefault();
-    dispatch(resetOrder());
-    navigate("/cart");
-  };
+	const handleCart = (e) => {
+		e.preventDefault();
+		dispatch(resetOrder());
+		navigate("/cart");
+	};
 
-  return (
-    <div className="divNavbar">
-      <div className="divSeachYLogo">
-        <NavLink to="/" className="logo">
-          <img className="logoImg" src={logo} alt="imagenLogo" />
-        </NavLink>
-        <NavLink to="/" className="tituloPag">
-          <h2 className="tituloPag">E-commerCell</h2>
-        </NavLink>
-      </div>
-      <div className="searchBarStylo">
-        <Link to="/createProduct" className="linkVender">
-          Vender Articulo
-        </Link>
-      </div>
-      <div className="logeo">
-        {isAuthenticated ? (
-          <>
-            <div className="autenticated">
-              <LogOutButton className="estiloSesion" />
-              <Profile className="estiloProfile" />
-            </div>
-          </>
-        ) : (
-          <div className="loginButton">
-            <LoginButton />
-          </div>
-        )}
-        <div className="cartBtnNav">
-          <button onClick={(e) => handleCart(e)}>Cart</button>
-          <p className="cartCounter">{cartCounter}</p>
-        </div>
-      </div>
-    </div>
-  );
+	return (
+		<div className="divNavbar">
+			<div className="divSeachYLogo">
+				<NavLink to="/" className="logo">
+					<img className="logoImg" src={logo} alt="imagenLogo" />
+				</NavLink>
+				<NavLink to="/" className="tituloPag">
+					<h2 className="tituloPag">E-commerCell</h2>
+				</NavLink>
+			</div>
+			<div className="searchBarStylo"></div>
+			<div className="logeo">
+				{isAuthenticated ? (
+					<>
+						<div className="autenticated">
+							<LogOutButton className="estiloSesion" />
+							<Profile className="estiloProfile" />
+						</div>
+					</>
+				) : (
+					<div className="loginButton">
+						<LoginButton />
+					</div>
+				)}
+				<div className="cartBtnNav">
+					<button onClick={(e) => handleCart(e)}>Cart</button>
+					<p className="cartCounter">{cartCounter}</p>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Nav;

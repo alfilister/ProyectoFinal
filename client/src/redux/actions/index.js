@@ -166,45 +166,45 @@ export function getReviewsProduct(payload) {
 }
 
 export function addItemToCart(payload) {
-  return {
-    type: ADD_ITEM_TO_CART,
-    payload: payload,
-  };
+	return {
+		type: ADD_ITEM_TO_CART,
+		payload: payload,
+	};
 }
 
 export function removeItemFromCart(payload) {
-  return {
-    type: REMOVE_ITEM_FROM_CART,
-    payload: payload,
-  };
+	return {
+		type: REMOVE_ITEM_FROM_CART,
+		payload: payload,
+	};
 }
 
 export function getUserById(idUser) {
-  return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
-    return dispatch({
-      type: GET_USER_BY_ID,
-      payload: json.data.results,
-    });
-  };
+	return async function (dispatch) {
+		const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
+		return dispatch({
+			type: GET_USER_BY_ID,
+			payload: json.data.results,
+		});
+	};
 }
 
 export function postReview(payload) {
-  return async function (dispatch) {
-    const json = await axios.post(
-      "http://localhost:3001/api/reviews/",
-      payload
-    );
+	return async function (dispatch) {
+		const json = await axios.post(
+			"http://localhost:3001/api/reviews/",
+			payload
+		);
 
-    try {
-      console.log(json);
-      return json;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+		try {
+			console.log(json);
+			return json;
+		} catch (error) {
+			console.log(error);
+		}
+	};
 }
-  
+
 export function updateProduct(product) {
 	return async function () {
 		const json = await axios.put(
@@ -219,65 +219,66 @@ export function updateProduct(product) {
 }
 
 export function getUsersReview() {
-  return async function (dispatch) {
-    try {
-      const user = await axios.get("http://localhost:3001/api/users");
+	return async function (dispatch) {
+		try {
+			const user = await axios.get("http://localhost:3001/api/users");
 
-      return dispatch({
-        type: GET_USERS_REVIEW,
-        payload: user.data.results,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+			return dispatch({
+				type: GET_USERS_REVIEW,
+				payload: user.data.results,
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	};
 }
 
 export function getOrdersFromDb() {
-  return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/api/orders`);
-    return dispatch({
-      type: GET_ORDERS_FROM_DB,
-      payload: json.data.results,
-    });
-  };
+	return async function (dispatch) {
+		const json = await axios.get(`http://localhost:3001/api/orders`);
+		return dispatch({
+			type: GET_ORDERS_FROM_DB,
+			payload: json.data.results,
+		});
+	};
 }
 
 export function setOrderCheckout(payload) {
-  return async function (dispatch) {
-    const json = await axios.post("http://localhost:3001/api/orders", payload);
+	return async function (dispatch) {
+		const json = await axios.post("http://localhost:3001/api/orders", payload);
 
-    return dispatch({
-      type: SET_ORDER_CHECKOUT,
-      payload: json.data.results,
-    });
-  };
+		return dispatch({
+			type: SET_ORDER_CHECKOUT,
+			payload: json.data.results,
+		});
+	};
 }
 
 export function confirmOrderCheckout(id, payload) {
-  return async function (dispatch) {
-    const json = await axios.put(
-      `http://localhost:3001/api/orders/${id}`,
-      payload
-    );
-    return dispatch({
-      type: CONFIRM_ORDER_CHECKOUT,
-      payload: json.data.results,
-    });
-  };
+	return async function (dispatch) {
+		const json = await axios.put(
+			`http://localhost:3001/api/orders/${id}`,
+			payload
+		);
+		return dispatch({
+			type: CONFIRM_ORDER_CHECKOUT,
+			payload: json.data.results,
+		});
+	};
 }
 
 export function resetCart() {
-  return {
-    type: RESET_CART,
-  };
+	return {
+		type: RESET_CART,
+	};
 }
 
 export function resetOrder() {
-  return {
-    type: RESET_ORDER,
-  };
-  
+	return {
+		type: RESET_ORDER,
+	};
+}
+
 export function deleteProduct(idProduct) {
 	return async function () {
 		const json = await axios.delete(
