@@ -20,6 +20,7 @@ export const SET_ORDER_CHECKOUT = "SET_ORDER_CHECKOUT";
 export const CONFIRM_ORDER_CHECKOUT = "CONFIRM_ORDER_CHECKOUT";
 export const RESET_CART = "RESET_CART";
 export const RESET_ORDER = "RESET_ORDER";
+export const UPDATE_ORDER = "UPDATE_ORDER";
 export const GET_USERS_BY_EMAIL = "GET_USERS_BY_EMAIL";
 
 export function getProducts() {
@@ -305,6 +306,19 @@ export function createCategory(payload) {
   };
 }
 
+export function updateOrder(payload) {
+	return async function () {
+		const json = await axios.put(
+			`http://localhost:3001/api/orders/${payload.id}`,
+			payload
+		);
+		return {
+			type: UPDATE_ORDER,
+			payload: json.data.results,
+		};
+	};
+}
+
 export function getUsersByEmail(emailUser) {
   return async function (dispatch) {
     try {
@@ -329,4 +343,3 @@ export function postUser(payload) {
       "http://localhost:3001/api/users/created",
       payload
     );
-

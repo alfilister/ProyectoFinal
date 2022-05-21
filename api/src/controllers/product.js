@@ -123,7 +123,8 @@ const updateProduct = async (
   stock,
   categories
 ) => {
-  const selected = await Product.findByPk(idProduct);
+  
+const selected = await Product.findByPk(idProduct);
   selected.set({
     name,
     image,
