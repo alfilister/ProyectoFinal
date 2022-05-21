@@ -330,11 +330,3 @@ export function postUser(payload) {
       payload
     );
 
-    try {
-      console.log("soy la accion y esto me llego del front ", json);
-      return json;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
