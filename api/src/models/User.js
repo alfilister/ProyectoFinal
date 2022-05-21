@@ -16,12 +16,13 @@ module.exports = (sequelize) => {
         // allowNull: false,
       },
       id_document: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         // allowNull: false,
       },
-      role:{
-        type: DataTypes.STRING,
+      role : {
+        type : DataTypes.STRING
       }
+      
     },
     { timestamps: false, createdAt: false, updatedAt: false }
   )

@@ -10,86 +10,76 @@ import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
 
-//esto fue lo que hice en ultimo Pull Danilo 
+//esto fue lo que hice en ultimo Pull Danilo
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
 
-
-
 const Nav = ({ setCurrentPage }) => {
+  const { isAuthenticated, user } = useAuth0();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-	
+  //esto fue lo que hice ultimo pull Danilo
 
-	const { isAuthenticated , user } = useAuth0();
-	const navigate = useNavigate();
-	const dispatch = useDispatch();
+  useEffect(() => {
+    if (isAuthenticated) {
+      let objUser = {
+        fullName: user.nickname,
+        password: user.sub,
+        email: user.email,
+      };
+      dispatch(postUser(objUser));
+    }
+  });
 
-	//esto fue lo que hice ultimo pull Danilo
+  if (isAuthenticated) {
+    console.log("Estas Logeado");
+  } else {
+    console.log("Aun no hay nadie logeado");
+  }
 
-	useEffect(() => {
-		if(isAuthenticated){
-		  let objUser = {
-			fullName : user.nickname,
-			password : user.sub,
-			email : user.email,
-		  }
-		  dispatch(postUser(objUser))
-		 }
-	  },)
+  /////////
 
-	  if(isAuthenticated){
-   
-		console.log('Estas Logeado')
-	 
-	  }else{
-		  console.log('Aun no hay nadie logeado')
-		}
-	  
-	  
-      /////////
+  var cartCounter = useSelector((state) => state.cartCounter);
 
-	
+  const handleCart = (e) => {
+    e.preventDefault();
+    dispatch(resetOrder());
+    navigate("/cart");
+  };
 
-	var cartCounter = useSelector((state) => state.cartCounter);
-
-	const handleCart = (e) => {
-		e.preventDefault();
-		dispatch(resetOrder());
-		navigate("/cart");
-	};
-
-	return (
-		<div className="divNavbar">
-			<div className="divSeachYLogo">
-				<NavLink to="/" className="logo">
-					<img className="logoImg" src={logo} alt="imagenLogo" />
-				</NavLink>
-				<NavLink to="/" className="tituloPag">
-					<h2 className="tituloPag">E-commerCell</h2>
-				</NavLink>
-			</div>
-			<div className="searchBarStylo"></div>
-			<div className="logeo">
-				{isAuthenticated ? (
-					<>
-						<div className="autenticated">
-							<LogOutButton className="estiloSesion" />
-							<Profile className="estiloProfile" />
-						</div>
-					</>
-				) : (
-					<div className="loginButton">
-						<LoginButton />
-					</div>
-				)}
-				<div className="cartBtnNav">
-					<button onClick={(e) => handleCart(e)}>Cart</button>
-					<p className="cartCounter">{cartCounter}</p>
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div className="divNavbar">
+      <div className="divSeachYLogo">
+        <NavLink to="/" className="logo">
+          <img className="logoImg" src={logo} alt="imagenLogo" />
+        </NavLink>
+        <NavLink to="/" className="tituloPag">
+          <h2 className="tituloPag">E-commerCell</h2>
+        </NavLink>
+      </div>
+      <div className="searchBarStylo"></div>
+      <div className="logeo">
+        {isAuthenticated ? (
+          <>
+            <div className="autenticated">
+              <LogOutButton className="estiloSesion" />
+              <Profile className="estiloProfile" />
+            </div>
+          </>
+        ) : (
+          <div className="loginButton">
+            <LoginButton />
+          </div>
+        )}
+        <div className="cartBtnNav">
+          <button onClick={(e) => handleCart(e)}>Cart</button>
+          <p className="cartCounter">{cartCounter}</p>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Nav;

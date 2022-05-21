@@ -1,36 +1,37 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { addItemToCart } from "../../redux/actions"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../redux/actions";
 
 const Card = ({
   id,
   name,
   image,
   categories,
+  stock,
   price,
   rating,
   aux_images,
   featured,
 }) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleDetail = (e) => {
-    e.preventDefault()
-    navigate(`/producto/${id}`)
-  }
+    e.preventDefault();
+    navigate(`/producto/${id}`);
+  };
 
   const handleCart = (e, id) => {
-    e.preventDefault()
-    dispatch(addItemToCart(id))
-  }
+    e.preventDefault();
+    dispatch(addItemToCart(id));
+  };
 
   return (
     <div className={featured === false ? "card" : "cardFeatured"}>
       {featured && <div className="featTag">⭐</div>}
       <h3>{name}</h3>
-      <div className="img">
+      <div className={stock ? "img" : "noStockImg"}>
         <img src={image} alt="Main" />
         <img
           className="image-hover"
@@ -45,11 +46,19 @@ const Card = ({
         <span>⭐ {rating}</span>
       </div>
       <div className="btn">
-        <button onClick={(e) => handleDetail(e)}>Details</button>
-        <button onClick={(e) => handleCart(e, id)}>Add To Cart</button>
+        <button className="infoBtn" onClick={(e) => handleDetail(e)}>
+          Details
+        </button>
+        {stock ? (
+          <button className="infoBtn" onClick={(e) => handleCart(e, id)}>
+            Add To Cart
+          </button>
+        ) : (
+          <button className="outStockBtn">Out of Stock</button>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

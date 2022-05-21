@@ -17,7 +17,11 @@ const getUser = async () => {
      })
    })
 
+   
+
    //DB INFO
+ /*   const getUser = await User.findAll()
+   return await getUser */
    return await User.findAll()
   } catch (error) {
     console.log(error)
