@@ -134,10 +134,10 @@ const updateProduct = async (
 		stock,
 	});
 
-	categories.forEach(async (c) => {
-		const cat = await Category.findOne({ where: { name: c.name } });
-		selected.setCategories(cat.toJSON().id);
-	});
+	// categories.forEach(async (c) => {
+	// 	const cat = await Category.findOne({ where: { name: c.name } });
+	// 	selected.setCategories(cat.toJSON().id);
+	// });
 
 	await selected.save();
 
