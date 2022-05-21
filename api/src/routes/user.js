@@ -27,6 +27,40 @@ router.get("/:idUser", async (req, res, next) => {
   }
 });
 
+router.put("/:idUser", async (req, res, next) => {
+	const { idUser } = req.params;
+	const {
+        fullName,
+        email,
+        password,
+        id_document
+	} = req.body;
+
+	try {
+		const updated = await userController.updateUser (
+        idUser,
+        fullName,
+        email,
+        password,
+        id_document
+			
+		);
+		res.json({ results: updated });
+	} catch (error) {
+		next(error);
+	}
+});
+
+router.delete("/:idUser", async (req, res, next) => {
+	const { idUser } = req.params;
+	try {
+		const result = await userController.deleteUser(idUser);
+		res.send({ results: result });
+	} catch (error) {
+		next(error);
+	}
+});
+
 router.post("/created", async (req, res, next) => {
 
   try {
