@@ -17,7 +17,11 @@ const getUser = async () => {
      })
    })
 
+   
+
    //DB INFO
+ /*   const getUser = await User.findAll()
+   return await getUser */
    return await User.findAll()
   } catch (error) {
     console.log(error)
@@ -33,20 +37,59 @@ const getUserById = async (idUser)=> {
   }
 }
 
-const postUser = async (user) => {
-  try {
-    const userCreated = await User.create({
-        fullName: user.fullName,
-        password: user.password,
-        email: user.email,
-        id_document: user.id_document,
-        role: user.role
-   })
+const updateUser = async (
+   usserId,
+   id_document,
+   role
+   ) => {
+	const selectedUser = await User.findByPk(usserId);
+	selected.set({
+   id_document,
+   role
+	});
 
-   return userCreated
+	await selectedUser.save();
+
+	return selectedUser;
+};
+
+
+const deleteUser = async (idUser) => {
+	try {
+	
+		const userDeleted = await User.destroy({ where: { id: idUser } });
+		return userDeleted;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+const postUser = async (body) => {
+
+  try {
+    const{
+        fullName,
+        email,
+        password,
+   } = body   
+
+  
+   let userCreated = await User.findOrCreate({
+
+    where: {
+      fullName: fullName,
+      password: password,
+      email: email,
+    }
+
+  });
+
+  return userCreated
+
+
   } catch (error) {
     console.log(error)
   }
 }
 
-module.exports = { getUser, postUser, getUserById }
+module.exports = { getUser, postUser, getUserById, updateUser , deleteUser}
