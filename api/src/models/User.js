@@ -20,7 +20,11 @@ module.exports = (sequelize) => {
         // allowNull: false,
       },
       role : {
-        type : DataTypes.STRING
+        type : DataTypes.STRING,
+        defaultValue : 'User'
+      },
+      image : {
+        type : DataTypes.TEXT
       }
       
     },

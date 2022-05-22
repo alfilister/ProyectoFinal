@@ -82,6 +82,7 @@ function EditProduct() {
 				pro.featured = productSelected.featured;
 				pro.categories = productSelected.categories;
 			}
+			return newData
 		});
 		setProductsShow(newData);
 		setSearching(newData);
@@ -134,7 +135,7 @@ function EditProduct() {
 									<img
 										src={product.image}
 										style={{ width: "100px", height: "100px" }}
-									/>
+									alt = ''/>
 								</td>
 								<td>
 									<button

@@ -329,4 +329,13 @@ export function postUser(payload) {
       "http://localhost:3001/api/users/created",
       payload
     );
+	  try {
+	   
+      console.log('soy la accion y esto me llego del front ' ,json);
+      return json;
+      } catch (error) {
+      console.log(error);
+      }
+    };
+    }
 
