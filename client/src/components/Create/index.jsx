@@ -12,7 +12,7 @@ function validate(input) {
   let errors = {};
   let nameRequiere = /^[.@&]?[a-zA-Z0-9 ]+[ !.@&()]?[ a-zA-Z0-9!()]+/;
   let numbers = /^[0-9]*[1-9][0-9]*$/;
-  let urlValidate = /\.(gif|jpeg|jpg|png|webp)$/i;
+  // let urlValidate = /\.(gif|jpeg|jpg|png|webp)$/i;
 
   if (!input.name) {
     errors.name = "Requiere Nombre";
@@ -32,11 +32,6 @@ function validate(input) {
     errors.stock = "El stock deberia ser minimo 1";
   }
 
-  if (!input.image) {
-    errors.image = "Se requiere imagen";
-  } else if (!urlValidate.test(input.image)) {
-    errors.image = "Coloque un URL valida";
-  }
   if (input.categories.length === 0) {
     errors.categories = "Se requiere al menos una categoria";
   }
@@ -46,7 +41,7 @@ const Create = () => {
   const categories = useSelector((state) => state.categories);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const auxImg = [];
   // console.log("esto son categorias", categories);
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
@@ -108,6 +103,43 @@ const Create = () => {
     navigate("/");
   }
 
+  function getImage(element) {
+    const { files } = element.target;
+    if (files.length === 1) {
+      var file = files.item(0);
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        setInput({
+          ...input,
+          image: reader.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+  const read = (file) => {
+    var reader = new FileReader();
+    reader.onloadend = function () {
+      // console.log("RESULTS", reader.result);
+      auxImg.push(reader.result);
+      // setProductSelected({
+      // 	...productSelected,
+      // 	aux_images: [...productSelected.aux_images, reader.result],
+      // });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const getMuchImages = (event) => {
+    const { files } = event.target;
+    if (files) {
+      [].forEach.call(files, read);
+    }
+    setInput({
+      ...input,
+      aux_images: auxImg,
+    });
+  };
   return (
     <div className="formContainer">
       <br />
@@ -130,20 +162,28 @@ const Create = () => {
           <div className="form-group">
             {errors.name && <div className="form-errors">{errors.name}</div>}
           </div>
-
           <div className="elementosForm">
-            <label>imagen : </label>
+            <label>Imagen principal:</label>
             <input
-              type="text"
-              placeholder="image"
-              value={input.image}
+              onChange={(event) => {
+                getImage(event);
+              }}
+              type="file"
               name="image"
-              required
-              onChange={handleChangeInput}
-            />
+              accept="image/png, image/jpeg"
+            ></input>
           </div>
-          <div className="form-group">
-            {errors.image && <div className="form-errors">{errors.image}</div>}
+          <div className="elementosForm">
+            <label>Mas imagenes:</label>
+            <input
+              onChange={(event) => {
+                getMuchImages(event);
+              }}
+              type="file"
+              name="aux_images"
+              accept="image/png, image/jpeg"
+              multiple
+            ></input>
           </div>
 
           <div className="elementosForm">
