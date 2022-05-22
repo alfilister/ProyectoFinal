@@ -125,12 +125,7 @@ const Create = () => {
   const read = (file) => {
     var reader = new FileReader();
     reader.onloadend = function () {
-      // console.log("RESULTS", reader.result);
       auxImg.push(reader.result);
-      // setProductSelected({
-      // 	...productSelected,
-      // 	aux_images: [...productSelected.aux_images, reader.result],
-      // });
     };
     reader.readAsDataURL(file);
   };
