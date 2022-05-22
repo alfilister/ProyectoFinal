@@ -8,7 +8,6 @@ function MenuAdmin({setMenu, menu}) {
 
     const onButton = (event) => {
         event.preventDefault()
-        console.log(event.target.value)
         switch (event.target.value) {
             case "CreateProduct":
                 setMenu({

@@ -1,24 +1,71 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import StarRating from "../startRating/index";
-import ChangeRating from "../changeRating/index";
+
 import { postReview } from "../../../redux/actions";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export default function Rating() {
-  // Rating
-  const [avgRating, setAvgRating] = useState(0);
+export default function RenderReviewCreate({ idProduct, idUser }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleRating = (input) => {
-    setAvgRating(input);
-  };
+  const [input, setInput] = useState({
+    product_id: idProduct,
+    user_id: idUser,
+    product_review: "",
+    score_review: 0,
+  });
+
+  function handleChangeInputReview(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+
+    console.log(input);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(postReview(input));
+    setInput({
+      id_product: idProduct || null,
+      id_user: idUser || null,
+      product_review: "",
+      score_review: 0,
+    });
+
+    alert("Reseña publicada");
+    navigate("/");
+  }
 
   return (
-    <div className="App">
-      <h1>Star Rating</h1>
-      <ChangeRating rating={avgRating} handleRating={handleRating} />
-      <br />
-      <br />
-      <StarRating stars={avgRating} />
+    <div className="StarConteiner">
+      <StarRating stars={input.score_review} />
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <label>Escribir Opinion:</label>
+        <input
+          type="text"
+          value={input.product_review}
+          name="product_review"
+          onChange={handleChangeInputReview}
+          className="textReview"
+        />
+        <label>Puntaje Producto:</label>
+        <input
+          type="number"
+          step="0.1"
+          min="0"
+          max="5"
+          value={input.score_review}
+          name="score_review"
+          onChange={handleChangeInputReview}
+          className="scoreStar"
+        />
+
+        <button type="submit"> Send </button>
+      </form>
     </div>
   );
 }

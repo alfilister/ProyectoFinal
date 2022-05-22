@@ -45,6 +45,7 @@ const CardsContainer = () => {
                   key={el.id}
                   id={el.id}
                   aux_images={el.aux_images}
+                  stock={el.stock}
                   name={el.name}
                   image={el.image}
                   price={el.price}

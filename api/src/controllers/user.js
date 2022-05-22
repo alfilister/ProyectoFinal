@@ -37,6 +37,32 @@ const getUserById = async (idUser)=> {
   }
 }
 
+const updateUser = async (
+   usserId,
+   id_document,
+   role
+   ) => {
+	const selectedUser = await User.findByPk(usserId);
+	selected.set({
+   id_document,
+   role
+	});
+
+	await selectedUser.save();
+
+	return selectedUser;
+};
+
+
+const deleteUser = async (idUser) => {
+	try {
+	
+		const userDeleted = await User.destroy({ where: { id: idUser } });
+		return userDeleted;
+	} catch (error) {
+		console.log(error);
+	}
+};
 
 const postUser = async (body) => {
 
@@ -44,7 +70,8 @@ const postUser = async (body) => {
     const{
         fullName,
         email,
-        password
+        password,
+        image
    } = body   
 
   
@@ -54,6 +81,7 @@ const postUser = async (body) => {
       fullName: fullName,
       password: password,
       email: email,
+      image : image
     }
 
   });
@@ -66,4 +94,4 @@ const postUser = async (body) => {
   }
 }
 
-module.exports = { getUser, postUser, getUserById }
+module.exports = { getUser, postUser, getUserById, updateUser , deleteUser}

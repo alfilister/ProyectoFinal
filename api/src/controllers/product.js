@@ -121,10 +121,10 @@ const updateProduct = async (
   description,
   discount,
   stock,
-  rating,
   categories
 ) => {
-  const selected = await Product.findByPk(idProduct);
+  
+const selected = await Product.findByPk(idProduct);
   selected.set({
     name,
     image,
@@ -133,11 +133,10 @@ const updateProduct = async (
     description,
     discount,
     stock,
-    rating,
   });
 
   categories.forEach(async (c) => {
-    const cat = await Category.findOne({ where: { name: c } });
+    const cat = await Category.findOne({ where: { name: c.name } });
     selected.setCategories(cat.toJSON().id);
   });
 
@@ -148,6 +147,9 @@ const updateProduct = async (
 
 const deleteProduct = async (idProduct) => {
   try {
+    const reviewsDeleted = await Review.destroy({
+      where: { product_id: idProduct },
+    });
     const productDeleted = await Product.destroy({ where: { id: idProduct } });
     return productDeleted;
   } catch (error) {

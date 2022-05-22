@@ -1,9 +1,9 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import Card from "../Card"
+import React from "react";
+import { useSelector } from "react-redux";
+import Card from "../Card";
 
 function CardSlider() {
-  const featuredOnes = useSelector((state) => state.featProducts)
+  const featuredOnes = useSelector((state) => state.featProducts);
 
   return (
     <section className="cardSlider">
@@ -29,17 +29,18 @@ function CardSlider() {
                   name={el.name}
                   image={el.image}
                   price={el.price}
+                  stock={el.stock}
                   rating={el.rating}
                   featured={el.featured}
                   categories={el.categories.map((el) => el.name).join(" | ")}
                 />
               </div>
-            )
+            );
           })
         )}
       </div>
     </section>
-  )
+  );
 }
 
-export default CardSlider
+export default CardSlider;
