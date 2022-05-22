@@ -4,6 +4,7 @@ import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { updateProduct, deleteProduct } from "../../redux/actions";
 
 function EditProduct() {
+	let auxImg = [];
 	const dispatch = useDispatch();
 
 	const allProducts = useSelector((state) => state.products);
@@ -104,6 +105,45 @@ function EditProduct() {
 		setProductsShow(() => searching.filter((p) => p.name.includes(value)));
 	};
 
+	function getImage(element) {
+		const { files } = element.target;
+		if (files.length === 1) {
+			var file = files.item(0);
+			var reader = new FileReader();
+			reader.onloadend = function () {
+				setProductSelected({
+					...productSelected,
+					image: reader.result,
+				});
+			};
+			reader.readAsDataURL(file);
+		}
+	}
+
+	const read = (file) => {
+		var reader = new FileReader();
+		reader.onloadend = function () {
+			// console.log("RESULTS", reader.result);
+			auxImg.push(reader.result);
+			// setProductSelected({
+			// 	...productSelected,
+			// 	aux_images: [...productSelected.aux_images, reader.result],
+			// });
+		};
+		reader.readAsDataURL(file);
+	};
+
+	const getMuchImages = (event) => {
+		const { files } = event.target;
+		if (files) {
+			[].forEach.call(files, read);
+		}
+		setProductSelected({
+			...productSelected,
+			aux_images: auxImg,
+		});
+	};
+
 	return (
 		<div>
 			<div>
@@ -134,8 +174,12 @@ function EditProduct() {
 								<td>
 									<img
 										src={product.image}
-										style={{ width: "100px", height: "100px" }}
-									alt = ''/>
+
+										width="100px"
+										height="100px"
+										alt="base64 test"
+									/>
+
 								</td>
 								<td>
 									<button
@@ -191,18 +235,26 @@ function EditProduct() {
 					<div>
 						<label>Imagen</label>
 						<input
-							type="text"
-							name="image"
-							value={productSelected?.image}
 							onChange={(event) => {
-								handleInput(event);
+								getImage(event);
 							}}
+							type="file"
+							name="image"
+							accept="image/png, image/jpeg"
 						></input>
 					</div>
-					{/* <div>
+					<div>
 						<label>Aux_images</label>
-                        <input></input>
-					</div> */}
+						<input
+							onChange={(event) => {
+								getMuchImages(event);
+							}}
+							type="file"
+							name="aux_images"
+							accept="image/png, image/jpeg"
+							multiple
+						></input>
+					</div>
 					<div>
 						<label>Description</label>
 						<input
@@ -253,7 +305,7 @@ function EditProduct() {
 							for (let i = 0; i < productSelected.categories.length; i++) {
 								if (category.name === productSelected.categories[i].name) {
 									return (
-										<div>
+										<div key={category.id}>
 											<label>{category.name}</label>
 											<input
 												checked={true}
