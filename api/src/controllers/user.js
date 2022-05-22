@@ -71,6 +71,7 @@ const postUser = async (body) => {
         fullName,
         email,
         password,
+        image
    } = body   
 
   
@@ -80,6 +81,7 @@ const postUser = async (body) => {
       fullName: fullName,
       password: password,
       email: email,
+      image : image
     }
 
   });

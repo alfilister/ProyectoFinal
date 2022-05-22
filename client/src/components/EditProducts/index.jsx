@@ -83,6 +83,7 @@ function EditProduct() {
 				pro.featured = productSelected.featured;
 				pro.categories = productSelected.categories;
 			}
+			return newData
 		});
 		setProductsShow(newData);
 		setSearching(newData);
@@ -173,10 +174,12 @@ function EditProduct() {
 								<td>
 									<img
 										src={product.image}
+
 										width="100px"
 										height="100px"
 										alt="base64 test"
 									/>
+
 								</td>
 								<td>
 									<button

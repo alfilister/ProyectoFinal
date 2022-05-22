@@ -10,6 +10,7 @@ import Category from "./pages/Category"
 import ControlPanel from "./pages/Admin"
 import CartPage from "./pages/CartPage"
 import ProductReview from "./components/createReview/renderReviewCreate/index"
+import EditarUser from "./components/User/EditarUser"
 
 import {
   getProducts,
@@ -43,6 +44,8 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/reviewsPost" element={<ProductReview />} />
+        <Route path="/EditUser" element={<EditarUser/>} />
+        
       </Routes>
     </div>
   )

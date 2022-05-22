@@ -10,7 +10,6 @@ import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
 
-//esto fue lo que hice en ultimo Pull Danilo
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
@@ -20,7 +19,6 @@ const Nav = ({ setCurrentPage }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  //esto fue lo que hice ultimo pull Danilo
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -28,6 +26,7 @@ const Nav = ({ setCurrentPage }) => {
         fullName: user.nickname,
         password: user.sub,
         email: user.email,
+        image : user.picture
       };
       dispatch(postUser(objUser));
     }
