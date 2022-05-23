@@ -33,7 +33,9 @@ const initialState = {
   suggestedRandom: [],
   user: {},
   reviewProduct: [],
-  cart: [],
+  cart: window.localStorage.getItem("cartCounter")
+    ? JSON.parse(localStorage.getItem("cartCounter"))
+    : [],
   cartCounter: "", //Antes era un 0
   ordersDb: [],
   orderSent: {},
@@ -139,17 +141,26 @@ function rootReducer(state = initialState, action) {
     case ADD_ITEM_TO_CART:
       const product = state.copyProducts;
       const validation = state.cart.filter((e) => e.id === action.payload);
-
+      const localStorageCart = window.localStorage.setItem(
+        "cartCounter",
+        JSON.stringify(state.cart)
+      );
       if (validation[0]) {
         if (validation[0].product.stock > validation[0].quantity) {
           validation[0].quantity++;
-          return { ...state, cartCounter: ++state.cartCounter };
+
+          return {
+            ...state,
+            cartCounter: ++state.cartCounter,
+            localStorageCart,
+          };
         } else {
           alert("There is no available stock for this item");
-          return { ...state };
+          return { ...state, localStorageCart };
         }
       } else {
         const result = product.filter((el) => el.id === action.payload)[0];
+
         return {
           ...state,
           cart: [
@@ -157,6 +168,7 @@ function rootReducer(state = initialState, action) {
             { quantity: 1, id: result.id, product: result },
           ],
           cartCounter: ++state.cartCounter,
+          localStorageCart,
         };
       }
 

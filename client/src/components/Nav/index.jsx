@@ -10,15 +10,15 @@ import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
 
-
 import { useEffect } from "react";
-import { postUser } from "../../redux/actions";
+import { postUser, addItemToCart } from "../../redux/actions";
+import useLocalStorage from "../LocalStorage/useLocalStorage";
 
 const Nav = ({ setCurrentPage }) => {
   const { isAuthenticated, user } = useAuth0();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  var cartCounter = useSelector((state) => state.cartCounter);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -26,7 +26,7 @@ const Nav = ({ setCurrentPage }) => {
         fullName: user.nickname,
         password: user.sub,
         email: user.email,
-        image : user.picture
+        image: user.picture,
       };
       dispatch(postUser(objUser));
     }
@@ -39,8 +39,6 @@ const Nav = ({ setCurrentPage }) => {
   }
 
   /////////
-
-  var cartCounter = useSelector((state) => state.cartCounter);
 
   const handleCart = (e) => {
     e.preventDefault();
