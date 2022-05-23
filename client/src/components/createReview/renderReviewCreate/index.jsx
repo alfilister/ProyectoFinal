@@ -40,6 +40,7 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     window.location.reload();
     //navigate("/");
   }
+  
 
   return (
     <div className="StarConteiner">
