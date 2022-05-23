@@ -37,7 +37,8 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     });
 
     alert("Reseña publicada");
-    navigate("/");
+    window.location.reload();
+    //navigate("/");
   }
 
   return (
@@ -45,7 +46,9 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
       <StarRating stars={input.score_review} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <label>Escribir Opinion:</label>
-        <input
+        <textarea
+          rows="10"
+          cols="40"
           type="text"
           value={input.product_review}
           name="product_review"
