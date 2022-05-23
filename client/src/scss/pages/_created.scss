@@ -7,9 +7,15 @@
   background-color: $red-750;
   height: 100vh;
 
+  .tituloCargar{
+    font-family: $fuente-titulo;
+    color: $red-100;
+    font-size: x-large;
+  }
+
   .form{
-    height: 90vh;
-    width: 40vw;
+    height: 155vh;
+    width: 45vw;
     display:flex;
     flex-direction: column;
     
@@ -21,11 +27,7 @@
  background-color: $red-800;
     
     border-radius: 1rem;
-    .tituloCargar{
-      font-family: $fuente-titulo;
-      color: $red-050;
-      font-size: x-large;
-    }
+    
     .elementosForm{
       font-family: $fuente-parrafos;
       font-size: x-large;
