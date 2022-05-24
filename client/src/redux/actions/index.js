@@ -31,7 +31,7 @@ export const POST_USER = "POST_USER";
 export function getProducts() {
   return async function (dispatch) {
     try {
-      const productsDb = await axios.get("http://localhost:3001/api/products");
+      const productsDb = await axios.get("/api/products");
 
       return dispatch({
         type: GET_PRODUCTS,
@@ -45,7 +45,7 @@ export function getProducts() {
 
 export function getCategories() {
   return async function (dispatch) {
-    const json = await axios.get("http://localhost:3001/api/categories");
+    const json = await axios.get("/api/categories");
     return dispatch({
       type: GET_CATEGORIES,
       payload: json.data.results,
@@ -57,9 +57,7 @@ export function getProductsById(id) {
   return async (dispatch) => {
     if (id) {
       try {
-        const json = await axios.get(
-          `http://localhost:3001/api/products/detail/${id}`
-        );
+        const json = await axios.get(`/api/products/detail/${id}`);
         return dispatch({
           type: GET_PRODUCTS_ID,
           payload: json.data.results,
@@ -77,9 +75,7 @@ export function getProductsById(id) {
 export function getProductsByName(payload) {
   return async function (dispatch) {
     try {
-      const json = await axios.get(
-        `http://localhost:3001/api/products?nameProduct=${payload}`
-      );
+      const json = await axios.get(`/api/products?nameProduct=${payload}`);
       return dispatch({
         type: GET_PRODUCTS_NAME,
         payload: json.data.results,
@@ -119,7 +115,7 @@ export function sortByRating(payload) {
 export function filters(payload) {
   return async function (dispatch) {
     const json = await axios.get(
-      `http://localhost:3001/api/products/filter?categoryName=${payload.category}&min=${payload.min}&max=${payload.max}`
+      `/api/products/filter?categoryName=${payload.category}&min=${payload.min}&max=${payload.max}`
     );
     try {
       return dispatch({
@@ -134,10 +130,7 @@ export function filters(payload) {
 
 export function postProduct(payload) {
   return async function (dispatch) {
-    const json = await axios.post(
-      "http://localhost:3001/api/products/createProduct",
-      payload
-    );
+    const json = await axios.post("/api/products/createProduct", payload);
 
     try {
       console.log(json);
@@ -157,10 +150,8 @@ export function clearDetail() {
 export function getReviewsProduct(payload) {
   return async function (dispatch) {
     try {
-      const users = await axios.get("http://localhost:3001/api/users");
-      const { data } = await axios.get(
-        "http://localhost:3001/api/reviews/product"
-      );
+      const users = await axios.get("/api/users");
+      const { data } = await axios.get("/api/reviews/product");
 
       return dispatch({
         type: GET_REVIEWS_PRODUCT,
@@ -208,7 +199,7 @@ export function firstSetCount() {
 }
 export function getUserById(idUser) {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
+    const json = await axios.get(`/api/users/${idUser}`);
     return dispatch({
       type: GET_USER_BY_ID,
       payload: json.data.results,
@@ -219,10 +210,7 @@ export function getUserById(idUser) {
 export function postReview(payload) {
   return async function () {
     try {
-      const json = await axios.post(
-        "http://localhost:3001/api/reviews/",
-        payload
-      );
+      const json = await axios.post("/api/reviews/", payload);
 
       console.log(json);
       return json;
@@ -234,10 +222,7 @@ export function postReview(payload) {
 
 export function updateProduct(product) {
   return async function () {
-    const json = await axios.put(
-      `http://localhost:3001/api/products/${product.id}`,
-      product
-    );
+    const json = await axios.put(`/api/products/${product.id}`, product);
     return {
       type: UPDATE_PRODUCT,
       payload: json.data.results,
@@ -248,7 +233,7 @@ export function updateProduct(product) {
 export function getUsersReview() {
   return async function (dispatch) {
     try {
-      const user = await axios.get("http://localhost:3001/api/users");
+      const user = await axios.get("/api/users");
 
       return dispatch({
         type: GET_USERS_REVIEW,
@@ -262,7 +247,7 @@ export function getUsersReview() {
 
 export function getOrdersFromDb() {
   return async function (dispatch) {
-    const json = await axios.get(`http://localhost:3001/api/orders`);
+    const json = await axios.get(`/api/orders`);
     return dispatch({
       type: GET_ORDERS_FROM_DB,
       payload: json.data.results,
@@ -272,7 +257,7 @@ export function getOrdersFromDb() {
 
 export function setOrderCheckout(payload) {
   return async function (dispatch) {
-    const json = await axios.post("http://localhost:3001/api/orders", payload);
+    const json = await axios.post("/api/orders", payload);
 
     return dispatch({
       type: SET_ORDER_CHECKOUT,
@@ -283,10 +268,7 @@ export function setOrderCheckout(payload) {
 
 export function confirmOrderCheckout(id, payload) {
   return async function (dispatch) {
-    const json = await axios.put(
-      `http://localhost:3001/api/orders/${id}`,
-      payload
-    );
+    const json = await axios.put(`/api/orders/${id}`, payload);
     return dispatch({
       type: CONFIRM_ORDER_CHECKOUT,
       payload: json.data.results,
@@ -308,9 +290,7 @@ export function resetOrder() {
 
 export function deleteProduct(idProduct) {
   return async function () {
-    const json = await axios.delete(
-      `http://localhost:3001/api/products/${idProduct}`
-    );
+    const json = await axios.delete(`/api/products/${idProduct}`);
     return {
       type: DELETE_PRODUCT,
       payload: json.data.results,
@@ -320,10 +300,7 @@ export function deleteProduct(idProduct) {
 
 export function createCategory(payload) {
   return async function () {
-    const json = await axios.post(
-      `http://localhost:3001/api/categories`,
-      payload
-    );
+    const json = await axios.post(`/api/categories`, payload);
     return {
       type: CREATE_CATEGORY,
       payload: json.data.results,
@@ -333,10 +310,7 @@ export function createCategory(payload) {
 
 export function updateOrder(payload) {
   return async function () {
-    const json = await axios.put(
-      `http://localhost:3001/api/orders/${payload.id}`,
-      payload
-    );
+    const json = await axios.put(`/api/orders/${payload.id}`, payload);
     return {
       type: UPDATE_ORDER,
       payload: json.data.results,
@@ -347,7 +321,7 @@ export function updateOrder(payload) {
 export function getUsersByEmail(emailUser) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get("http://localhost:3001/api/users");
+      const { data } = await axios.get("/api/users");
       const usuarioFiltrado = data.results.filter(
         (el) => el.email === emailUser
       );
@@ -361,18 +335,13 @@ export function getUsersByEmail(emailUser) {
     }
   };
 }
-
+// esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
   return async function (dispatch) {
-    const { data } = await axios.post(
-      "http://localhost:3001/api/users/created",
-      payload
-    );
+    const json = await axios.post("/api/users/created", payload);
     try {
-      return dispatch({
-        type: GET_USERS_BY_EMAIL,
-        payload: data.results[0].id,
-      });
+      console.log("soy la accion y esto me llego del front ", json);
+      return json;
     } catch (error) {
       console.log(error);
     }
