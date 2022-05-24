@@ -5,7 +5,35 @@ import CartProduct from "../../components/cartProduct";
 import CategoryGrid from "../../components/CategoryGrid";
 import { setOrderCheckout } from "../../redux/actions";
 
+const validate = (fields) => {
+  let errors = {};
+  if (!fields.receiver_phone) {
+    errors.receiver_phone = "required to proceed to checkout";
+  } else if (!/^[0-9]{10,10}$/.test(fields.receiver_phone)) {
+    errors.receiver_phone = "only numbers 10 digits length";
+  }
+  if (!fields.state) {
+    errors.state = "required to proceed to checkout";
+  } else if (!/^[A-Za-z.\s_-]{2,2}$/.test(fields.state)) {
+    errors.state = "max 2 letters (eg. Georgia: GA)";
+  }
+  if (!fields.shipping_address) {
+    errors.shipping_address = "required to proceed to checkout";
+  }
+  if (!fields.city) {
+    errors.city = "required to proceed to checkout";
+  }
+  if (!fields.zip_code) {
+    errors.zip_code = "required to proceed to checkout";
+  } else if (!/^[0-9]{5,5}$/.test(fields.zip_code)) {
+    errors.zip_code = "5 digits length, only numbers";
+  }
+  return errors;
+};
+
 function CartPage() {
+  const idUserAuth = useSelector((state) => state.userEmailId);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const initialCart = useSelector((state) => state.cart);
@@ -38,8 +66,10 @@ function CartPage() {
     total_purchase: final,
     cart_list,
     products_id,
-    user_id: "1",
+    user_id: idUserAuth,
   });
+
+  const [errors, setErrors] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -47,12 +77,28 @@ function CartPage() {
       ...fields,
       [e.target.name]: e.target.value,
     });
+    setErrors(
+      validate({
+        ...fields,
+        [e.target.name]: e.target.value,
+      })
+    );
   };
 
   const handleConfirm = async (e, fields) => {
     e.preventDefault();
-    await dispatch(setOrderCheckout(fields));
-    navigate("/checkout");
+    if (
+      errors.receiver_phone ||
+      errors.state ||
+      errors.city ||
+      errors.shipping_address ||
+      errors.zip_code
+    ) {
+      alert("Check the information registered, maybe one or more issues");
+    } else {
+      await dispatch(setOrderCheckout(fields));
+      navigate("/checkout");
+    }
   };
 
   return (
@@ -82,20 +128,27 @@ function CartPage() {
 
           <div className="totalAmount">
             <form className="shippingDataForm">
+              <h3>Fill the shipping information</h3>
               <input
                 type="text"
+                maxLength={10}
                 name="receiver_phone"
                 placeholder="receiver phone"
                 value={fields.receiver_phone}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.receiver_phone && (
+                <p className="errText">{errors.receiver_phone}</p>
+              )}
               <input
                 type="text"
                 name="state"
+                maxLength={2}
                 placeholder="state US"
                 value={fields.state}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.state && <p className="errText">{errors.state}</p>}
               <input
                 type="text"
                 name="shipping_address"
@@ -103,6 +156,9 @@ function CartPage() {
                 value={fields.shipping_address}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.shipping_address && (
+                <p className="errText">{errors.shipping_address}</p>
+              )}
               <input
                 type="text"
                 name="city"
@@ -110,20 +166,41 @@ function CartPage() {
                 value={fields.city}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.city && <p className="errText">{errors.city}</p>}
               <input
                 type="text"
+                maxLength={5}
                 name="zip_code"
                 placeholder="zip code"
                 value={fields.zip_code}
                 onChange={(e) => handleChange(e)}
               />
+              {errors.zip_code && <p className="errText">{errors.zip_code}</p>}
             </form>
             <div className="line"></div>
             <h3>SubTotal $ {total}</h3>
             <h3>Taxes $ {taxIva}</h3>
             <h2>Total $ {final}</h2>
 
-            <button onClick={(e) => handleConfirm(e, fields)}>
+            <button
+              disabled={
+                !fields.zip_code ||
+                !fields.receiver_phone ||
+                !fields.state ||
+                !fields.shipping_address ||
+                !fields.city
+              }
+              className={
+                fields.zip_code &&
+                fields.receiver_phone &&
+                fields.state &&
+                fields.shipping_address &&
+                fields.city
+                  ? "allowedBtn"
+                  : "restrictedBtn"
+              }
+              onClick={(e) => handleConfirm(e, fields)}
+            >
               Proceed to checkout
             </button>
           </div>

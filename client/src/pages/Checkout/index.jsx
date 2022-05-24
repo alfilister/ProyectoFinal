@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   confirmOrderCheckout,
+  getOrdersFromDb,
   resetCart,
   resetOrder,
   updateProduct,
@@ -83,17 +84,22 @@ const MyComponent = () => {
         alert("order taken succesfully");
         dispatch(resetCart());
         dispatch(resetOrder());
+        window.localStorage.clear("contador", "cartCounter");
+        dispatch(getOrdersFromDb());
         navigate("/");
       }
     }
   };
 
   return (
-    <div>
+    <div className="checkoutPage">
+      <h2>Payment Method</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <CardElement />
-        <h1>{amount}</h1>
-        <input type="submit" value="checkout" />
+        <CardElement className="cardElement" />
+        <h1>$ {amount}</h1>
+        <div className="chkOutBtn">
+          <input type="submit" value="checkout" />
+        </div>
       </form>
     </div>
   );
@@ -101,7 +107,7 @@ const MyComponent = () => {
 
 function Checkout() {
   return (
-    <div className="checkoutPage">
+    <div className="allChktPg">
       <Wrapper />
     </div>
   );

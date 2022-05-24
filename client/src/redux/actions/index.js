@@ -22,6 +22,11 @@ export const RESET_CART = "RESET_CART";
 export const RESET_ORDER = "RESET_ORDER";
 export const UPDATE_ORDER = "UPDATE_ORDER";
 export const GET_USERS_BY_EMAIL = "GET_USERS_BY_EMAIL";
+export const ADD_ITEM_TO_CART_STORAGE = "ADD_ITEM_TO_CART_STORAGE";
+export const REMOVE_ITEM_TO_CART_STORAGE = "REMOVE_ITEM_TO_CART_STORAGE";
+export const ADD_COUNTER_LOCAL_STORAGE = "ADD_COUNTER_LOCAL_STORAGE";
+export const FIRST_SET_COUNT = "FIRST_SET_COUNT";
+export const POST_USER = "POST_USER";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -164,6 +169,16 @@ export function addItemToCart(payload) {
     payload: payload,
   };
 }
+export function addItemToCartLocalStorage() {
+  return {
+    type: ADD_ITEM_TO_CART_STORAGE,
+  };
+}
+export function removeItemToCartLocalStorage() {
+  return {
+    type: REMOVE_ITEM_TO_CART_STORAGE,
+  };
+}
 
 export function removeItemFromCart(payload) {
   return {
@@ -172,6 +187,16 @@ export function removeItemFromCart(payload) {
   };
 }
 
+export function addCounterLocalStorage() {
+  return {
+    type: ADD_COUNTER_LOCAL_STORAGE,
+  };
+}
+export function firstSetCount() {
+  return {
+    type: FIRST_SET_COUNT,
+  };
+}
 export function getUserById(idUser) {
   return async function (dispatch) {
     const json = await axios.get(`/api/users/${idUser}`);
