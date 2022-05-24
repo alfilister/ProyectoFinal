@@ -12,7 +12,6 @@ import { resetOrder } from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser, addItemToCart } from "../../redux/actions";
-import useLocalStorage from "../LocalStorage/useLocalStorage";
 
 const Nav = ({ setCurrentPage }) => {
   const { isAuthenticated, user } = useAuth0();

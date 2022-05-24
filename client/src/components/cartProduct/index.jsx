@@ -1,40 +1,51 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
-import { addItemToCart, removeItemFromCart } from "../../redux/actions"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  addCounterLocalStorage,
+  addItemToCart,
+  addItemToCartLocalStorage,
+  removeItemFromCart,
+  removeItemToCartLocalStorage,
+} from "../../redux/actions";
 
 const CartProduct = ({ id, quantity, product, total, setTotal }) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [state, setState] = useState(quantity)
+  const [state, setState] = useState(quantity);
 
-  const handleMinus = (e, id) => {
-    e.preventDefault()
+  const handleMinus = async (e, id) => {
+    e.preventDefault();
     if (state - 1 < 0) {
-      dispatch(removeItemFromCart(id))
+      dispatch(removeItemFromCart(id));
     } else {
-      dispatch(removeItemFromCart(id))
-      setTotal((Number(total) - product.price).toFixed(2))
-      setState(state - 1)
+      await dispatch(removeItemFromCart(id));
+      dispatch(addCounterLocalStorage());
+      setTotal((Number(total) - product.price).toFixed(2));
+      setState(state - 1);
+      dispatch(removeItemToCartLocalStorage());
     }
-  }
+  };
 
-  const handlePlus = (e, id) => {
-    e.preventDefault()
+  const handlePlus = async (e, id) => {
+    e.preventDefault();
     if (state + 1 > product.stock) {
-      dispatch(addItemToCart(id))
+      dispatch(addItemToCart(id));
     } else {
-      dispatch(addItemToCart(id))
-      setTotal((Number(total) + product.price).toFixed(2))
-      setState(state + 1)
+      await dispatch(addItemToCart(id));
+      dispatch(addCounterLocalStorage());
+
+      setTotal((Number(total) + product.price).toFixed(2));
+      setState(state + 1);
+      dispatch(addItemToCartLocalStorage());
     }
-  }
+  };
 
   const handleClickImg = (e, id) => {
-    e.preventDefault()
-    navigate(`/producto/${id}`)
-  }
+    e.preventDefault();
+    navigate(`/producto/${id}`);
+  };
 
   return (
     <div className="cartProduct">
@@ -59,7 +70,7 @@ const CartProduct = ({ id, quantity, product, total, setTotal }) => {
         <h2>$ {(product.price * state).toFixed(2)}</h2>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CartProduct
+export default CartProduct;

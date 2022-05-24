@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addItemToCart } from "../../redux/actions";
+import {
+  addItemToCart,
+  addItemToCartLocalStorage,
+  addCounterLocalStorage,
+} from "../../redux/actions";
 
 const Card = ({
   id,
@@ -22,9 +26,12 @@ const Card = ({
     navigate(`/producto/${id}`);
   };
 
-  const handleCart = (e, id) => {
+  const handleCart = async (e, id) => {
     e.preventDefault();
-    dispatch(addItemToCart(id));
+    await dispatch(addItemToCart(id));
+    dispatch(addItemToCartLocalStorage());
+
+    dispatch(addCounterLocalStorage());
   };
 
   return (
