@@ -14,6 +14,9 @@ import {
   addItemToCart,
   getUsersReview,
   getUsersByEmail,
+  addItemToCartLocalStorage,
+  firstSetCount,
+  addCounterLocalStorage,
 } from "../../redux/actions";
 
 const Detail = () => {
@@ -59,6 +62,8 @@ const Detail = () => {
     e.preventDefault();
     console.log("agregado desde details");
     dispatch(addItemToCart(Number(id)));
+    dispatch(addItemToCartLocalStorage());
+    dispatch(addCounterLocalStorage());
   };
 
   return (
