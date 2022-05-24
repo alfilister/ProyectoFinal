@@ -83,6 +83,7 @@ const MyComponent = () => {
         alert("order taken succesfully");
         dispatch(resetCart());
         dispatch(resetOrder());
+        window.localStorage.clear("contador", "cartCounter");
         navigate("/");
       }
     }
