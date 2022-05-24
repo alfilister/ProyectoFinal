@@ -26,6 +26,7 @@ import {
   REMOVE_ITEM_TO_CART_STORAGE,
   ADD_COUNTER_LOCAL_STORAGE,
   FIRST_SET_COUNT,
+  POST_USER,
 } from "../actions";
 
 const initialState = {
@@ -273,9 +274,10 @@ function rootReducer(state = initialState, action) {
         userEmailId: action.payload,
       };
 
-    case "POST_USER":
+    case POST_USER:
       return {
         ...state,
+        userEmailId: action.payload,
       };
 
     //return { ...state }

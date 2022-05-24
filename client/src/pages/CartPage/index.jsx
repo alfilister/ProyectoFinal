@@ -32,6 +32,8 @@ const validate = (fields) => {
 };
 
 function CartPage() {
+  const idUserAuth = useSelector((state) => state.userEmailId);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const initialCart = useSelector((state) => state.cart);
@@ -64,7 +66,7 @@ function CartPage() {
     total_purchase: final,
     cart_list,
     products_id,
-    user_id: "1",
+    user_id: idUserAuth,
   });
 
   const [errors, setErrors] = useState("");
