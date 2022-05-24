@@ -152,7 +152,6 @@ export function clearDetail() {
 export function getReviewsProduct(payload) {
 	return async function (dispatch) {
 		try {
-			const users = await axios.get("http://localhost:3001/api/users");
 			const { data } = await axios.get(
 				"http://localhost:3001/api/reviews/product"
 			);
@@ -322,6 +321,7 @@ export function updateOrder(payload) {
 export function getUsersByEmail(emailUser) {
 	return async function (dispatch) {
 		try {
+			console.log('SOY LO QUE LE LLEGA A LA ACCION getUSERBYEMAIL' , emailUser)
 			const { data } = await axios.get("http://localhost:3001/api/users");
 			const usuarioFiltrado = data.results.filter(
 				(el) => el.email === emailUser
@@ -345,8 +345,6 @@ export function postUser(payload) {
       payload
     );
 	  try {
-	   
-      console.log('soy la accion y esto me llego del front ' ,json);
       return json;
       } catch (error) {
       console.log(error);

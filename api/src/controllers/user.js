@@ -81,7 +81,8 @@ const postUser = async (body) => {
       fullName: fullName,
       password: password,
       email: email,
-      image : image
+      image : image,
+      id_document : id_document
     }
 
   });
