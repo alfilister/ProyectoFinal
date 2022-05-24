@@ -1,53 +1,29 @@
-// @use "../abstracts/_variables.scss" as *;
+@use "../abstracts/_variables.scss" as *;
 
-// .checkoutPage {
-//   display: flex;
-//   flex-direction: column;
-//   // align-items: center;
-//   justify-content: center;
-//   margin: 2em;
+.checkoutPage {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  width: 400px;
+  justify-content: center;
+  margin: 5% 25%;
 
-//   .shippingDataForm {
-//     margin-bottom: 1em;
-//     input {
-//       width: fit-content;
-//       height: 2em;
-//       margin: 0.3em;
-//       border-radius: 5px;
-//     }
+  button {
+    background-color: $primary;
+    color: $red-000;
+    border-radius: 10px;
+    font-size: 1.5em;
+    height: 1.5em;
+    width: 3em;
+    padding-top: 0.2em;
 
-//     .btnSbmt {
-//       margin-top: 0.5em;
-//       background-color: $secondary;
-//       color: $red-000;
-
-//       &:hover {
-//         background-color: whitesmoke;
-//         color: $secondary;
-//       }
-//       &:active {
-//         background-color: $secondary;
-//         color: $red-000;
-//       }
-//     }
-//   }
-
-//   button {
-//     background-color: $primary;
-//     color: $red-000;
-//     border-radius: 10px;
-//     font-size: 1.5em;
-//     height: 1.5em;
-//     width: 3em;
-//     padding-top: 0.2em;
-
-//     &:hover {
-//       background-color: whitesmoke;
-//       color: $primary;
-//     }
-//     &:active {
-//       background-color: $primary;
-//       color: $red-000;
-//     }
-//   }
-// }
+    &:hover {
+      background-color: whitesmoke;
+      color: $primary;
+    }
+    &:active {
+      background-color: $primary;
+      color: $red-000;
+    }
+  }
+}

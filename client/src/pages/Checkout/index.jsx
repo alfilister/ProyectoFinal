@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
   CardElement,
+  PaymentElement,
   useStripe,
   useElements,
 } from "@stripe/react-stripe-js";
@@ -89,7 +90,7 @@ const MyComponent = () => {
   };
 
   return (
-    <div>
+    <div className="checkoutPage">
       <form onSubmit={(e) => handleSubmit(e)}>
         <CardElement />
         <h1>{amount}</h1>
