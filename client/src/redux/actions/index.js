@@ -26,6 +26,7 @@ export const ADD_ITEM_TO_CART_STORAGE = "ADD_ITEM_TO_CART_STORAGE";
 export const REMOVE_ITEM_TO_CART_STORAGE = "REMOVE_ITEM_TO_CART_STORAGE";
 export const ADD_COUNTER_LOCAL_STORAGE = "ADD_COUNTER_LOCAL_STORAGE";
 export const FIRST_SET_COUNT = "FIRST_SET_COUNT";
+export const POST_USER = "POST_USER";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -360,16 +361,18 @@ export function getUsersByEmail(emailUser) {
     }
   };
 }
-// esto fue lo que acabe de hacer Danilo.
+
 export function postUser(payload) {
   return async function (dispatch) {
-    const json = await axios.post(
+    const { data } = await axios.post(
       "http://localhost:3001/api/users/created",
       payload
     );
     try {
-      console.log("soy la accion y esto me llego del front ", json);
-      return json;
+      return dispatch({
+        type: GET_USERS_BY_EMAIL,
+        payload: data.results[0].id,
+      });
     } catch (error) {
       console.log(error);
     }

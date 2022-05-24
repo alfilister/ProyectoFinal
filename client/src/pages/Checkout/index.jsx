@@ -12,6 +12,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   confirmOrderCheckout,
+  getOrdersFromDb,
   resetCart,
   resetOrder,
   updateProduct,
@@ -84,6 +85,7 @@ const MyComponent = () => {
         dispatch(resetCart());
         dispatch(resetOrder());
         window.localStorage.clear("contador", "cartCounter");
+        dispatch(getOrdersFromDb());
         navigate("/");
       }
     }

@@ -15,7 +15,6 @@ import {
   getUsersReview,
   getUsersByEmail,
   addItemToCartLocalStorage,
-  firstSetCount,
   addCounterLocalStorage,
 } from "../../redux/actions";
 
@@ -28,6 +27,7 @@ const Detail = () => {
   const productId = useSelector((state) => state.productsDetail); //producto por id (detail)
   const productReview = useSelector((state) => state.reviewProduct); //productos con reviews
   const usersReview = useSelector((state) => state.usersReview); //id de usuario y nombre review
+  const ordersDb = useSelector((state) => state.ordersDb);
 
   //CAPTURAR ID Y EMAIL DE USUARIO AUTENTICADO
   const bucket = [];
@@ -37,6 +37,25 @@ const Detail = () => {
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
   const sentIdUser = idUserAuth[0] && idUserAuth[0].id;
+
+  //Función validadora de si el usuario logueado ha realizado compras sobre el item en el que se encuentra
+  const purchaseValidation = (productId, emailUser, orderArray) => {
+    const inOrder = orderArray.filter((el) => el.user.email == emailUser);
+    if (inOrder[0]) {
+      const productCheck = inOrder.filter((el) =>
+        el.products_id.includes(Number(productId))
+      );
+      if (productCheck[0]) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  };
+
+  console.log(purchaseValidation(id, emailUser, ordersDb));
 
   //ESTADO LOCAL PARA CONTROLAR VENTANAS MODALES
   //(abrir cerrar modal) SI ESTA AUTENTICADO
@@ -195,9 +214,13 @@ const Detail = () => {
           cambiarEstado={setModalReview}
           titulo="Send your review!"
         >
-          <div className="contenidoModal">
-            <RenderReviewCreate idProduct={id} idUser={sentIdUser} />
-          </div>
+          {purchaseValidation(id, emailUser, ordersDb) ? (
+            <div className="contenidoModal">
+              <RenderReviewCreate idProduct={id} idUser={sentIdUser} />
+            </div>
+          ) : (
+            <div>This item has not been purchased by you</div>
+          )}
         </Modal>
         {/* Modal para usuario NO autenticado */}
         <Modal
