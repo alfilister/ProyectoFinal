@@ -69,12 +69,12 @@ const Detail = () => {
       .flat();
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 3000);
-    setTimeout(() => dispatch(getReviewsProduct()), 3000);
-    setTimeout(() => dispatch(getUsersReview()), 3000);
-    setTimeout(() => dispatch(getUsersByEmail(emailUser)), 3000);
+    setTimeout(() => dispatch(getProductsById(id)), 1000);
+    dispatch(getReviewsProduct());
+    dispatch(getUsersReview());
+    dispatch(getUsersByEmail(emailUser));
     dispatch(clearDetail());
-  }, [dispatch, id, emailUser]);
+  }, []);
 
   const handleCart = (e, id) => {
     e.preventDefault();
