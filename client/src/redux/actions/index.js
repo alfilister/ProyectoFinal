@@ -8,6 +8,7 @@ export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING";
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
@@ -187,6 +188,17 @@ export function removeItemFromCart(payload) {
 	};
 }
 
+//obtener todos los usuarios de la db
+export function getAllUsers() {
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/api/users");
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: json.data.results,
+    });
+  };
+}
+
 export function addCounterLocalStorage() {
 	return {
 		type: ADD_COUNTER_LOCAL_STORAGE,
@@ -256,8 +268,10 @@ export function getOrdersFromDb() {
 }
 
 export function setOrderCheckout(payload) {
-	return async function (dispatch) {
-		const json = await axios.post("/api/orders", payload);
+  return async function (dispatch) {
+    console.log(payload);
+    const json = await axios.post("/api/orders", payload);
+
 
 		return dispatch({
 			type: SET_ORDER_CHECKOUT,
@@ -319,31 +333,61 @@ export function updateOrder(payload) {
 }
 
 export function getUsersByEmail(emailUser) {
-	return async function (dispatch) {
-		try {
-			const { data } = await axios.get("/api/users");
-			const usuarioFiltrado = data.results.filter(
-				(el) => el.email === emailUser
-			);
+  return async function (dispatch) {
+    try {
+      const { data } = await axios.get("http://localhost:3001/api/users");
+      const usuarioFiltrado = data.results.filter(
+        (el) => el.email === emailUser
+      );
 
-			return dispatch({
-				type: GET_USERS_BY_EMAIL,
-				payload: usuarioFiltrado,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	};
+      return dispatch({
+        type: GET_USERS_BY_EMAIL,
+        payload: usuarioFiltrado[0].id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 // esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
-	return async function (dispatch) {
-		const json = await axios.post("/api/users/created", payload);
-		try {
-			console.log("soy la accion y esto me llego del front ", json);
-			return json;
-		} catch (error) {
-			console.log(error);
-		}
-	};
+  return async function (dispatch) {
+    const { data } = await axios.post("/api/users/created", payload);
+    try {
+      return dispatch({
+        type: GET_USERS_BY_EMAIL,
+        payload: data.results[0].id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+/* export function postUser(payload) {
+  return async function (dispatch) {
+    const json = await axios.post("/api/users/created", payload);
+    try {
+      console.log("soy la accion y esto me llego del front ", json);
+
+      return json;
+    } catch (error) {
+      console.log(error);
+    }
+}
+} */
+export function updateUser(payload) {
+  return async function () {
+    console.log(
+      "soy lo que llega cuando disparan la accion updateUser ",
+      payload
+    );
+    const json = await axios.put(
+      "http://localhost:3001/api/users/editarUser",
+      payload
+    );
+    return {
+      type: "UPDATE_USER",
+      payload: json.data.results,
+    };
+  };
 }

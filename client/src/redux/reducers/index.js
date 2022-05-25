@@ -1,47 +1,48 @@
-import axios from "axios";
 import {
-	GET_CATEGORIES,
-	GET_PRODUCTS,
-	GET_PRODUCTS_ID,
-	GET_PRODUCTS_NAME,
-	SORT_PRODUCTS_BY_NAME,
-	SORT_PRODUCTS_BY_RATING,
-	FILTER_PRODUCTS,
-	CLEAR_DETAIL,
-	GET_USER_BY_ID,
-	GET_REVIEWS_PRODUCT,
-	ADD_ITEM_TO_CART,
-	REMOVE_ITEM_FROM_CART,
-	UPDATE_PRODUCT,
-	DELETE_PRODUCT,
-	CREATE_CATEGORY,
-	SET_ORDER_CHECKOUT,
-	GET_ORDERS_FROM_DB,
-	CONFIRM_ORDER_CHECKOUT,
-	GET_USERS_REVIEW,
-	RESET_CART,
-	RESET_ORDER,
-	GET_USERS_BY_EMAIL,
-	ADD_ITEM_TO_CART_STORAGE,
-	REMOVE_ITEM_TO_CART_STORAGE,
-	ADD_COUNTER_LOCAL_STORAGE,
-	FIRST_SET_COUNT,
-	POST_USER,
+  GET_CATEGORIES,
+  GET_PRODUCTS,
+  GET_PRODUCTS_ID,
+  GET_PRODUCTS_NAME,
+  SORT_PRODUCTS_BY_NAME,
+  SORT_PRODUCTS_BY_RATING,
+  FILTER_PRODUCTS,
+  CLEAR_DETAIL,
+  GET_USER_BY_ID,
+  GET_REVIEWS_PRODUCT,
+  ADD_ITEM_TO_CART,
+  REMOVE_ITEM_FROM_CART,
+  UPDATE_PRODUCT,
+  DELETE_PRODUCT,
+  CREATE_CATEGORY,
+  SET_ORDER_CHECKOUT,
+  GET_ORDERS_FROM_DB,
+  CONFIRM_ORDER_CHECKOUT,
+  GET_USERS_REVIEW,
+  RESET_CART,
+  RESET_ORDER,
+  GET_USERS_BY_EMAIL,
+
+   GET_ALL_USERS,
+  ADD_ITEM_TO_CART_STORAGE,
+  REMOVE_ITEM_TO_CART_STORAGE,
+  ADD_COUNTER_LOCAL_STORAGE,
+  FIRST_SET_COUNT,
+  POST_USER,
 } from "../actions";
 
 const initialState = {
-	products: [],
-	copyProducts: [],
-	categories: [],
-	productsDetail: [],
-	featProducts: [],
-	suggestedRandom: [],
-	user: {},
-	reviewProduct: [],
-	cart: window.localStorage.getItem("cartCounter")
-		? JSON.parse(localStorage.getItem("cartCounter"))
-		: [],
-
+  products: [],
+  copyProducts: [],
+  categories: [],
+  productsDetail: [],
+  featProducts: [],
+  suggestedRandom: [],
+  allUsers : [],
+  user: {},
+  reviewProduct: [],
+  cart: window.localStorage.getItem("cartCounter")
+    ? JSON.parse(localStorage.getItem("cartCounter"))
+    : [],
 	cartCounter: "", //Antes era un 0
 	ordersDb: [],
 	orderSent: {},
@@ -179,26 +180,32 @@ function rootReducer(state = initialState, action) {
 			const itemToremove = state.cart.filter(
 				(el) => el.id === action.payload
 			)[0];
+      if (itemToremove.quantity > 0) {
+        itemToremove.quantity--;
+        return { ...state, cartCounter: --state.cartCounter };
+      } else {
+        return {
+          ...state,
+        };
+      }
 
-			if (itemToremove.quantity > 0) {
-				itemToremove.quantity--;
-				return { ...state, cartCounter: --state.cartCounter };
-			} else {
-				return {
-					...state,
-				};
-			}
-		case REMOVE_ITEM_TO_CART_STORAGE:
-			window.localStorage.setItem("cartCounter", JSON.stringify(state.cart));
-			return {
-				...state,
-			};
-		case ADD_COUNTER_LOCAL_STORAGE:
-			// localStorage.removeItem("contador");
-			window.localStorage.setItem(
-				"contador",
-				JSON.stringify(state.cartCounter)
-			);
+      case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
+
+    case REMOVE_ITEM_TO_CART_STORAGE:
+      window.localStorage.setItem("cartCounter", JSON.stringify(state.cart));
+      return {
+        ...state,
+      };
+    case ADD_COUNTER_LOCAL_STORAGE:
+      // localStorage.removeItem("contador");
+      window.localStorage.setItem(
+        "contador",
+        JSON.stringify(state.cartCounter)
+      );
 
 			return {
 				...state,
@@ -273,14 +280,20 @@ function rootReducer(state = initialState, action) {
 				...state,
 				userEmailId: action.payload,
 			};
+    case POST_USER:
+      return {
+        ...state,
+        userEmailId: action.payload,
+      };
+      
+      case 'UPDATE_USER':
+      return {
+        ...state,
+      };
 
-		case POST_USER:
-			return {
-				...state,
-				userEmailId: action.payload,
-			};
-		default:
-			return state;
-	}
+    //return { ...state }
+    default:
+      return state;
+  }
 }
 export default rootReducer;

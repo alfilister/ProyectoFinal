@@ -34,6 +34,7 @@ const Detail = () => {
   isAuthenticated && bucket.push({ email: user.email, name: user.name });
   //ingreso al bucket, que tiene tanto el email como el name y consigo el email
   const emailUser = bucket[0] && bucket[0].email;
+
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
   const sentIdUser = idUserAuth[0] && idUserAuth[0].id;
@@ -54,9 +55,6 @@ const Detail = () => {
       return false;
     }
   };
-
-  console.log(purchaseValidation(id, emailUser, ordersDb));
-
   //ESTADO LOCAL PARA CONTROLAR VENTANAS MODALES
   //(abrir cerrar modal) SI ESTA AUTENTICADO
   const [modalReview, setModalReview] = useState(false);
@@ -64,10 +62,12 @@ const Detail = () => {
   const [modalLogin, setModalLogin] = useState(false);
 
   //Filtro las Reviews del producto DETAIL
-  const reviewId = productReview
-    .filter((el) => Number(id) === el.id)
-    .map((el) => el.reviews)
-    .flat();
+  const reviewId =
+    productReview[0] &&
+    productReview
+      .filter((el) => Number(id) === el.id)
+      .map((el) => el.reviews)
+      .flat();
 
   useEffect(() => {
     setTimeout(() => dispatch(getProductsById(id)), 50);
@@ -75,7 +75,7 @@ const Detail = () => {
     setTimeout(() => dispatch(getUsersReview()), 50);
     dispatch(getUsersByEmail(emailUser));
     dispatch(clearDetail());
-  }, [dispatch, id]);
+  }, [dispatch, id, emailUser]);
 
   const handleCart = (e, id) => {
     e.preventDefault();
@@ -104,11 +104,11 @@ const Detail = () => {
                 <div className="imagesAux">
                   {productId.aux_images?.map((el) => {
                     return (
-                      <>
+                      <div>
                         <div className="imgChicas">
                           <img src={el} alt="imagenes auxiliares" />;
                         </div>
-                      </>
+                      </div>
                     );
                   })}
                 </div>
@@ -136,9 +136,11 @@ const Detail = () => {
                   {productId.stock}
                 </p>
                 <label>Categories:</label>
-                <p className="categorias">{`| ${productId.categories?.map(
-                  (el) => ` ${el.name}`
-                )} |`}</p>
+                <div className="categorias">
+                  {productId.categories?.map((el) => (
+                    <p key={el.id}> | {el.name} | </p>
+                  ))}
+                </div>
                 {productId.stock ? (
                   <div className="btnCrt">
                     <button onClick={(e) => handleCart(e, id)}>
