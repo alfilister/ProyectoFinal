@@ -5,10 +5,8 @@ import StarRating from "../startRating/index";
 
 import { postReview } from "../../../redux/actions";
 
-
 export default function RenderReviewCreate({ idProduct, idUser }) {
   const dispatch = useDispatch();
-
 
   const [input, setInput] = useState({
     product_id: idProduct,
@@ -37,10 +35,9 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     });
 
     alert("Reseña publicada");
-    window.location.reload('/');
+    window.location.reload("/");
     //navigate("/");
   }
-  
 
   return (
     <div className="StarConteiner">

@@ -37,7 +37,6 @@ const Detail = () => {
 
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
-  const sentIdUser = idUserAuth[0] && idUserAuth[0].id;
 
   //Función validadora de si el usuario logueado ha realizado compras sobre el item en el que se encuentra
   const purchaseValidation = (productId, emailUser, orderArray) => {
@@ -216,9 +215,9 @@ const Detail = () => {
           cambiarEstado={setModalReview}
           titulo="Send your review!"
         >
-          {purchaseValidation(id, emailUser, ordersDb) ? (
+          {purchaseValidation(id, emailUser, ordersDb, idUserAuth) ? (
             <div className="contenidoModal">
-              <RenderReviewCreate idProduct={id} idUser={sentIdUser} />
+              <RenderReviewCreate idProduct={id} idUser={idUserAuth} />
             </div>
           ) : (
             <div>This item has not been purchased by you</div>
