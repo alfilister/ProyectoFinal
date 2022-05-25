@@ -12,6 +12,8 @@ const getProductInfo = async () => {
       const [p, created] = await Product.findOrCreate({
         where: {
           name: product.name.toLowerCase(),
+        },
+        defaults: {
           image: product.image,
           aux_images: product.aux_images,
           description: product.description,

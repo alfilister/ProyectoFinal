@@ -69,10 +69,10 @@ const Detail = () => {
       .flat();
 
   useEffect(() => {
-    setTimeout(() => dispatch(getProductsById(id)), 50);
-    setTimeout(() => dispatch(getReviewsProduct()), 50);
-    setTimeout(() => dispatch(getUsersReview()), 50);
-    dispatch(getUsersByEmail(emailUser));
+    setTimeout(() => dispatch(getProductsById(id)), 3000);
+    setTimeout(() => dispatch(getReviewsProduct()), 3000);
+    setTimeout(() => dispatch(getUsersReview()), 3000);
+    setTimeout(() => dispatch(getUsersByEmail(emailUser)), 3000);
     dispatch(clearDetail());
   }, [dispatch, id, emailUser]);
 
