@@ -5,11 +5,11 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 
 // const sequelize = new Sequelize(
-//   `postgres://vqwylnrf:qkdEEeeDuiL3tG6frxiDAFYr6tRuBMoW@kesavan.db.elephantsql.com/vqwylnrf`,
-//   {
-//     logging: false,
-//     native: false,
-//   }
+// 	`postgres://vqwylnrf:qkdEEeeDuiL3tG6frxiDAFYr6tRuBMoW@kesavan.db.elephantsql.com/vqwylnrf`,
+// 	{
+// 		logging: false,
+// 		native: false,
+// 	}
 // );
 
 let sequelize =
@@ -42,7 +42,7 @@ let sequelize =
           logging: false,
           native: false,
           define: {
-            timestamps: false,
+            timestamps: true,
           },
         }
       );
