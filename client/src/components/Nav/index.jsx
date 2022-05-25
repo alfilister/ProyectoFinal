@@ -11,7 +11,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { resetOrder } from "../../redux/actions";
 
 import { useEffect } from "react";
-import { postUser, addItemToCart } from "../../redux/actions";
+import { postUser } from "../../redux/actions";
 
 const Nav = ({ setCurrentPage }) => {
   const { isAuthenticated, user } = useAuth0();

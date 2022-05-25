@@ -200,6 +200,7 @@ export function getAllUsers() {
 			payload: json.data.results,
 		});
 	};
+}
 
 export function addCounterLocalStorage() {
   return {
@@ -275,6 +276,7 @@ export function getOrdersFromDb() {
 
 export function setOrderCheckout(payload) {
   return async function (dispatch) {
+    console.log(payload)
     const json = await axios.post("/api/orders", payload);
 
     return dispatch({
@@ -356,9 +358,22 @@ export function getUsersByEmail(emailUser) {
 // esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
   return async function (dispatch) {
-
-
-
+    const { data } = await axios.post(
+      "/api/users/created",
+      payload
+    );
+    try {
+      return dispatch({
+        type: GET_USERS_BY_EMAIL,
+        payload: data.results[0].id,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+/* export function postUser(payload) {
+  return async function (dispatch) {
     const json = await axios.post("/api/users/created", payload);
     try {
       console.log("soy la accion y esto me llego del front ", json);
@@ -367,6 +382,8 @@ export function postUser(payload) {
     } catch (error) {
       console.log(error);
     }
+}
+} */
 	export function updateUser(payload) {
 		return async function () {
 			console.log('soy lo que llega cuando disparan la accion updateUser ' , payload)
@@ -377,6 +394,4 @@ export function postUser(payload) {
 			};
 		};
 	}
-  };
-}
 

@@ -8,7 +8,10 @@ import { updateUser } from "../../redux/actions";
 const EditarUser = () => {
 
   const { user, isAuthenticated } = useAuth0();
+  const user2 = user && user.email ;
 
+  isAuthenticated ? console.log(user2) : console.log('no hay nada')
+  
   const dispatch = useDispatch()
   const infoUser = useSelector((state) => state.allUsers);
   const Email = [];
@@ -61,9 +64,7 @@ const EditarUser = () => {
     
     dispatch(updateUser(input))
     alert('Documento guardado con exito')
-    //navigate('/')
-
-    // una vez que se le envia la informacion por body al back y se cree el videogame , quiero que me lleve a la pagina home para ver todos los videojuegos
+   
   }
 
 

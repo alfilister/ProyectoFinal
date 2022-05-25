@@ -17,8 +17,8 @@ import {
   getCategories,
   getReviewsProduct,
   getOrdersFromDb,
-
   getAllUsers,
+  firstSetCount,
 } from "./redux/actions"
 import Nav from "./components/Nav"
 import Checkout from "./pages/Checkout"
@@ -35,6 +35,7 @@ function App() {
     dispatch(getProducts())
     dispatch(getReviewsProduct())
     setTimeout(() => dispatch(getOrdersFromDb()), 50)
+    dispatch(firstSetCount())
     setTimeout(() => dispatch(getAllUsers()), 50)
   }, [dispatch])
 
