@@ -34,6 +34,7 @@ const Detail = () => {
   isAuthenticated && bucket.push({ email: user.email, name: user.name });
   //ingreso al bucket, que tiene tanto el email como el name y consigo el email
   const emailUser = bucket[0] && bucket[0].email;
+
   //traigo los datos filtrados en redux
   const idUserAuth = useSelector((state) => state.userEmailId);
   const sentIdUser = idUserAuth[0] && idUserAuth[0].id;
@@ -75,7 +76,7 @@ const Detail = () => {
     setTimeout(() => dispatch(getUsersReview()), 50);
     dispatch(getUsersByEmail(emailUser));
     dispatch(clearDetail());
-  }, [dispatch, id]);
+  }, [dispatch, id, emailUser]);
 
   const handleCart = (e, id) => {
     e.preventDefault();

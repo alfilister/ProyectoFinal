@@ -1,14 +1,15 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function CategoryGrid() {
-  const categories = useSelector((state) => state.categories)
-  const navigate = useNavigate()
+  const categories = useSelector((state) => state.categories);
+  const navigate = useNavigate();
 
   const handleClick = (name) => {
-    navigate(`/category/${name}`)
-  }
+    navigate(`/category/${name}`);
+  };
 
   return (
     <div className="categoryGrid">
@@ -29,11 +30,11 @@ function CategoryGrid() {
                 {el.name.toUpperCase()}
               </h2>
             </div>
-          )
+          );
         })
       )}
     </div>
-  )
+  );
 }
 
-export default CategoryGrid
+export default CategoryGrid;

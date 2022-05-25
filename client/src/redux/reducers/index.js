@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -22,6 +21,8 @@ import {
   RESET_CART,
   RESET_ORDER,
   GET_USERS_BY_EMAIL,
+
+   GET_ALL_USERS,
   ADD_ITEM_TO_CART_STORAGE,
   REMOVE_ITEM_TO_CART_STORAGE,
   ADD_COUNTER_LOCAL_STORAGE,
@@ -36,6 +37,7 @@ const initialState = {
   productsDetail: [],
   featProducts: [],
   suggestedRandom: [],
+  allUsers : [],
   user: {},
   reviewProduct: [],
   cart: window.localStorage.getItem("cartCounter")
@@ -188,6 +190,13 @@ function rootReducer(state = initialState, action) {
           ...state,
         };
       }
+
+      case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
+
     case REMOVE_ITEM_TO_CART_STORAGE:
       window.localStorage.setItem("cartCounter", JSON.stringify(state.cart));
       return {
@@ -278,6 +287,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         userEmailId: action.payload,
+      };
+      
+      case 'UPDATE_USER':
+      return {
+        ...state,
       };
 
     //return { ...state }
