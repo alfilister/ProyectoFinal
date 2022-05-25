@@ -24,11 +24,9 @@ const EditarUser = () => {
     console.log('logeo en false ')
   }
 
-  console.log(Email)
+ 
 
   const userFilterbyId = infoUser.filter(el => el.email === Email[0])
-
-  console.log('soy el usuario filtrado por email ', userFilterbyId)
 
   const [input, setInput] = useState({
 
