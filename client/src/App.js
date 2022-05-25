@@ -3,29 +3,33 @@ import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Home from "./pages/Home"
-import Detail from "./pages/Detail"
-import Error404 from "./pages/Error404"
-import Category from "./pages/Category"
-import ControlPanel from "./pages/Admin"
-import CartPage from "./pages/CartPage"
-import ProductReview from "./components/createReview/renderReviewCreate/index"
-import EditarUser from "./components/User/EditarUser"
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+import Error404 from "./pages/Error404";
+import Category from "./pages/Category";
+import ControlPanel from "./pages/Admin";
+import CartPage from "./pages/CartPage";
+import ProductReview from "./components/createReview/renderReviewCreate/index";
+import EditarUser from "./components/User/EditarUser";
 
 import {
   getProducts,
   getCategories,
   getReviewsProduct,
   getOrdersFromDb,
+
   getAllUsers,
 } from "./redux/actions"
 import Nav from "./components/Nav"
 import Checkout from "./pages/Checkout"
 
+
+
 function App() {
-	const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
+
     dispatch(getCategories())
     setTimeout(() => dispatch(getProducts()), 900)
     dispatch(getProducts())
@@ -33,6 +37,8 @@ function App() {
     setTimeout(() => dispatch(getOrdersFromDb()), 50)
     setTimeout(() => dispatch(getAllUsers()), 50)
   }, [dispatch])
+
+
 
   return (
     <div>
@@ -46,11 +52,10 @@ function App() {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/reviewsPost" element={<ProductReview />} />
-        <Route path="/EditUser" element={<EditarUser/>} />
-        
+        <Route path="/EditUser" element={<EditarUser />} />
       </Routes>
     </div>
-  )
+  );
 }
 
 export default App;

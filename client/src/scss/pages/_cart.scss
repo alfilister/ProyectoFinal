@@ -18,13 +18,50 @@
   .totalAmount {
     padding-top: 1.5em;
     border-radius: 20px;
-    min-width: 200px;
+    min-width: 250px;
 
     background-color: $dark-500;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+
+    .shippingDataForm {
+      margin-bottom: 1.5em;
+
+      h3 {
+        text-align: center;
+        padding: 0 1em;
+      }
+
+      input {
+        width: 96%;
+        height: 2em;
+        margin: 0.3em;
+        border-radius: 5px;
+      }
+
+      .errText {
+        color: whitesmoke;
+        font-size: small;
+        margin: 0 0 0 0.5em;
+      }
+
+      .btnSbmt {
+        margin-top: 0.5em;
+        background-color: $secondary;
+        color: $red-000;
+
+        &:hover {
+          background-color: whitesmoke;
+          color: $secondary;
+        }
+        &:active {
+          background-color: $secondary;
+          color: $red-000;
+        }
+      }
+    }
 
     .line {
       background-color: $red-000;
@@ -41,8 +78,8 @@
     h2 {
       color: $dark-000;
     }
-    button {
-      background-color: $dark-300;
+    .restrictedBtn {
+      background-color: $primary;
       color: $red-000;
       font-size: 1.2em;
       font-weight: 600;
@@ -54,7 +91,14 @@
       border-bottom-right-radius: 15px;
 
       &:hover {
-        background-color: $primary;
+        cursor: not-allowed;
+      }
+    }
+    .allowedBtn {
+      @extend .restrictedBtn;
+      background-color: green;
+
+      &:hover {
         cursor: pointer;
       }
     }

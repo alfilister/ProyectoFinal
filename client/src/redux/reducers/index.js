@@ -21,7 +21,13 @@ import {
   RESET_CART,
   RESET_ORDER,
   GET_USERS_BY_EMAIL,
-  GET_ALL_USERS,
+
+   GET_ALL_USERS,
+  ADD_ITEM_TO_CART_STORAGE,
+  REMOVE_ITEM_TO_CART_STORAGE,
+  ADD_COUNTER_LOCAL_STORAGE,
+  FIRST_SET_COUNT,
+  POST_USER,
 } from "../actions";
 
 const initialState = {
@@ -34,7 +40,10 @@ const initialState = {
   allUsers : [],
   user: {},
   reviewProduct: [],
-  cart: [],
+  cart: window.localStorage.getItem("cartCounter")
+    ? JSON.parse(localStorage.getItem("cartCounter"))
+    : [],
+
   cartCounter: "", //Antes era un 0
   ordersDb: [],
   orderSent: {},
@@ -140,17 +149,21 @@ function rootReducer(state = initialState, action) {
     case ADD_ITEM_TO_CART:
       const product = state.copyProducts;
       const validation = state.cart.filter((e) => e.id === action.payload);
-
       if (validation[0]) {
         if (validation[0].product.stock > validation[0].quantity) {
           validation[0].quantity++;
-          return { ...state, cartCounter: ++state.cartCounter };
+
+          return {
+            ...state,
+            cartCounter: ++state.cartCounter,
+          };
         } else {
           alert("There is no available stock for this item");
           return { ...state };
         }
       } else {
         const result = product.filter((el) => el.id === action.payload)[0];
+
         return {
           ...state,
           cart: [
@@ -160,6 +173,9 @@ function rootReducer(state = initialState, action) {
           cartCounter: ++state.cartCounter,
         };
       }
+    case ADD_ITEM_TO_CART_STORAGE:
+      window.localStorage.setItem("cartCounter", JSON.stringify(state.cart));
+      return { ...state };
 
     case REMOVE_ITEM_FROM_CART:
       const itemToremove = state.cart.filter(
@@ -174,10 +190,33 @@ function rootReducer(state = initialState, action) {
           ...state,
         };
       }
+
       case GET_ALL_USERS:
       return {
         ...state,
         allUsers: action.payload,
+      };
+
+    case REMOVE_ITEM_TO_CART_STORAGE:
+      window.localStorage.setItem("cartCounter", JSON.stringify(state.cart));
+      return {
+        ...state,
+      };
+    case ADD_COUNTER_LOCAL_STORAGE:
+      // localStorage.removeItem("contador");
+      window.localStorage.setItem(
+        "contador",
+        JSON.stringify(state.cartCounter)
+      );
+
+      return {
+        ...state,
+      };
+    case FIRST_SET_COUNT:
+      const constResolve = window.localStorage.getItem("contador");
+      return {
+        ...state,
+        cartCounter: constResolve,
       };
 
     case GET_USER_BY_ID:
@@ -244,9 +283,10 @@ function rootReducer(state = initialState, action) {
         userEmailId: action.payload,
       };
 
-    case "POST_USER":
+    case POST_USER:
       return {
         ...state,
+        userEmailId: action.payload,
       };
       
       case 'UPDATE_USER':
