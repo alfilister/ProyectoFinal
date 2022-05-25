@@ -39,7 +39,7 @@ const EditarUser = () => {
     dispatch(updateUser(input));
     alert("Documento guardado con exito");
     dispatch(getAllUsers());
-    window.location();
+    window.location.reload();
   }
 
   return (

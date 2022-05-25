@@ -35,7 +35,7 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     });
 
     alert("Reseña publicada");
-    window.location();
+    window.location.reload();
   }
 
   return (
