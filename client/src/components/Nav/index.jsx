@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../../scss/components/_nav.scss";
@@ -8,7 +8,7 @@ import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
-import { resetOrder } from "../../redux/actions";
+import { getAllUsers, resetOrder } from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
@@ -18,6 +18,7 @@ const Nav = ({ setCurrentPage }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   var cartCounter = useSelector((state) => state.cartCounter);
+  const usersDb = useSelector((state) => state.allUsers);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -28,8 +29,9 @@ const Nav = ({ setCurrentPage }) => {
         image: user.picture,
       };
       dispatch(postUser(objUser));
+      dispatch(getAllUsers());
     }
-  });
+  }, []);
 
   if (isAuthenticated) {
     console.log("Estas Logeado");
@@ -55,7 +57,19 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </NavLink>
       </div>
-      <div className="searchBarStylo"></div>
+      {usersDb[0] ? (
+        <div className="prflContainer">
+          <button
+            className="btnProfileUser"
+            onClick={() => navigate("/edituser")}
+          >
+            editProfile
+          </button>
+        </div>
+      ) : (
+        <div></div>
+      )}
+
       <div className="logeo">
         {isAuthenticated ? (
           <>

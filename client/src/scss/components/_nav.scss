@@ -6,6 +6,24 @@
   width: 100%;
   background-color: $red-800;
   height: 5rem;
+
+  .prflContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btnProfileUser {
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      color: $red-000;
+      font-size: 1.2em;
+      width: fit-content;
+      height: fit-content;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 .divSeachYLogo {
   height: 100%;

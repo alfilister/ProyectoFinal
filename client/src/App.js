@@ -19,27 +19,22 @@ import {
   getOrdersFromDb,
   getAllUsers,
   firstSetCount,
-} from "./redux/actions"
-import Nav from "./components/Nav"
-import Checkout from "./pages/Checkout"
-
-
+} from "./redux/actions";
+import Nav from "./components/Nav";
+import Checkout from "./pages/Checkout";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    dispatch(getCategories())
-    setTimeout(() => dispatch(getProducts()), 900)
-    dispatch(getProducts())
-    dispatch(getReviewsProduct())
-    setTimeout(() => dispatch(getOrdersFromDb()), 50)
-    dispatch(firstSetCount())
-    setTimeout(() => dispatch(getAllUsers()), 50)
-  }, [dispatch])
-
-
+    dispatch(getAllUsers());
+    dispatch(getCategories());
+    setTimeout(() => dispatch(getProducts()), 900);
+    dispatch(getProducts());
+    dispatch(getReviewsProduct());
+    setTimeout(() => dispatch(getOrdersFromDb()), 50);
+    dispatch(firstSetCount());
+  }, [dispatch]);
 
   return (
     <div>
