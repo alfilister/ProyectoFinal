@@ -8,6 +8,7 @@ export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING";
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
@@ -180,6 +181,16 @@ export function removeItemFromCart(payload) {
 	};
 }
 
+//obtener todos los usuarios de la db 
+export function getAllUsers() {
+	return async function (dispatch) {
+		const json = await axios.get('http://localhost:3001/api/users');
+		return dispatch({
+			type: GET_ALL_USERS,
+			payload: json.data.results,
+		});
+	};
+}
 export function getUserById(idUser) {
 	return async function (dispatch) {
 		const json = await axios.get(`http://localhost:3001/api/users/${idUser}`);
@@ -222,7 +233,7 @@ export function updateProduct(product) {
 export function getUsersReview() {
 	return async function (dispatch) {
 		try {
-			const user = await axios.get("http://localhost:3001/api/users");
+			const user = await axios.get("3001/api/users");
 
 			return dispatch({
 				type: GET_USERS_REVIEW,
@@ -321,7 +332,6 @@ export function updateOrder(payload) {
 export function getUsersByEmail(emailUser) {
 	return async function (dispatch) {
 		try {
-			console.log('SOY LO QUE LE LLEGA A LA ACCION getUSERBYEMAIL' , emailUser)
 			const { data } = await axios.get("http://localhost:3001/api/users");
 			const usuarioFiltrado = data.results.filter(
 				(el) => el.email === emailUser
@@ -352,4 +362,14 @@ export function postUser(payload) {
     };
     }
 
+	export function updateUser(payload) {
+		return async function () {
+			console.log('soy lo que llega cuando disparan la accion updateUser ' , payload)
+			const json = await axios.put('http://localhost:3001/api/users/editarUser', payload)
+			return {
+				type: 'UPDATE_USER',
+				payload: json.data.results,
+			};
+		};
+	}
 

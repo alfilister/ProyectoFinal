@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -22,6 +21,7 @@ import {
   RESET_CART,
   RESET_ORDER,
   GET_USERS_BY_EMAIL,
+  GET_ALL_USERS,
 } from "../actions";
 
 const initialState = {
@@ -31,6 +31,7 @@ const initialState = {
   productsDetail: [],
   featProducts: [],
   suggestedRandom: [],
+  allUsers : [],
   user: {},
   reviewProduct: [],
   cart: [],
@@ -173,6 +174,11 @@ function rootReducer(state = initialState, action) {
           ...state,
         };
       }
+      case GET_ALL_USERS:
+      return {
+        ...state,
+        allUsers: action.payload,
+      };
 
     case GET_USER_BY_ID:
       return {
@@ -239,6 +245,11 @@ function rootReducer(state = initialState, action) {
       };
 
     case "POST_USER":
+      return {
+        ...state,
+      };
+      
+      case 'UPDATE_USER':
       return {
         ...state,
       };

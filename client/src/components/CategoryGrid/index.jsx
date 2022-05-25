@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import {NavLink} from 'react-router-dom'
 
 function CategoryGrid() {
   const categories = useSelector((state) => state.categories)
@@ -32,6 +33,9 @@ function CategoryGrid() {
           )
         })
       )}
+
+      <NavLink to='/EditUser'>editProfile</NavLink>
+      
     </div>
   )
 }

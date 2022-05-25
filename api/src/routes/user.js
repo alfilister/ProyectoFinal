@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:idUser", async (req, res, next) => {
-  const { idUser } = req.params;
+  const { idUser } = req.body;
   try {
     res.json({
       status: "Users loaded",
@@ -26,24 +26,10 @@ router.get("/:idUser", async (req, res, next) => {
   }
 });
 
-router.put("/:idUser", async (req, res, next) => {
-	const { idUser } = req.params;
-	const {
-        fullName,
-        email,
-        password,
-        id_document
-	} = req.body;
+router.put("/editarUser", async (req, res, next) => {
 
 	try {
-		const updated = await userController.updateUser (
-        idUser,
-        fullName,
-        email,
-        password,
-        id_document
-			
-		);
+		const updated = await userController.updateUser (req.body);
 		res.json({ results: updated });
 	} catch (error) {
 		next(error);

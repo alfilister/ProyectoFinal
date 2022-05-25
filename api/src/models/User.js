@@ -17,7 +17,6 @@ module.exports = (sequelize) => {
       },
       id_document: {
         type: DataTypes.BIGINT,
-        // allowNull: false,
       },
       role : {
         type : DataTypes.STRING,
