@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { getOrdersFromDb, updateOrder } from "../../redux/actions";
+import {
+	updateOrder,
+	statusFilter,
+	getOrdersFromDb,
+} from "../../redux/actions";
 
 function ManageOrder() {
 	const dispatch = useDispatch();
@@ -12,7 +16,7 @@ function ManageOrder() {
 	});
 
 	const [ordersShow, setOrdersShow] = useState(orders);
-	// const [copyOrdersShow, setCopyOrdersShow] = useState(orders);
+	const [copyOrdersShow, setCopyOrdersShow] = useState(orders);
 	const [viewModal, setViewModal] = useState(false);
 	const [statusModal, setStatusModal] = useState(false);
 	const [orderSelected, setOrderSelected] = useState({
@@ -33,8 +37,6 @@ function ManageOrder() {
 			image: "",
 		},
 		payment_id: "",
-		updatedAt: "",
-		createdAt: "",
 		status: "",
 		user_id: "",
 		state: "",
@@ -76,17 +78,25 @@ function ManageOrder() {
 		});
 	};
 
-	const searchBar = (event) => {}; //temrinar
+	const searchBar = (event) => {
+		const { value } = event.target;
+		if (value === "none") {
+			setOrdersShow(copyOrdersShow);
+		} else {
+			setOrdersShow(copyOrdersShow.filter((or) => or.status === value));
+		}
+	};
 
 	return (
 		<div>
+			<label>Buscar por status</label>
 			<select
-				onClick={(event) => {
+				onChange={(event) => {
 					searchBar(event);
 				}}
 				name="newStatus"
 			>
-				<option value="">Buscar Status...</option>
+				<option value="none">Todos los status</option>
 				<option value="attempted">Attempted</option>
 				<option value="active">Active</option>
 				<option value="dispatched">Dispatched</option>
