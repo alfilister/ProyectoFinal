@@ -1,7 +1,7 @@
 import "./_app.scss";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
@@ -17,22 +17,28 @@ import {
   getCategories,
   getReviewsProduct,
   getOrdersFromDb,
-  firstSetCount,
-} from "./redux/actions";
-import Nav from "./components/Nav";
-import Checkout from "./pages/Checkout";
+
+  getAllUsers,
+} from "./redux/actions"
+import Nav from "./components/Nav"
+import Checkout from "./pages/Checkout"
+
+
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
-    setTimeout(() => dispatch(getProducts()), 900);
-    dispatch(getProducts());
-    dispatch(getReviewsProduct());
-    setTimeout(() => dispatch(getOrdersFromDb()), 50);
-    dispatch(firstSetCount());
-  }, [dispatch]);
+
+    dispatch(getCategories())
+    setTimeout(() => dispatch(getProducts()), 900)
+    dispatch(getProducts())
+    dispatch(getReviewsProduct())
+    setTimeout(() => dispatch(getOrdersFromDb()), 50)
+    setTimeout(() => dispatch(getAllUsers()), 50)
+  }, [dispatch])
+
+
 
   return (
     <div>

@@ -8,6 +8,7 @@ export const SORT_PRODUCTS_BY_RATING = "SORT_PRODUCTS_BY_RATING";
 export const FILTER_PRODUCTS = "FILTER_PRODUCTS";
 export const CLEAR_DETAIL = "CLEAR_DETAIL";
 export const GET_REVIEWS_PRODUCT = "GET_REVIEWS_PRODUCT";
+export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART";
 export const REMOVE_ITEM_FROM_CART = "REMOVE_ITEM_FROM_CART";
@@ -148,9 +149,10 @@ export function clearDetail() {
 }
 
 export function getReviewsProduct(payload) {
+
   return async function (dispatch) {
     try {
-      const users = await axios.get("/api/users");
+      
       const { data } = await axios.get("/api/reviews/product");
 
       return dispatch({
@@ -161,6 +163,7 @@ export function getReviewsProduct(payload) {
       console.log(error);
     }
   };
+
 }
 
 export function addItemToCart(payload) {
@@ -187,6 +190,17 @@ export function removeItemFromCart(payload) {
   };
 }
 
+
+//obtener todos los usuarios de la db 
+export function getAllUsers() {
+	return async function (dispatch) {
+		const json = await axios.get('http://localhost:3001/api/users');
+		return dispatch({
+			type: GET_ALL_USERS,
+			payload: json.data.results,
+		});
+	};
+
 export function addCounterLocalStorage() {
   return {
     type: ADD_COUNTER_LOCAL_STORAGE,
@@ -196,6 +210,7 @@ export function firstSetCount() {
   return {
     type: FIRST_SET_COUNT,
   };
+
 }
 export function getUserById(idUser) {
   return async function (dispatch) {
@@ -231,6 +246,8 @@ export function updateProduct(product) {
 }
 
 export function getUsersReview() {
+
+
   return async function (dispatch) {
     try {
       const user = await axios.get("/api/users");
@@ -243,6 +260,7 @@ export function getUsersReview() {
       console.log(err);
     }
   };
+
 }
 
 export function getOrdersFromDb() {
@@ -338,12 +356,27 @@ export function getUsersByEmail(emailUser) {
 // esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
   return async function (dispatch) {
+
+
+
     const json = await axios.post("/api/users/created", payload);
     try {
       console.log("soy la accion y esto me llego del front ", json);
+
       return json;
     } catch (error) {
       console.log(error);
     }
+	export function updateUser(payload) {
+		return async function () {
+			console.log('soy lo que llega cuando disparan la accion updateUser ' , payload)
+			const json = await axios.put('http://localhost:3001/api/users/editarUser', payload)
+			return {
+				type: 'UPDATE_USER',
+				payload: json.data.results,
+			};
+		};
+	}
   };
 }
+

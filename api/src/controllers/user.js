@@ -11,17 +11,11 @@ const getUser = async () => {
           fullName: user.fullName,
           password: user.password,
           email: user.email,
-          id_document: user.id_document,
-          role: user.role
+          role: user.role,
+          id_document : user.id_document
         }
      })
    })
-
-   
-
-   //DB INFO
- /*   const getUser = await User.findAll()
-   return await getUser */
    return await User.findAll()
   } catch (error) {
     console.log(error)
@@ -37,18 +31,28 @@ const getUserById = async (idUser)=> {
   }
 }
 
-const updateUser = async (
-   usserId,
-   id_document,
-   role
-   ) => {
-	const selectedUser = await User.findByPk(usserId);
-	selected.set({
-   id_document,
-   role
+const updateUser = async (body)=> {
+ const {  fullName,
+  email,
+  id_document,
+  password,
+  image,} = body;
+ 
+  //console.log('soy el body' ,body)
+
+	const selectedUser = await User.findAll({
+    where : {email : email}
+  });
+  console.log('soy ' , selectedUser)
+	selectedUser[0].set({
+    fullName,
+    email,
+    id_document,
+    password,
+    image
 	});
 
-	await selectedUser.save();
+	await selectedUser[0].save();
 
 	return selectedUser;
 };
@@ -71,7 +75,7 @@ const postUser = async (body) => {
         fullName,
         email,
         password,
-        image
+        image,
    } = body   
 
   
@@ -81,13 +85,12 @@ const postUser = async (body) => {
       fullName: fullName,
       password: password,
       email: email,
-      image : image
+      image : image,
     }
 
   });
 
   return userCreated
-
 
   } catch (error) {
     console.log(error)
