@@ -27,7 +27,6 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllUsers());
     dispatch(getCategories());
     setTimeout(() => dispatch(getProducts()), 900);
     dispatch(getProducts());

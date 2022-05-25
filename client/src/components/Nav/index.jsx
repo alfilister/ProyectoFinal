@@ -24,16 +24,14 @@ const Nav = ({ setCurrentPage }) => {
     dispatch(getAllUsers());
   }, []);
 
-  if (isAuthenticated) {
-    let objUser = {
-      fullName: user.nickname,
-      password: user.sub,
-      email: user.email,
-      image: user.picture,
-    };
+  let objUser = isAuthenticated && {
+    fullName: user.nickname,
+    password: user.sub,
+    email: user.email,
+    image: user.picture,
+  };
 
-    isAuthenticated && dispatch(postUser(objUser));
-  }
+  objUser && dispatch(postUser(objUser));
 
   const handleCart = (e) => {
     e.preventDefault();
