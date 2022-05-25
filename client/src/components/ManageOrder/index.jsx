@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import { updateOrder } from "../../redux/actions";
+import { getOrdersFromDb, updateOrder } from "../../redux/actions";
 
 function ManageOrder() {
 	const dispatch = useDispatch();
@@ -12,11 +12,26 @@ function ManageOrder() {
 	});
 
 	const [ordersShow, setOrdersShow] = useState(orders);
-	const [copyOrdersShow, setCopyOrdersShow] = useState(orders);
+	// const [copyOrdersShow, setCopyOrdersShow] = useState(orders);
 	const [viewModal, setViewModal] = useState(false);
 	const [statusModal, setStatusModal] = useState(false);
 	const [orderSelected, setOrderSelected] = useState({
 		id: "",
+		cart_list: [],
+		products_id: [],
+		total_purchase: 0,
+		receiver_phone: 0,
+		createdAt: "",
+		updatedAt: "",
+		user: {
+			id: "",
+			fullName: "",
+			password: "",
+			email: "",
+			id_document: "",
+			role: "",
+			image: "",
+		},
 		payment_id: "",
 		updatedAt: "",
 		createdAt: "",
@@ -123,25 +138,55 @@ function ManageOrder() {
 			</table>
 			<Modal isOpen={viewModal}>
 				<ModalHeader>
-					<span>{orderSelected?.id}</span>
+					<span>Orden #{orderSelected?.id}</span>
 				</ModalHeader>
 				<ModalBody>
+					<h3>Datos del cliente:</h3>
+					<span>Nombre del cliente: {orderSelected?.user.fullName}</span>
+					<br />
+					<span>Documento del cliente: {orderSelected?.user.id_document}</span>
+					<br />
+					<span>Correo del cliente: {orderSelected?.user.email}</span>
+					<br />
+					<h3>Datos del envio:</h3>
 					<span>City: {orderSelected?.city}</span>
-					<br />
-					<span>Payment ID: {orderSelected?.payment_id}</span>
-					<br />
-					<span>Shipping address: {orderSelected?.shipping_address}</span>
 					<br />
 					<span>State: {orderSelected?.state}</span>
 					<br />
-					<span>Status: {orderSelected?.status}</span>
+					<span>Shipping address: {orderSelected?.shipping_address}</span>
 					<br />
 					<span>Zip code: {orderSelected?.zip_code}</span>
 					<br />
-					<span>Created at: {orderSelected?.createdAt}</span>
+					<span>Telefono del cliente: {orderSelected?.receiver_phone}</span>
 					<br />
-					<span>Updated at: {orderSelected?.updatedAt}</span>
+					<h3>Datos de la compra:</h3>
+					<span>Fecha de compra: {orderSelected?.createdAt}</span>
 					<br />
+					<span>Valor de la compra: {orderSelected?.total_purchase}</span>
+					<br />
+					<h3>Productos:</h3>
+					<table>
+						<thead>
+							<tr>
+								<td>Id del producto</td>
+								<td>Nombre del producto</td>
+								<td>Cantidad</td>
+								<td>Valor del producto</td>
+							</tr>
+						</thead>
+						<tbody>
+							{orderSelected?.cart_list.map((item) => {
+								return (
+									<tr>
+										<td>{item[0]}</td>
+										<td>{item[1]}</td>
+										<td>{item[3]}</td>
+										<td>{item[2]}</td>
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
 				</ModalBody>
 				<ModalFooter>
 					<button
@@ -162,16 +207,22 @@ function ManageOrder() {
 			</Modal>
 
 			<Modal isOpen={statusModal}>
-				<ModalHeader>Cambiar el estado de {orderSelected.id}</ModalHeader>
+				<ModalHeader>
+					Cambiar el estado de la orden #{orderSelected.id}
+				</ModalHeader>
 				<ModalBody>
-					<label>Estado actual {orderSelected.status}</label>
+					{ordersShow?.map((order) => {
+						if (order.id === orderSelected.id) {
+							return <span key={order.id}>Estado actual {order.status}</span>;
+						}
+					})}
 					<select
 						onClick={(event) => {
 							handleStatus(event);
 						}}
 						name="newStatus"
 					>
-						<option value="none">Status...</option>
+						<option>Status...</option>
 						<option value="attempted">Attempted</option>
 						<option value="active">Active</option>
 						<option value="dispatched">Dispatched</option>
