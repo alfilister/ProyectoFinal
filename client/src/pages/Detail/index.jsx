@@ -73,7 +73,9 @@ const Detail = () => {
     dispatch(getReviewsProduct());
     dispatch(getUsersReview());
     dispatch(getUsersByEmail(emailUser));
-    dispatch(clearDetail());
+    return () => {
+      dispatch(clearDetail());
+    };
   }, []);
 
   const handleCart = (e, id) => {
