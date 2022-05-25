@@ -18,8 +18,11 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Auth0Provider
-          domain="dev-1gu4jfv0.us.auth0.com"
-          clientId="CQnqeax1QHDhSIgoK4gTbBR8y0SAxCrm"
+          domain={process.env.REACT_APP_DOMAIN || "dev-1gu4jfv0.us.auth0.com"}
+          clientId={
+            process.env.REACT_APP_CLIENT_ID ||
+            "CQnqeax1QHDhSIgoK4gTbBR8y0SAxCrm"
+          }
           redirectUri={window.location.origin}
         >
           <App />
