@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { updateProduct, deleteProduct } from "../../redux/actions";
@@ -83,7 +83,7 @@ function EditProduct() {
 				pro.featured = productSelected.featured;
 				pro.categories = productSelected.categories;
 			}
-			return newData
+			return newData;
 		});
 		setProductsShow(newData);
 		setSearching(newData);
@@ -174,12 +174,10 @@ function EditProduct() {
 								<td>
 									<img
 										src={product.image}
-
 										width="100px"
 										height="100px"
 										alt="base64 test"
 									/>
-
 								</td>
 								<td>
 									<button
