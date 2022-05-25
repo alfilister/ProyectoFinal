@@ -76,7 +76,7 @@ const Detail = () => {
     setTimeout(() => dispatch(getUsersReview()), 50);
     dispatch(getUsersByEmail(emailUser));
     dispatch(clearDetail());
-  }, [dispatch, id,emailUser]);
+  }, [dispatch, id, emailUser]);
 
   const handleCart = (e, id) => {
     e.preventDefault();

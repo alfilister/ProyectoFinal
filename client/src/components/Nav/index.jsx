@@ -8,7 +8,7 @@ import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, resetOrder } from "../../redux/actions";
+import { getAllUsers, getUsersByEmail, resetOrder } from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
@@ -21,25 +21,19 @@ const Nav = ({ setCurrentPage }) => {
   const usersDb = useSelector((state) => state.allUsers);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      let objUser = {
-        fullName: user.nickname,
-        password: user.sub,
-        email: user.email,
-        image: user.picture,
-      };
-      dispatch(postUser(objUser));
-      dispatch(getAllUsers());
-    }
+    dispatch(getAllUsers());
   }, []);
 
   if (isAuthenticated) {
-    console.log("Estas Logeado");
-  } else {
-    console.log("Aun no hay nadie logeado");
-  }
+    let objUser = {
+      fullName: user.nickname,
+      password: user.sub,
+      email: user.email,
+      image: user.picture,
+    };
 
-  /////////
+    isAuthenticated && dispatch(postUser(objUser));
+  }
 
   const handleCart = (e) => {
     e.preventDefault();

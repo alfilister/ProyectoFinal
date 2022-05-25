@@ -149,10 +149,8 @@ export function clearDetail() {
 }
 
 export function getReviewsProduct(payload) {
-
   return async function (dispatch) {
     try {
-      
       const { data } = await axios.get("/api/reviews/product");
 
       return dispatch({
@@ -163,7 +161,6 @@ export function getReviewsProduct(payload) {
       console.log(error);
     }
   };
-
 }
 
 export function addItemToCart(payload) {
@@ -190,16 +187,15 @@ export function removeItemFromCart(payload) {
   };
 }
 
-
-//obtener todos los usuarios de la db 
+//obtener todos los usuarios de la db
 export function getAllUsers() {
-	return async function (dispatch) {
-		const json = await axios.get('http://localhost:3001/api/users');
-		return dispatch({
-			type: GET_ALL_USERS,
-			payload: json.data.results,
-		});
-	};
+  return async function (dispatch) {
+    const json = await axios.get("http://localhost:3001/api/users");
+    return dispatch({
+      type: GET_ALL_USERS,
+      payload: json.data.results,
+    });
+  };
 }
 
 export function addCounterLocalStorage() {
@@ -211,7 +207,6 @@ export function firstSetCount() {
   return {
     type: FIRST_SET_COUNT,
   };
-
 }
 export function getUserById(idUser) {
   return async function (dispatch) {
@@ -247,8 +242,6 @@ export function updateProduct(product) {
 }
 
 export function getUsersReview() {
-
-
   return async function (dispatch) {
     try {
       const user = await axios.get("/api/users");
@@ -261,7 +254,6 @@ export function getUsersReview() {
       console.log(err);
     }
   };
-
 }
 
 export function getOrdersFromDb() {
@@ -276,7 +268,7 @@ export function getOrdersFromDb() {
 
 export function setOrderCheckout(payload) {
   return async function (dispatch) {
-    console.log(payload)
+    console.log(payload);
     const json = await axios.post("/api/orders", payload);
 
     return dispatch({
@@ -341,14 +333,14 @@ export function updateOrder(payload) {
 export function getUsersByEmail(emailUser) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get("/api/users");
+      const { data } = await axios.get("http://localhost:3001/api/users");
       const usuarioFiltrado = data.results.filter(
         (el) => el.email === emailUser
       );
 
       return dispatch({
         type: GET_USERS_BY_EMAIL,
-        payload: usuarioFiltrado,
+        payload: usuarioFiltrado[0].id,
       });
     } catch (error) {
       console.log(error);
@@ -358,10 +350,7 @@ export function getUsersByEmail(emailUser) {
 // esto fue lo que acabe de hacer Danilo.
 export function postUser(payload) {
   return async function (dispatch) {
-    const { data } = await axios.post(
-      "/api/users/created",
-      payload
-    );
+    const { data } = await axios.post("/api/users/created", payload);
     try {
       return dispatch({
         type: GET_USERS_BY_EMAIL,
@@ -384,14 +373,19 @@ export function postUser(payload) {
     }
 }
 } */
-	export function updateUser(payload) {
-		return async function () {
-			console.log('soy lo que llega cuando disparan la accion updateUser ' , payload)
-			const json = await axios.put('http://localhost:3001/api/users/editarUser', payload)
-			return {
-				type: 'UPDATE_USER',
-				payload: json.data.results,
-			};
-		};
-	}
-
+export function updateUser(payload) {
+  return async function () {
+    console.log(
+      "soy lo que llega cuando disparan la accion updateUser ",
+      payload
+    );
+    const json = await axios.put(
+      "http://localhost:3001/api/users/editarUser",
+      payload
+    );
+    return {
+      type: "UPDATE_USER",
+      payload: json.data.results,
+    };
+  };
+}
