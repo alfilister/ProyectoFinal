@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CartProduct from "../../components/cartProduct";
 import CategoryGrid from "../../components/CategoryGrid";
 import { addShippingStorage, setOrderCheckout } from "../../redux/actions";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const validate = (fields) => {
   let errors = {};
@@ -32,6 +33,7 @@ const validate = (fields) => {
 };
 
 function CartPage() {
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
   const idUserAuth = useSelector((state) => state.userEmailId);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,18 +60,33 @@ function CartPage() {
 
   const parseLSinfo = initialShipping && initialShipping;
 
-  const [fields, setFields] = useState({
-    receiver_phone: parseLSinfo.receiver_phone || "",
-    state: parseLSinfo.state || "",
-    city: parseLSinfo.city || "",
-    shipping_address: parseLSinfo.shipping_address || "",
-    zip_code: parseLSinfo.zip_code || "",
-    status: "attempted",
-    total_purchase: final,
-    cart_list,
-    products_id,
-    user_id: idUserAuth,
-  });
+  const [fields, setFields] = useState(
+    parseLSinfo
+      ? {
+          receiver_phone: parseLSinfo.receiver_phone,
+          state: parseLSinfo.state,
+          city: parseLSinfo.city,
+          shipping_address: parseLSinfo.shipping_address,
+          zip_code: parseLSinfo.zip_code,
+          status: "attempted",
+          total_purchase: final,
+          cart_list,
+          products_id,
+          user_id: idUserAuth,
+        }
+      : {
+          receiver_phone: "",
+          state: "",
+          city: "",
+          shipping_address: "",
+          zip_code: "",
+          status: "attempted",
+          total_purchase: final,
+          cart_list,
+          products_id,
+          user_id: idUserAuth,
+        }
+  );
 
   const [errors, setErrors] = useState("");
 
@@ -100,7 +117,7 @@ function CartPage() {
     } else {
       await dispatch(setOrderCheckout(fields));
       dispatch(addShippingStorage(fields));
-      // navigate("/checkout");
+      navigate("/checkout");
     }
   };
 
@@ -185,27 +202,51 @@ function CartPage() {
             <h3>Taxes $ {taxIva}</h3>
             <h2>Total $ {final}</h2>
 
-            <button
-              disabled={
-                !fields.zip_code ||
-                !fields.receiver_phone ||
-                !fields.state ||
-                !fields.shipping_address ||
-                !fields.city
-              }
-              className={
-                fields.zip_code &&
-                fields.receiver_phone &&
-                fields.state &&
-                fields.shipping_address &&
-                fields.city
-                  ? "allowedBtn"
-                  : "restrictedBtn"
-              }
-              onClick={(e) => handleConfirm(e, fields)}
-            >
-              Proceed to checkout
-            </button>
+            {isAuthenticated ? (
+              <button
+                disabled={
+                  !fields.zip_code ||
+                  !fields.receiver_phone ||
+                  !fields.state ||
+                  !fields.shipping_address ||
+                  !fields.city
+                }
+                className={
+                  fields.zip_code &&
+                  fields.receiver_phone &&
+                  fields.state &&
+                  fields.shipping_address &&
+                  fields.city
+                    ? "allowedBtn"
+                    : "restrictedBtn"
+                }
+                onClick={(e) => handleConfirm(e, fields)}
+              >
+                Proceed to checkout
+              </button>
+            ) : (
+              <button
+                disabled={
+                  !fields.zip_code ||
+                  !fields.receiver_phone ||
+                  !fields.state ||
+                  !fields.shipping_address ||
+                  !fields.city
+                }
+                className={
+                  fields.zip_code &&
+                  fields.receiver_phone &&
+                  fields.state &&
+                  fields.shipping_address &&
+                  fields.city
+                    ? "allowedBtn"
+                    : "restrictedBtn"
+                }
+                onClick={() => loginWithRedirect()}
+              >
+                Loggin to checkout
+              </button>
+            )}
           </div>
         </div>
       )}

@@ -269,6 +269,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         cart: [],
         cartCounter: "",
+        shippingStorage: false,
       };
 
     case RESET_ORDER:
