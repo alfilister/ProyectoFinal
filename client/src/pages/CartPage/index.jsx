@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CartProduct from "../../components/cartProduct";
 import CategoryGrid from "../../components/CategoryGrid";
-import { setOrderCheckout } from "../../redux/actions";
+import { addShippingStorage, setOrderCheckout } from "../../redux/actions";
 
 const validate = (fields) => {
   let errors = {};
@@ -33,10 +33,10 @@ const validate = (fields) => {
 
 function CartPage() {
   const idUserAuth = useSelector((state) => state.userEmailId);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const initialCart = useSelector((state) => state.cart);
+  const initialShipping = useSelector((state) => state.shippingStorage);
   const cart_list = useSelector((state) => state.cart).map((el) => [
     el.id,
     el.product.name,
@@ -56,12 +56,14 @@ function CartPage() {
   var taxIva = (Number(total) * 0.19).toFixed(2);
   var final = (Number(total) + Number(taxIva)).toFixed(2);
 
+  const parseLSinfo = initialShipping && initialShipping;
+
   const [fields, setFields] = useState({
-    receiver_phone: "",
-    state: "",
-    city: "",
-    shipping_address: "",
-    zip_code: "",
+    receiver_phone: parseLSinfo.receiver_phone || "",
+    state: parseLSinfo.state || "",
+    city: parseLSinfo.city || "",
+    shipping_address: parseLSinfo.shipping_address || "",
+    zip_code: parseLSinfo.zip_code || "",
     status: "attempted",
     total_purchase: final,
     cart_list,
@@ -97,7 +99,8 @@ function CartPage() {
       alert("Check the information registered, maybe one or more issues");
     } else {
       await dispatch(setOrderCheckout(fields));
-      navigate("/checkout");
+      dispatch(addShippingStorage(fields));
+      // navigate("/checkout");
     }
   };
 
