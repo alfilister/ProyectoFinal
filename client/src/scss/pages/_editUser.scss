@@ -2,32 +2,93 @@
 
 .editUser {
   background-color: $dark-500;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  height: max-content;
   padding: 2em;
   .profileInfo {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: $dark-400;
-    width: fit-content;
 
     h3 {
       margin: 0.5em auto;
+      color: whitesmoke;
     }
   }
   .idInput {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      border-radius: 5px;
+      text-align: center;
+      height: 2em;
+    }
+
+    button {
+      margin: 1em;
+      width: 4em;
+      height: 2em;
+    }
   }
-  .userOrders {
+  .ordersContainer {
     display: flex;
-  }
-  .cartItems {
-    display: flex;
-  }
-  .activeMsg {
-    display: flex;
+    align-items: center;
+    justify-content: center;
+    .userOrders {
+      display: grid;
+      grid-template-columns: 1fr 3fr 2fr 2fr;
+      align-self: center;
+      color: $dark-100;
+      margin: 0.5em;
+      padding: 0.5em;
+      border: 1px solid $dark-000;
+      border-radius: 15px;
+      max-width: 900px;
+
+      .orderNumber {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .itemContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .cartItems {
+          display: flex;
+          flex-direction: column;
+          margin: 0.5em;
+          padding: 0.5em;
+          background-color: $dark-200;
+          border-radius: 15px;
+          color: $red-000;
+
+          h3 {
+            margin: 0;
+          }
+        }
+      }
+      .paidStatus {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        span {
+          color: greenyellow;
+        }
+      }
+
+      .activeMsg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 }

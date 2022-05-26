@@ -61,12 +61,14 @@ const EditarUser = () => {
           </div>
 
           {userFilterbyId[0].id_document ? (
-            <div>Document: {userFilterbyId[0].id_document}</div>
+            <h3 className="document">
+              Document: {userFilterbyId[0].id_document}
+            </h3>
           ) : (
             <div className="idInput">
               <input
                 type="text"
-                placeholder="ingresa documento"
+                placeholder="Set your ID for tickets"
                 name="id_document"
                 value={input.id_document}
                 onChange={(e) => handleChangeInput(e)}
@@ -77,23 +79,37 @@ const EditarUser = () => {
 
           {ordersUser[0] ? (
             ordersUser.map((order) => (
-              <div key={order.id} className="userOrders">
-                <h2>Order #{order.id}00</h2>
-                {order.cart_list.map((el) => (
-                  <div className="cartItems">
-                    <h3>Item: {el[1]}</h3>
-                    <h3>Value: $ {el[2]}</h3>
-                    <h3>Quantity: {el[3]}</h3>
+              <div className="ordersContainer">
+                <div key={order.id} className="userOrders">
+                  <div className="orderNumber">
+                    <h2>Order #{order.id}00</h2>
                   </div>
-                ))}
-                <h3>Total Paid: $ {order.total_purchase}</h3>
-                <h3>Status: {order.status}</h3>
-                {order.status === "active" && (
-                  <h2 className="activeMsg">
-                    Rigth now, our staff is carefully preparing your items to be
-                    send as soon as posible
-                  </h2>
-                )}
+                  <div className="itemContainer">
+                    {order.cart_list.map((el) => (
+                      <div className="cartItems">
+                        <h3>Item: {el[1]}</h3>
+                        <h3>Value: $ {el[2]}</h3>
+                        <h3>Quantity: {el[3]}</h3>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="paidStatus">
+                    <h3>
+                      Total Paid: <span> $ {order.total_purchase}</span>
+                    </h3>
+                    <h3>
+                      Status: <span>{order.status}</span>
+                    </h3>
+                  </div>
+                  {order.status === "active" && (
+                    <div className="activeMsg">
+                      <p>
+                        Rigth now, our staff is carefully preparing your items
+                        to be send as soon as posible
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             ))
           ) : (
