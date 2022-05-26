@@ -77,10 +77,10 @@ const Nav = ({ setCurrentPage }) => {
             <LoginButton />
           </div>
         )}
-        <div className="cartBtnNav">
-          <button onClick={(e) => handleCart(e)}>Cart</button>
-          <p className="cartCounter">{cartCounter}</p>
-        </div>
+      </div>
+      <div className="cartBtnNav">
+        <button onClick={(e) => handleCart(e)}>Cart</button>
+        <p className="cartCounter">{cartCounter}</p>
       </div>
     </div>
   );
