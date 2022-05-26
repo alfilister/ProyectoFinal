@@ -5,6 +5,8 @@ import CartProduct from "../../components/cartProduct";
 import CategoryGrid from "../../components/CategoryGrid";
 import { setOrderCheckout } from "../../redux/actions";
 
+import Swal from "sweetalert2";
+
 const validate = (fields) => {
   let errors = {};
   if (!fields.receiver_phone) {
@@ -94,7 +96,13 @@ function CartPage() {
       errors.shipping_address ||
       errors.zip_code
     ) {
-      alert("Check the information registered, maybe one or more issues");
+      Swal.fire({
+        icon: "warning",
+        title: "Ups..",
+        text: "Check the information registered, maybe one or more issues!",
+        confirmButtonText: "Ok",
+      });
+      // alert("Check the information registered, maybe one or more issues");
     } else {
       await dispatch(setOrderCheckout(fields));
       navigate("/checkout");

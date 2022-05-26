@@ -7,6 +7,8 @@ import { postProduct } from "../../redux/actions";
 import "../../scss/pages/_created.scss";
 import { useNavigate } from "react-router-dom";
 
+import Swal from "sweetalert2";
+
 //funcion validadora para hacer el formulario controlado
 function validate(input) {
   let errors = {};
@@ -99,8 +101,17 @@ const Create = () => {
       stock: "",
       categories: [],
     });
-    alert("tu Producto se creo con exito");
-    navigate("/");
+    Swal.fire({
+      icon: "success",
+      title: "Complete!",
+      text: "Your product was created successfully!",
+      confirmButtonText: "Accept",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/");
+      }
+    });
+    // alert("tu Producto se creo con exito"); (lo cambio por un sweet alert)
   }
 
   function getImage(element) {
@@ -265,7 +276,7 @@ const Create = () => {
             </div>
           </div>
 
-          <button type="submit"> Publicar Producto </button>
+          <button type="submit"> Add Product </button>
         </form>
       </div>
     </div>

@@ -4,6 +4,8 @@ import "../../scss/components/_user.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, updateUser } from "../../redux/actions";
 
+import Swal from "sweetalert2";
+
 const EditarUser = () => {
   const { user, isAuthenticated } = useAuth0();
 
@@ -37,9 +39,19 @@ const EditarUser = () => {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(updateUser(input));
-    alert("Documento guardado con exito");
     dispatch(getAllUsers());
-    window.location.reload();
+    Swal.fire({
+      icon: "success",
+      title: "Complete!",
+      text: "Document saved successfully!",
+      confirmButtonText: "Accept",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
+    // alert("Documento guardado con exito");
+    // window.location.reload();
   }
 
   return (
