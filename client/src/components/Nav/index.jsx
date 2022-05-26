@@ -49,13 +49,13 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </NavLink>
       </div>
-      {usersDb[0] ? (
+      {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
             onClick={() => navigate("/edituser")}
           >
-            editProfile
+            Customer Page
           </button>
         </div>
       ) : (

@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers, updateUser } from "../../redux/actions";
+import { getAllUsers, getOrdersFromDb, updateUser } from "../../redux/actions";
 
 const EditarUser = () => {
   const { user, isAuthenticated } = useAuth0();
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getOrdersFromDb());
+  }, []);
+
   const infoUser = useSelector((state) => state.allUsers);
   const ordersDb = useSelector((state) => state.ordersDb);
 
@@ -47,7 +52,13 @@ const EditarUser = () => {
     dispatch(updateUser(input));
     alert("Documento guardado con exito");
     dispatch(getAllUsers());
-    window.location.reload();
+    setInput({
+      fullName: "",
+      email: "",
+      id_document: "",
+      password: "",
+      image: "",
+    });
   }
 
   return (
