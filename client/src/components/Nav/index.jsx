@@ -20,10 +20,6 @@ const Nav = ({ setCurrentPage }) => {
   var cartCounter = useSelector((state) => state.cartCounter);
   const usersDb = useSelector((state) => state.allUsers);
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, []);
-
   let objUser = isAuthenticated && {
     fullName: user.nickname,
     password: user.sub,
@@ -39,6 +35,12 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/cart");
   };
 
+  const handleBtnProfile = (e) => {
+    e.preventDefault();
+    dispatch(getAllUsers());
+    navigate("/edituser");
+  };
+
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
@@ -49,13 +51,13 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </NavLink>
       </div>
-      {usersDb[0] ? (
+      {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
-            onClick={() => navigate("/edituser")}
+            onClick={(e) => handleBtnProfile(e)}
           >
-            editProfile
+            Customer Page
           </button>
         </div>
       ) : (
@@ -75,10 +77,10 @@ const Nav = ({ setCurrentPage }) => {
             <LoginButton />
           </div>
         )}
-        <div className="cartBtnNav">
-          <button onClick={(e) => handleCart(e)}>Cart</button>
-          <p className="cartCounter">{cartCounter}</p>
-        </div>
+      </div>
+      <div className="cartBtnNav">
+        <button onClick={(e) => handleCart(e)}>Cart</button>
+        <p className="cartCounter">{cartCounter}</p>
       </div>
     </div>
   );
