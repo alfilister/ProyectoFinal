@@ -82,7 +82,7 @@ const EditarUser = () => {
               <div className="ordersContainer">
                 <div key={order.id} className="userOrders">
                   <div className="orderNumber">
-                    <h2>Order #{order.id}00</h2>
+                    <h2>Order #{order.id}0</h2>
                   </div>
                   <div className="itemContainer">
                     {order.cart_list.map((el) => (
