@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 import {
   GET_CATEGORIES,
   GET_PRODUCTS,
@@ -158,8 +160,18 @@ function rootReducer(state = initialState, action) {
             cartCounter: ++state.cartCounter,
           };
         } else {
-          alert("There is no available stock for this item");
-          return { ...state };
+          Swal.fire({
+            icon: "warning",
+            title: "Sorry!",
+            text: "There is no available stock for this item!",
+            confirmButtonText: "Accept",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              return { ...state };
+            }
+          });
+          // alert("There is no available stock for this item")
+          // return { ...state };
         }
       } else {
         const result = product.filter((el) => el.id === action.payload)[0];
