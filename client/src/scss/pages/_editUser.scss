@@ -1,0 +1,33 @@
+@use "../abstracts/_variables.scss" as *;
+
+.editUser {
+  background-color: $dark-500;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 2em;
+  .profileInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $dark-400;
+    width: fit-content;
+
+    h3 {
+      margin: 0.5em auto;
+    }
+  }
+  .idInput {
+    display: flex;
+  }
+  .userOrders {
+    display: flex;
+  }
+  .cartItems {
+    display: flex;
+  }
+  .activeMsg {
+    display: flex;
+  }
+}

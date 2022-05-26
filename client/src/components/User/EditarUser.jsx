@@ -51,17 +51,19 @@ const EditarUser = () => {
   }
 
   return (
-    <div>
+    <div className="editUser">
       {userFilterbyId[0] ? (
-        <>
-          <img className="img" src={userFilterbyId[0].image} alt="" />
-          <h3>User: {userFilterbyId[0].fullName}</h3>
-          <h3>Email: {userFilterbyId[0].email}</h3>
+        <div>
+          <div className="profileInfo">
+            <img className="img" src={userFilterbyId[0].image} alt="" />
+            <h3>User: {userFilterbyId[0].fullName}</h3>
+            <h3>Email: {userFilterbyId[0].email}</h3>
+          </div>
 
           {userFilterbyId[0].id_document ? (
             <div>Document: {userFilterbyId[0].id_document}</div>
           ) : (
-            <>
+            <div className="idInput">
               <input
                 type="text"
                 placeholder="ingresa documento"
@@ -70,7 +72,7 @@ const EditarUser = () => {
                 onChange={(e) => handleChangeInput(e)}
               />
               <button onClick={(e) => handleSubmit(e, input)}>save</button>
-            </>
+            </div>
           )}
 
           {ordersUser[0] ? (
@@ -78,16 +80,16 @@ const EditarUser = () => {
               <div key={order.id} className="userOrders">
                 <h2>Order #{order.id}00</h2>
                 {order.cart_list.map((el) => (
-                  <div>
+                  <div className="cartItems">
                     <h3>Item: {el[1]}</h3>
-                    <h3>Value: {el[2]}</h3>
+                    <h3>Value: $ {el[2]}</h3>
                     <h3>Quantity: {el[3]}</h3>
                   </div>
                 ))}
                 <h3>Total Paid: $ {order.total_purchase}</h3>
                 <h3>Status: {order.status}</h3>
                 {order.status === "active" && (
-                  <h2>
+                  <h2 className="activeMsg">
                     Rigth now, our staff is carefully preparing your items to be
                     send as soon as posible
                   </h2>
@@ -97,7 +99,7 @@ const EditarUser = () => {
           ) : (
             <div>Loading orders...</div>
           )}
-        </>
+        </div>
       ) : (
         <div>Loading...</div>
       )}
