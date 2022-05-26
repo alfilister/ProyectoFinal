@@ -20,10 +20,6 @@ const Nav = ({ setCurrentPage }) => {
   var cartCounter = useSelector((state) => state.cartCounter);
   const usersDb = useSelector((state) => state.allUsers);
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, []);
-
   let objUser = isAuthenticated && {
     fullName: user.nickname,
     password: user.sub,
@@ -37,6 +33,12 @@ const Nav = ({ setCurrentPage }) => {
     e.preventDefault();
     dispatch(resetOrder());
     navigate("/cart");
+  };
+
+  const handleBtnProfile = (e) => {
+    e.preventDefault();
+    dispatch(getAllUsers());
+    navigate("/edituser");
   };
 
   return (
@@ -53,7 +55,7 @@ const Nav = ({ setCurrentPage }) => {
         <div className="prflContainer">
           <button
             className="btnProfileUser"
-            onClick={() => navigate("/edituser")}
+            onClick={(e) => handleBtnProfile(e)}
           >
             Customer Page
           </button>
