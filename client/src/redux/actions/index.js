@@ -30,6 +30,7 @@ export const REMOVE_ITEM_TO_CART_STORAGE = "REMOVE_ITEM_TO_CART_STORAGE";
 export const ADD_COUNTER_LOCAL_STORAGE = "ADD_COUNTER_LOCAL_STORAGE";
 export const FIRST_SET_COUNT = "FIRST_SET_COUNT";
 export const POST_USER = "POST_USER";
+export const ADD_SHIPPING_STORAGE = "ADD_SHIPPING_STORAGE";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -396,5 +397,12 @@ export function updateUser(payload) {
       type: "UPDATE_USER",
       payload: json.data.results,
     };
+  };
+}
+
+export function addShippingStorage(payload) {
+  return {
+    type: ADD_SHIPPING_STORAGE,
+    payload: payload,
   };
 }

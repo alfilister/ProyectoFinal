@@ -29,6 +29,7 @@ import {
   ADD_COUNTER_LOCAL_STORAGE,
   FIRST_SET_COUNT,
   POST_USER,
+  ADD_SHIPPING_STORAGE,
 } from "../actions";
 
 const initialState = {
@@ -48,6 +49,7 @@ const initialState = {
   ordersDb: [],
   orderSent: {},
   userEmailId: {},
+  shippingStorage: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -217,15 +219,16 @@ function rootReducer(state = initialState, action) {
         "contador",
         JSON.stringify(state.cartCounter)
       );
-
       return {
         ...state,
       };
     case FIRST_SET_COUNT:
       const constResolve = window.localStorage.getItem("contador");
+      const shippingInfo = window.localStorage.getItem("shippingInfo");
       return {
         ...state,
         cartCounter: constResolve,
+        shippingStorage: JSON.parse(shippingInfo),
       };
 
     case GET_USER_BY_ID:
@@ -300,6 +303,17 @@ function rootReducer(state = initialState, action) {
     case "UPDATE_USER":
       return {
         ...state,
+      };
+
+    case ADD_SHIPPING_STORAGE:
+      window.localStorage.setItem(
+        "shippingInfo",
+        JSON.stringify(action.payload)
+      );
+      const result = window.localStorage.getItem("shippingInfo");
+      return {
+        ...state,
+        shippingStorage: JSON.parse(result),
       };
 
     //return { ...state }
