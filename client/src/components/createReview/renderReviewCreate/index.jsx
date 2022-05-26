@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import StarRating from "../startRating/index";
+import Swal from "sweetalert2";
 
 import { postReview } from "../../../redux/actions";
 
@@ -34,8 +35,18 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
       score_review: 0,
     });
 
-    alert("Reseña publicada");
-    window.location.reload();
+    Swal.fire({
+      icon: "success",
+      title: "Complete!",
+      text: "Your review was created successfully!",
+      confirmButtonText: "Accept",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
+    // alert("Reseña publicada");
+    // window.location.reload();
   }
 
   return (

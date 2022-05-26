@@ -1,4 +1,6 @@
 import axios from "axios";
+import Swal from "sweetalert2";
+
 export const GET_PRODUCTS = "GET_PRODUCTS";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const GET_PRODUCTS_ID = "GET_PRODUCTS_ID";
@@ -83,7 +85,13 @@ export function getProductsByName(payload) {
         payload: json.data.results,
       });
     } catch (error) {
-      alert("No existe el producto, recarga la pagina");
+      Swal.fire({
+        icon: "error",
+        title: "Sorry!",
+        text: "This product does not exist for now, reload the page",
+        confirmButtonText: "Ok",
+      });
+      // alert("No existe el producto, recarga la pagina");
     }
   };
 }
