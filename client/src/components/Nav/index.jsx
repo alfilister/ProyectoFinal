@@ -8,7 +8,13 @@ import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, getUsersByEmail, resetOrder } from "../../redux/actions";
+import {
+  getAllUsers,
+  getCategories,
+  getProducts,
+  getUsersByEmail,
+  resetOrder,
+} from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
@@ -41,15 +47,19 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/edituser");
   };
 
+  const handleHome = () => {
+    dispatch(getCategories());
+    dispatch(getProducts());
+    navigate("/");
+  };
+
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
-        <NavLink to="/" className="logo">
+        <div onClick={() => handleHome()} className="logo">
           <img className="logoImg" src={logo} alt="imagenLogo" />
-        </NavLink>
-        <NavLink to="/" className="tituloPag">
           <h2 className="tituloPag">E-commerCell</h2>
-        </NavLink>
+        </div>
       </div>
       {isAuthenticated ? (
         <div className="prflContainer">

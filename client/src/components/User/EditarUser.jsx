@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, getOrdersFromDb, updateUser } from "../../redux/actions";
 
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const EditarUser = () => {
+  const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
 
   const dispatch = useDispatch();
@@ -111,7 +113,9 @@ const EditarUser = () => {
                   <div className="itemContainer">
                     {order.cart_list.map((el) => (
                       <div className="cartItems">
-                        <h3>Item: {el[1]}</h3>
+                        <h3 onClick={() => navigate(`/producto/${el[0]}`)}>
+                          Item: {el[1]}
+                        </h3>
                         <h3>Value: $ {el[2]}</h3>
                         <h3>Quantity: {el[3]}</h3>
                       </div>
