@@ -56,9 +56,6 @@ const MyComponent = () => {
       console.log(currentCart);
       return currentCart;
     };
-
-    const itemsToUpdateStock = modifyStock(currentCart);
-
     const applyStockChange = (itemsToUpdateStock) => {
       itemsToUpdateStock.forEach((el) => {
         dispatch(updateProduct(el.product));
@@ -92,6 +89,7 @@ const MyComponent = () => {
           confirmButtonText: "Accept",
         }).then((result) => {
           if (result.isConfirmed) {
+            const itemsToUpdateStock = modifyStock(currentCart);
             order.payment_id = data.payment_id;
             order.status = "active";
             dispatch(confirmOrderCheckout(order_id, order));
