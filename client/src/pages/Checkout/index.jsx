@@ -85,10 +85,6 @@ const MyComponent = () => {
         });
         // alert("not proccess payment");
       } else {
-        order.payment_id = data.payment_id;
-        order.status = "active";
-        dispatch(confirmOrderCheckout(order_id, order));
-        applyStockChange(itemsToUpdateStock);
         Swal.fire({
           icon: "success",
           title: "Complete!",
@@ -96,6 +92,10 @@ const MyComponent = () => {
           confirmButtonText: "Accept",
         }).then((result) => {
           if (result.isConfirmed) {
+            order.payment_id = data.payment_id;
+            order.status = "active";
+            dispatch(confirmOrderCheckout(order_id, order));
+            applyStockChange(itemsToUpdateStock);
             dispatch(resetCart());
             dispatch(resetOrder());
             window.localStorage.clear("contador", "cartCounter");
