@@ -134,6 +134,12 @@ function CartPage() {
     }
   };
 
+  const handleToLoggin = (e) => {
+    e.preventDefault();
+    dispatch(addShippingStorage(fields));
+    loginWithRedirect();
+  };
+
   return (
     <div>
       {!initialCart[0] ? (
@@ -255,7 +261,7 @@ function CartPage() {
                     ? "allowedBtn"
                     : "restrictedBtn"
                 }
-                onClick={() => loginWithRedirect()}
+                onClick={(e) => handleToLoggin(e)}
               >
                 Loggin to checkout
               </button>
