@@ -71,10 +71,6 @@ function CartPage() {
           shipping_address: parseLSinfo.shipping_address,
           zip_code: parseLSinfo.zip_code,
           status: "attempted",
-          total_purchase: final,
-          cart_list,
-          products_id,
-          user_id: idUserAuth,
         }
       : {
           receiver_phone: "",
@@ -83,10 +79,6 @@ function CartPage() {
           shipping_address: "",
           zip_code: "",
           status: "attempted",
-          total_purchase: final,
-          cart_list,
-          products_id,
-          user_id: idUserAuth,
         }
   );
 
@@ -123,7 +115,20 @@ function CartPage() {
       });
       // alert("Check the information registered, maybe one or more issues");
     } else {
-      await dispatch(setOrderCheckout(fields));
+      await dispatch(
+        setOrderCheckout({
+          receiver_phone: fields.receiver_phone,
+          state: fields.state,
+          city: fields.city,
+          shipping_address: fields.shipping_address,
+          zip_code: fields.zip_code,
+          status: "attempted",
+          total_purchase: final,
+          cart_list: cart_list,
+          products_id: products_id,
+          user_id: idUserAuth,
+        })
+      );
       dispatch(addShippingStorage(fields));
       navigate("/checkout");
     }
