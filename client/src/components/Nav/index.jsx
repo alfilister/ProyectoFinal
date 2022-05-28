@@ -46,15 +46,16 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/cart");
   };
 
-  const handleBtnProfile = (e) => {
+/*   const handleBtnProfile = (e) => {
     e.preventDefault();
     dispatch(getAllUsers());
     navigate("/edituser");
-  };
+  }; */
 
   const handleHome = () => {
     dispatch(getCategories());
-    dispatch(getProducts());
+    dispatch(getProducts())
+    dispatch(getAllUsers());
     navigate("/");
   };
 
@@ -66,7 +67,7 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </div>
       </div>
-      {isAuthenticated ? (
+{/*       {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
@@ -77,8 +78,7 @@ const Nav = ({ setCurrentPage }) => {
         </div>
       ) : (
         <div></div>
-      )}
-
+      )} */}
       <div className="logeo">
         {isAuthenticated ? (
           <>

@@ -15,7 +15,7 @@ const EditarUser = () => {
   useEffect(() => {
     dispatch(getAllUsers());
     dispatch(getOrdersFromDb());
-  }, []);
+  }, [dispatch]);
 
   const infoUser = useSelector((state) => state.allUsers);
   const ordersDb = useSelector((state) => state.ordersDb);
