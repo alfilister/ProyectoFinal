@@ -13,6 +13,7 @@ const EditarUser = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getAllUsers());
     dispatch(getOrdersFromDb());
   }, []);
 
@@ -26,8 +27,6 @@ const EditarUser = () => {
     ordersDb.filter(
       (el) => el.user.email === email && el.status !== "attempted"
     );
-
-  console.log("orderUser", ordersUser);
 
   const userFilterbyId =
     infoUser && infoUser.filter((el) => el.email === email);
@@ -62,7 +61,7 @@ const EditarUser = () => {
       confirmButtonText: "Accept",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.reload();
+        dispatch(getAllUsers());
       }
     });
     // alert("Documento guardado con exito");
