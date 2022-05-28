@@ -14,26 +14,31 @@ import {
   getProducts,
   getUsersByEmail,
   resetOrder,
+  authenticatedReact,
 } from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
 
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated, user } = useAuth0();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   var cartCounter = useSelector((state) => state.cartCounter);
   const usersDb = useSelector((state) => state.allUsers);
+  const authReact = useSelector((state) => state.isAuthenticated);
+  const { isAuthenticated, user } = useAuth0();
 
-  let objUser = isAuthenticated && {
-    fullName: user.nickname,
-    password: user.sub,
-    email: user.email,
-    image: user.picture,
-  };
+  if (!authReact && isAuthenticated) {
+    let objUser = isAuthenticated && {
+      fullName: user.nickname,
+      password: user.sub,
+      email: user.email,
+      image: user.picture,
+    };
+    objUser && dispatch(postUser(objUser));
 
-  objUser && dispatch(postUser(objUser));
+    dispatch(authenticatedReact());
+  }
 
   const handleCart = (e) => {
     e.preventDefault();

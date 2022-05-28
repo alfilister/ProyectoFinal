@@ -30,6 +30,7 @@ import {
   FIRST_SET_COUNT,
   POST_USER,
   ADD_SHIPPING_STORAGE,
+  IS_AUTHENTICATED,
 } from "../actions";
 
 const initialState = {
@@ -50,6 +51,7 @@ const initialState = {
   orderSent: {},
   userEmailId: {},
   shippingStorage: false,
+  isAuthenticated: false,
 };
 
 function rootReducer(state = initialState, action) {
@@ -317,6 +319,11 @@ function rootReducer(state = initialState, action) {
         shippingStorage: JSON.parse(result),
       };
 
+    case IS_AUTHENTICATED:
+      return {
+        ...state,
+        isAuthenticated: !state.isAuthenticated,
+      };
     //return { ...state }
     default:
       return state;
