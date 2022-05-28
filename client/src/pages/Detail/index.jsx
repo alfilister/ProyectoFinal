@@ -28,6 +28,7 @@ const Detail = () => {
   const productReview = useSelector((state) => state.reviewProduct); //productos con reviews
   const usersReview = useSelector((state) => state.usersReview); //id de usuario y nombre review
   const ordersDb = useSelector((state) => state.ordersDb);
+  const reviewsDb = useSelector((state) => state.reviewProduct);
 
   //CAPTURAR ID Y EMAIL DE USUARIO AUTENTICADO
   const bucket = [];
@@ -39,14 +40,32 @@ const Detail = () => {
   const idUserAuth = useSelector((state) => state.userEmailId);
 
   //Función validadora de si el usuario logueado ha realizado compras sobre el item en el que se encuentra
-  const purchaseValidation = (productId, emailUser, orderArray) => {
+  const purchaseValidation = (
+    productId,
+    emailUser,
+    orderArray,
+    reviewArray,
+    userId
+  ) => {
     const inOrder = orderArray.filter((el) => el.user.email == emailUser);
+    //acá va la validación de si ha comprado este producto
     if (inOrder[0]) {
       const productCheck = inOrder.filter((el) =>
         el.products_id.includes(Number(productId))
       );
       if (productCheck[0]) {
-        return true;
+        //acá va la validación de si ya ha comentado antes a este producto
+        const productWithReviews = reviewArray.filter(
+          (product) => product.id == productId
+        );
+        const reviewsByUser = productWithReviews[0].reviews.filter(
+          (el) => el.user_id == userId
+        );
+        if (reviewsByUser[0]) {
+          return false;
+        } else {
+          return true;
+        }
       } else {
         return false;
       }
@@ -217,12 +236,21 @@ const Detail = () => {
           cambiarEstado={setModalReview}
           titulo="Send your review!"
         >
-          {purchaseValidation(id, emailUser, ordersDb, idUserAuth) ? (
+          {purchaseValidation(
+            id,
+            emailUser,
+            ordersDb,
+            reviewsDb,
+            idUserAuth
+          ) ? (
             <div className="contenidoModal">
               <RenderReviewCreate idProduct={id} idUser={idUserAuth} />
             </div>
           ) : (
-            <div>This item has not been purchased by you</div>
+            <>
+              <p>This item has not been purchased by you</p>
+              <p>Or you already set a review for this product</p>
+            </>
           )}
         </Modal>
         {/* Modal para usuario NO autenticado */}
