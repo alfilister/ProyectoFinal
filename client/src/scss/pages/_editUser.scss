@@ -39,7 +39,48 @@
       height: 2em;
     }
   }
-  .ordersContainer {
+
+  .ordersController {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      color: $red-000;
+      margin-top: 2em;
+    }
+
+    .btns {
+      display: flex;
+      flex-direction: row;
+
+      button {
+        margin: 0 0.2em;
+
+        background-color: $dark-600;
+        border-radius: 5px;
+        color: $dark-000;
+        font-size: larger;
+        border: solid 1px;
+        margin-left: 0.2em;
+        margin-bottom: 0.5em;
+        padding: 0.2rem 0.5rem 0 0.5rem;
+
+        &:hover {
+          background-color: $dark-000;
+          color: $dark-600;
+        }
+
+        &:focus {
+          background-color: $dark-000;
+          color: $dark-600;
+        }
+      }
+    }
+  }
+
+  .activeContainer {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,7 +91,7 @@
       color: $dark-100;
       margin: 0.5em;
       padding: 0.5em;
-      border: 1px solid $dark-000;
+      border: 1px solid greenyellow;
       border-radius: 15px;
       max-width: 900px;
 
@@ -69,24 +110,34 @@
           flex-direction: column;
           margin: 0.5em;
           padding: 0.5em;
-          background-color: $dark-200;
+          background-color: $dark-400;
           border-radius: 15px;
           color: $red-000;
 
           h3 {
             margin: 0;
+            font-weight: 300;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background-color: $red-000;
+            color: $dark-400;
           }
         }
       }
       .paidStatus {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
-        text-align: center;
 
-        span {
-          color: greenyellow;
+        h3 {
+          font-weight: 300;
+          margin: 0;
+          span {
+            color: greenyellow;
+          }
         }
       }
 
@@ -94,6 +145,35 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+    }
+  }
+
+  .dispatchedContainer {
+    @extend .activeContainer;
+
+    .userOrders {
+      border: 1px solid rgb(195, 198, 206);
+      .paidStatus {
+        h3 {
+          span {
+            color: rgb(248, 255, 47);
+          }
+        }
+      }
+    }
+  }
+  .completeContainer {
+    @extend .activeContainer;
+
+    .userOrders {
+      border: 1px solid rgb(195, 198, 206);
+      .paidStatus {
+        h3 {
+          span {
+            color: inherit;
+          }
+        }
       }
     }
   }
