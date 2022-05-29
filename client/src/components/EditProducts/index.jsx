@@ -216,21 +216,23 @@ function EditProduct() {
 												productToEdit(product, "edit");
 											}}
 										>
-											editar
+											Modificar
 										</button>
 										<button
 											onClick={(event) => {
 												changeFeatured(product, event);
 											}}
 										>
-											{product.featured === true ? "Eliminar⭐" : "Agregar⭐"}
+											{product.featured === true
+												? "Eliminar de ⭐"
+												: "Agregar a ⭐"}
 										</button>
 										<button
 											onClick={() => {
 												productToEdit(product, "delete");
 											}}
 										>
-											eliminar
+											Borrar
 										</button>
 									</td>
 								</tr>
@@ -242,7 +244,17 @@ function EditProduct() {
 				<div>No hay productos destacados</div>
 			)}
 			<Modal isOpen={featureModal}>
-				<ModalBody>{productSelected?.name}</ModalBody>
+				<ModalBody>
+					Desea{" "}
+					{productSelected.featured ? (
+						<span>agregar</span>
+					) : (
+						<span>eliminar</span>
+					)}{" "}
+					<strong>{productSelected?.name} </strong>
+					{productSelected.featured ? <span>a</span> : <span>de</span>}{" "}
+					productos destacados
+				</ModalBody>
 				<ModalFooter>
 					<button
 						onClick={() => {
@@ -290,21 +302,23 @@ function EditProduct() {
 											productToEdit(product, "edit");
 										}}
 									>
-										editar
+										Modificar
 									</button>
 									<button
 										onClick={(event) => {
 											changeFeatured(product, event);
 										}}
 									>
-										{product.featured === true ? "Eliminar⭐" : "Agregar⭐"}
+										{product.featured === true
+											? "Eliminar de ⭐"
+											: "Agregar a ⭐"}
 									</button>
 									<button
 										onClick={() => {
 											productToEdit(product, "delete");
 										}}
 									>
-										eliminar
+										Borrar
 									</button>
 								</td>
 							</tr>
