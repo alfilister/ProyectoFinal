@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuAdmin from "../../components/MenuAdmin";
 import CreateProduct from "../../components/Create";
 import {
+	getAllUsers,
 	getCategories,
 	getOrdersFromDb,
 	getProducts,
@@ -21,6 +22,7 @@ function ControlPanel(idUser) {
 		dispatch(getCategories());
 		dispatch(getProducts());
 		dispatch(getOrdersFromDb());
+		dispatch(getAllUsers())
 	}, [menu]);
 
 	const userRef = useSelector((state) => state.user);

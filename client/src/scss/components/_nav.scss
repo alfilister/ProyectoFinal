@@ -2,10 +2,36 @@
 
 .divNavbar {
   display: grid;
-  grid-template-columns: 3fr 1fr 2fr 1fr;
+  grid-template-columns: 4fr 2fr 3fr 1fr;
   width: 100vw;
   background-color: $dark-500;
   height: 5rem;
+
+  .divSeachYLogo {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      display: flex;
+      .logoImg {
+        height: 3rem;
+        width: fit-content;
+        border-radius: 50%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .tituloPag {
+      text-transform: uppercase;
+      font-family: $fuente-titulo;
+      color: $red-000;
+      text-decoration: none;
+    }
+  }
 
   .prflContainer {
     display: flex;
@@ -32,27 +58,6 @@
       }
     }
   }
-}
-.divSeachYLogo {
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  .logo {
-    .logoImg {
-      height: 3rem;
-      width: fit-content;
-      border-radius: 50%;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-  }
-}
-.tituloPag {
-  text-transform: uppercase;
-  font-family: $fuente-titulo;
-  color: $red-000;
-  text-decoration: none;
 }
 
 .logeo {
