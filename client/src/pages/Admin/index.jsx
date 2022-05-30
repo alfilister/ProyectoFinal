@@ -12,9 +12,14 @@ import {
 
 function ControlPanel(idUser) {
 	const dispatch = useDispatch();
+/// EDITE ESTO PARA QUE NO APAREZCA EN Routa /controlPanel directamente el component createProduct 
+/* 	const [menu, setMenu] = useState({
+		panel: <CreateProduct />,
+	}); */
 
 	const [menu, setMenu] = useState({
-		panel: <CreateProduct />,
+		panel: <h5>
+		WELCOME ADMINISTRATOR</h5>,
 	});
 
 	useEffect(() => {
