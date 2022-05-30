@@ -24,8 +24,11 @@ module.exports = (sequelize) => {
       },
       image : {
         type : DataTypes.TEXT
-      }
-      
+      },
+      access : {
+        type : DataTypes.STRING,
+        defaultValue : 'Authorized'
+      }      
     },
     { timestamps: false, createdAt: false, updatedAt: false }
   )
