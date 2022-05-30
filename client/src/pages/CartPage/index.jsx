@@ -131,6 +131,7 @@ function CartPage() {
       );
       dispatch(addShippingStorage(fields));
       navigate("/checkout");
+      // creas una accion y esa accion va a recibir algo , ese algo es el email del usuario . 
     }
   };
 
