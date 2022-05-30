@@ -28,6 +28,15 @@ const changeRol = (user) => {
         setStatusModal(true);
     }
 }
+
+const changeAcess = (user) => {
+    setUserSelected(user)
+    dispatch(getAllUsers())
+    if (statusModal) {
+        setViewModal(true);
+        setStatusModal(false);
+    }
+}
 //console.log(userSelect)
 const [newRol, setNewRol] = useState({
     fullName: "",
@@ -51,6 +60,7 @@ const [newRol, setNewRol] = useState({
       id_document: userSelect.id_document,
       password: userSelect.password,
       image: userSelect.image,
+      access : e.target.value
 
      
     });
@@ -84,10 +94,11 @@ const [newRol, setNewRol] = useState({
                     <tr>
                         <td>ID</td>
                         <td>Documento de identidad</td>
-                        <td>Name User</td>
+                        <td>User</td>
+                        <td>email</td>
                         <td>Rol</td>
-                        <td>Ver</td>
                         <td>Opciones</td>
+                        <td>Access</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -96,9 +107,9 @@ const [newRol, setNewRol] = useState({
                             <tr key={user?.id}>
                                 <td>{user?.id}</td>
                                 <td>{user?.id_document ? user.id_document : "usuario sin documento por el momento.."}</td>
+                                <td>{user?.fullName}</td>
                                 <td>{user?.email}</td>
                                 <td>{user?.role}</td>
-                                <td>{user?.fullName}</td>
                                 <td>
                                     <button
                                     	onClick={() => {
@@ -108,19 +119,28 @@ const [newRol, setNewRol] = useState({
                                         Cambiar ROL
                                     </button>
                                 </td>
+                                <td>
+                                    <button
+                                    	onClick={() => {
+											changeAcess(user);
+										}}
+                                    >
+                                        Cambiar Access
+                                    </button>
+                                </td>
+                                <td>{user?.access}</td>
                             </tr>
                         );
                     })}
 
                 </tbody>
             </table>
-
             <Modal isOpen={statusModal}>
 				<ModalHeader>
 					Cambiar el ROL Del usuario 
 				</ModalHeader>
 				<ModalBody>
-					<h1>hola chicos los invito a hacerse Admin! APROVECHEN!!! </h1>
+					<h1>estado actual : User</h1>
 					<select
                         onClick={e => handleChangeSelect(e)}
 						
@@ -128,6 +148,40 @@ const [newRol, setNewRol] = useState({
 					>   
                     <option></option>
 						<option value="Admin">Admin</option>
+					</select>
+				</ModalBody>
+				<ModalFooter>
+					<button
+						onClick={(e) => {
+							handleSubmit(e);
+                            setStatusModal(false);
+						}}
+					>
+						Editar
+					</button>
+					<button
+						onClick={() => {
+							setStatusModal(false);
+						}}
+					>
+						Cancelar
+					</button>
+				</ModalFooter>
+			</Modal>
+
+            <Modal isOpen={statusModal}>
+				<ModalHeader>
+					Cambiar el Acceso Del usuario 
+				</ModalHeader>
+				<ModalBody>
+					<h1>estado actual : Authorized </h1>
+					<select
+                        onClick={e => handleChangeSelect(e)}
+						
+					
+					>   
+                    <option></option>
+						<option value="LOCKED">LOCKED</option>
 					</select>
 				</ModalBody>
 				<ModalFooter>
