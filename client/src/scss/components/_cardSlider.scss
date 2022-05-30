@@ -18,7 +18,8 @@
   }
 
   .swiperFeatured {
-    padding: 1em 0 1em 0;
+    padding: 1em 0 2em 0;
+
     .slideCard {
       display: flex;
       justify-content: center;
@@ -30,6 +31,14 @@
         color: rgba($red-000, 1);
         transition: 1s;
       }
+    }
+  }
+  .swiper-pagination {
+    .swiper-pagination-bullet {
+      background-color: $dark-200;
+    }
+    .swiper-pagination-bullet-active {
+      background-color: $red-000;
     }
   }
 }

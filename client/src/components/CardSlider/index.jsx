@@ -1,10 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper";
+import { Navigation, Thumbs, Pagination, Keyboard } from "swiper";
 import { useSelector } from "react-redux";
 import Card from "../Card";
 import "swiper/scss";
 import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 import "swiper/scss/thumbs";
 
 function CardSlider() {
@@ -28,7 +29,9 @@ function CardSlider() {
             className="swiperFeatured"
             loop={true}
             navigation={true}
-            modules={[Navigation, Thumbs]}
+            keyboard={{ enabled: true }}
+            pagination={{ clickable: true }}
+            modules={[Navigation, Thumbs, Pagination, Keyboard]}
             grabCursor={true}
             slidesPerView={3}
           >
