@@ -4,13 +4,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers, getOrdersFromDb, updateUser } from "../../redux/actions";
 
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+
+
+function validate(input) {
+
+  
+  var errors = {};
+ 
+  let numbers = /^[0-9]*[1-9][0-9]*$/;
+
+
+   if (input.id_document.length !==0 && input.id_document.length <= 4 ) {
+    errors.id_document = "Minimo 4 Numeros";
+  } else if (!numbers.test(input.id_document.trim())) {
+    errors.idNegative = "documento no puede tener caracteres , solo numeros!";
+  }
+
+  return errors;
+}
 
 const EditarUser = () => {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth0();
 
+
+  const [errors, setErrors] = useState({});
+
   const dispatch = useDispatch();
+  // funcion validadora para input 
+
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -48,6 +71,13 @@ const EditarUser = () => {
       password: userFilterbyId[0] && userFilterbyId[0].password,
       image: userFilterbyId[0] && userFilterbyId[0].image,
     });
+    setErrors(
+      validate({
+        ...input,
+        id_document: e.target.value,
+      })
+      );
+      console.log(errors)
   }
 
   function handleSubmit(e) {
@@ -88,9 +118,27 @@ const EditarUser = () => {
           </div>
 
           {userFilterbyId[0].id_document ? (
+            <>
             <h3 className="document">
               Document: {userFilterbyId[0].id_document}
-            </h3>
+            </h3> 
+            <div className="idInput">
+              <input
+                type="text"
+                placeholder="Set your ID for tickets"
+                name="id_document"
+                value={input.id_document}
+                onChange={(e) => handleChangeInput(e)}
+              />
+              <div className="form-group">
+            {errors.idNegative && <div className="form-errors">{errors.idNegative}</div>}
+            {errors.id_document && <div className="form-errors">{errors.id_document}</div> }
+          </div>
+              <button onClick={(e) => handleSubmit(e, input)}>save</button>
+            </div>
+  
+            </>
+            
           ) : (
             <div className="idInput">
               <input
