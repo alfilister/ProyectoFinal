@@ -174,7 +174,7 @@ function EditProduct() {
 	};
 
 	return (
-		<div>
+		<div className="editProductContainer">
 			<div>
 				<label>Buscar</label>
 				<input
