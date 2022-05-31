@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import {
-  authenticatedReact,
   getAllUsers,
   updateUser,
 } from "../../redux/actions";
@@ -13,32 +12,19 @@ function ManageUsers() {
   const allUsers = useSelector((state) => state.allUsers);
   const [viewModal, setViewModal] = useState(false);
   const [statusModal, setStatusModal] = useState(false);
-  const [userSelectRol, setUserSelectedRol] = useState({});
-  const [accessChange, setAccessChange] = useState({});
+  const [userSelectRol, setUserSelectedRol] = useState({}); // estadp que se llena cuando el admin selecciona un usuario para cambiarle el rol 
+  const [accessChange, setAccessChange] = useState({}); // estado que se llena cuando el admin selecciona un usuario para cambiarle el access
 
-  const changeAcess = (user) => {
-    setAccessChange(user);
-    dispatch(getAllUsers());
-    if (!statusModal) {
-      setViewModal(true);
-      setStatusModal(false);
-    }
-
-    console.log("soy el usuario seleccionado en el change Acess ", accessChange);
-  };
-
-  //estado que guarda y setea el access
 
 
   const changeRol = (user) => {
     setUserSelectedRol(user);
-    console.log("SOY EL USUARIO ", user);
+    console.log("SOY EL USUARIO click ROL", user);
     dispatch(getAllUsers());
     if (!statusModal) {
       setViewModal(false);
       setStatusModal(true);
     }
-    console.log("soy el usuario seleccionado en el change ROL ", user);
   };
   //estado que guarda y setea el rol
   const [newRol, setNewRol] = useState({
@@ -51,6 +37,7 @@ function ManageUsers() {
     access: "",
   });
 
+  
   function handleChangeSelectROL(e) {
     setNewRol({
       ...newRol,
@@ -60,53 +47,72 @@ function ManageUsers() {
       id_document: userSelectRol.id_document,
       password: userSelectRol.password,
       image: userSelectRol.image,
+      access: userSelectRol.access
     });
-    console.log("soy el estado ", newRol);
+    console.log(newRol)
   }
 
   function handleSubmitRol(e) {
     e.preventDefault();
-    dispatch(getAllUsers());
     dispatch(updateUser(newRol));
 
     if (!statusModal) {
       setViewModal(false);
       setStatusModal(true);
-      dispatch(getAllUsers());
-      dispatch(authenticatedReact(false));
     }
   }
+ 
+
+  const changeAcess = (user) => {
+    setAccessChange(user);
+    console.log("SOY EL USUARIO click ACESS", user);
+    dispatch(getAllUsers());
+    if (!statusModal) {
+      setViewModal(true);
+      setStatusModal(false);
+    }
+  };
+
+
+  const [newAcess, setNewAcess] = useState({
+    fullName: setAccessChange.fullName,
+    email: "",
+    id_document: "",
+    password: "",
+    image: "",
+    role: "",
+    access: "",
+  });
+
 
   function handleChangeSelectAcces(e) {
-      console.log('soy El userSelectRol de handlechangeAcess', userSelectRol)
-    setAccessChange({
-      ...newRol,
-      email: userSelectRol.email,
-      access: e.target.value,
+    setNewAcess({
+      ...newAcess,
+      fullName: accessChange.fullName,
+      email: accessChange.email,
+      id_document: accessChange.id_document,
+      password: accessChange.password,
+      image: accessChange.image,
+      role: accessChange.role,
+      access: e.target.value
     });
-    console.log("soy el estado del selectAcces ", accessChange);
+    console.log(newAcess)
   }
+    
+   
 
   function handleSubmitAccess(e) {
     e.preventDefault();
-    dispatch(getAllUsers());
-    dispatch(updateUser(accessChange));
+    dispatch(updateUser(newAcess));
 
     if (!statusModal) {
       setViewModal(false);
       setStatusModal(true);
-      dispatch(getAllUsers());
-      dispatch(authenticatedReact(false));
     }
   }
 
   return (
     <div>
-      {/* <label>Buscar por Nombre</label>
-            <select>
-                <option value="none"></option>
-                <option value="User">User</option>
-            </select> */}
       <br />
       <table>
         <thead>
