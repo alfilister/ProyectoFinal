@@ -424,15 +424,3 @@ export function editCategory(payload) {
     });
   };
 }
-export function postEmail(payload) {
-  return async function () {
-    try {
-      const json = await axios.post("/api/sendEmail", payload);
-
-      console.log(json);
-      return { type: USER_EMAIL, json };
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
