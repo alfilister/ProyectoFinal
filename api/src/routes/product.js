@@ -75,6 +75,7 @@ router.put("/:idProduct", async (req, res, next) => {
 		discount,
 		stock,
 		categories,
+		featured,
 	} = req.body;
 
 	try {
@@ -87,7 +88,8 @@ router.put("/:idProduct", async (req, res, next) => {
 			description,
 			discount,
 			stock,
-			categories
+			categories,
+			featured
 		);
 		res.json({ results: updated });
 	} catch (error) {

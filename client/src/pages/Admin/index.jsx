@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MenuAdmin from "../../components/MenuAdmin";
 import CreateProduct from "../../components/Create";
 import {
+	getAllUsers,
 	getCategories,
 	getOrdersFromDb,
 	getProducts,
@@ -11,9 +12,13 @@ import {
 
 function ControlPanel(idUser) {
 	const dispatch = useDispatch();
+	/// EDITE ESTO PARA QUE NO APAREZCA EN Routa /controlPanel directamente el component createProduct
+	/* 	const [menu, setMenu] = useState({
+		panel: <CreateProduct />,
+	}); */
 
 	const [menu, setMenu] = useState({
-		panel: <CreateProduct />,
+		panel: <h5>WELCOME ADMINISTRATOR</h5>,
 	});
 
 	useEffect(() => {
@@ -21,6 +26,7 @@ function ControlPanel(idUser) {
 		dispatch(getCategories());
 		dispatch(getProducts());
 		dispatch(getOrdersFromDb());
+		dispatch(getAllUsers());
 	}, [menu]);
 
 	const userRef = useSelector((state) => state.user);
@@ -30,7 +36,7 @@ function ControlPanel(idUser) {
 	};
 
 	return (
-		<div>
+		<div className="adminContainer">
 			<MenuAdmin setMenu={setMenu} menu={menu} />
 			{menu.panel}
 		</div>

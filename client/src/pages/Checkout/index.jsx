@@ -8,6 +8,8 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
+import Swal from "sweetalert2";
+
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -54,9 +56,6 @@ const MyComponent = () => {
       console.log(currentCart);
       return currentCart;
     };
-
-    const itemsToUpdateStock = modifyStock(currentCart);
-
     const applyStockChange = (itemsToUpdateStock) => {
       itemsToUpdateStock.forEach((el) => {
         dispatch(updateProduct(el.product));
@@ -75,18 +74,39 @@ const MyComponent = () => {
       );
 
       if (data.status !== "payment recieved") {
-        alert("not proccess payment");
+        Swal.fire({
+          icon: "error",
+          title: "Sorry",
+          text: "not proccess payment!",
+          confirmButtonText: "Accept",
+        });
+        // alert("not proccess payment");
       } else {
-        order.payment_id = data.payment_id;
-        order.status = "active";
-        dispatch(confirmOrderCheckout(order_id, order));
-        applyStockChange(itemsToUpdateStock);
-        alert("order taken succesfully");
-        dispatch(resetCart());
-        dispatch(resetOrder());
-        window.localStorage.clear("contador", "cartCounter");
-        dispatch(getOrdersFromDb());
-        navigate("/");
+        Swal.fire({
+          icon: "success",
+          title: "Complete!",
+          text: "order taken succesfully!",
+          confirmButtonText: "Accept",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const itemsToUpdateStock = modifyStock(currentCart);
+            order.payment_id = data.payment_id;
+            order.status = "active";
+            dispatch(confirmOrderCheckout(order_id, order));
+            applyStockChange(itemsToUpdateStock);
+            dispatch(resetCart());
+            dispatch(resetOrder());
+            window.localStorage.clear("contador", "cartCounter");
+            dispatch(getOrdersFromDb());
+            navigate("/");
+          }
+        });
+        // alert("order taken succesfully");
+        // dispatch(resetCart());
+        // dispatch(resetOrder());
+        // window.localStorage.clear("contador", "cartCounter");
+        // dispatch(getOrdersFromDb());
+        // navigate("/");
       }
     }
   };

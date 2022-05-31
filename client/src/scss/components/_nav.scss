@@ -2,17 +2,46 @@
 
 .divNavbar {
   display: grid;
-  grid-template-columns: 50% 25% 25%;
-  width: 100%;
-  background-color: $red-800;
+  grid-template-columns: 4fr 2fr 3fr 1fr;
+  width: 100vw;
+  background-color: $dark-500;
   height: 5rem;
+
+  .divSeachYLogo {
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .logo {
+      display: flex;
+      .logoImg {
+        height: 3rem;
+        width: fit-content;
+        border-radius: 50%;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .tituloPag {
+      text-transform: uppercase;
+      font-family: $fuente-titulo;
+      color: $red-000;
+      text-decoration: none;
+    }
+  }
 
   .prflContainer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     .btnProfileUser {
-      background-color: rgba(0, 0, 0, 0);
+      background-color: rgba($color: $dark-800, $alpha: 0.5);
+      padding: 0.3em;
+      border-radius: 15px;
+
       border: none;
       color: $red-000;
       font-size: 1.2em;
@@ -22,45 +51,11 @@
       &:hover {
         cursor: pointer;
       }
-    }
-  }
-}
-.divSeachYLogo {
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  .logo {
-    .logoImg {
-      height: 3rem;
-      width: fit-content;
-      border-radius: 50%;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-  }
-}
-.tituloPag {
-  text-transform: uppercase;
-  font-family: $fuente-titulo;
-  color: $red-000;
-  text-decoration: none;
-}
-
-.searchBarStylo {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  .linkVender {
-    color: $red-000;
-    font-family: $fuente-parrafos;
-    text-decoration: none;
-    padding-top: 0.6rem;
-    &:hover {
-      color: $red-500;
-      transition: ease-in-out 0.3s;
+      &:active {
+        background-color: $red-000;
+        color: $dark-500;
+        transition: ease 0.5s;
+      }
     }
   }
 }
@@ -68,39 +63,41 @@
 .logeo {
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 
   .autenticated {
     display: flex;
     flex-direction: row;
   }
+}
 
-  .cartBtnNav {
-    display: flex;
-    align-items: center;
-    position: relative;
-    button {
-      background-color: transparent;
-      color: $dark-000;
-      font-weight: 600;
-      height: 3em;
-      width: 3em;
-      border-radius: 50%;
-      border: none;
-      &:hover {
-        background-color: $primary;
-        color: $red-000;
-        transition: ease 0.5s;
-      }
+.cartBtnNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2em;
+  button {
+    background-color: rgba($color: $dark-800, $alpha: 0.5);
+    color: $dark-000;
+    font-weight: 600;
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+    border: none;
+    &:active {
+      background-color: $red-000;
+      color: $dark-500;
+      transition: ease 0.5s;
     }
-
-    p {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-
-      font-weight: bold;
-      color: $red-000;
+    &:hover {
+      cursor: pointer;
     }
+  }
+  .cartCounter {
+    margin-top: -0.8em;
+    margin-left: -0.8em;
+    font-weight: bold;
+    color: $red-000;
   }
 }

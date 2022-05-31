@@ -13,10 +13,16 @@ function EditProduct() {
 		return a.id - b.id;
 	});
 
-	const [productsShow, setProductsShow] = useState(allProducts);
+	const [productsShow, setProductsShow] = useState(
+		allProducts?.filter((product) => !product.featured)
+	);
+	const [productsFav, setProductsFav] = useState(
+		allProducts?.filter((product) => product.featured)
+	);
 	const [searching, setSearching] = useState(allProducts);
 	const [editModal, setEditModal] = useState(false);
 	const [deleteModal, setDeleteModal] = useState(false);
+	const [featureModal, setFeatureModal] = useState(false);
 	const [productSelected, setProductSelected] = useState({
 		id: "",
 		name: "",
@@ -26,7 +32,7 @@ function EditProduct() {
 		discount: 0,
 		stock: 0,
 		price: 0,
-		featured: "",
+		featured: false,
 		categories: [],
 	});
 	const [search, setSearch] = useState("");
@@ -70,7 +76,7 @@ function EditProduct() {
 	const postData = () => {
 		dispatch(updateProduct(productSelected));
 		//local
-		var newData = productsShow;
+		var newData = productsShow?.concat(productsFav);
 		newData.map((pro) => {
 			if (pro.id === productSelected.id) {
 				pro.name = productSelected.name;
@@ -85,8 +91,10 @@ function EditProduct() {
 			}
 			return newData;
 		});
-		setProductsShow(newData);
+		setProductsFav(newData?.filter((product) => product.featured));
+		setProductsShow(newData?.filter((product) => !product.featured));
 		setSearching(newData);
+		setFeatureModal(false);
 		setEditModal(false);
 	};
 
@@ -95,6 +103,7 @@ function EditProduct() {
 		setProductsShow(
 			productsShow.filter((pro) => pro.id !== productSelected.id)
 		);
+		// setProductsFav(productsShow.filter((pro) => pro.id !== productSelected.id));
 		setSearching(productsShow.filter((pro) => pro.id !== productSelected.id));
 		setDeleteModal(false);
 	};
@@ -103,6 +112,7 @@ function EditProduct() {
 		const { value } = event.target;
 		setSearch(value);
 		setProductsShow(() => searching.filter((p) => p.name.includes(value)));
+		// setProductsFav(() => searching.filter((p) => p.name.includes(value)));
 	};
 
 	function getImage(element) {
@@ -144,8 +154,27 @@ function EditProduct() {
 		});
 	};
 
+	const changeFeatured = (product, event) => {
+		event.preventDefault();
+		if (product.featured) {
+			setProductSelected({
+				...product,
+				featured: false,
+			});
+		} else if (productsFav?.length < 5) {
+			setProductSelected({
+				...product,
+				featured: true,
+			});
+		} else {
+			//alert
+			console.log("No se puede añadir");
+		}
+		setFeatureModal(true);
+	};
+
 	return (
-		<div>
+		<div className="editProductContainer">
 			<div>
 				<label>Buscar</label>
 				<input
@@ -156,6 +185,94 @@ function EditProduct() {
 					}}
 				></input>
 			</div>
+			<h3>Productos destacados</h3>
+			{productsFav.length > 0 ? (
+				<table>
+					<thead>
+						<tr>
+							<td>Id</td>
+							<td>Nombre</td>
+							<td>Imagen</td>
+							<td>Opciones</td>
+						</tr>
+					</thead>
+					<tbody>
+						{productsFav?.map((product) => {
+							return (
+								<tr key={product.id}>
+									<td>{product.id}</td>
+									<td>{product.name}</td>
+									<td>
+										<img
+											src={product.image}
+											width="100px"
+											height="100px"
+											alt="base64 test"
+										/>
+									</td>
+									<td>
+										<button
+											onClick={(event) => {
+												productToEdit(product, "edit");
+											}}
+										>
+											Modificar
+										</button>
+										<button
+											onClick={(event) => {
+												changeFeatured(product, event);
+											}}
+										>
+											{product.featured === true
+												? "Eliminar de ⭐"
+												: "Agregar a ⭐"}
+										</button>
+										<button
+											onClick={() => {
+												productToEdit(product, "delete");
+											}}
+										>
+											Borrar
+										</button>
+									</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			) : (
+				<div>No hay productos destacados</div>
+			)}
+			<Modal isOpen={featureModal}>
+				<ModalBody>
+					Desea{" "}
+					{productSelected.featured ? (
+						<span>agregar</span>
+					) : (
+						<span>eliminar</span>
+					)}{" "}
+					<strong>{productSelected?.name} </strong>
+					{productSelected.featured ? <span>a</span> : <span>de</span>}{" "}
+					productos destacados
+				</ModalBody>
+				<ModalFooter>
+					<button
+						onClick={() => {
+							postData();
+						}}
+					>
+						Si
+					</button>
+					<button
+						onClick={() => {
+							setFeatureModal(false);
+						}}
+					>
+						No
+					</button>
+				</ModalFooter>
+			</Modal>
+			<h3>Todos los productos</h3>
 			<table>
 				<thead>
 					<tr>
@@ -185,16 +302,23 @@ function EditProduct() {
 											productToEdit(product, "edit");
 										}}
 									>
-										editar
+										Modificar
 									</button>
-								</td>
-								<td>
+									<button
+										onClick={(event) => {
+											changeFeatured(product, event);
+										}}
+									>
+										{product.featured === true
+											? "Eliminar de ⭐"
+											: "Agregar a ⭐"}
+									</button>
 									<button
 										onClick={() => {
 											productToEdit(product, "delete");
 										}}
 									>
-										eliminar
+										Borrar
 									</button>
 								</td>
 							</tr>

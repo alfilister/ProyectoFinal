@@ -32,9 +32,9 @@ const getUserById = async (idUser) => {
 };
 
 const updateUser = async (body) => {
-  const { fullName, email, id_document, password, image } = body;
+  const { fullName, email, id_document, password, image, role , access} = body;
 
-  //console.log('soy el body' ,body)
+  console.log('soy el body' ,body)
 
   const selectedUser = await User.findAll({
     where: { email: email },
@@ -46,6 +46,10 @@ const updateUser = async (body) => {
     id_document,
     password,
     image,
+    role,
+    access
+
+
   });
 
   await selectedUser[0].save();

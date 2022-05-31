@@ -8,30 +8,37 @@ import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
 import { useAuth0 } from "@auth0/auth0-react";
-import { getAllUsers, getUsersByEmail, resetOrder } from "../../redux/actions";
+import {
+  getAllUsers,
+  getCategories,
+  getProducts,
+  getUsersByEmail,
+  resetOrder,
+  authenticatedReact,
+} from "../../redux/actions";
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
 
 const Nav = ({ setCurrentPage }) => {
-  const { isAuthenticated, user } = useAuth0();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   var cartCounter = useSelector((state) => state.cartCounter);
   const usersDb = useSelector((state) => state.allUsers);
+  const authReact = useSelector((state) => state.isAuthenticated);
+  const { isAuthenticated, user } = useAuth0();
 
-  useEffect(() => {
-    dispatch(getAllUsers());
-  }, []);
+  if (!authReact && isAuthenticated) {
+    let objUser = isAuthenticated && {
+      fullName: user.nickname,
+      password: user.sub,
+      email: user.email,
+      image: user.picture,
+    };
+    objUser && dispatch(postUser(objUser));
 
-  let objUser = isAuthenticated && {
-    fullName: user.nickname,
-    password: user.sub,
-    email: user.email,
-    image: user.picture,
-  };
-
-  objUser && dispatch(postUser(objUser));
+    dispatch(authenticatedReact());
+  }
 
   const handleCart = (e) => {
     e.preventDefault();
@@ -39,29 +46,39 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/cart");
   };
 
+/*   const handleBtnProfile = (e) => {
+    e.preventDefault();
+    dispatch(getAllUsers());
+    navigate("/edituser");
+  }; */
+
+  const handleHome = () => {
+    dispatch(getCategories());
+    dispatch(getProducts())
+    dispatch(getAllUsers());
+    navigate("/");
+  };
+
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
-        <NavLink to="/" className="logo">
+        <div onClick={() => handleHome()} className="logo">
           <img className="logoImg" src={logo} alt="imagenLogo" />
-        </NavLink>
-        <NavLink to="/" className="tituloPag">
           <h2 className="tituloPag">E-commerCell</h2>
-        </NavLink>
+        </div>
       </div>
-      {usersDb[0] ? (
+{/*       {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
-            onClick={() => navigate("/edituser")}
+            onClick={(e) => handleBtnProfile(e)}
           >
-            editProfile
+            Customer Page
           </button>
         </div>
       ) : (
         <div></div>
-      )}
-
+      )} */}
       <div className="logeo">
         {isAuthenticated ? (
           <>
@@ -75,10 +92,10 @@ const Nav = ({ setCurrentPage }) => {
             <LoginButton />
           </div>
         )}
-        <div className="cartBtnNav">
-          <button onClick={(e) => handleCart(e)}>Cart</button>
-          <p className="cartCounter">{cartCounter}</p>
-        </div>
+      </div>
+      <div className="cartBtnNav">
+        <button onClick={(e) => handleCart(e)}>Cart</button>
+        <p className="cartCounter">{cartCounter}</p>
       </div>
     </div>
   );
