@@ -33,7 +33,6 @@ export const POST_USER = "POST_USER";
 export const ADD_SHIPPING_STORAGE = "ADD_SHIPPING_STORAGE";
 export const IS_AUTHENTICATED = "IS_AUTHENTICATED";
 export const EDIT_CATEOGRY = "EDIT_CATEOGRY";
-export const USER_EMAIL = "USER_EMAIL";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -422,17 +421,5 @@ export function editCategory(payload) {
     return dispatch({
       type: EDIT_CATEOGRY,
     });
-  };
-}
-export function postEmail(payload) {
-  return async function () {
-    try {
-      const json = await axios.post("/api/sendEmail", payload);
-
-      console.log(json);
-      return { type: USER_EMAIL, json };
-    } catch (error) {
-      console.log(error);
-    }
   };
 }

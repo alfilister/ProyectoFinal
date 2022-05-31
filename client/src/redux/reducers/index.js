@@ -32,7 +32,6 @@ import {
   ADD_SHIPPING_STORAGE,
   IS_AUTHENTICATED,
   EDIT_CATEOGRY,
-  USER_EMAIL,
 } from "../actions";
 
 const initialState = {
@@ -330,11 +329,6 @@ function rootReducer(state = initialState, action) {
     case EDIT_CATEOGRY:
       return {
         ...state,
-      };
-    case USER_EMAIL:
-      return {
-        ...state,
-        email: action.payload,
       };
 
     //return { ...state }
