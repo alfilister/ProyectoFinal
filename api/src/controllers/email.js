@@ -67,7 +67,7 @@ const sendEmailOrderStatus = async (email) => {
   }
 };
 
-transporter.verify().then(() => {
-  console.log("listo para enviar mails");
-});
+// transporter.verify().then(() => {
+//   console.log("listo para enviar mails");
+// });
 module.exports = { sendEmail, sendEmailOrderStatus };
