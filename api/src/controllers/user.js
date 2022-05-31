@@ -32,7 +32,7 @@ const getUserById = async (idUser) => {
 };
 
 const updateUser = async (body) => {
-  const { fullName, email, id_document, password, image, role } = body;
+  const { fullName, email, id_document, password, image, role , access} = body;
 
   console.log('soy el body' ,body)
 
@@ -46,7 +46,10 @@ const updateUser = async (body) => {
     id_document,
     password,
     image,
-    role
+    role,
+    access
+
+
   });
 
   await selectedUser[0].save();
