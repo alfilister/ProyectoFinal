@@ -117,13 +117,15 @@ const EditarUser = () => {
 								Document: {userFilterbyId[0].id_document}
 							</h3>
 							{userFilterbyId[0].role?.toLowerCase() === "admin" ? (
-								<button
-									onClick={() => {
-										navigate("/controlPanel/");
-									}}
-								>
-									Administrar pagina
-								</button>
+								<div className="idInput">
+									<button
+										onClick={() => {
+											navigate("/controlPanel/");
+										}}
+									>
+										Administrar pagina
+									</button>
+								</div>
 							) : (
 								<div></div>
 							)}
