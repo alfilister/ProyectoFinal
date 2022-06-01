@@ -31,8 +31,8 @@ const Detail = () => {
   const ordersDb = useSelector((state) => state.ordersDb);
   const reviewsDb = useSelector((state) => state.reviewProduct);
 
-  // const favorites = useSelector((state) => state.favs);
-  const favouriteValidation = [0]; //favorites.filter((el) => el.id == id);
+  const favorites = useSelector((state) => state.favs);
+  const favouriteValidation = favorites?.filter((el) => el.id == id);
 
   //CAPTURAR ID Y EMAIL DE USUARIO AUTENTICADO
   const bucket = [];
@@ -101,6 +101,8 @@ const Detail = () => {
     };
   }, []);
 
+  const [added, setAdded] = useState(false);
+
   const handleCart = (e, id) => {
     e.preventDefault();
     console.log("agregado desde details");
@@ -113,11 +115,9 @@ const Detail = () => {
     }, 200);
   };
 
-  const [added, setAdded] = useState(false);
-
   const handlefav = (e, id) => {
     e.preventDefault();
-    dispatch(addItemToFavs(id));
+    dispatch(addItemToFavs(Number(id)));
   };
 
   return (
@@ -182,16 +182,25 @@ const Detail = () => {
                       <i class="fa-solid fa-cart-plus"></i>
                       <p className={added ? "added" : "hidden"}>Added</p>
                     </div>
+                    <div
+                      className={
+                        favouriteValidation[0] ? "cardFav" : "cardNotFav"
+                      }
+                      onClick={(e) => handlefav(e, id)}
+                    >
+                      <i class="fa-solid fa-heart"></i>
+                    </div>
                   </div>
                 ) : (
-                  <div></div>
+                  <div
+                    className={
+                      favouriteValidation[0] ? "cardFav" : "cardNotFav"
+                    }
+                    onClick={(e) => handlefav(e, id)}
+                  >
+                    <i class="fa-solid fa-heart"></i>
+                  </div>
                 )}
-                <div
-                  className={favouriteValidation[0] ? "cardFav" : "cardNotFav"}
-                  onClick={(e) => handlefav(e, id)}
-                >
-                  <i class="fa-solid fa-heart"></i>
-                </div>
                 <div className="descripcion">
                   <h2>Description:</h2>
 
