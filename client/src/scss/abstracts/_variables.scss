@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Roboto:wght@300;400;500&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Roboto:wght@300;400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 /* COLORS */
-$dark-000: #C1C2C5; 
-$dark-100: #A6A7AB; 
-$dark-200: #909296; 
-$dark-300: #5C5F66; 
-$dark-400: #373A40; 
-$dark-500: #2C2E33; 
-$dark-600: #25262B; 
-$dark-700: #1A1B1E; 
-$dark-800: #141517; 
+$dark-000: #c1c2c5;
+$dark-100: #a6a7ab;
+$dark-200: #909296;
+$dark-300: #5c5f66;
+$dark-400: #373a40;
+$dark-500: #2c2e33;
+$dark-600: #25262b;
+$dark-700: #1a1b1e;
+$dark-800: #141517;
 $dark-900: #101113;
 
 /*paleta 1*/
@@ -26,14 +27,18 @@ $red-750: #15152cde;
 $red-800: #00002b;
 
 /*variables light y dark mode*/
-$fuente-titulo: 'Roboto Slab', serif;
-$fuente-parrafos: 'Roboto', sans-serif;
-$primary: $red-500;
-$secondary: $red-800;
+$fuente-proyecto: 'inter', sans-serif; 
+$fuente-figma: 'Manrope', sans-serif;
+$fuente-titulo: "Roboto Slab", serif;
+$fuente-parrafos: "Roboto", sans-serif;
+$primary: #ba181b;
+$secondary: #03071e;
+$background: #370617;
+
+
 $succes-background: $red-100;
 $succes-primary: $red-200;
-$danger-background: $red-300; 
+$danger-background: $red-300;
 $danger-primary: $red-000;
-$background: $dark-100;
 $background-dark: $dark-600;
 $background-amoled: $dark-900;
