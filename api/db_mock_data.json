@@ -1,9 +1,132 @@
 {
 	"categories": ["cellphones", "laptops", "tablets", "gamers", "accessories"],
 	"products": [
+
+		{
+			"name": "Corsair HS60 PRO",
+			"image": "https://m.media-amazon.com/images/I/61FG641dbtL._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/71dwBdeIsSL._AC_SL1500_.jpg", "https://m.media-amazon.com/images/I/71tfv8v77SL._AC_SL1500_.jpg"],
+			"description": "Adjustable ear cups fitted with plush memory foam provide exceptional comfort for hours of gameplay High-quality custom-tuned 50mm neodymium Audio drivers deliver superb sound quality with the range to hear everything you need to on the battlefield Immerse yourself in 7.1 surround sound on PC creating a multi-channel audio experience that puts you in the middle of your game fully detachable noise-cancelling unidirectional microphone reduces ambient noise for excellent voice clarity Multi-platform compatible with PC, PS5, PS4, Xbox Series X, Xbox Series S, Xbox one, Nintendo switch and mobile devices via a gold-plated 3.5mm connector The HS60 PRO light weight and durable construction, with aluminum yokes and a braided audio cable, give it years of longevity On-ear volume and mute controls enable on-the-fly adjustments without distracting you from your game Corsair iCUE software enables custom audio equalizer settings, immersive 7.1 surround sound, sidetone control, and more 7.1 surround sound not supported with Apple M1 Chip devices. Works with PC, Xbox Series X, Xbox Series S, Xbox One, PS5, PS4, and Nintendo Switch - Carbon CA-9011213-NA",
 		
+			"discount": 5,
+			"stock": 15,
+			"price": 49.99,
+			"featured": true,
+			"categories": ["accessories"]
+		},
+
+		{
+			"name": "Acer Predator Utility Backpack",
+			"image": "https://m.media-amazon.com/images/I/81mFX+OZQvL._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/81pxQpUjXiL._AC_SL1500_.jpg", "https://m.media-amazon.com/images/I/81UmlqyGwSL._AC_SL1500_.jpg"],
+			"description": "Cushioned mesh back panel for ventilated Air flow. Interior headset strap. Water repellent coating protection and zippers. Bottom pocket for power adapter Brick and personal belongings. Luggage handle pass-through design",
 		
-	
+			"discount": 20,
+			"stock": 10,
+			"price": 149.99,
+			"featured": true,
+			"categories": ["accessories"]
+		},
+
+		{
+			"name": "Bluetooth Beanie Hat Headphones",
+			"image": "https://m.media-amazon.com/images/I/711dCsqE8+L._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/61T2cx-TJ2L._AC_SL1000_.jpg", "https://m.media-amazon.com/images/I/71FIxIRCkfL._AC_SL1500_.jpg"],
+			"description": "70% Acrylic, 30% Polyester. Pull On closure. Machine Wash/Hand Wash. Horrible Battery life?--We know what you need,our beanie hat. headphones is improved as per your request,Built-in 250mAh battery with extended battery life upto 16-20 hours continuous music Play when fully charged,The longest working time in market.Cool tech gifts for all ages,Just Come and Get one as unique christmas gifts. The Sound cut in and out?--The upgraded chip offers the stablest and strongest connection so far,Fast and Easy to sync.Much better connection than the lower-end ones.We promise you are making an intelligent decision and We encourage you to compare! It's not that loud?--Upgraded HD speakers offer sound output upto 110db which is the loudest in the market so far,powerful but still clear and crisp for you to enjoy clear music and take calls in noisy environment.Great for all kinds of outdoor sports.Buy it Now to Rock the World!Your world is Yours. It won't keep warm?--Combined double knitting,we add 0.02lb more knitting to our wireless beanie,much more thicker but still soft to keep your head warm & comfortable in winter while enjoying music play and phone call.The best unique stocking stuffers top gifts under 20 for girlfriend,teen boys and girls. Come and Buy with Confidence--We know what you need,all of the above advantages are real,You have my words.Packed in a premium gift box,Washable design,Unisex and one size fits most,perfect tech Christmas gifts for men,women,teen boys and girls.",
+		
+			"discount": 5,
+			"stock": 15,
+			"price": 27.91,
+			"featured": false,
+			"categories": ["accessories"]
+		},
+
+		{
+			"name": "Elgato Stream Deck ",
+			"image": "https://m.media-amazon.com/images/I/710R9YpV9nL._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/71g2fMnefyL._AC_SL1500_.jpg", "https://m.media-amazon.com/images/I/71SkKgLSTRL._AC_SL1500_.jpg"],
+			"description": "15 LCD keys: Tap to switch scenes, launch media, adjust audio and more. Fully customizable: Personalize keys with custom icons or choose from hundreds. Direct integration: Control game capture, OBS, XSplit, TipeeeStream, Twitch, YouTube, Mixer, and more. Easy setup: Simply drag and drop actions onto keys in the app. Unlimited control: Nest folders within folders to store as many actions as you want",
+		
+			"discount": 12,
+			"stock": 5,
+			"price": 126.44,
+			"featured": false,
+			"categories": ["accessories"]
+		},
+
+		{
+			"name": "Hibloks RGB Magnetic Charging Station",
+			"image": "https://m.media-amazon.com/images/I/61jp0ydPqNL._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/718NvA55oJL._AC_SL1500_.jpg", "https://m.media-amazon.com/images/I/71A41wlObyL._AC_SL1500_.jpg"],
+			"description": "Elaborate DesignHibloks specially designed for VR devices .Made of high quality acrylic & ABS material, Geometry designed according to mechanics, with four silicone slip-proof pads under the dock, making your Headset & Controllers landing stable and & sturdy. Convenient ChargingTwo battery covers specially designed for Oculus Quest 2 Controllers and safe rechargeable batteries  2600mA  with magnetic power-in adapter  unable discharge when playing ), make your Controllers can be charged . 3 Type-C power-out port suport to both charge to Headset and Controllers .It tooks 3.5H to charge the Headset fully. 7-Colors Breathing Light 25 high-brightness colored lamp beads, 3 mode switching, RGB cool lighting effect, make QUEST 2 is pretty with the shinning on the transparent acrylic. Easy & Widely ApplicableFollow the installation manual to install .It can be a elegant & exquisite station to all kinds of VR device. Satisfaction GuaranteePlease feel free to contact us if you have any questions, we will offer satisfied solutions at the first time. Note: Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing.",
+		
+			"discount": 10,
+			"stock": 10,
+			"price": 65.99,
+			"featured": false,
+			"categories": ["accessories"]
+		},
+
+		{
+			"name": "Trail Tech Voyager Pro 922-125",
+			"image": "https://m.media-amazon.com/images/I/718WbKCHU3L._AC_SL1500_.jpg",
+			"aux_images": ["https://m.media-amazon.com/images/I/71-tI16RlVL._AC_SL1500_.jpg", "https://m.media-amazon.com/images/I/71Mwp5RHvzL._AC_SL1500_.jpg"],
+			"description": "Off-road GPS with 4 inch color touchscreen anti-glare display, sealed and rated IP67 for anti dust/water intrusion. Color navigation screen, topography maps and hill shading, supports tracks, routes and waypoints. Tracks speed in mph using the GPS or wheel sensor; displays speed, temperature, distance, elevation and voltage. Buddy tracking displays the current location of up to 20 members of your ride group on the map screen. Bluetooth enabled for intercom, phone dialing, messaging and media controls ",
+		
+			"discount": 5,
+			"stock": 10,
+			"price": 550,
+			"featured": false,
+			"categories": ["accessories"]
+		},
+
+
+		{
+			"name": "Phone X",
+			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+			"aux_images": [
+				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+			],
+			"description": "The best product ever",
+			"discount": 20,
+			"stock": 5,
+			"price": 7.95,
+			"featured": false,
+			"rating": 4.5,
+			"categories": ["cellphones", "tablets"]
+		},
+		{
+			"name": "SendPhone X",
+			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+			"aux_images": [
+				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+			],
+			"description": "The best product ever",
+			"discount": 20,
+			"stock": 5,
+			"price": 17.95,
+			"featured": false,
+			"rating": 4.5,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Phone XX",
+			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
+			"aux_images": [
+				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
+				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
+			],
+			"description": "The best product ever",
+			"discount": 20,
+			"stock": 5,
+			"price": 95,
+			"featured": false,
+			"rating": 4.5,
+			"categories": ["cellphones"]
+		},
+
 		{
 			"name": "Super Product 2000",
 			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
