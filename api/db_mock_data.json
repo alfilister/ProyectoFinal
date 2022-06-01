@@ -100,21 +100,7 @@
 			"rating": 5,
 			"categories": ["laptops", "tablets", "gamers", "accessories"]
 		},
-		{
-			"name": "Chair Game Aspect Phone X",
-			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The not good product",
-			"discount": 20,
-			"stock": 5,
-			"price": 7.95,
-			"featured": false,
-			"rating": 2,
-			"categories": ["gamers", "accessories"]
-		},
+		
 		{
 			"name": "headPhones for Iphone X",
 			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
@@ -131,21 +117,7 @@
 			"categories": ["accessories"]
 		},
 		
-		{
-			"name": "PadMouse Milenium",
-			"image": "https://www.pulsovideojuegos.com/wp-content/uploads/2019/12/mousepad-gaming-asus-rog-sheath.jpg",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best product ever",
-			"discount": 20,
-			"stock": 5,
-			"price": 155.95,
-			"featured": true,
-			"rating": 4,
-			"categories": ["gamers", "accessories"]
-		},
+		
 		{
 			"name": "Headphones Bose",
 			"image": "https://assets-prd.ignimgs.com/2021/11/04/11043-1636052445439.jpg",
@@ -161,21 +133,7 @@
 			"rating": 5,
 			"categories": ["accessories"]
 		},
-		{
-			"name": "Pc gamer Vengeance II",
-			"image": "https://hardzone.es/app/uploads-hardzone.es/2019/05/CORSAIR-VENGEANCE-5180-Gaming-PC.jpg",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best setUp ever",
-			"discount": 0,
-			"stock": 2,
-			"price": 999,
-			"featured": true,
-			"rating": 4.5,
-			"categories": ["gamers"]
-		},
+		
 		{
 			"name": "Samsung Galaxy S22 Ultra 5G SM-R908N 256GB/512GB/1TB ",
 			"image": "https://i.ebayimg.com/images/g/I5MAAOSwQGFiGGY1/s-l1600.jpg",
@@ -478,7 +436,113 @@
 			"featured": false,
 			"rating": 3.2,
 			"categories": ["laptops", "tablets"]
+		},
+		{
+			"name": "Microsoft Xbox One X ",
+			"image": "https://m.media-amazon.com/images/I/51h4X-eBBSL._SL1200_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61PgGmKYyiL._SL1200_.jpg",
+				"https://m.media-amazon.com/images/I/51hnZNFGYPL._SL1200_.jpg"
+			],
+			"description": "This Certified Refurbished product is tested and certified to look and work like new.The refurbishing process includes functionality testing, basic cleaning, inspection, and repackaging.The product ships with all relevant accessories, a minimum 90-day warranty, and may arrive in a generic box. Only select sellers who maintain a high performance bar may offer Certified Refurbished products on Amazon.com What’s in the box: Xbox One X Project Scorpio Edition 1TB Console, Project Scorpio Edition Wireless Controller, Xbox One X Vertical Stand, 1-month Game Pass subscription trial, 14-day Xbox Live Gold trial, HDMI cable (4K capable), and AC Power cable.Games play better on Xbox One X Project Scorpio Edition. Experience 40% more power than any other console.Custom design console for the biggest fans, “Project Scorpio” inscribed on the console and controller 6 teraflops of graphical processing power and a 4K Blu-ray player provide more immersive gaming and entertainment.",
+			"discount": 0,
+			"stock": 100,
+			"price": 599.99,
+			"featured": false,
+			"rating": 4.5,
+			"categories": ["gamers"]
+		},
+		{
+			"name": "ASUS GeForce GTX 1050 Ti",
+			"image": "https://m.media-amazon.com/images/I/61TgBrsiRKS._AC_SL1000_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/718KdRb6TpS._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71x16TWQ9ZS._AC_SL1500_.jpg"
+			],
+			"description": "New nvidia pascal architecture delivers improved performance and power efficiency Classic and modern games at 1080p @ 60 fps Fast, smooth, power efficient gaming experiences; Memory clock: 7008 mhz Plug and play design requires no pcie power connectors for easy graphics upgrade Phoenix double ball bearing cooling fan provides superior airflow with 2x longer lifespan; Cuda core: 768 Auto extreme technology delivers premium quality and reliability with aerospace grade super alloy power ii components to run faster and last longer than reference Gpu tweak II makes monitoring performance and streaming easier than ever, featuring game booster and xsplit gamecaster, all via an intuitive interface",
+			"discount": 0,
+			"stock": 20,
+			"price": 189.00,
+			"featured": false,
+			"rating": 4.0,
+			"categories": ["gamers"]
+		},
+		{
+			"name": "Nvidia 3080 Founders Edition",
+			"image": "https://m.media-amazon.com/images/I/519I7+EY1YL._AC_SL1200_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61BXk6vAU7L._AC_SL1200_.jpg",
+				"https://m.media-amazon.com/images/I/41kmw22pF9L._AC_SL1200_.jpg"
+			],
+			"description": "Powered by the NVIDIA GeForce RTX 3080 graphics processing unit (GPU) with a 1710MHz boost clock speed to help meet the needs of demanding games.10GB GDDR6X (320-bit) video memory. PCI Express 4.0 and earlier PCI Express 3.0. Offers compatibility with a range of systems.Antialiasing and anisotropic filtering delivers striking graphics with incredible realism.HDMI and Display Port outputs enable flexible connectivity",
+			"discount": 10,
+			"stock": 60,
+			"price": 1219.00,
+			"featured": true,
+			"rating": 5.0,
+			"categories": ["gamers"]
+		},
+		{
+			"name": "Gaming Desktop Computer",
+			"image": "https://m.media-amazon.com/images/I/71ayGFDyV4L._AC_SL1200_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71Pf1CXeyvL._AC_SL1200_.jpg",
+				"https://m.media-amazon.com/images/I/615gxSGp42L._AC_SL1200_.jpg"
+			],
+			"description": "AMD Ryzen 5 5600X CPU Watercooled, AMD B550 Chipset ATX motherboard, 16GB ToughRam DDR4 RGB, 1TB NVMe M.2, WiFi, Windows 10 Home NVIDIA GeForce RTX 3060. Graphics card brand may vary Closed Loop Liquid Cooling with 240mm Radiator and 3 ARGB Fan 1x USB 3.0, 2x USB 2.0, 1x Headphone, 1x Mic Ports Swing door tempered glass with magnetic mounting. ",
+			"discount": 15,
+			"stock": 15,
+			"price": 1499.00,
+			"featured": false,
+			"rating": 4.2,
+			"categories": ["gamers"]
+		},
+		{
+			"name": "Razer Kraken Gaming Headset",
+			"image": "https://m.media-amazon.com/images/I/71BKQhFzDmL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71TpRWUCAML._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71ndp3YQGCL._AC_SL1500_.jpg"
+			],
+			"description": "The #1 Best-Selling Gaming Peripherals Manufacturer in the US: Source - The NPD Group, Inc. U.S. Retail Tracking Service, Keyboards, Mice, PC Headset/Pc Microphone, Gaming Designed, based on dollar sales, 2017-2021 Immersive, 7.1 Surround Sound for Positional Audio: Outfitted with custom-tuned 50 millimeter drivers, capable of software-enabled surround sound (only available on Windows 10 64-bit) All-Day Comfort: Oval, cooling gel-infused cushions that prevent overheating and pressure build-up Retractable Noise Isolating Microphone: An improved cardioid mic reduces background and ambient noises for crystal-clear communication In-Line Audio Controls: A built-in an analog volume control wheel and mic mute switch Lightweight & Durable: Made of bauxite aluminum, the Kraken frame is flexible and designed to last.",
+			"discount": 10,
+			"stock": 25,
+			"price": 39.99,
+			"featured": false,
+			"rating": 3.8,
+			"categories": ["gamers","accessories"]
+		},
+		{
+			"name": "Gaming Office High Back Computer",
+			"image": "https://m.media-amazon.com/images/I/61gmXNWdZML._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71FkZVtLUhL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71gysQycsgL._AC_SL1500_.jpg"
+			],
+			"description": "[Ergonomic Support Backrest] The ergonomic body-hugging high back provides lumbar support and naturally follows your spine's natural curve. It is tall enough to support your entire spine. The back can be adjusted from 90° to 120°. The ergonomic armrest allows you to put hands on the armrest to relax.[Comfortable Seat] Thick and high-density sponge cushion provides sufficient seat depth to reduce stress and pressure on your hips. The lumbar cushion and headrest pillow will protect and relax your spinal and neck. Easy to assemble.[Retractable Footrest] With the retractable footrest，you can relieve tension on your legs and knees.[Adjustable Chair] You can adjust the 3-inch height to sit with your feet flat on the floor, knees at an angle of 90 degrees to the floor and parallel to the hips. 360° free swivel seat help you find the most comfort position.[Dimension] Size of back: 14 x 28 inch, Size of seat: 14 x 18.5 inch, Seat adjustable height: 43 to 46 inch. ",
+			"discount": 2,
+			"stock": 30,
+			"price": 93.50,
+			"featured": false,
+			"rating": 3.8,
+			"categories": ["gamers", "accessories"]
+		},
+		{
+			"name": "Razer Wolverine V2 Chroma",
+			"image": "https://m.media-amazon.com/images/I/61Uen2UUwML._SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71dIZ+VM2GL._SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/713uRjPH6IL._SL1500_.jpg"
+			],
+			"description": "One of the best Xbox controllers money can buy. Gives you a noticeable advantage in competitive play. - Windows Central, Oct. 2021 Power by Razer Chroma RGB: Enjoy greater immersion and customize with 16.8 million colors and lighting effects via the Razer Controller Setup for Xbox app 6 Additional Remappable Buttons: Unleash greater control and a more personalized play style with 4 extra triggers and 2 remappable bumpers that can be customized via the Razer Controller Setup for Xbox app Hair Trigger Mode with Trigger Stop-Switches: For a competitive edge, activate Hair Trigger Mode via two slide-locks on the underside of the controller that greatly reduce travel distance to the main triggers, enabling an ultra-fast rate of fire Mecha-Tactile Action Buttons and D-Pad: Wield hyper-responsive actuation with a cushioned touch and greater tactility when executing moves Interchangeable Thumbstick Caps: Includes a set of short and extended grips for a more natural and precise analog motion to fit your play style Improved Ergonomics: The controller’s modified L-shaped handgrips come with non-slip rubber grips for a secure yet agile hold—natural, effortless control for all-day gaming ",
+			"discount": 0,
+			"stock": 50,
+			"price": 149.99,
+			"featured": true,
+			"rating": 4.2,
+			"categories": ["gamers", "accessories"]
 		}
+	
 		
 		
 
