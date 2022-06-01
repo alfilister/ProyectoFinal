@@ -73,7 +73,7 @@ function CreateEditCategories() {
 	};
 
 	return (
-		<div>
+		<div className="editCategories">
 			<button
 				onClick={() => {
 					createCat();

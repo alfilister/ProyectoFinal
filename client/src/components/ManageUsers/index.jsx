@@ -2,30 +2,28 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import {
-  getAllUsers,
-  updateUser,
-} from "../../redux/actions";
+import { getAllUsers, updateUser } from "../../redux/actions";
 
 function ManageUsers() {
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.allUsers);
-  const [viewModal, setViewModal] = useState(false);
-  const [statusModal, setStatusModal] = useState(false);
+  const [viewModalRol, setViewModalRol] = useState(false);
+  const [viewModalAccess, setViewModalAccess] = useState(false);
+  const [statusModalRol, setStatusModalRol] = useState(false);
+  const [statusModalAccess, setStatusModalAccess] = useState(false);
   const [userSelectRol, setUserSelectedRol] = useState({}); // estadp que se llena cuando el admin selecciona un usuario para cambiarle el rol 
   const [accessChange, setAccessChange] = useState({}); // estado que se llena cuando el admin selecciona un usuario para cambiarle el access
-
-
 
   const changeRol = (user) => {
     setUserSelectedRol(user);
     console.log("SOY EL USUARIO click ROL", user);
     dispatch(getAllUsers());
-    if (!statusModal) {
-      setViewModal(false);
-      setStatusModal(true);
+    if (!statusModalRol) {
+      setViewModalRol(false);
+      setStatusModalRol(true);
     }
   };
+
   //estado que guarda y setea el rol
   const [newRol, setNewRol] = useState({
     fullName: "",
@@ -36,7 +34,6 @@ function ManageUsers() {
     role: "",
     access: "",
   });
-
   
   function handleChangeSelectROL(e) {
     setNewRol({
@@ -51,29 +48,26 @@ function ManageUsers() {
     });
     console.log(newRol)
   }
-
   function handleSubmitRol(e) {
     e.preventDefault();
     dispatch(updateUser(newRol));
 
-    if (!statusModal) {
-      setViewModal(false);
-      setStatusModal(true);
+    if (!statusModalRol) {
+      setViewModalRol(false);
+      setStatusModalRol(true);
     }
   }
- 
-
   const changeAcess = (user) => {
     setAccessChange(user);
     console.log("SOY EL USUARIO click ACESS", user);
     dispatch(getAllUsers());
-    if (!statusModal) {
-      setViewModal(true);
-      setStatusModal(false);
-    }
+   /*  if (!statusModalAccess) {
+      setViewModalAccess(true);
+      setStatusModalAccess(false);
+    } */
+    setViewModalAccess(true);
+    setViewModalRol(false)
   };
-
-
   const [newAcess, setNewAcess] = useState({
     fullName: setAccessChange.fullName,
     email: "",
@@ -83,8 +77,6 @@ function ManageUsers() {
     role: "",
     access: "",
   });
-
-
   function handleChangeSelectAcces(e) {
     setNewAcess({
       ...newAcess,
@@ -98,19 +90,15 @@ function ManageUsers() {
     });
     console.log(newAcess)
   }
-    
-   
-
   function handleSubmitAccess(e) {
     e.preventDefault();
     dispatch(updateUser(newAcess));
 
-    if (!statusModal) {
-      setViewModal(false);
-      setStatusModal(true);
-    }
+   /*  if (statusModalAccess) {
+      setViewModalAccess(false);
+      setStatusModalAccess(true);
+    } */
   }
-
   return (
     <div>
       <br />
@@ -170,7 +158,7 @@ function ManageUsers() {
           })}
         </tbody>
       </table>
-      <Modal isOpen={statusModal}>
+      <Modal isOpen={statusModalRol}>
         <ModalHeader>Cambiar el ROL Del usuario</ModalHeader>
         <ModalBody>
           <h1>estado actual : User</h1>
@@ -182,14 +170,14 @@ function ManageUsers() {
           <button
             onClick={(e) => {
               handleSubmitRol(e);
-              setStatusModal(false);
+              setStatusModalRol(false);
             }}
           >
             Editar
           </button>
           <button
             onClick={() => {
-              setStatusModal(false);
+              setStatusModalRol(false);
             }}
           >
             Cancelar
@@ -197,11 +185,12 @@ function ManageUsers() {
         </ModalFooter>
       </Modal>
 
-      <Modal isOpen={!statusModal}>
+      <Modal isOpen={viewModalAccess}>
         <ModalHeader>Cambiar el Acceso Del usuario</ModalHeader>
         <ModalBody>
           <h1>estado actual : Authorized </h1>
           <select onClick={(e) => handleChangeSelectAcces(e)}>
+          <option disabled>currentAccess</option>
             <option value="Locked">Bloqueado</option>
           </select>
         </ModalBody>
@@ -209,14 +198,14 @@ function ManageUsers() {
           <button
             onClick={(e) => {
               handleSubmitAccess(e);
-              setStatusModal(false);
+              setViewModalAccess(false);
             }}
           >
             Editar
           </button>
           <button
             onClick={() => {
-              setStatusModal(false);
+              setViewModalAccess(false);
             }}
           >
             Cancelar

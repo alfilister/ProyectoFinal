@@ -119,6 +119,10 @@ const Detail = () => {
     e.preventDefault();
     dispatch(addItemToFavs(Number(id)));
   };
+  const [imgSrc, setImgSrc] = useState(productId.image);
+  const handleChangeImage = (src) => {
+    setImgSrc(src);
+  };
 
   return (
     <div className="contenedorDetalleLoader">
@@ -134,14 +138,21 @@ const Detail = () => {
             <div className="contenedorImagenDescription">
               <div className="imagenDetalle">
                 <div className="imgGrande">
-                  <img src={productId.image} alt="" />
+                  <img src={imgSrc} alt="" />
+                  {/* <ProductImage productId={productId} /> */}
                 </div>
                 <div className="imagesAux">
                   {productId.aux_images?.map((el) => {
                     return (
                       <div>
                         <div className="imgChicas">
-                          <img src={el} alt="imagenes auxiliares" />;
+                          <img
+                            onClick={(e) =>
+                              handleChangeImage(e.target.getAttribute("src"))
+                            }
+                            src={el}
+                            alt="imagenes auxiliares"
+                          />
                         </div>
                       </div>
                     );
