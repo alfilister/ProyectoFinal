@@ -65,8 +65,8 @@ const postOrder = async (body) => {
         user_id,
       },
     });
-    const user = await User.findOne({ where: { id: user_id } });
-    await sendEmail(user.email);
+    // const user = await User.findOne({ where: { id: user_id } });
+    // if (orderCreated.status === "active") await sendEmail(user.email);
 
     return orderCreated;
   } catch (error) {
@@ -103,7 +103,9 @@ const updateOrder = async (idOrder, body) => {
     payment_id,
     user_id,
   });
+
   const user = await User.findOne({ where: { id: user_id } });
+  if (status === "active") await sendEmail(user.email);
   if (status === "dispatched") sendEmailOrderStatus(user.email);
   console.log(status);
   await selected.save();
