@@ -1,2 +1,22 @@
+@use "../abstracts/_variables.scss" as *;
+
 .editProductContainer {
+	.btn {
+		border: 1px $dark-000 solid;
+	}
+
+	.btn-borrar {
+		background-color: rgb(255, 89, 89);
+	}
+
+	.center {
+		align-items: center;
+		justify-content: center;
+		color: #333;
+	}
+
+	img {
+		width: 100px;
+		height: 100px;
+	}
 }

@@ -1,2 +1,16 @@
 .menuAdminContainer {
+	.btnMenu {
+		height: 3rem;
+		width: 23vw;
+		border: none;
+		background-color: #c6c6c6;
+	}
+
+	.btnMenu:hover {
+		background-color: #828282;
+	}
+
+	.btnMenu:disabled {
+		background-color: #5e5e5e;
+	}
 }

@@ -37,8 +37,10 @@ function ControlPanel(idUser) {
 
 	return (
 		<div className="adminContainer">
-			<MenuAdmin setMenu={setMenu} menu={menu} />
-			{menu.panel}
+			<div className="menuAdminContainer">
+				<MenuAdmin setMenu={setMenu} menu={menu} />
+			</div>
+			<div className="menuPanelContainer">{menu.panel}</div>
 		</div>
 	);
 }
