@@ -104,7 +104,9 @@ const Detail = () => {
     dispatch(addItemToCartLocalStorage());
     dispatch(addCounterLocalStorage());
   };
-  const [imgSrc, setImgSrc] = useState(productId.image);
+  const [imgSrc, setImgSrc] = useState(
+    productId.image ? productId.image : null
+  );
   const handleChangeImage = (src) => {
     setImgSrc(src);
   };
@@ -123,7 +125,7 @@ const Detail = () => {
             <div className="contenedorImagenDescription">
               <div className="imagenDetalle">
                 <div className="imgGrande">
-                  <img src={imgSrc} alt="" />
+                  <img src={imgSrc || productId.image} alt="" />
                   {/* <ProductImage productId={productId} /> */}
                 </div>
                 <div className="imagesAux">

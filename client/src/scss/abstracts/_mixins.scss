@@ -45,3 +45,11 @@
 //     @include mv(768px){ width:50% }
 //     @include mv(){ width:100% }
 // }
+
+@mixin posicionTamaño($pos, $wid, $hei, $lef, $to){
+    position: $pos;
+    width: $wid;
+    height: $hei;
+    left: $lef;
+    top: $to;
+}
