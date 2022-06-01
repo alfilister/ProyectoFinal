@@ -33,6 +33,7 @@ export const POST_USER = "POST_USER";
 export const ADD_SHIPPING_STORAGE = "ADD_SHIPPING_STORAGE";
 export const IS_AUTHENTICATED = "IS_AUTHENTICATED";
 export const EDIT_CATEOGRY = "EDIT_CATEOGRY";
+export const ADD_ITEM_TO_FAVS = "ADD_ITEM_TO_FAVS";
 
 export function getProducts() {
   return async function (dispatch) {
@@ -421,5 +422,12 @@ export function editCategory(payload) {
     return dispatch({
       type: EDIT_CATEOGRY,
     });
+  };
+}
+
+export function addItemToFavs(payload) {
+  return {
+    type: ADD_ITEM_TO_FAVS,
+    payload: payload,
   };
 }

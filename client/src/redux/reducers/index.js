@@ -32,6 +32,7 @@ import {
   ADD_SHIPPING_STORAGE,
   IS_AUTHENTICATED,
   EDIT_CATEOGRY,
+  ADD_ITEM_TO_FAVS,
 } from "../actions";
 
 const initialState = {
@@ -54,6 +55,9 @@ const initialState = {
   email: {},
   shippingStorage: false,
   isAuthenticated: false,
+  favs: window.localStorage.getItem("favs")
+    ? JSON.parse(localStorage.getItem("favs"))
+    : [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -330,6 +334,31 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       };
+
+    case ADD_ITEM_TO_FAVS:
+      const validationFav = state.favs.filter((el) => el.id === action.payload);
+
+      if (!validationFav[0]) {
+        const result = [
+          ...state.favs,
+          state.copyProducts.filter((el) => el.id === action.payload)[0],
+        ];
+
+        window.localStorage.setItem("favs", JSON.stringify(result));
+
+        return {
+          ...state,
+          favs: result,
+        };
+      } else {
+        const result = state.favs.filter((el) => el.id !== action.payload);
+        window.localStorage.setItem("favs", JSON.stringify(result));
+
+        return {
+          ...state,
+          favs: result,
+        };
+      }
 
     //return { ...state }
     default:

@@ -83,6 +83,7 @@
 
   .btn {
     display: flex;
+    flex-direction: row;
     align-content: center;
     justify-content: center;
 
@@ -124,7 +125,7 @@
         position: absolute;
         color: $dark-000;
         top: 5%;
-        right: -200%;
+        right: -300%;
       }
 
       .hidden {
@@ -140,6 +141,25 @@
         background-color: $dark-000;
         color: $dark-600;
       }
+    }
+
+    .cardFav {
+      color: $red-400;
+      margin: 0.3em 0 0 1em;
+      width: fit-content;
+      &:hover {
+        cursor: auto;
+        color: $red-500;
+      }
+    }
+
+    .cardNotFav {
+      @extend .cardFav;
+      color: $dark-200;
+    }
+
+    &:hover {
+      cursor: auto;
     }
   }
 }
@@ -196,6 +216,14 @@
           cursor: auto;
           color: $red-200;
         }
+      }
+    }
+
+    .cardFav {
+      margin-bottom: 0.5em;
+      &:hover {
+        color: $red-000;
+        transition: 0.5s ease;
       }
     }
 

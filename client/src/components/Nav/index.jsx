@@ -59,6 +59,11 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/");
   };
 
+  const handleFav = (e) => {
+    e.preventDefault();
+    navigate("/favorites");
+  };
+
   return (
     <div className="divNavbar">
       <div className="divSeachYLogo">
@@ -97,6 +102,9 @@ const Nav = ({ setCurrentPage }) => {
         <i class="fa-solid fa-cart-shopping">
           <p className="cartCounter">{cartCounter}</p>
         </i>
+      </div>
+      <div className="favDiv">
+        <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
       </div>
     </div>
   );

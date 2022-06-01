@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addItemToCart,
   addItemToCartLocalStorage,
   addCounterLocalStorage,
+  addItemToFavs,
 } from "../../redux/actions";
 
 const Card = ({
@@ -21,6 +22,8 @@ const Card = ({
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [added, setAdded] = useState(false);
+  const favState = useSelector((state) => state.favs);
+  const validateFav = favState?.filter((el) => el.id == id);
 
   const handleDetail = (e) => {
     e.preventDefault();
@@ -36,6 +39,11 @@ const Card = ({
     setTimeout(() => {
       setAdded(false);
     }, 200);
+  };
+
+  const handlefav = (e, id) => {
+    e.preventDefault();
+    dispatch(addItemToFavs(id));
   };
 
   return (
@@ -68,6 +76,12 @@ const Card = ({
         ) : (
           <div></div>
         )}
+        <div
+          className={validateFav[0] ? "cardFav" : "cardNotFav"}
+          onClick={(e) => handlefav(e, id)}
+        >
+          <i class="fa-solid fa-heart"></i>
+        </div>
       </div>
     </div>
   );
