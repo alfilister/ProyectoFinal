@@ -22,6 +22,7 @@ import {
 } from "./redux/actions";
 import Nav from "./components/Nav";
 import Checkout from "./pages/Checkout";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/reviewsPost" element={<ProductReview />} />
         <Route path="/EditUser" element={<EditarUser />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>
   );
