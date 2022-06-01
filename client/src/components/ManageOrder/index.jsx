@@ -88,7 +88,7 @@ function ManageOrder() {
 	};
 
 	return (
-		<div>
+		<div className="manageOrdersContainer">
 			<label>Buscar por status</label>
 			<select
 				onChange={(event) => {

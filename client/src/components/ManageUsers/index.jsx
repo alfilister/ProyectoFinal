@@ -2,10 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import {
-  getAllUsers,
-  updateUser,
-} from "../../redux/actions";
+import { getAllUsers, updateUser } from "../../redux/actions";
 
 function ManageUsers() {
   const dispatch = useDispatch();
@@ -37,7 +34,6 @@ function ManageUsers() {
     role: "",
     access: "",
   });
-
   
   function handleChangeSelectROL(e) {
     setNewRol({
@@ -52,7 +48,6 @@ function ManageUsers() {
     });
     console.log(newRol)
   }
-
   function handleSubmitRol(e) {
     e.preventDefault();
     dispatch(updateUser(newRol));
@@ -62,8 +57,6 @@ function ManageUsers() {
       setStatusModalRol(true);
     }
   }
- 
-
   const changeAcess = (user) => {
     setAccessChange(user);
     console.log("SOY EL USUARIO click ACESS", user);
@@ -75,8 +68,6 @@ function ManageUsers() {
     setViewModalAccess(true);
     setViewModalRol(false)
   };
-
-
   const [newAcess, setNewAcess] = useState({
     fullName: setAccessChange.fullName,
     email: "",
@@ -86,8 +77,6 @@ function ManageUsers() {
     role: "",
     access: "",
   });
-
-
   function handleChangeSelectAcces(e) {
     setNewAcess({
       ...newAcess,
@@ -101,9 +90,6 @@ function ManageUsers() {
     });
     console.log(newAcess)
   }
-    
-   
-
   function handleSubmitAccess(e) {
     e.preventDefault();
     dispatch(updateUser(newAcess));
@@ -113,7 +99,6 @@ function ManageUsers() {
       setStatusModalAccess(true);
     } */
   }
-
   return (
     <div>
       <br />

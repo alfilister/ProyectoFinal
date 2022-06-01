@@ -15,6 +15,11 @@
 @use "./scss/components/nav";
 @use "./scss/components/cartProduct";
 @use "./scss/components/modal";
+@use "./scss/components/editProducts";
+@use "./scss/components/createEditCategories";
+@use "./scss/components/manageUsers";
+@use "./scss/components/manageOrder";
+@use "./scss/components/menuAdmin";
 
 /* pages */
 @use "./scss/pages/created";
@@ -25,3 +30,4 @@
 @use "./scss/pages/cart";
 @use "./scss/pages/checkOut";
 @use "./scss/pages/editUser";
+@use "./scss/pages/admin";
