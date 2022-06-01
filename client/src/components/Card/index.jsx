@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
@@ -20,6 +20,7 @@ const Card = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [added, setAdded] = useState(false);
 
   const handleDetail = (e) => {
     e.preventDefault();
@@ -30,8 +31,11 @@ const Card = ({
     e.preventDefault();
     await dispatch(addItemToCart(id));
     dispatch(addItemToCartLocalStorage());
-
     dispatch(addCounterLocalStorage());
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 200);
   };
 
   return (
@@ -57,11 +61,12 @@ const Card = ({
           Details
         </button>
         {stock ? (
-          <button className="infoBtn" onClick={(e) => handleCart(e, id)}>
-            Add To Cart
-          </button>
+          <div className="cart" onClick={(e) => handleCart(e, id)}>
+            <i class="fa-solid fa-cart-plus"></i>
+            <p className={added ? "added" : "hidden"}>Added</p>
+          </div>
         ) : (
-          <button className="outStockBtn">Out of Stock</button>
+          <div></div>
         )}
       </div>
     </div>

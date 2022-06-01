@@ -101,6 +101,36 @@
         color: $dark-600;
       }
     }
+
+    .cart {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      .fa-cart-plus {
+        margin: 0 auto 0.5em 1em;
+        color: $red-200;
+        &:hover {
+          cursor: auto;
+          color: $red-500;
+        }
+      }
+
+      .added {
+        text-align: center;
+        margin: auto auto auto 1em;
+        position: absolute;
+        color: $dark-000;
+        top: 5%;
+        right: -200%;
+      }
+
+      .hidden {
+        display: none;
+      }
+    }
     .outStockBtn {
       @extend .infoBtn;
       background-color: $dark-000;
@@ -142,6 +172,10 @@
   }
 
   .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .infoBtn {
       background-image: linear-gradient(to right, #e52d27 0%, #b31217 100%);
       border: solid 1px $primary;
@@ -152,6 +186,16 @@
         background-image: linear-gradient(to right, #b31217 0%, #e52d27 100%);
         border: solid 1px $primary;
         color: $red-000;
+      }
+    }
+    .cart {
+      .fa-cart-plus {
+        margin: 0 0 0.5em 1em;
+        color: $dark-000;
+        &:hover {
+          cursor: auto;
+          color: $red-200;
+        }
       }
     }
 

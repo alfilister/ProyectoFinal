@@ -46,7 +46,7 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/cart");
   };
 
-/*   const handleBtnProfile = (e) => {
+  /*   const handleBtnProfile = (e) => {
     e.preventDefault();
     dispatch(getAllUsers());
     navigate("/edituser");
@@ -54,7 +54,7 @@ const Nav = ({ setCurrentPage }) => {
 
   const handleHome = () => {
     dispatch(getCategories());
-    dispatch(getProducts())
+    dispatch(getProducts());
     dispatch(getAllUsers());
     navigate("/");
   };
@@ -67,7 +67,7 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </div>
       </div>
-{/*       {isAuthenticated ? (
+      {/*       {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
@@ -93,9 +93,10 @@ const Nav = ({ setCurrentPage }) => {
           </div>
         )}
       </div>
-      <div className="cartBtnNav">
-        <button onClick={(e) => handleCart(e)}>Cart</button>
-        <p className="cartCounter">{cartCounter}</p>
+      <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
+        <i class="fa-solid fa-cart-shopping">
+          <p className="cartCounter">{cartCounter}</p>
+        </i>
       </div>
     </div>
   );

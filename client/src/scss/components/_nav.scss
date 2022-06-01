@@ -76,28 +76,32 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 2em;
-  button {
-    background-color: rgba($color: $dark-800, $alpha: 0.5);
+  margin-left: 100%;
+  width: fit-content;
+
+  .fa-cart-shopping {
     color: $dark-000;
-    font-weight: 600;
-    height: 3em;
-    width: 3em;
-    border-radius: 50%;
-    border: none;
-    &:active {
-      background-color: $red-000;
-      color: $dark-500;
-      transition: ease 0.5s;
-    }
+    font-size: 50px;
+    position: relative;
     &:hover {
-      cursor: pointer;
+      color: $dark-700;
+      transition: 0.5s ease;
+    }
+    &:active {
+      color: $red-000;
     }
   }
+
   .cartCounter {
-    margin-top: -0.8em;
-    margin-left: -0.8em;
+    position: absolute;
+    top: -15%;
+    left: 40%;
+    font-size: 0.3em;
     font-weight: bold;
     color: $red-000;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
