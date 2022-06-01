@@ -187,21 +187,7 @@
 			"rating": 3.5,
 			"categories": ["laptops"]
 		},
-		{
-			"name": "Tablet XXI",
-			"image": "https://s1.eestatic.com/2021/12/03/actualidad/631948900_217191977_1024x576.jpg",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best tablet ever",
-			"discount": 50,
-			"stock": 5,
-			"price": 507.95,
-			"featured": true,
-			"rating": 3.9,
-			"categories": ["tablets"]
-		},
+		
 		{
 			"name": "PadMouse Milenium",
 			"image": "https://www.pulsovideojuegos.com/wp-content/uploads/2019/12/mousepad-gaming-asus-rog-sheath.jpg",
@@ -351,6 +337,105 @@
 			"featured": true,
 			"rating": 5,
 			"categories": ["cellphones"]
+		},{
+			"name": "Samsung Galaxy Tab A8",
+			"image": "https://m.media-amazon.com/images/I/61fV4UeHeLL._AC_SL1200_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/415TupYINrL._AC_SL1200_.jpg",
+				"https://m.media-amazon.com/images/I/41RoZZjIrlL._AC_SL1500_.jpg"
+			],
+			"description": "A Screen Everyone Will Love: Whether your family is streaming or video chatting with friends, the Galaxy Tab A8 tablet brings out the best in every moment on a 10.5'' LCD screen Power and Storage for All: Get the power, storage and speed your family needs with an upgraded chipset and plenty of room to keep files — up to 128GB of storage; A long-lasting battery lets you go unplugged for hours to keep the family fun going Charge Fast, Power for Hours: Go for hours on a single charge* and back to 100% with the fast charging USB C port; *Battery life may vary depending on network environment, usage patterns and other factors Galaxy Ecosystem Experience: Open up a new world of convenient possibilities with the Galaxy ecosystem experience — your devices, including your phone, laptop computer, and tablet, all automatically talk to one another seamlessly ",
+			"discount": 20,
+			"stock": 100,
+			"price": 179.95,
+			"featured": true,
+			"rating": 4.6,
+			"categories": ["tablets"]
+		},{
+			"name": "Samsung Tab A7 Lite 8.7'' ",
+			"image": "https://m.media-amazon.com/images/I/819hAP4xoGS._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/91CQu7IsDDS._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/61NuvZjecJS._AC_SL1080_.jpg"
+			],
+			"description": "THE ENTERTAINMENT GOES WHERE YOU GO: With its compact 8.7” screen, slim design and sturdy metal frame, Galaxy Tab A7 Lite is perfectly sized for entertainment on the go.STURDY FRAME FOR LASTING PROTECTION: Galaxy Tab A7 Lite features an upgraded metal frame that helps protect against everyday hiccups. TWO MONTHS OF AD-FREE VIDEO FUN: Keep everyone in the family entertained with two months of free YouTube Premium¹ for hours and hours of ad-free fun.PERFORMANCE THAT WON'T LET YOU DOWN: Comes with fast speed and plenty of storage for multiple users ",
+			"discount": 5,
+			"stock": 30,
+			"price": 129.95,
+			"featured": true,
+			"rating": 4.3,
+			"categories": ["tablets"]
+		},{
+			"name": "Lectrus Tablet+Customized Cover",
+			"image": "https://m.media-amazon.com/images/I/611fwDUhNsS._AC_SL1265_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/811ARFoUfQL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/81XfVNJ91dL._AC_SL1500_.jpg"
+			],
+			"description": "【Comprehensive and Full Protection】Made of premium PU leather and soft mocha fabrics, Lectrus tablet case offers you comfortable sense of touch and protects your table from shocks, scratches and dust. This versatile hard shell back cover can also function as a stand for convenient and multiple viewing angles. Precise cut-out allows easy access to all ports, buttons, camera, or other controls. The well designed case is lightweight and durable, providing all-around protection for your tablet. 【 Native Android 9 Pie OS & High-Speed 5G WIFI 】 Lectrus tablet comes with the latest Android 9 Pie operating system, which is smarter, faster and adapts to you as you use it more. No unexpected ads or bloatware apps. Dual-band WIFI 5GHz and 2.4GHz. You can download Apps fleetly with 5G WIFI at a high speed. If the WIFI signals are weak, please use 2.4GHz WIFI, which is more stable than 5G. 【Powerful Octa-Core Tablet for All 】The Lectrus media pad is a 10 inch Wi-Fi android tablet with GPS capability. It is powered by a 64-bit Octa-Core high-performance processor with 2GB RAM 32GB storage, providing a superior experience of entertainment, browse, games and shopping for everyone in the family. 【 Ultimate Entertainment Experience】Featuring a vivid 10.1 inches 1920 x 1200 Full HD IPS G+G capacitive touch display with dual speakers, dual-band Wi-Fi (2.4GHz & 5GHz) connectivity and (6000mAh rechargeable battery) 10-hour video playback battery life, this Media pad is designed for an improved entertainment experience, delivering a better tablet with high-speed network connections to browse, video chat, play games, watch movies & TV series, and more. 【Slim Body, Room for Everything & Dual Camera can capture your life every moment】The 10-inch tablet has built-in 32GB memory and supports up to 128GB microSD cards to expand the storage. Tablet has Dual camera, you can capture your life every moment and everywhere. You can download and keep your favorite e-books, songs, photos, movies, and games, everything you like in this slim metal android tablet. ",
+			"discount": 0,
+			"stock": 5,
+			"price": 119.99,
+			"featured": true,
+			"rating": 3.3,
+			"categories": ["tablets"]
+		},{
+			"name": "Microsoft Surface Duo Foldable ",
+			"image": "https://m.media-amazon.com/images/I/71muQgQuh+L._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71TqlnJopFL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/61Wm228jTnL._AC_SL1500_.jpg"
+			],
+			"description": " Room to focus with two screens. Open and view two apps at once or span one across both screens. Flexibility to do more. Choose your mode for the task at hand and tackle to-dos with dual-screen enhanced apps.Get the best of Microsoft 365 mobile experiences and every android app in the google play store.Original design, created by surface. Thin, light, and versatile design does what you want it to, with revolutionary 360° hinge and dual pixelsense fusion displays. Hold like a book, get more screen when you need it, take notes, make calls, or watch a favorite show.Connector type: USB Type C Operating system: Android 10.0 Wireless communication technology: Cellular ",
+			"discount": 0,
+			"stock": 50,
+			"price": 599.97,
+			"featured": true,
+			"rating": 3.8,
+			"categories": ["tablets"]
+		},{
+			"name": "Dragon Touch Notepad K10 Tablet",
+			"image": "https://m.media-amazon.com/images/I/71ec7uFv1iL._AC_SL1001_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61c-pLm2ndL._AC_SL1001_.jpg",
+				"https://m.media-amazon.com/images/I/61OF+LovI8L._AC_SL1001_.jpg"
+			],
+			"description": "[Strong and Powerful Performance]: Do what you like to do, Dragon Touch NotePad K10 Tablet features a powerful and strong 64-bit quad-core processor up to 1.3GHz with 2GB RAM, thus delivering quicker app launches, much smoother gameplay experience. [Native and Latest Android OS]: The Dragon Touch NotePad K10 Tablet has been certified from GMS and features with the latest Android version-Android 9.0 Pie. Getting rid of unexpected ads and having full access to Google Play, it’s smarter, faster and better close to you. [Better Display Wonderful Contents]: With a wide and stunning 800*1280 IPS display, which presents a bright display with more abundant colors and more delicate picture quality from all angles. To be more humane, NotePad K10 Tablet features Eye-Care mode, which automatically adjusts and optimizes the backlight. It makes you read comfortably at night. [Ultimate Entertainment Experience]: The Dragon Touch NotePad K10 Tablet comes with dual speakers, providing a robust audio experience for your favorite music, videos, and games. Besides, Dual-Wi-Fi mode provides two choices for network-2.4GHz & 5GHz. With high-speed network connections, you can feel free to browse, video chat, play games, watch movies or TV series, and so on.[Sturdy Design, Large Storage]: The Dragon Touch NotePad K10 Tablet has a simple but also not simple design. The fashion, line-clear and slim metal body look more like artwork. Even so, it still has built-in 32GB storage and supports up to 128G micro SD card to expand the storage. You can download and keep your favorite books, songs, photos, movies, games and everything you like in this slim metal android tablet. ",
+			"discount": 0,
+			"stock": 150,
+			"price": 132.99,
+			"featured": true,
+			"rating": 5.0,
+			"categories": ["tablets"]
+		},{
+			"name": "Fire HD 10 Kids Pro tablet",
+			"image": "https://m.media-amazon.com/images/I/61XqzcuOlnS._AC_SL1000_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61Vzr7Or0mS._AC_SL1000_.jpg",
+				"https://m.media-amazon.com/images/I/71h3WD4NL0S._AC_SL1000_.jpg"
+			],
+			"description": "Save up to $90 on a full-featured tablet (not a toy) designed specifically for kids ages 6–12 that includes 1 year of Amazon Kids+, parental controls, a slim case, and a 2-year worry-free guarantee, versus items purchased separately.School-age kids will enjoy a 1-year subscription to Amazon Kids+ that unlocks over 20,000 apps, games, books, videos, songs, and Audible books. They'll find educational content from National Geographic, Rabbids Coding, LEGO, and others, plus more than 9,000 titles for kids ages 6 and up. After 1 year, your subscription will automatically renew every month starting at just $2.99 per month plus applicable tax. You may cancel anytime by visiting the Amazon Parent Dashboard or contacting Customer Service. Content availability may vary by location and date. In addition to Kids+ content, Kids Pro tablets include access to a digital store. Kids can request apps and eBooks, while parents approve purchases and downloads. Plus, parents can add access to more apps like Minecraft and Zoom. The web browser comes with built-in controls designed to help filter out inappropriate sites and let parents add or block specific websites at any time. ",
+			"discount": 0,
+			"stock": 40,
+			"price": 139.99,
+			"featured": true,
+			"rating": 4.3,
+			"categories": ["tablets"]
+		},
+		{
+			"name": "Microsoft tablet Surface Pro 7",
+			"image": "https://m.media-amazon.com/images/I/61+ImOKTr4L._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/610goMTEFZL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/61NszJQSZfL._AC_SL1500_.jpg"
+			],
+			"description": "Surface Pro 7 2-in-1 Touchscreen Tablet (Platinum) - Power Supply - Power Cord - (Keyboard and Pen Not Included) - Original Box. 10th Gen Intel Core Processor  USB-C and USB-A ports Charge up to 80% in just over an hour Enhanced dual far-field Studio Mics",
+			"discount": 0,
+			"stock": 200,
+			"price": 1299.00,
+			"featured": true,
+			"rating": 5,
+			"categories": ["laptops", "tablets"]
 		}
 		
 		
