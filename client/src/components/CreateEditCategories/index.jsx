@@ -75,26 +75,32 @@ function CreateEditCategories() {
 	return (
 		<div className="editCategories">
 			<button
+				className="btn"
 				onClick={() => {
 					createCat();
 				}}
 			>
 				Nueva categoria
 			</button>
-			<table>
+			<table class="table table-striped">
 				<thead>
 					<tr>
-						<td>Nombre</td>
-						<td>Editar</td>
+						<th className="center" scope="col">
+							Nombre
+						</th>
+						<th className="center" scope="col">
+							Editar
+						</th>
 					</tr>
 				</thead>
 				<tbody>
 					{showCategories?.map((category) => {
 						return (
 							<tr>
-								<td>{category.name}</td>
-								<td>
+								<td className="center">{category.name}</td>
+								<td className="center">
 									<button
+										className="btn"
 										onClick={() => {
 											editCategorylocal(category);
 										}}
@@ -109,35 +115,52 @@ function CreateEditCategories() {
 			</table>
 			<Modal isOpen={newCateogry}>
 				<ModalBody>
-					<label>Nombre de la categoria nueva</label>
-					<input
-						type="text"
-						value={nameCategory.name}
-						onChange={(event) => {
-							handleCategory(event);
-						}}
-					></input>
+					<div class="mb-3">
+						<label class="form-label">Nombre de la categoria nueva</label>
+						<input
+							class="form-control"
+							type="text"
+							value={nameCategory.name}
+							onChange={(event) => {
+								handleCategory(event);
+							}}
+						></input>
+					</div>
 				</ModalBody>
 				<ModalFooter>
-					<button onClick={() => createCat()}>Crear</button>
-					<button onClick={() => setNewCategory(false)}>Cancelar</button>
+					<button class="btn btn-primary" onClick={() => createCat()}>
+						Crear
+					</button>
+					<button class="btn btn-danger" onClick={() => setNewCategory(false)}>
+						Cancelar
+					</button>
 				</ModalFooter>
 			</Modal>
 
 			<Modal isOpen={editModal}>
 				<ModalBody>
-					<label>Nuevo nombre:</label>
-					<input
-						type="text"
-						value={categorySelected.name}
-						onChange={(event) => {
-							handleEdit(event);
-						}}
-					></input>
+					<div class="mb-3">
+						<label class="form-label">Nuevo nombre:</label>
+						<input
+							class="form-control"
+							type="text"
+							value={categorySelected.name}
+							onChange={(event) => {
+								handleEdit(event);
+							}}
+						></input>
+					</div>
 				</ModalBody>
 				<ModalFooter>
-					<button onClick={() => changeCategory()}>Crear</button>
-					<button onClick={() => setEditModal(false)}>Cancelar</button>
+					<button className="btn btn-primary" onClick={() => changeCategory()}>
+						Crear
+					</button>
+					<button
+						className="btn btn-danger"
+						onClick={() => setEditModal(false)}
+					>
+						Cancelar
+					</button>
 				</ModalFooter>
 			</Modal>
 		</div>

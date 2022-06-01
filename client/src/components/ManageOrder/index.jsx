@@ -89,42 +89,64 @@ function ManageOrder() {
 
 	return (
 		<div className="manageOrdersContainer">
-			<label>Buscar por status</label>
-			<select
-				onChange={(event) => {
-					searchBar(event);
-				}}
-				name="newStatus"
-			>
-				<option value="none">Todos los status</option>
-				<option value="attempted">Attempted</option>
-				<option value="active">Active</option>
-				<option value="dispatched">Dispatched</option>
-				<option value="complete">Complete</option>
-			</select>
-			<table>
+			<div class="mb-3">
+				<label class="form-label buscar">Buscar por estado</label>
+				<select
+					class="form-select"
+					onChange={(event) => {
+						searchBar(event);
+					}}
+					name="newStatus"
+				>
+					<option value="none">Todos los estados</option>
+					<option value="attempted">Attempted</option>
+					<option value="active">Active</option>
+					<option value="dispatched">Dispatched</option>
+					<option value="complete">Complete</option>
+				</select>
+			</div>
+			<table class="table table-striped">
 				<thead>
 					<tr>
-						<td>ID</td>
-						<td>Payment ID</td>
-						<td>createdAt</td>
-						<td>updatedAt</td>
-						<td>status</td>
-						<td>Ver</td>
-						<td>Opciones</td>
+						<th className="center" scope="col">
+							ID
+						</th>
+						<th className="center" scope="col">
+							Payment ID
+						</th>
+						<th className="center" scope="col">
+							Creado
+						</th>
+						<th className="center" scope="col">
+							Actualizado
+						</th>
+						<th className="center" scope="col">
+							Estado
+						</th>
+						<th className="center" scope="col">
+							Ver
+						</th>
+						<th className="center" scope="col">
+							Opciones
+						</th>
 					</tr>
 				</thead>
 				<tbody>
 					{ordersShow?.map((order) => {
 						return (
 							<tr key={order?.id}>
-								<td>{order?.id}</td>
-								<td>{order?.payment_id ? order.payment_id : "No hay"}</td>
-								<td>{order?.createdAt}</td>
-								<td>{order?.updatedAt}</td>
-								<td>{order?.status}</td>
-								<td>
+								<th className="center" scope="col">
+									{order?.id}
+								</th>
+								<td className="center">
+									{order?.payment_id ? order.payment_id : "No hay"}
+								</td>
+								<td className="center">{order?.createdAt}</td>
+								<td className="center">{order?.updatedAt}</td>
+								<td className="center">{order?.status}</td>
+								<td className="center">
 									<button
+										className="btn"
 										onClick={() => {
 											viewOrder(order);
 										}}
@@ -134,6 +156,7 @@ function ManageOrder() {
 								</td>
 								<td>
 									<button
+										className="btn"
 										onClick={() => {
 											changeStatus(order);
 										}}

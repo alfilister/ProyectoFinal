@@ -1,2 +1,20 @@
+@use "../abstracts/_variables.scss" as *;
+
 .menuAdminContainer {
+	.btnMenu {
+		height: 3rem;
+		width: 23vw;
+		border: none;
+		background-color: $dark-000;
+		font-family: $fuente-parrafos;
+	}
+
+	.btnMenu:hover {
+		background-color: $dark-300;
+	}
+
+	.btnMenu:disabled {
+		background-color: $dark-600;
+		color: $red-000;
+	}
 }

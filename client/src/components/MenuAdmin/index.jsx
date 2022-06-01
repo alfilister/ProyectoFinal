@@ -7,6 +7,15 @@ import ManageOrder from "../../components/ManageOrder";
 function MenuAdmin({ setMenu, menu }) {
 	const onButton = (event) => {
 		event.preventDefault();
+		const buttons = document.getElementsByClassName("btnMenu");
+		for (let i = 0; i < buttons.length; i++) {
+			console.log(buttons[i].value);
+			if (buttons[i].value === event.target.value) {
+				buttons[i].disabled = true;
+			} else {
+				buttons[i].disabled = false;
+			}
+		}
 		switch (event.target.value) {
 			case "CreateProduct":
 				setMenu({
@@ -40,20 +49,40 @@ function MenuAdmin({ setMenu, menu }) {
 
 	return (
 		<div className="menuAdminContainer">
-			<button onClick={(event) => onButton(event)} value="CreateProduct">
-				CreateProduct
+			<button
+				className="btnMenu"
+				onClick={(event) => onButton(event)}
+				value="CreateProduct"
+			>
+				Crear un producto
 			</button>
-			<button onClick={(event) => onButton(event)} value="EditProduct">
-				EditProduct
+			<button
+				className="btnMenu"
+				onClick={(event) => onButton(event)}
+				value="EditProduct"
+			>
+				Editar un producto
 			</button>
-			<button onClick={(event) => onButton(event)} value="CreateEditCategories">
-				CreateEditCategories
+			<button
+				className="btnMenu"
+				onClick={(event) => onButton(event)}
+				value="CreateEditCategories"
+			>
+				Administrar categorias
 			</button>
-			<button onClick={(event) => onButton(event)} value="ManageUsers">
-				ManageUsers
+			<button
+				className="btnMenu"
+				onClick={(event) => onButton(event)}
+				value="ManageUsers"
+			>
+				Administrar usuarios
 			</button>
-			<button onClick={(event) => onButton(event)} value="ManageOrder">
-				ManageOrder
+			<button
+				className="btnMenu"
+				onClick={(event) => onButton(event)}
+				value="ManageOrder"
+			>
+				Administrar ordenes
 			</button>
 		</div>
 	);
