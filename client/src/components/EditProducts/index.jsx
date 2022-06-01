@@ -176,7 +176,7 @@ function EditProduct() {
 
 	return (
 		<div className="editProductContainer">
-			<h3>Productos destacados</h3>
+			<h3 className="titulo">Productos destacados</h3>
 			{productsFav.length > 0 ? (
 				<table class="table table-striped">
 					<thead>
@@ -247,9 +247,10 @@ function EditProduct() {
 			) : (
 				<div>No hay productos destacados</div>
 			)}
-			<div>
-				<label>Buscar</label>
+			<div class="mb-3">
+				<label class="form-label buscar">Buscar</label>
 				<input
+					class="form-control"
 					type="text"
 					value={search}
 					onChange={(event) => {
@@ -288,7 +289,7 @@ function EditProduct() {
 					</button>
 				</ModalFooter>
 			</Modal>
-			<h3>Todos los productos</h3>
+			<h3 className="titulo">Todos los productos</h3>
 			{productsShow.length > 0 ? (
 				<table class="table table-striped">
 					<thead>
@@ -330,7 +331,7 @@ function EditProduct() {
 												productToEdit(product, "edit");
 											}}
 										>
-											Modificar
+											Editar
 										</button>
 										<button
 											className="btn"
@@ -363,22 +364,24 @@ function EditProduct() {
 			<Modal isOpen={editModal}>
 				<ModalHeader>
 					<div>
-						<h3>Editar Producto</h3>
+						<h3 class="titulo">Editar Producto</h3>
 					</div>
 				</ModalHeader>
 				<ModalBody>
-					<div>
-						<label>Id</label>
+					<div class="mb-3">
+						<label class="form-label">Id</label>
 						<input
+							class="form-control"
 							readOnly
 							type="text"
 							name="id"
 							value={productSelected?.id}
 						></input>
 					</div>
-					<div>
-						<label>Nombre</label>
+					<div class="mb-3">
+						<label class="form-label">Nombre</label>
 						<input
+							class="form-control"
 							type="text"
 							name="name"
 							value={productSelected?.name}
@@ -387,9 +390,10 @@ function EditProduct() {
 							}}
 						></input>
 					</div>
-					<div>
-						<label>Imagen</label>
+					<div class="mb-3">
+						<label class="form-label">Imagen</label>
 						<input
+							class="form-control"
 							onChange={(event) => {
 								getImage(event);
 							}}
@@ -398,9 +402,10 @@ function EditProduct() {
 							accept="image/png, image/jpeg"
 						></input>
 					</div>
-					<div>
-						<label>Aux_images</label>
+					<div class="mb-3">
+						<label class="form-label">Aux_images</label>
 						<input
+							class="form-control"
 							onChange={(event) => {
 								getMuchImages(event);
 							}}
@@ -410,20 +415,22 @@ function EditProduct() {
 							multiple
 						></input>
 					</div>
-					<div>
-						<label>Description</label>
-						<input
+					<div class="mb-3">
+						<label class="form-label">Description</label>
+						<textarea
+							class="form-control"
 							type="text"
 							name="description"
 							value={productSelected?.description}
 							onChange={(event) => {
 								handleInput(event);
 							}}
-						></input>
+						></textarea>
 					</div>
-					<div>
-						<label>Discount</label>
+					<div class="mb-3">
+						<label class="form-label">Discount</label>
 						<input
+							class="form-control"
 							type="number"
 							name="discount"
 							value={productSelected?.discount}
@@ -432,9 +439,10 @@ function EditProduct() {
 							}}
 						></input>
 					</div>
-					<div>
-						<label>Stock</label>
+					<div class="mb-3">
+						<label class="form-label">Stock</label>
 						<input
+							class="form-control"
 							type="number"
 							name="stock"
 							value={productSelected?.stock}
@@ -443,9 +451,10 @@ function EditProduct() {
 							}}
 						></input>
 					</div>
-					<div>
-						<label>Price</label>
+					<div class="mb-3">
+						<label class="form-label">Price</label>
 						<input
+							class="form-control"
 							type="number"
 							name="price"
 							value={productSelected?.price}
@@ -454,15 +463,16 @@ function EditProduct() {
 							}}
 						></input>
 					</div>
-					<div>
-						<label>categories</label>
+					<div class="mb-3">
+						<label class="form-label">categories</label>
 						{allCategories?.map((category) => {
 							for (let i = 0; i < productSelected.categories.length; i++) {
 								if (category.name === productSelected.categories[i].name) {
 									return (
 										<div key={category.id}>
-											<label>{category.name}</label>
+											<label class="form-check-label">{category.name}</label>
 											<input
+												class="form-check-input"
 												checked={true}
 												type="checkbox"
 												value={category.name}
@@ -477,8 +487,9 @@ function EditProduct() {
 							}
 							return (
 								<div>
-									<label>{category.name}</label>
+									<label class="form-check-label">{category.name}</label>
 									<input
+										class="form-check-input"
 										type="checkbox"
 										value={category.name}
 										name="categories"
@@ -501,7 +512,7 @@ function EditProduct() {
 						Actualizar
 					</button>
 					<button
-						className="btn btn-secondary"
+						className="btn btn-danger"
 						onClick={() => {
 							setEditModal(false);
 						}}

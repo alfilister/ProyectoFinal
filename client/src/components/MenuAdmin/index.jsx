@@ -54,35 +54,35 @@ function MenuAdmin({ setMenu, menu }) {
 				onClick={(event) => onButton(event)}
 				value="CreateProduct"
 			>
-				CreateProduct
+				Crear un producto
 			</button>
 			<button
 				className="btnMenu"
 				onClick={(event) => onButton(event)}
 				value="EditProduct"
 			>
-				EditProduct
+				Editar un producto
 			</button>
 			<button
 				className="btnMenu"
 				onClick={(event) => onButton(event)}
 				value="CreateEditCategories"
 			>
-				CreateEditCategories
+				Administrar categorias
 			</button>
 			<button
 				className="btnMenu"
 				onClick={(event) => onButton(event)}
 				value="ManageUsers"
 			>
-				ManageUsers
+				Administrar usuarios
 			</button>
 			<button
 				className="btnMenu"
 				onClick={(event) => onButton(event)}
 				value="ManageOrder"
 			>
-				ManageOrder
+				Administrar ordenes
 			</button>
 		</div>
 	);

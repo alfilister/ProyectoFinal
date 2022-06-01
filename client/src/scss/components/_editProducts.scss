@@ -1,22 +1,47 @@
 @use "../abstracts/_variables.scss" as *;
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
 
 .editProductContainer {
 	.btn {
-		border: 1px $dark-000 solid;
+		border: 1px solid $dark-600;
+	}
+
+	.btn:hover {
+		color: $red-000;
+		text-decoration: overline;
 	}
 
 	.btn-borrar {
-		background-color: rgb(255, 89, 89);
+		background-color: $red-600;
+		color: $red-000;
 	}
 
 	.center {
 		align-items: center;
 		justify-content: center;
 		color: #333;
+		font-family: $fuente-parrafos;
 	}
 
 	img {
 		width: 100px;
 		height: 100px;
+	}
+
+	.titulo {
+		font-family: $fuente-titulo;
+	}
+
+	.buscar {
+		font-size: large;
+		font-family: $fuente-parrafos;
 	}
 }
