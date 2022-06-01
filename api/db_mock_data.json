@@ -126,6 +126,7 @@
 			"rating": 4.5,
 			"categories": ["cellphones"]
 		},
+
 		{
 			"name": "Super Product 2000",
 			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
@@ -245,8 +246,118 @@
 			"featured": true,
 			"rating": 4.5,
 			"categories": ["gamers"]
+		},
+		{
+			"name": "Samsung Galaxy S22 Ultra 5G SM-R908N 256GB/512GB/1TB ",
+			"image": "https://i.ebayimg.com/images/g/I5MAAOSwQGFiGGY1/s-l1600.jpg",
+			"aux_images": [
+				"https://i.ebayimg.com/images/g/5~wAAOSweXViGGei/s-l500.jpg",
+				"https://i.ebayimg.com/images/g/MlEAAOSw~NRiTUX1/s-l1600.jpg"
+			],
+			"description": "8K SUPER STEADY VIDEO: Shoot videos that rival how epic your life is with stunning 8K recording, the highest recording resolution available on a smartphone; Video captured is effortlessly smooth, thanks to Auto Focus Video Stabilization on Galaxy S22* NIGHTOGRAPHY + PORTAIT MODE: Capture the night with crystal clear, bright pics and videos, no matter the lighting with Night Mode; Portrait Mode auto-detects and adjusts to what you want front and center, making all your photos worthy of a frame 50MP PHOTO RESOLUTION + BRIGHT DISPLAY: From elaborate landscapes to intricate creations, capture vivid detail with 50MP resolution; Your favorite content will look even more epic on our brightest display ever with Vision Booster ",
+			"discount": 0,
+			"stock": 15,
+			"price": 799.99,
+			"featured": true,
+			"rating": 4,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Motorola One 5G Ace | 2021 |Hazy Silver",
+			"image": "https://m.media-amazon.com/images/I/71GbORP-umL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71G4o6h4WpL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/517WdSRLyaL._AC_SL1500_.jpg"
+			],
+			"description": "Unlocked for the freedom to choose your carrier. Compatible with AT&T, Sprint, T-Mobile, and Verizon networks. Sim card not included. Customers may need to contact Sprint for activation on Sprint’s network. To use this Device on Verizon, first, provision your SIM through Verizon Wireless. Log in to your account on Verizon Wireless. Devices - activate or switch devices - activate. Superfast 5G speed. Download your favorite movies in seconds, feel like you’re right there in video chats, and play games without lag time. Over 2 days of battery life. Work and play to your heart’s content without worrying about recharging thanks to a 5000 mAh battery. 6 GB RAM Memory. Keep multiple apps open at once and move effortlessly between them with 6 GB of LPDDR4 RAM. 6.7 Full HD, Max Vision display. Watch your favorite movies and games come to life in sharp contrast and vivid, true-to-life color. 48 MP triple camera system with AI. Capture sharper low-light photos, vivid nighttime pictures, ultra-wide angle shots, and incredibly detailed close-ups. Enhanced gaming with the latest processor. Immerse yourself deeper in epic games with faster performance from Qualcomm.  ",
+			"discount": 5,
+			"stock": 30,
+			"price": 299.00,
+			"featured": true,
+			"rating": 4.5,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Nokia G10 | Android 11 |  ",
+			"image": "https://m.media-amazon.com/images/I/71Ptb2ttfaS._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71wEHcyo6hS._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/4132RokFLOS._AC_SL1500_.jpg"
+			],
+			"description": " Make the most of family-sized battery power with up to 3 days of life between charges.Capture family life from every angle on the triple camera and explore advanced imaging modes. Get tomorrow’s phone today with 2 years of upgrades and the latest Android 11 features. Product is compatible with GSM carriers like AT&T, T-Mobile, Mint, and other GSM carriers. Product is not compatible with Verizon. Keep the family safe with a side fingerprint sensor and secure face recognition. ",
+			"discount": 5,
+			"stock": 150,
+			"price": 124.99,
+			"featured": true,
+			"rating": 4,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Apple iPhone 11 Pro, 256GB, Midnight Green ",
+			"image": "https://m.media-amazon.com/images/I/81AaNJqE+wS._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/51bvOBgFHGS._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71lEKH3orfL._AC_SL1500_.jpg"
+			],
+			"description": " This phone is unlocked and compatible with any carrier of choice on GSM and CDMA networks (e.g. AT&T, T-Mobile, Sprint, Verizon, US Cellular, Cricket, Metro, Tracfone, Mint Mobile, etc.).Tested for battery health and guaranteed to come with a battery that exceeds 90% of original capacity. Backed by a one-year satisfaction guarantee, with free access to Amazon’s Technical Support team throughout the full year and ability to replace or return the product if it does not work as expected. Includes a brand new, generic charging cable that is certified Mfi (Made for iPhone) and a brand new, generic wall plug that is UL certified for performance and safety. Also includes a SIM tray removal tool but does not come with headphones or a SIM card. Inspected and guaranteed to have minimal cosmetic damage, which is not noticeable when the device is held at arm’s length. Successfully passed a full diagnostic test which ensures like-new functionality and removal of any prior-user personal information.  ",
+			"discount": 0,
+			"stock": 40,
+			"price": 639.00,
+			"featured": true,
+			"rating": 4.5,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Google Pixel 3 XL Unlocked Smartphone - 64GB Memory ",
+			"image": "https://m.media-amazon.com/images/I/61YNb0vcezS._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61uuTBlYyKS._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/41s35oPlRxS._AC_SL1500_.jpg"
+			],
+			"description": " Capture the perfect shot every time with Google Pixel 3 XL, get things done with the Google Assistant,1 enjoy an all-day battery, and more. Get everyone in the picture with Group Selfies—no selfie stick required. Snap portraits like a pro with Portrait Mode. Capture smiles, not blinks, for a great photo every time. Pixel 3 comes with a battery that charges fast and wirelessly, and lasts all day. It's even smart enough to limit battery usage for the apps you don't use often to keep you going longer. Get help from the Google Assistant: reserve a table at your favorite restaurant, buy tickets, get commute times, weather info, and more—all with a simple squeeze, or just by using your voice. Screen spam, scams, and other nuisance calls. Get real-time transcription and block unwanted callers so you’ll never hear from them again. Search what you see with Google Lens6 to look up clothing and home decor, copy and translate text, and identify landmarks, plants, and animals. Bundle includes: Google Pixel 3 XL 64GB Smartphone, Charging Stand, Wired Earbuds, Google Charger, 3.5mm to Type-C Adapter, Easy Transfer Adapter   ",
+			"discount": 0,
+			"stock": 10,
+			"price": 249.90,
+			"featured": true,
+			"rating": 3.5,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Xperia 1 III - 5G Smartphone with 120Hz  ",
+			"image": "https://m.media-amazon.com/images/I/71YvGj855+L._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/61vrnxMNXuL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/61TLgPllT8L._AC_SL1500_.jpg"
+			],
+			"description": " World’s first smartphone with 120Hz 6.5” 4K HDR OLED display. World´s first smartphone with variable tele lens and Dual PD sensor World’s first smartphone with 360 Reality Audio through its speakers   Triple camera with four focal lengths and Real-time AF tracking Win with Game Enhancer’s custom display, audio and mic settings Evolved Full-stage front facing stereo speakers – 40% louder 360 Spatial Sound up-mixes stereo music into immersive experiences ",
+			"discount": 10,
+			"stock": 80,
+			"price": 1198.00,
+			"featured": true,
+			"rating": 4.5,
+			"categories": ["cellphones"]
+		},
+		{
+			"name": "Xiaomi Redmi Note 9 Pro Smartphone con 6.67 DotDisplay, 6 GB  ",
+			"image": "https://m.media-amazon.com/images/I/61EE6j8GHvL._AC_SL1000_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71l3coNp4bL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/510QEZTdhJL._AC_SL1500_.jpg"
+			],
+			"description": " LTE: B1/3/7/8/20/28/38/40 > (ensure to check compatibility with your carrier before purchase) (6.67) FHD+ Resolution DotDisplay 2400 x 1080 FHD+ - Triple Corning Gorilla Glass 5 - Anti-oil and anti-fingerprint protective coating 6GB RAM + 64GB, microSD expandable up to 512GB - Qualcomm Snapdragon 720G - 5020 mAh (typical) Li Polymer Built-in rechargeable battery - Supports 2.4G Wi-Fi / 5G Wi-Fi - Side-Mounted Fingerprint Sensor Rear Camera: 64 MP primary camera, 8MP ultra-wide angle camera, 5MP macro camera, 2MP depth sensor - Front Camera: 16MP Front Camera - Video: 4K recording - 30fps Factory Unlocked cellphones are compatible with most of the GSM carriers ( Like T-Mobile or AT&T ) but please be aware that are not compatible with CDMA carriers ( Like Sprint or Verizon Wireless for example ) - FCC ID: 2AFZZJ6B2G ",
+			"discount": 0,
+			"stock": 150,
+			"price": 248.43,
+			"featured": true,
+			"rating": 5,
+			"categories": ["cellphones"]
 		}
-	],
+		
+		
+
+		
+		
+	], 
 	"users": [
 		{
 			"fullName": "Cristian",
