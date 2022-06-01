@@ -81,51 +81,9 @@
 		},
 
 
-		{
-			"name": "Phone X",
-			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best product ever",
-			"discount": 20,
-			"stock": 5,
-			"price": 7.95,
-			"featured": false,
-			"rating": 4.5,
-			"categories": ["cellphones", "tablets"]
-		},
-		{
-			"name": "SendPhone X",
-			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best product ever",
-			"discount": 20,
-			"stock": 5,
-			"price": 17.95,
-			"featured": false,
-			"rating": 4.5,
-			"categories": ["cellphones"]
-		},
-		{
-			"name": "Phone XX",
-			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The best product ever",
-			"discount": 20,
-			"stock": 5,
-			"price": 95,
-			"featured": false,
-			"rating": 4.5,
-			"categories": ["cellphones"]
-		},
+		
+		
+		
 
 		{
 			"name": "Super Product 2000",
@@ -171,21 +129,6 @@
 			"featured": false,
 			"rating": 3,
 			"categories": ["accessories"]
-		},
-		{
-			"name": "Lap 8000",
-			"image": "https://exitocol.vtexassets.com/arquivos/ids/7918471/Iphone-X-64-Gb-Plata-1361668_c.jpg?v=637587753190270000",
-			"aux_images": [
-				"https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-x-space-gray.png",
-				"https://cdn.pixabay.com/photo/2018/01/08/02/34/technology-3068617__340.jpg"
-			],
-			"description": "The medium product",
-			"discount": 20,
-			"stock": 5,
-			"price": 7.95,
-			"featured": false,
-			"rating": 3.5,
-			"categories": ["laptops"]
 		},
 		
 		{
@@ -244,7 +187,7 @@
 			"discount": 0,
 			"stock": 15,
 			"price": 799.99,
-			"featured": true,
+			"featured": false,
 			"rating": 4,
 			"categories": ["cellphones"]
 		},
@@ -259,7 +202,7 @@
 			"discount": 5,
 			"stock": 30,
 			"price": 299.00,
-			"featured": true,
+			"featured": false,
 			"rating": 4.5,
 			"categories": ["cellphones"]
 		},
@@ -274,7 +217,7 @@
 			"discount": 5,
 			"stock": 150,
 			"price": 124.99,
-			"featured": true,
+			"featured": false,
 			"rating": 4,
 			"categories": ["cellphones"]
 		},
@@ -304,7 +247,7 @@
 			"discount": 0,
 			"stock": 10,
 			"price": 249.90,
-			"featured": true,
+			"featured": false,
 			"rating": 3.5,
 			"categories": ["cellphones"]
 		},
@@ -334,7 +277,7 @@
 			"discount": 0,
 			"stock": 150,
 			"price": 248.43,
-			"featured": true,
+			"featured": false,
 			"rating": 5,
 			"categories": ["cellphones"]
 		},{
@@ -348,7 +291,7 @@
 			"discount": 20,
 			"stock": 100,
 			"price": 179.95,
-			"featured": true,
+			"featured": false,
 			"rating": 4.6,
 			"categories": ["tablets"]
 		},{
@@ -390,7 +333,7 @@
 			"discount": 0,
 			"stock": 50,
 			"price": 599.97,
-			"featured": true,
+			"featured": false,
 			"rating": 3.8,
 			"categories": ["tablets"]
 		},{
@@ -404,7 +347,7 @@
 			"discount": 0,
 			"stock": 150,
 			"price": 132.99,
-			"featured": true,
+			"featured": false,
 			"rating": 5.0,
 			"categories": ["tablets"]
 		},{
@@ -418,23 +361,122 @@
 			"discount": 0,
 			"stock": 40,
 			"price": 139.99,
-			"featured": true,
+			"featured": false,
 			"rating": 4.3,
 			"categories": ["tablets"]
 		},
 		{
-			"name": "Microsoft tablet Surface Pro 7",
-			"image": "https://m.media-amazon.com/images/I/61+ImOKTr4L._AC_SL1500_.jpg",
+			"name": "Newest HP 14'' HD Laptop",
+			"image": "https://m.media-amazon.com/images/I/61G9Yr3n6rL._AC_SL1330_.jpg",
 			"aux_images": [
-				"https://m.media-amazon.com/images/I/610goMTEFZL._AC_SL1500_.jpg",
-				"https://m.media-amazon.com/images/I/61NszJQSZfL._AC_SL1500_.jpg"
+				"https://m.media-amazon.com/images/I/61LFnmc9t+L._AC_SL1330_.jpg",
+				"https://m.media-amazon.com/images/I/51NBYltlmaL._AC_SL1330_.jpg"
 			],
-			"description": "Surface Pro 7 2-in-1 Touchscreen Tablet (Platinum) - Power Supply - Power Cord - (Keyboard and Pen Not Included) - Original Box. 10th Gen Intel Core Processor  USB-C and USB-A ports Charge up to 80% in just over an hour Enhanced dual far-field Studio Mics",
-			"discount": 0,
-			"stock": 200,
-			"price": 1299.00,
-			"featured": true,
+			"description": "- This pre-owned product has been professionally inspected, tested and cleaned by Amazon qualified vendors.This product is in Excellent condition. It shows no signs of cosmetic damage visible from a distance of 12 inches. This product will have a battery that exceeds 80% capacity relative to new.  Accessories may not be original, but will be compatible and fully functional. Product may come in generic box. ",
+			"discount": 10,
+			"stock": 100,
+			"price": 190.00,
+			"featured": false,
+			"rating": 4,
+			"categories": ["laptops"]
+		},
+		{
+			"name": "ASUS VivoBook 15 K513",
+			"image": "https://m.media-amazon.com/images/I/71kMPSNqHbL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/7160Iz0k7ZL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/81F-T+QT0FL._AC_SL1500_.jpg"
+			],
+			"description": "15.6 inch Full HD NanoEdge bezel display with stunning 85% screen-to-body ratio.Latest 11th generation Intel Core i7-1165G7 Quad Core Processor (12M Cache, up to 4.70 GHz) and discrete NVIDIA GeForce MX350 graphics.8GB DDR4 on board + 8GB DDR4 SO-DIMM RAM and 512GB PCIe NVMe M.2 SSD and Windows 10 Home.Ergonomic backlit keyboard along with a fingerprint sensor activated via Windows Hello. Comprehensive connections including USB 3.2 Type-C (Gen 1), USB 3.2 Type-A (Gen 1), USB 2.0, HDMI, and Wi-Fi 6 (802.11ax) (*USB Transfer speed may vary. Learn more at ASUS website) ",
+			"discount": 2,
+			"stock": 30,
+			"price": 949.99,
+			"featured": false,
 			"rating": 5,
+			"categories": ["laptops"]
+		},{
+			"name": "Acer Aspire 5 Slim Laptop",
+			"image": "https://m.media-amazon.com/images/I/81vNRgHlqGL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71vvXGmdKWL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71XKRz2rkPL._AC_SL1500_.jpg"
+			],
+			"description": "AMD Ryzen 3 3200U Dual Core Processor (Up to 3.5GHz); 4GB DDR4 Memory; 128GB PCIe NVMe SSD. 15.6 inches full HD (1920 x 1080) widescreen LED backlit IPS display; AMD Radeon Vega 3 Mobile Graphics. 1 USB 3.1 Gen 1 port, 2 USB 2.0 ports & 1 HDMI port with HDCP support. 802.11ac Wi-Fi; Backlit Keyboard; Up to 7.5 hours battery life.",
+			"discount": 3,
+			"stock": 100,
+			"price": 339.14,
+			"featured": false,
+			"rating": 4.3,
+			"categories": ["laptops"]
+		},{
+			"name": "MSI Pulse GL66 Gaming Laptop",
+			"image": "https://m.media-amazon.com/images/I/61Ze2wc9nyS._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/51UPXV7L3US._AC_SL1000_.jpg",
+				"https://m.media-amazon.com/images/I/61y6PwqxQRL._AC_SL1000_.jpg"
+			],
+			"description": "Visual Performance: The 15.6” 144hz display delivers true-to-life images with a high refresh rate so you can see every frame of the game. Redefined Power: The 11th Gen. Intel Core i7 processor, delivers high performance to take on any games and applications with ease. Supercharged Graphics: The MSI GL66 is powered by NVIDIA GeForce RTX, take on today's most popular games with these performance graphics. On the Go Gaming: Designed to be thin and light for gamers to carry around every day for games, study, or work. Cool and Powerful: MSI’s exclusive Cooler Boost Technology ensures optimal thermal dissipation. Featuring state of the art fans and heat pipes, get the airflow you need for gaming. Customized Keys: Customize each key to your liking and receive real-time in-game status through keyboard lighting, or even watch the lights dance to your favorite tune. ",
+			"discount": 25,
+			"stock": 50,
+			"price": 1274.48,
+			"featured": true,
+			"rating": 4.6,
+			"categories": ["laptops", "gamers"]
+		},{
+			"name": "HP 14 Laptop, AMD Ryzen 5 ",
+			"image": "https://m.media-amazon.com/images/I/71IOwQhjZNL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/71eOhrxPAkL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/61mWKxaC7cL._AC_SL1500_.jpg"
+			],
+			"description": "POWER THROUGH FROM ANYWHERE – Designed to keep you productive and entertained from anywhere, the HP 14-inch Laptop combines long-lasting battery life with a thin and portable design. FULL HD DISPLAY – Enjoy your favorite content in 1080p for crystal-clear visuals and vibrant image quality (1). Beyond pixel count, your display lets you see more from anywhere thanks to the micro-edge bezel and anti-glare screen.INFINITE POSSIBILITIES – Whether you are creating, working, or being entertained, do it all with the supreme performance of the AMD Ryzen 5 5500U Mobile Processor and AMD Radeon Graphics (2) (3). MEMORY AND STORAGE – Boost your performance with higher bandwidth, courtesy of 8 GB of RAM. Plus, with 256 GB PCIe NVMe M.2 SSD storage, save all of your photos, videos, and documents while getting up to 15x faster performance than a traditional hard drive (4) (5). STAY CONNECTED – Have convenient power all day with up to 9 hours and 45 minutes of battery life (6); your HP laptop also recharges quickly as HP Fast Charge Technology takes your device from 0 to 50% charge in approximately 45 minutes (7). ",
+			"discount": 0,
+			"stock": 60,
+			"price": 482.90,
+			"featured": true,
+			"rating": 4.2,
+			"categories": ["laptops", "gamers"]
+		},{
+			"name": " Apple MacBook Pro 2020",
+			"image": "https://m.media-amazon.com/images/I/71gD8WdSlaL._AC_SL1500_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/81AkdxBCVpL._AC_SL1500_.jpg",
+				"https://m.media-amazon.com/images/I/71nRj-fGoZL._AC_SL1500_.jpg"
+			],
+			"description": "Apple-designed M1 chip for a giant leap in CPU, GPU, and machine learning performance.Get more done with up to 20 hours of battery life, the longest ever in a Mac.8-core CPU delivers up to 2.8x.faster performance to fly through workflows quicker than ever.8-core GPU with up to 5x faster graphics for graphics-intensive apps and games 16-core Neural Engine for advanced machine learning 8GB of unified memory so everything you do is fast and fluidSuperfast SSD storage launches apps and opens files in an instant",
+			"discount": 0,
+			"stock": 80,
+			"price": 1269.99,
+			"featured": false,
+			"rating": 5,
+			"categories": ["laptops"]
+		},{
+			"name": "HP Envy X360",
+			"image": "https://m.media-amazon.com/images/I/61-p7oAW+hL._AC_SL1288_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/51iDW7jLr7L._AC_SL1253_.jpg",
+				"https://m.media-amazon.com/images/I/41LATemgOhL._AC_SL1253_.jpg"
+			],
+			"description": " Latest 11th Gen Intel Core i7-1165G7 (up to 4.7 GHz with Intel Turbo Boost Technology, 12 MB L3 cache, 4 cores, 8 Threads)【Customization】Upgraded to 32GB DDR4 SDRAM, 1TB M.2 SSD, No-DVD, Upgraded to Windows 11 Professional 2-in-1 design: 15.6'' diagonal, FHD (1920 x 1080), multitouch-enabled, IPS  edge-to-edge glass, micro-edge, 250 nits, 45% NTSC,Intel Iris Xe Graphics, HP HD 720P Webcam Intel Wi-Fi CERTIFIED 6 AX201 (2x2) and Bluetooth 5 combo (Supporting Gigabit data rate),1 SuperSpeed USB Type-C 10Gbps signaling rate (USB Power Delivery, DisplayPort 1.4, HP Sleep and Charge); 1 SuperSpeed USB Type-A 5Gbps signaling rate (HP Sleep and Charge); 1 SuperSpeed USB Type-A 5Gbps signaling rate; 1 HDMI 2.0; 1 AC smart pin; 1 headphone/microphone combo Full-size Silver backlit keyboard with Numpad and fingerprint reader, 3-cell 51 Whr Li-ion polymer, up to 9 hr and 30 min battery life, 14.09 x 9.06 x 0.75 in 4.24 lbs , Natural silver, free 32GB USB Drive ",
+			"discount": 0,
+			"stock": 30,
+			"price": 699.10,
+			"featured": false,
+			"rating": 3.8,
+			"categories": ["laptops", "tablets"]
+		},{
+			"name": "Samsung Galaxy Chromebook 2",
+			"image": "https://m.media-amazon.com/images/I/41TdDIgkkIL._AC_.jpg",
+			"aux_images": [
+				"https://m.media-amazon.com/images/I/31z+pap32+L._AC_.jpg",
+				"https://m.media-amazon.com/images/I/41tpwnzAgaL._AC_.jpg"
+			],
+			"description": " Awarded Best Chromebook by CNN Underscored The power & speed you deserve: Whether your working, studying or relaxing, Galaxy Chromebook 2 has you covered. With the latest Intel Core processor, you'll get super-fast speeds. Plus, Wi-Fi 6 GIG+ that’s up to 3x faster than standard Wi-Fi gives you a super smooth performance Sleek design to make you stand out: Featuring an ultra-thin design , the Galaxy Chromebook 2 is compact and ready for impact. With technology as slim, sleek and savvy as this, it’s no wonder they’re staring. Whether your working, studying or relaxing, Galaxy Chromebook 2 has you covered. With the latest Intel Core processor, you'll get super-fast speeds. Plus, Wi-Fi 6 GIG+ that’s up to 3x faster than standard Wi-Fi gives you a super smooth performance A Battery That'S Above & Beyond: Stay dialed in on-the-go with an all-day battery that keeps up no matter how many checkmarks your to-do list demands ",
+			"discount": 0,
+			"stock": 20,
+			"price": 675.00,
+			"featured": false,
+			"rating": 3.2,
 			"categories": ["laptops", "tablets"]
 		}
 		
