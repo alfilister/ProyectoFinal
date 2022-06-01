@@ -159,9 +159,9 @@ function ManageUsers() {
         </tbody>
       </table>
       <Modal isOpen={statusModalRol}>
-        <ModalHeader>Cambiar el ROL Del usuario</ModalHeader>
+        <ModalHeader>Cambiar el ROL De {userSelectRol.fullName}</ModalHeader>
         <ModalBody>
-          <h1>estado actual : User</h1>
+          <h1>estado actual : {userSelectRol.role}</h1>
           <select onClick={(e) => handleChangeSelectROL(e)}>
             <option value="Admin">Administrator</option>
           </select>
@@ -186,9 +186,9 @@ function ManageUsers() {
       </Modal>
 
       <Modal isOpen={viewModalAccess}>
-        <ModalHeader>Cambiar el Acceso Del usuario</ModalHeader>
+        <ModalHeader>Cambiar el Acceso De {accessChange.fullName} </ModalHeader>
         <ModalBody>
-          <h1>estado actual : Authorized </h1>
+          <h1>estado actual {accessChange.role} </h1>
           <select onClick={(e) => handleChangeSelectAcces(e)}>
           <option disabled>currentAccess</option>
             <option value="Locked">Bloqueado</option>
