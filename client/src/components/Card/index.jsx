@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addItemToCart,
   addItemToCartLocalStorage,
   addCounterLocalStorage,
+  addItemToFavs,
 } from "../../redux/actions";
 
 const Card = ({
@@ -20,6 +21,9 @@ const Card = ({
 }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [added, setAdded] = useState(false);
+  const favState = useSelector((state) => state.favs);
+  const validateFav = favState?.filter((el) => el.id == id);
 
   const handleDetail = (e) => {
     e.preventDefault();
@@ -30,8 +34,16 @@ const Card = ({
     e.preventDefault();
     await dispatch(addItemToCart(id));
     dispatch(addItemToCartLocalStorage());
-
     dispatch(addCounterLocalStorage());
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 200);
+  };
+
+  const handlefav = (e, id) => {
+    e.preventDefault();
+    dispatch(addItemToFavs(id));
   };
 
   return (
@@ -57,12 +69,19 @@ const Card = ({
           Details
         </button>
         {stock ? (
-          <button className="infoBtn" onClick={(e) => handleCart(e, id)}>
-            Add To Cart
-          </button>
+          <div className="cart" onClick={(e) => handleCart(e, id)}>
+            <i class="fa-solid fa-cart-plus"></i>
+            <p className={added ? "added" : "hidden"}>Added</p>
+          </div>
         ) : (
-          <button className="outStockBtn">Out of Stock</button>
+          <div></div>
         )}
+        <div
+          className={validateFav[0] ? "cardFav" : "cardNotFav"}
+          onClick={(e) => handlefav(e, id)}
+        >
+          <i class="fa-solid fa-heart"></i>
+        </div>
       </div>
     </div>
   );
