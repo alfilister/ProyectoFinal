@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { getAllUsers, updateUser } from "../../redux/actions";
+import Swal from "sweetalert2";
 
 function ManageUsers() {
   const dispatch = useDispatch();
@@ -10,14 +11,16 @@ function ManageUsers() {
   const [viewModalRol, setViewModalRol] = useState(false);
   const [viewModalAccess, setViewModalAccess] = useState(false);
   const [statusModalRol, setStatusModalRol] = useState(false);
-  const [statusModalAccess, setStatusModalAccess] = useState(false);
   const [userSelectRol, setUserSelectedRol] = useState({}); // estadp que se llena cuando el admin selecciona un usuario para cambiarle el rol 
   const [accessChange, setAccessChange] = useState({}); // estado que se llena cuando el admin selecciona un usuario para cambiarle el access
+
+  useEffect(() => {
+		dispatch(getAllUsers());
+	}, [dispatch]);
 
   const changeRol = (user) => {
     setUserSelectedRol(user);
     console.log("SOY EL USUARIO click ROL", user);
-    dispatch(getAllUsers());
     if (!statusModalRol) {
       setViewModalRol(false);
       setStatusModalRol(true);
@@ -48,23 +51,31 @@ function ManageUsers() {
     });
     console.log(newRol)
   }
+
   function handleSubmitRol(e) {
     e.preventDefault();
     dispatch(updateUser(newRol));
+    dispatch(getAllUsers());
 
     if (!statusModalRol) {
       setViewModalRol(false);
       setStatusModalRol(true);
     }
+    Swal.fire({
+			icon: "success",
+			title: "Complete!",
+			text: "change ROL successfully!",
+			confirmButtonText: "Accept",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				dispatch(getAllUsers());
+			}
+		});
   }
   const changeAcess = (user) => {
     setAccessChange(user);
     console.log("SOY EL USUARIO click ACESS", user);
     dispatch(getAllUsers());
-   /*  if (!statusModalAccess) {
-      setViewModalAccess(true);
-      setStatusModalAccess(false);
-    } */
     setViewModalAccess(true);
     setViewModalRol(false)
   };
@@ -88,16 +99,21 @@ function ManageUsers() {
       role: accessChange.role,
       access: e.target.value
     });
-    console.log(newAcess)
   }
   function handleSubmitAccess(e) {
     e.preventDefault();
     dispatch(updateUser(newAcess));
-
-   /*  if (statusModalAccess) {
-      setViewModalAccess(false);
-      setStatusModalAccess(true);
-    } */
+    dispatch(getAllUsers());
+    Swal.fire({
+			icon: "success",
+			title: "Complete!",
+			text: "change ACCESS successfully!",
+			confirmButtonText: "Accept",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				dispatch(getAllUsers());
+			}
+		});
   }
   return (
     <div>
@@ -161,7 +177,7 @@ function ManageUsers() {
       <Modal isOpen={statusModalRol}>
         <ModalHeader>Cambiar el ROL De {userSelectRol.fullName}</ModalHeader>
         <ModalBody>
-          <h1>estado actual : {userSelectRol.role}</h1>
+          <h1>El estado actual de {userSelectRol.fullName} es {userSelectRol.role}</h1>
           <select onClick={(e) => handleChangeSelectROL(e)}>
             <option value="Admin">Administrator</option>
           </select>
@@ -188,7 +204,7 @@ function ManageUsers() {
       <Modal isOpen={viewModalAccess}>
         <ModalHeader>Cambiar el Acceso De {accessChange.fullName} </ModalHeader>
         <ModalBody>
-          <h1>estado actual {accessChange.role} </h1>
+          <h1>el access actual de {accessChange.fullName} es  {accessChange.role} </h1>
           <select onClick={(e) => handleChangeSelectAcces(e)}>
           <option disabled>currentAccess</option>
             <option value="Locked">Bloqueado</option>
