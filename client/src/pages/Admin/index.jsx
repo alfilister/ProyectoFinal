@@ -12,14 +12,13 @@ import {
 
 function ControlPanel(idUser) {
 	const dispatch = useDispatch();
-/// EDITE ESTO PARA QUE NO APAREZCA EN Routa /controlPanel directamente el component createProduct 
-/* 	const [menu, setMenu] = useState({
+	/// EDITE ESTO PARA QUE NO APAREZCA EN Routa /controlPanel directamente el component createProduct
+	/* 	const [menu, setMenu] = useState({
 		panel: <CreateProduct />,
 	}); */
 
 	const [menu, setMenu] = useState({
-		panel: <h5>
-		WELCOME ADMINISTRATOR</h5>,
+		panel: <h5>WELCOME ADMINISTRATOR</h5>,
 	});
 
 	useEffect(() => {
@@ -27,7 +26,7 @@ function ControlPanel(idUser) {
 		dispatch(getCategories());
 		dispatch(getProducts());
 		dispatch(getOrdersFromDb());
-		dispatch(getAllUsers())
+		dispatch(getAllUsers());
 	}, [menu]);
 
 	const userRef = useSelector((state) => state.user);
@@ -37,7 +36,7 @@ function ControlPanel(idUser) {
 	};
 
 	return (
-		<div>
+		<div className="adminContainer">
 			<MenuAdmin setMenu={setMenu} menu={menu} />
 			{menu.panel}
 		</div>
