@@ -26,6 +26,7 @@ const Detail = () => {
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   console.log("saveUsPlease");
 
+
   const productId = useSelector((state) => state.productsDetail); //producto por id (detail)
   const productReview = useSelector((state) => state.reviewProduct); //productos con reviews
   const usersReview = useSelector((state) => state.usersReview); //id de usuario y nombre review

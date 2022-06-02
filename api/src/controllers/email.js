@@ -47,8 +47,8 @@ const sendEmail = async (email) => {
     await transporter.sendMail({
       from: `Ecomercell <ecomercell22@gmail.com>`, // sender address
       to: email, // list of receivers
-      subject: `Purchase state`, // Subject line
-      text: "Your purchase has been succefully recieved, we will be in touch to inform when the package is on the way. Thanks for being with us.", // plain text body
+      subject: `Estado de compra`, // Subject line
+      text: "Su compra a sido realizada con exito, le informaremos cuando sea despachado, gracias por elegirnos.", // plain text body
     });
   } catch (error) {
     console.log(error);
@@ -59,8 +59,8 @@ const sendEmailOrderStatus = async (email) => {
     await transporter.sendMail({
       from: `Ecomercell <ecomercell22@gmail.com>`, // sender address
       to: email, // list of receivers
-      subject: `Order dispatched`, // Subject line
-      text: "Your package is on the way", // plain text body
+      subject: `Paquete Despachado`, // Subject line
+      text: "Su paquete se ha sido despachado", // plain text body
     });
   } catch (error) {
     console.log(error);
