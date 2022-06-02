@@ -1,0 +1,31 @@
+@use "../abstracts/_variables.scss" as *;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1em;
+
+  button {
+    background-color: $dark-500;
+    color: $dark-000;
+    width: 2rem;
+    height: 2rem;
+    padding-top: 0.2rem;
+    border-radius: 50px;
+    margin: 0.1em 0.2em;
+
+    font-size: 1.3rem;
+
+    &:hover {
+      color: $dark-800;
+      background-color: $dark-000;
+    }
+
+    &:focus {
+      color: $dark-800;
+      background-color: $dark-000;
+    }
+  }
+}
