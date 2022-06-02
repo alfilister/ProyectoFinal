@@ -8,6 +8,7 @@ import { useSelector } from "react-redux";
 const Home = () => {
   return (
     <div className="home">
+      <br></br>
       <CategoryGrid />
       <PersonalizedSuggest />
       <CardSlider />

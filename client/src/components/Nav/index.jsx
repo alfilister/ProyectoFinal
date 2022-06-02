@@ -7,7 +7,6 @@ import logo from "../../scss/assets/logo.png";
 import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
-import SearchBar from "../SearchBar";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   getAllUsers,
@@ -73,33 +72,39 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </div>
       </div>
-      <div className="SearchBar">
-        <SearchBar />
-      </div>
-      <div className="contenedorCartLog">
-        <div className="favDiv">
-          <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
+      {/*       {isAuthenticated ? (
+        <div className="prflContainer">
+          <button
+            className="btnProfileUser"
+            onClick={(e) => handleBtnProfile(e)}
+          >
+            Customer Page
+          </button>
         </div>
-
-        <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
-          <i class="fa-solid fa-cart-shopping">
-            <p className="cartCounter">{cartCounter}</p>
-          </i>
-        </div>
-        <div className="logeo">
-          {isAuthenticated ? (
-            <>
-              <div className="autenticated">
-                <LogOutButton className="estiloSesion" />
-                <Profile className="estiloProfile" />
-              </div>
-            </>
-          ) : (
-            <div className="loginButton">
-              <LoginButton />
+      ) : (
+        <div></div>
+      )} */}
+      <div className="logeo">
+        {isAuthenticated ? (
+          <>
+            <div className="autenticated">
+              <LogOutButton className="estiloSesion" />
+              <Profile className="estiloProfile" />
             </div>
-          )}
-        </div>
+          </>
+        ) : (
+          <div className="loginButton">
+            <LoginButton />
+          </div>
+        )}
+      </div>
+      <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
+        <i class="fa-solid fa-cart-shopping">
+          <p className="cartCounter">{cartCounter}</p>
+        </i>
+      </div>
+      <div className="favDiv">
+        <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
       </div>
     </div>
   );

@@ -1,21 +1,9 @@
 @use "../abstracts/_variables.scss" as *;
 
 .categoryPage {
-  background-color: $secondary;
-  .categoryTitle {
-    height: 5vh;
-    background-color: $secondary;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    h1 {
-      color: $white;
-      text-align: center;
-      font-size: x-large;
-      padding-top: 0.4em;
-    }
-  }
+	background-color: $dark-700;
+	height: 100%;
+	min-height: 100vh;
 
 	body {
 		background-color: $dark-700;

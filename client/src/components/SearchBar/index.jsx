@@ -39,22 +39,20 @@ const SearchBar = () => {
 
   return (
     <div className="searchBar">
-      <div className="cubreSearch">
-        <input
-          type="text"
-          placeholder="Write an item to find..."
-          value={name}
-          onKeyDown={(e) => handleKeyDown(e)}
-          onChange={(e) => handleInputChange(e)}
-        />
-        <button
-          disabled={errors || name === "" ? true : false}
-          type="submit"
-          onClick={(e) => handleSubmit(e)}
-        >
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
+      <input
+        type="text"
+        placeholder="Write an item to find..."
+        value={name}
+        onKeyDown={(e) => handleKeyDown(e)}
+        onChange={(e) => handleInputChange(e)}
+      />
+      <button
+        disabled={errors || name === "" ? true : false}
+        type="submit"
+        onClick={(e) => handleSubmit(e)}
+      >
+        Search
+      </button>
     </div>
   );
 };

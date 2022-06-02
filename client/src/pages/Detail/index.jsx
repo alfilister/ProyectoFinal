@@ -24,6 +24,7 @@ const Detail = () => {
   const { id } = useParams();
   //info del usuario para conseguir Id, y para postear reviews o registrarse en caso de no estar loggeado
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  console.log("saveUsPlease");
 
   const productId = useSelector((state) => state.productsDetail); //producto por id (detail)
   const productReview = useSelector((state) => state.reviewProduct); //productos con reviews
@@ -105,7 +106,6 @@ const Detail = () => {
 
   const handleCart = (e, id) => {
     e.preventDefault();
-    console.log("agregado desde details");
     dispatch(addItemToCart(Number(id)));
     dispatch(addItemToCartLocalStorage());
     dispatch(addCounterLocalStorage());
@@ -119,9 +119,7 @@ const Detail = () => {
     e.preventDefault();
     dispatch(addItemToFavs(Number(id)));
   };
-  const [imgSrc, setImgSrc] = useState(
-    productId.image ? productId.image : null
-  );
+  const [imgSrc, setImgSrc] = useState(productId.image);
   const handleChangeImage = (src) => {
     setImgSrc(src);
   };
