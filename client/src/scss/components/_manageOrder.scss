@@ -1,0 +1,32 @@
+@use "../abstracts/_variables.scss" as *;
+
+.manageOrdersContainer {
+	.center {
+		align-items: center;
+		justify-content: center;
+		color: #333;
+		font-family: $fuente-parrafos;
+	}
+
+	.btn {
+		background-color: #25262b;
+		border-radius: 5px;
+		color: #c1c2c5;
+		border: solid 1px #c1c2c5;
+	}
+
+	.btn:hover {
+		color: $red-000;
+		text-decoration: overline;
+	}
+
+	.btn-borrar {
+		background-color: $red-600;
+		color: $red-000;
+	}
+
+	.buscar {
+		font-size: large;
+		font-family: $fuente-parrafos;
+	}
+}
