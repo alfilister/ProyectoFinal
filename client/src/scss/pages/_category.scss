@@ -1,7 +1,6 @@
 @use "../abstracts/_variables.scss" as *;
 
 .categoryPage {
-<<<<<<< HEAD
   background-color: $secondary;
   .categoryTitle {
     height: 5vh;
@@ -17,11 +16,6 @@
       padding-top: 0.3em;
     }
   }
-=======
-	background-color: $dark-700;
-	height: 100%;
-	min-height: 100vh;
->>>>>>> aed3f08b157a5bb0fdc5126bf2493ee05dd9d87d
 
 	body {
 		background-color: $dark-700;
