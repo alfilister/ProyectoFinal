@@ -1,19 +1,6 @@
 @use "../abstracts/_variables.scss" as *;
 
 .formContainer {
-	// display: flex;
-	// flex-direction: column;
-	align-items: center;
-	// background-color: $red-750;
-	// padding: 10px;
-	// height: 100vh;
-
-	.tituloCargar {
-		font-family: $fuente-titulo;
-		color: $red-000;
-		// font-size: x-large;
-	}
-
 	.form {
 		// height: 155vh;
 		width: 45vw;

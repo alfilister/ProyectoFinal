@@ -171,34 +171,59 @@ function ManageOrder() {
 			</table>
 			<Modal isOpen={viewModal}>
 				<ModalHeader>
-					<span>Orden #{orderSelected?.id}</span>
+					<h3>Orden #{orderSelected?.id}</h3>
 				</ModalHeader>
 				<ModalBody>
 					<h3>Datos del cliente:</h3>
-					<span>Nombre del cliente: {orderSelected?.user.fullName}</span>
+					<span>
+						<strong>Nombre del cliente:</strong> {orderSelected?.user.fullName}
+					</span>
 					<br />
-					<span>Documento del cliente: {orderSelected?.user.id_document}</span>
+					<span>
+						<strong>Documento del cliente:</strong>{" "}
+						{orderSelected?.user.id_document}
+					</span>
 					<br />
-					<span>Correo del cliente: {orderSelected?.user.email}</span>
+					<span>
+						<strong>Correo del cliente:</strong> {orderSelected?.user.email}
+					</span>
 					<br />
+					<hr size="2px" color="black" />
 					<h3>Datos del envio:</h3>
-					<span>City: {orderSelected?.city}</span>
+					<span>
+						<strong>City:</strong> {orderSelected?.city}
+					</span>
 					<br />
-					<span>State: {orderSelected?.state}</span>
+					<span>
+						<strong>State:</strong> {orderSelected?.state}
+					</span>
 					<br />
-					<span>Shipping address: {orderSelected?.shipping_address}</span>
+					<span>
+						<strong>Shipping address:</strong> {orderSelected?.shipping_address}
+					</span>
 					<br />
-					<span>Zip code: {orderSelected?.zip_code}</span>
+					<span>
+						<strong>Zip code:</strong> {orderSelected?.zip_code}
+					</span>
 					<br />
-					<span>Telefono del cliente: {orderSelected?.receiver_phone}</span>
+					<span>
+						<strong>Telefono del cliente:</strong>{" "}
+						{orderSelected?.receiver_phone}
+					</span>
 					<br />
+					<hr size="2px" color="black" />
 					<h3>Datos de la compra:</h3>
-					<span>Fecha de compra: {orderSelected?.createdAt}</span>
+					<span>
+						<strong>Fecha de compra:</strong> {orderSelected?.createdAt}
+					</span>
 					<br />
-					<span>Valor de la compra: {orderSelected?.total_purchase}</span>
+					<span>
+						<strong>Valor de la compra:</strong> {orderSelected?.total_purchase}
+					</span>
 					<br />
+					<hr size="2px" color="black" />
 					<h3>Productos:</h3>
-					<table>
+					<table class="table table-striped">
 						<thead>
 							<tr>
 								<td>Id del producto</td>
@@ -223,6 +248,7 @@ function ManageOrder() {
 				</ModalBody>
 				<ModalFooter>
 					<button
+						className="btn btn-primary"
 						onClick={() => {
 							setViewModal(false);
 						}}
@@ -230,6 +256,7 @@ function ManageOrder() {
 						Ok
 					</button>
 					<button
+						className="btn btn-danger"
 						onClick={() => {
 							setViewModal(false);
 						}}
@@ -250,6 +277,7 @@ function ManageOrder() {
 						}
 					})}
 					<select
+						className="form-select"
 						onClick={(event) => {
 							handleStatus(event);
 						}}
@@ -264,6 +292,7 @@ function ManageOrder() {
 				</ModalBody>
 				<ModalFooter>
 					<button
+						className="btn btn-primary"
 						onClick={() => {
 							changeStatus();
 						}}
@@ -271,6 +300,7 @@ function ManageOrder() {
 						Editar
 					</button>
 					<button
+						className="btn btn-danger"
 						onClick={() => {
 							setStatusModal(false);
 						}}
