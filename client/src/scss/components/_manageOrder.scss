@@ -9,7 +9,10 @@
 	}
 
 	.btn {
-		border: 1px solid $dark-600;
+		background-color: #25262b;
+		border-radius: 5px;
+		color: #c1c2c5;
+		border: solid 1px #c1c2c5;
 	}
 
 	.btn:hover {

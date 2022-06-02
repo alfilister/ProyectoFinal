@@ -1,48 +1,59 @@
 @use "../abstracts/_variables.scss" as *;
 
-.formContainer{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: $red-750;
-  height: 100vh;
+.formContainer {
+	// display: flex;
+	// flex-direction: column;
+	align-items: center;
+	// background-color: $red-750;
+	// padding: 10px;
+	// height: 100vh;
 
-  .tituloCargar{
-    font-family: $fuente-titulo;
-    color: $red-100;
-    font-size: x-large;
-  }
+	.tituloCargar {
+		font-family: $fuente-titulo;
+		color: $red-000;
+		// font-size: x-large;
+	}
 
-  .form{
-    height: 155vh;
-    width: 45vw;
-    display:flex;
-    flex-direction: column;
-    
-    justify-content: center;
-    align-items: center;
-    align-content: space-around;
-    
-    
- background-color: $red-800;
-    
-    border-radius: 1rem;
-    
-    .elementosForm{
-      font-family: $fuente-parrafos;
-      font-size: x-large;
-      color: $red-100;
-      padding: 0.2rem;
-    }
-    .elementosForm input{
-      width: max-content;
-      border-radius: 1rem;
-      padding: 0.2rem;
-    }
-    .form-errors{
-      font-family: $fuente-parrafos;
-      color: $dark-200;
-    }
-  }
+	.form {
+		// height: 155vh;
+		width: 45vw;
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem;
+
+		justify-content: center;
+		align-items: center;
+		align-content: space-around;
+
+		background-color: $dark-000;
+
+		border-radius: 1rem;
+
+		.elementosForm {
+			font-family: $fuente-parrafos;
+			font-size: x-large;
+			color: $dark-900;
+			padding: 0.2rem;
+		}
+		.elementosForm input {
+			// width: max-content;
+			border-radius: 1rem;
+			padding: 0.2rem;
+		}
+		.form-errors {
+			font-family: $fuente-parrafos;
+			color: $dark-500;
+		}
+
+		.btn {
+			background-color: $dark-500;
+			border-radius: 5px;
+			border: solid 1px #c1c2c5;
+		}
+
+		.btn:hover {
+			color: $red-000;
+			text-decoration: overline;
+		}
+	}
 }
- 
