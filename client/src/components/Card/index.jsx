@@ -60,7 +60,7 @@ const Card = ({
       <div className="info">
 
         <span> $ {price}</span>
-        {/* <span>{` | ${categories} | `}</span> */}
+        <span>{` | ${categories} | `}</span>
         <span>⭐ {rating}</span>
 
       </div>

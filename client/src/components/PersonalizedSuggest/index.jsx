@@ -37,7 +37,7 @@ function PersonalizedSuggest() {
   console.log(toShow);
 
   return (
-    <div className="suggestSlider">
+    <div className="cardSlider">
       {!verifiedLog ? (
         <div></div>
       ) : (

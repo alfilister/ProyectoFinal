@@ -131,7 +131,7 @@ function CartPage() {
       );
       dispatch(addShippingStorage(fields));
       navigate("/checkout");
-      // creas una accion y esa accion va a recibir algo , ese algo es el email del usuario .
+      // creas una accion y esa accion va a recibir algo , ese algo es el email del usuario . 
     }
   };
 
@@ -146,6 +146,7 @@ function CartPage() {
       {!initialCart[0] ? (
         <div className="emptyCart">
           <h2>Empty cart, feel free to explore our categories</h2>
+          <CategoryGrid />
         </div>
       ) : (
         <div className="cartPage">
