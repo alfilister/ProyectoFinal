@@ -58,11 +58,9 @@ const Card = ({
       </div>
 
       <div className="info">
-
         <span> $ {price}</span>
-        <span>{` | ${categories} | `}</span>
-        <span>⭐ {rating}</span>
 
+        <span>⭐ {rating}</span>
       </div>
       <div className="btn">
         <div className="conjuntoBoton">
