@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { updateProduct, deleteProduct } from "../../redux/actions";
 
 function EditProduct() {
