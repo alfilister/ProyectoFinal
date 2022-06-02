@@ -26,17 +26,18 @@
     .imagenDetalle {
       display: flex;
       flex-direction: column;
+
       .imgGrande {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 80%;
-        width: 100%;
+        margin-left: 300px;
+        margin-top: 100px;
+        height: 500px;
+        width: 300px;
 
         img {
-          width: 30vw;
           height: fit-content;
           background: #f0f0f0;
+          height: 500px;
+          width: 300px;
           box-shadow: -10px 10px 20px #afafaf, 10px -10px 20px #ffffff;
         }
       }

@@ -116,17 +116,32 @@
         cursor: pointer;
       }
     }
-  
-    .logeo {
-      height: 100%;
-      display: flex;
-      
-      justify-content: flex-end;
-  
-      .autenticated {
-        display: flex;
-        flex-direction: row;
-      }
+
+    .cartCounter {
+      position: absolute;
+      top: 15%;
+      left: 40%;
+      font-size: 0.3em;
+      font-weight: bold;
+      color: $red-000;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .favDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $red-200;
+    font-size: 40px;
+
+    &:hover {
+      color: $red-100;
+      transition: 0.5s ease-in-out;
+
     }
   
     // .prflContainer {

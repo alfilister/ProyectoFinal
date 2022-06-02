@@ -43,13 +43,12 @@
     justify-content: center;
 
     input {
-      background-color: rgb(5, 5, 55);
+      background-color: rgb(2, 102, 2);
       color: $red-000;
       border-radius: 10px;
       font-size: 1.5em;
-      height: 1.5em;
-      width: 5em;
-      padding-top: 0.2em;
+      height: 2em;
+      width: 6em;
 
       &:hover {
         background-color: whitesmoke;
