@@ -13,8 +13,10 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
     product_id: idProduct,
     user_id: idUser,
     product_review: "",
-    score_review: 0,
+    score_review: "",
   });
+
+  const [stars, setStars] = useState(false);
 
   function handleChangeInputReview(e) {
     setInput({
@@ -22,7 +24,7 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
       [e.target.name]: e.target.value,
     });
 
-    console.log(input);
+    setStars(true);
   }
 
   function handleSubmit(e) {
@@ -51,9 +53,26 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
 
   return (
     <div className="StarConteiner">
-      <StarRating stars={input.score_review} />
+      <div className="scoreProduct">
+        <label> Score review:</label>
+        <input
+          type="number"
+          step="0.5"
+          min={0}
+          max={5}
+          maxLength={0}
+          placeholder="rate between 0 to 5"
+          value={input.score_review}
+          name="score_review"
+          onChange={handleChangeInputReview}
+          id="stars"
+          className="scoreStar"
+        />
+      </div>
+      {stars ? <StarRating stars={input.score_review} /> : <div></div>}
+
       <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Escribir Opinion:</label>
+        <label>Share your experience:</label>
         <textarea
           rows="10"
           cols="40"
@@ -62,17 +81,6 @@ export default function RenderReviewCreate({ idProduct, idUser }) {
           name="product_review"
           onChange={handleChangeInputReview}
           className="textReview"
-        />
-        <label>Puntaje Producto:</label>
-        <input
-          type="number"
-          step="0.1"
-          min="0"
-          max="5"
-          value={input.score_review}
-          name="score_review"
-          onChange={handleChangeInputReview}
-          className="scoreStar"
         />
 
         <button type="submit"> Send </button>
