@@ -1,38 +1,40 @@
 @use "../abstracts/_variables.scss" as *;
+@use "../abstracts/_mixins.scss" as *;
 
 .searchBar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-
-  input {
-    background-color: $dark-100;
-    border-radius: 5px;
-    color: $red-800;
-    border: solid 1px;
-    padding: 0.5rem 0 0.2rem 0.5rem;
-
-    &:active {
+  align-items: center;
+  width: 100%;
+  
+  .cubreSearch {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    
+    input {
+      height: 100%;
+      width: 85%;
+      color: $red-800;
+      padding: 0.5rem 0 0.2rem 0.5rem;
+      background-color: white;
       border: none;
-      background-color: $dark-100;
-      color: $dark-800;
+      // &:active {
+      //   color: $dark-800;
+      // }
+    }
+  
+    button {
+      background-color: white;
+      width: 15%;
+      color: $background;
+      &:hover {
+        color: $primary;
+        cursor: pointer;
+      }
     }
   }
 
-  button {
-    background-color: $dark-600;
-    border-radius: 5px;
-    color: $dark-000;
-    border: solid 1px $dark-000;
-    margin: 0.5em 0 0 0.2em;
-    padding: 0.5rem 0.3rem 0.2rem 0.3rem;
-
-    &:hover {
-      background-color: $dark-000;
-      color: $dark-600;
-      border-color: $dark-600;
-      border: solid 1px $dark-600;
-    }
-  }
 }

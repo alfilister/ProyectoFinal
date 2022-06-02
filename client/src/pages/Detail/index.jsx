@@ -119,7 +119,9 @@ const Detail = () => {
     e.preventDefault();
     dispatch(addItemToFavs(Number(id)));
   };
-  const [imgSrc, setImgSrc] = useState(productId.image);
+  const [imgSrc, setImgSrc] = useState(
+    productId.image ? productId.image : null
+  );
   const handleChangeImage = (src) => {
     setImgSrc(src);
   };
