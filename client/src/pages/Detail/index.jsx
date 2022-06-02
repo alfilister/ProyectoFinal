@@ -105,7 +105,6 @@ const Detail = () => {
 
   const handleCart = (e, id) => {
     e.preventDefault();
-    console.log("agregado desde details");
     dispatch(addItemToCart(Number(id)));
     dispatch(addItemToCartLocalStorage());
     dispatch(addCounterLocalStorage());
