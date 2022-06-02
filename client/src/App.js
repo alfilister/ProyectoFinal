@@ -2,7 +2,6 @@ import "./_app.scss";
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import Error404 from "./pages/Error404";
@@ -11,6 +10,7 @@ import ControlPanel from "./pages/Admin";
 import CartPage from "./pages/CartPage";
 import ProductReview from "./components/createReview/renderReviewCreate/index";
 import EditarUser from "./components/User/EditarUser";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
 	getProducts,

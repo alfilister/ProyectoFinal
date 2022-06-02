@@ -156,7 +156,7 @@ function ManageUsers() {
 								</th>
 								<td className="center">{user?.fullName}</td>
 								<td className="center">
-									{user?.id_document ? user.id_document : "Sin Documento,Aun"}
+									{user?.id_document ? user.id_document : "Sin Documento, Aun"}
 								</td>
 								<td className="center">{user?.email}</td>
 								<td className="center">{user?.role}</td>
@@ -192,12 +192,13 @@ function ManageUsers() {
 					<h1>
 						El estado actual de {userSelectRol.fullName} es {userSelectRol.role}
 					</h1>
-					<select onClick={(e) => handleChangeSelectROL(e)}>
+					<select class="form-select" onClick={(e) => handleChangeSelectROL(e)}>
 						<option value="Admin">Administrator</option>
 					</select>
 				</ModalBody>
 				<ModalFooter>
 					<button
+						class="btn btn-primary"
 						onClick={(e) => {
 							handleSubmitRol(e);
 							setStatusModalRol(false);
@@ -206,6 +207,7 @@ function ManageUsers() {
 						Editar
 					</button>
 					<button
+						class="btn btn-danger"
 						onClick={() => {
 							setStatusModalRol(false);
 						}}
@@ -219,15 +221,19 @@ function ManageUsers() {
 				<ModalHeader>Cambiar el Acceso De {accessChange.fullName} </ModalHeader>
 				<ModalBody>
 					<h1>
-						el access actual de {accessChange.fullName} es {accessChange.role}{" "}
+						el access actual de {accessChange.fullName} es {accessChange.access}{" "}
 					</h1>
-					<select onClick={(e) => handleChangeSelectAcces(e)}>
+					<select
+						class="form-select"
+						onClick={(e) => handleChangeSelectAcces(e)}
+					>
 						<option disabled>currentAccess</option>
 						<option value="Locked">Bloqueado</option>
 					</select>
 				</ModalBody>
 				<ModalFooter>
 					<button
+						class="btn btn-primary"
 						onClick={(e) => {
 							handleSubmitAccess(e);
 							setViewModalAccess(false);
@@ -236,6 +242,7 @@ function ManageUsers() {
 						Editar
 					</button>
 					<button
+						class="btn btn-danger"
 						onClick={() => {
 							setViewModalAccess(false);
 						}}

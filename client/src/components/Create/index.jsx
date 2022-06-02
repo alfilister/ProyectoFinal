@@ -155,9 +155,6 @@ const Create = () => {
 		<div className="formContainer">
 			<br />
 			<div className="form">
-				<div className="tituloCargar">
-					<h1>Cargar datos de articulo</h1>
-				</div>
 				<form onSubmit={(e) => handleSubmit(e)}>
 					<div className="elementosForm mb-3">
 						<label className="form-label">Nombre : </label>
