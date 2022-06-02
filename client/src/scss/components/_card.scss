@@ -6,58 +6,39 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
-  box-shadow: 1px 1px 1px #000000, -1px -1px 1px $dark-500;
-
   border-radius: 10px;
-
-  width: 95%;
-  max-width: 500px;
-  height: fit-content;
-  margin: 0.4em;
-
+  width: 18rem;
+  height: 25rem;
+  // box-shadow: 1px 1px 1px #000000, -1px -1px 1px $dark-500;
+  
   &:hover {
     box-shadow: 2px 2px 15px #000000, -2px -2px 15px $red-600;
   }
 
+  .fa-star{
+    color: #FFBA08;
+  }
+
   h3 {
     text-align: center;
-    font-size: larger;
-    padding-top: 1.1em;
-    height: 4rem;
-    margin: 10px 5px;
+    font-size: 1rem;
+    // padding-top: 1.1em;
+    // height: 4rem;
+    // margin: 10px 5px;
   }
 
   .img {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    width: 70%;
-    margin-left: 15%;
-    height: fit-content;
+    width: 100%;
+    height: 15rem;
 
     img {
-      border-radius: 20px;
-      width: 400px;
-      height: 400px;
-    }
-
-    .image-hover {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      width: 100%;
+      width: fit-content;
       height: 100%;
-      opacity: 0;
-      transition: opacity 0.5s;
-
-      &:hover {
-        opacity: 1;
-        background-color: white;
-      }
+      max-height: 15rem;
+      
     }
   }
 
@@ -70,54 +51,82 @@
   }
 
   .info {
-    margin: 0.5rem 0.2rem;
+    padding: 0.5rem 0.2rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
+    .price {
+      font-size: 1.5rem;
+    }
     span {
+      font-weight: bold;
       text-align: center;
+      i {
+        padding-left: 5px;
+      }
     }
   }
 
   .btn {
     display: flex;
-    flex-direction: row;
-    align-content: center;
+    align-items: center;
     justify-content: center;
-
-    .infoBtn {
-      background-color: $dark-600;
-      border-radius: 5px;
-      color: $dark-000;
-      font-size: larger;
-      border: solid 1px;
-      margin-left: 0.2em;
-      margin-bottom: 0.5em;
-      padding: 0.2rem 0.5rem 0 0.5rem;
-
-      &:hover {
-        background-color: $dark-000;
-        color: $dark-600;
-      }
-    }
-
-    .cart {
-      display: flex;
+    
+    .conjuntoBoton {
+      display:flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      position: relative;
-
-      .fa-cart-plus {
-        margin: 0 auto 0.5em 1em;
-        color: $red-200;
-        &:hover {
-          cursor: auto;
-          color: $red-500;
+      
+      .cart {  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        .fa-cart-plus {
+          color: $secondary;
+          &:hover {
+            cursor: pointer;
+            transition: ease-in-out 0.3s;
+            color: $primary;
+          }
         }
       }
+  
+      .infoBtn {
+        background-color: $secondary;
+        color: $white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 5px;
+  
+        &:hover {
+          transition: ease-in-out 0.3s;
+          color: $primary;
+          cursor: pointer;
+        }
+      }
+      
+  
+      .cardFav {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        .fa-heart{
+          color: $secondary;
+          height: 15px;
+          width: fit-content;
+          &:hover {
+            color: $primary;
+            transition: ease-in-out 0.3s;
+            cursor: pointer;
+          }
+        }
+      }
+    }
 
       .added {
         text-align: center;
@@ -143,16 +152,6 @@
       }
     }
 
-    .cardFav {
-      color: $red-400;
-      margin: 0.3em 0 0 1em;
-      width: fit-content;
-      &:hover {
-        cursor: auto;
-        color: $red-500;
-      }
-    }
-
     .cardNotFav {
       @extend .cardFav;
       color: $dark-200;
@@ -162,7 +161,7 @@
       cursor: auto;
     }
   }
-}
+
 
 .cardFeatured {
   @extend .card;
@@ -175,17 +174,23 @@
     box-shadow: 2px 2px 15px #000000, -2px -2px 15px $red-000;
   }
 
-  .featTag {
-    position: absolute;
-    top: 4%;
-    left: 85%;
-    font-size: xx-large;
-  }
+  
+    .featTag {
+      position: absolute;
+      top: 6%;
+      left: 90%;
+      .fa-star{
+        height: 15px;
+        width: fit-content;
+      }
+    }
 
-  h3 {
-    background-color: $dark-500;
-    color: $dark-000;
-  }
+    h3 {
+      width: 90%;
+      padding-left: 10px;
+      text-align: center;
+      color: $white;
+    }
 
   .info {
     color: $dark-000;
@@ -195,35 +200,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .conjuntoBoton {
+      display:flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
 
-    .infoBtn {
-      background-image: linear-gradient(to right, #e52d27 0%, #b31217 100%);
-      border: solid 1px $primary;
-      color: $red-000;
-      font-size: larger;
-
-      &:hover {
-        background-image: linear-gradient(to right, #b31217 0%, #e52d27 100%);
-        border: solid 1px $primary;
-        color: $red-000;
-      }
-    }
-    .cart {
-      .fa-cart-plus {
-        margin: 0 0 0.5em 1em;
-        color: $dark-000;
-        &:hover {
-          cursor: auto;
-          color: $red-200;
+      .cart {  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        .fa-cart-plus {
+          color: $white;
+          &:hover {
+            color: $primary;
+            transition: ease-in-out 0.3s;
+            cursor: pointer;
+          }
         }
       }
-    }
-
-    .cardFav {
-      margin-bottom: 0.5em;
-      &:hover {
-        color: $red-000;
-        transition: 0.5s ease;
+  
+      .infoBtn {
+        background-color: $secondary;
+        color: $white;
+        font-size: 1rem;
+        font-weight: bold;
+        padding: 5px;
+  
+        &:hover {
+          color: $primary;
+            transition: ease-in-out 0.3s;
+            cursor: pointer;
+        }
+      }
+      
+  
+      .cardFav {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 6px;
+        .fa-heart{
+          color: $white;
+          height: 15px;
+          width: fit-content;
+        }
+        &:hover {
+           color: $primary;
+            transition: ease-in-out 0.3s;
+            cursor: pointer;
+        }
       }
     }
 

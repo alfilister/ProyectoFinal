@@ -1,16 +1,16 @@
 @use "../abstracts/_variables.scss" as *;
 
 .categoryPage {
-  background-color: $dark-700;
+  background-color: $secondary;
   .categoryTitle {
     height: 5vh;
-    background-color: $dark-600;
+    background-color: $secondary;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     h1 {
-      color: $dark-000;
+      color: $white;
       text-align: center;
       font-size: x-large;
       padding-top: 0.3em;

@@ -3,28 +3,29 @@
 
 
 .divNavbar {
-  // display: grid;
-  // grid-template-columns: 4fr 2fr 3fr 1fr;
-  // width: 100vw;
-  // background-color: $dark-500;
-  // height: 5rem;
-  position: absolute;
-  width: 100vw;
-  height: 117px;
-  left: 0px;
-  top: 0px;
+  // z-index: 100;
+  // position: fixed;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 100%;
   background-color: $secondary;
+  grid-template-areas: 'titulo titulo searchbar searchbar searchbar cartLogWish cartLogWish';
 
 
   .divSeachYLogo {
+    grid-area: titulo;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    
     .logo {
+      width: 100%;
+      
       display: flex;
+      align-items: center;
       .logoImg {
-        height: 3rem;
+        height: 2rem;
         width: fit-content;
         border-radius: 50%;
         padding-left: 0.5rem;
@@ -41,88 +42,117 @@
       text-decoration: none;
     }
   }
-
-  .logeo {
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-
-    .autenticated {
-      display: flex;
-      flex-direction: row;
-    }
-  }
-
-  .prflContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    .btnProfileUser {
-      background-color: rgba($color: $dark-800, $alpha: 0.5);
-      padding: 0.3em;
-      border-radius: 15px;
-
-      border: none;
-      color: $red-000;
-      font-size: 1.2em;
-      width: fit-content;
-      height: fit-content;
-
-      &:hover {
-        cursor: pointer;
-      }
-      &:active {
-        background-color: $red-000;
-        color: $dark-500;
-        transition: ease 0.5s;
-      }
-    }
-  }
-  .cartBtnNav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    margin-left: 100%;
-    width: fit-content;
-
-    .fa-cart-shopping {
-      color: $dark-000;
-      font-size: 50px;
-      position: relative;
-      &:hover {
-        color: $dark-700;
-        transition: 0.5s ease;
-      }
-      &:active {
-        color: $red-000;
-      }
-    }
-
-    .cartCounter {
-      position: absolute;
-      top: -15%;
-      left: 40%;
-      font-size: 0.3em;
-      font-weight: bold;
-      color: $red-000;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .favDiv {
+  .SearchBar {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $red-200;
-    font-size: 40px;
+    
+    grid-area: searchbar;
+  }
 
-    &:hover {
-      color: $red-100;
-      transition: 0.5s ease-in-out;
+  .contenedorCartLog{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-area: cartLogWish;
+   
+
+    .favDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // color: $red-200;
+      // font-size: 40px;
+     
+      i {
+        height: 30px;
+        width: fit-content;
+        color: $white;
+        &:hover {
+          color: $primary;
+          transition: 0.3s ease-in-out;
+          cursor: pointer;
+        }
+      }
+        
     }
+
+    .cartBtnNav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+  
+      i {
+        height: 30px;
+        width: fit-content;
+        color: $white;
+        position: relative;
+        &:hover {
+          color: $primary;
+          transition: 0.3s ease;
+        }
+        &:active {
+          color: $background;
+        }
+      }
+  
+      .cartCounter {
+        position: absolute;
+        top: 0%;
+        left: 80%;
+        font-size: 0.5em;
+        font-weight: bold;
+        background-color: $primary;
+        border-radius: 20%;
+        padding: 0.3em;
+        color: $white;
+      }
+  
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+    .logeo {
+      height: 100%;
+      display: flex;
+      
+      justify-content: flex-end;
+  
+      .autenticated {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  
+    // .prflContainer {
+    //   display: flex;
+    //   align-items: center;
+    //   justify-content: flex-start;
+    //   .btnProfileUser {
+    //     background-color: rgba($color: $dark-800, $alpha: 0.5);
+    //     padding: 0.3em;
+    //     border-radius: 15px;
+  
+    //     border: none;
+    //     color: $red-000;
+    //     font-size: 1.2em;
+    //     width: fit-content;
+    //     height: fit-content;
+  
+    //     &:hover {
+    //       cursor: pointer;
+    //     }
+    //     &:active {
+    //       background-color: $red-000;
+    //       color: $dark-500;
+    //       transition: ease 0.5s;
+    //     }
+    //   }
+    // }
   }
 }
