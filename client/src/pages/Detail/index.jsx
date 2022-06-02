@@ -138,8 +138,10 @@ const Detail = () => {
             <div className="contenedorImagenDescription">
               <div className="imagenDetalle">
                 <div className="imgGrande">
-                  <img src={imgSrc} alt="" />
-                  {/* <ProductImage productId={productId} /> */}
+                  <img
+                    src={imgSrc ? imgSrc : productId.image}
+                    alt="ImagenesProducto"
+                  />
                 </div>
                 <div className="imagesAux">
                   {productId.aux_images?.map((el) => {
@@ -157,6 +159,16 @@ const Detail = () => {
                       </div>
                     );
                   })}
+
+                  <div className="imgChicas">
+                    <img
+                      src={productId.image}
+                      alt="Imagen principal"
+                      onClick={(e) =>
+                        handleChangeImage(e.target.getAttribute("src"))
+                      }
+                    />
+                  </div>
                 </div>
               </div>
 
