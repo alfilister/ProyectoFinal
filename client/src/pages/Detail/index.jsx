@@ -16,6 +16,7 @@ import {
   getUsersByEmail,
   addItemToCartLocalStorage,
   addCounterLocalStorage,
+  addItemToFavs,
 } from "../../redux/actions";
 
 const Detail = () => {
@@ -29,6 +30,9 @@ const Detail = () => {
   const usersReview = useSelector((state) => state.usersReview); //id de usuario y nombre review
   const ordersDb = useSelector((state) => state.ordersDb);
   const reviewsDb = useSelector((state) => state.reviewProduct);
+
+  const favorites = useSelector((state) => state.favs);
+  const favouriteValidation = favorites?.filter((el) => el.id == id);
 
   //CAPTURAR ID Y EMAIL DE USUARIO AUTENTICADO
   const bucket = [];
@@ -97,12 +101,29 @@ const Detail = () => {
     };
   }, []);
 
+  const [added, setAdded] = useState(false);
+
   const handleCart = (e, id) => {
     e.preventDefault();
     console.log("agregado desde details");
     dispatch(addItemToCart(Number(id)));
     dispatch(addItemToCartLocalStorage());
     dispatch(addCounterLocalStorage());
+    setAdded(true);
+    setTimeout(() => {
+      setAdded(false);
+    }, 200);
+  };
+
+  const handlefav = (e, id) => {
+    e.preventDefault();
+    dispatch(addItemToFavs(Number(id)));
+  };
+  const [imgSrc, setImgSrc] = useState(
+    productId.image ? productId.image : null
+  );
+  const handleChangeImage = (src) => {
+    setImgSrc(src);
   };
 
   return (
@@ -119,18 +140,37 @@ const Detail = () => {
             <div className="contenedorImagenDescription">
               <div className="imagenDetalle">
                 <div className="imgGrande">
-                  <img src={productId.image} alt="" />
+                  <img
+                    src={imgSrc ? imgSrc : productId.image}
+                    alt="ImagenesProducto"
+                  />
                 </div>
                 <div className="imagesAux">
                   {productId.aux_images?.map((el) => {
                     return (
                       <div>
                         <div className="imgChicas">
-                          <img src={el} alt="imagenes auxiliares" />;
+                          <img
+                            onClick={(e) =>
+                              handleChangeImage(e.target.getAttribute("src"))
+                            }
+                            src={el}
+                            alt="imagenes auxiliares"
+                          />
                         </div>
                       </div>
                     );
                   })}
+
+                  <div className="imgChicas">
+                    <img
+                      src={productId.image}
+                      alt="Imagen principal"
+                      onClick={(e) =>
+                        handleChangeImage(e.target.getAttribute("src"))
+                      }
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -163,12 +203,28 @@ const Detail = () => {
                 </div>
                 {productId.stock ? (
                   <div className="btnCrt">
-                    <button onClick={(e) => handleCart(e, id)}>
-                      Add To Cart
-                    </button>
+                    <div className="cart" onClick={(e) => handleCart(e, id)}>
+                      <i class="fa-solid fa-cart-plus"></i>
+                      <p className={added ? "added" : "hidden"}>Added</p>
+                    </div>
+                    <div
+                      className={
+                        favouriteValidation[0] ? "cardFav" : "cardNotFav"
+                      }
+                      onClick={(e) => handlefav(e, id)}
+                    >
+                      <i class="fa-solid fa-heart"></i>
+                    </div>
                   </div>
                 ) : (
-                  <div></div>
+                  <div
+                    className={
+                      favouriteValidation[0] ? "cardFav" : "cardNotFav"
+                    }
+                    onClick={(e) => handlefav(e, id)}
+                  >
+                    <i class="fa-solid fa-heart"></i>
+                  </div>
                 )}
                 <div className="descripcion">
                   <h2>Description:</h2>

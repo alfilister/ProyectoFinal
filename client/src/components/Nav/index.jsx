@@ -7,6 +7,7 @@ import logo from "../../scss/assets/logo.png";
 import LoginButton from "../User/Login";
 import LogOutButton from "../User/LogOut";
 import Profile from "../User/profileUser";
+import SearchBar from "../SearchBar";
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   getAllUsers,
@@ -46,7 +47,7 @@ const Nav = ({ setCurrentPage }) => {
     navigate("/cart");
   };
 
-/*   const handleBtnProfile = (e) => {
+  /*   const handleBtnProfile = (e) => {
     e.preventDefault();
     dispatch(getAllUsers());
     navigate("/edituser");
@@ -54,9 +55,14 @@ const Nav = ({ setCurrentPage }) => {
 
   const handleHome = () => {
     dispatch(getCategories());
-    dispatch(getProducts())
+    dispatch(getProducts());
     dispatch(getAllUsers());
     navigate("/");
+  };
+
+  const handleFav = (e) => {
+    e.preventDefault();
+    navigate("/favorites");
   };
 
   return (
@@ -67,35 +73,33 @@ const Nav = ({ setCurrentPage }) => {
           <h2 className="tituloPag">E-commerCell</h2>
         </div>
       </div>
-{/*       {isAuthenticated ? (
-        <div className="prflContainer">
-          <button
-            className="btnProfileUser"
-            onClick={(e) => handleBtnProfile(e)}
-          >
-            Customer Page
-          </button>
-        </div>
-      ) : (
-        <div></div>
-      )} */}
-      <div className="logeo">
-        {isAuthenticated ? (
-          <>
-            <div className="autenticated">
-              <LogOutButton className="estiloSesion" />
-              <Profile className="estiloProfile" />
-            </div>
-          </>
-        ) : (
-          <div className="loginButton">
-            <LoginButton />
-          </div>
-        )}
+      <div className="SearchBar">
+        <SearchBar />
       </div>
-      <div className="cartBtnNav">
-        <button onClick={(e) => handleCart(e)}>Cart</button>
-        <p className="cartCounter">{cartCounter}</p>
+      <div className="contenedorCartLog">
+        <div className="favDiv">
+          <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
+        </div>
+
+        <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
+          <i class="fa-solid fa-cart-shopping">
+            <p className="cartCounter">{cartCounter}</p>
+          </i>
+        </div>
+        <div className="logeo">
+          {isAuthenticated ? (
+            <>
+              <div className="autenticated">
+                <LogOutButton className="estiloSesion" />
+                <Profile className="estiloProfile" />
+              </div>
+            </>
+          ) : (
+            <div className="loginButton">
+              <LoginButton />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
