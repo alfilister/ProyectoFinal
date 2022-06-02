@@ -12,7 +12,6 @@ const Card = ({
   id,
   name,
   image,
-  categories,
   stock,
   price,
   rating,
@@ -48,39 +47,42 @@ const Card = ({
 
   return (
     <div className={featured === false ? "card" : "cardFeatured"}>
-      {featured && <div className="featTag">⭐</div>}
       <h3>{name}</h3>
+      {featured && (
+        <div className="featTag">
+          <i className="fa-solid fa-star"></i>
+        </div>
+      )}
       <div className={stock ? "img" : "noStockImg"}>
         <img src={image} alt="Main" />
-        <img
-          className="image-hover"
-          src={aux_images[0] ? aux_images[0] : image}
-          alt="Alt"
-        />
       </div>
 
       <div className="info">
+
         <span> $ {price}</span>
         {/* <span>{` | ${categories} | `}</span> */}
         <span>⭐ {rating}</span>
+
       </div>
       <div className="btn">
-        <button className="infoBtn" onClick={(e) => handleDetail(e)}>
-          Details
-        </button>
-        {stock ? (
-          <div className="cart" onClick={(e) => handleCart(e, id)}>
-            <i class="fa-solid fa-cart-plus"></i>
-            <p className={added ? "added" : "hidden"}>Added</p>
+        <div className="conjuntoBoton">
+          {stock ? (
+            <div className="cart" onClick={(e) => handleCart(e, id)}>
+              <i class="fa-solid fa-cart-plus"></i>
+              <p className={added ? "added" : "hidden"}>Added</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+          <button className="infoBtn" onClick={(e) => handleDetail(e)}>
+            DETAILS
+          </button>
+          <div
+            className={validateFav[0] ? "cardFav" : "cardNotFav"}
+            onClick={(e) => handlefav(e, id)}
+          >
+            <i class="fa-solid fa-heart"></i>
           </div>
-        ) : (
-          <div></div>
-        )}
-        <div
-          className={validateFav[0] ? "cardFav" : "cardNotFav"}
-          onClick={(e) => handlefav(e, id)}
-        >
-          <i class="fa-solid fa-heart"></i>
         </div>
       </div>
     </div>
