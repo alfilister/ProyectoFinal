@@ -1,0 +1,22 @@
+@use "../abstracts/_variables.scss" as *;
+
+.editCategories {
+	.btn {
+		background-color: #25262b;
+		border-radius: 5px;
+		color: #c1c2c5;
+		border: solid 1px #c1c2c5;
+	}
+
+	.btn:hover {
+		color: $red-000;
+		text-decoration: overline;
+	}
+
+	.center {
+		align-items: center;
+		justify-content: center;
+		color: #333;
+		font-family: $fuente-parrafos;
+	}
+}

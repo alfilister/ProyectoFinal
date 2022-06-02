@@ -1,0 +1,65 @@
+@use "../abstracts/_variables.scss" as *;
+
+.allChktPg {
+  background-color: $dark-500;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.checkoutPage {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  justify-content: center;
+
+  h2 {
+    text-align: center;
+    color: $red-000;
+    font-size: 2em;
+  }
+
+  .cardElement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $dark-200;
+    color: whitesmoke;
+    height: 2em;
+    width: 400px;
+    padding: 0 0.5em;
+    border-radius: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    color: $red-000;
+  }
+
+  .chkOutBtn {
+    display: flex;
+    justify-content: center;
+
+    input {
+      background-color: rgb(5, 5, 55);
+      color: $red-000;
+      border-radius: 10px;
+      font-size: 1.5em;
+      height: 1.5em;
+      width: 5em;
+      padding-top: 0.2em;
+
+      &:hover {
+        background-color: whitesmoke;
+        color: rgb(5, 5, 55);
+        cursor: pointer;
+      }
+      &:active {
+        background-color: rgb(5, 5, 55);
+        color: $red-000;
+      }
+    }
+  }
+}

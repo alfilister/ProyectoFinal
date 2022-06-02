@@ -1,0 +1,35 @@
+/* abstracts */
+@use "./scss/abstracts/_mixins.scss";
+@use "./scss/abstracts/_variables.scss";
+/* base */
+@use "./scss/base/_base.scss";
+@use "./scss/base/_reset.scss";
+/* components */
+@use "./scss/components/searchBar";
+@use "./scss/components/card";
+@use "./scss/components/cardsContainer";
+@use "./scss/components/pagination";
+@use "./scss/components/filterBar";
+@use "./scss/components/cardSlider";
+@use "./scss/components/categoryGrid";
+@use "./scss/components/nav";
+@use "./scss/components/cartProduct";
+@use "./scss/components/modal";
+@use "./scss/components/editProducts";
+@use "./scss/components/createEditCategories";
+@use "./scss/components/manageUsers";
+@use "./scss/components/manageOrder";
+@use "./scss/components/menuAdmin";
+
+/* pages */
+@use "./scss/pages/created";
+@use "./scss/components/detail";
+@use "./scss/pages/category";
+@use "./scss/pages/home";
+@use "./scss/pages/error";
+@use "./scss/pages/cart";
+@use "./scss/pages/checkOut";
+@use "./scss/pages/editUser";
+@use "./scss/pages/fav";
+@use "./scss/pages/admin";
+

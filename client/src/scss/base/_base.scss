@@ -1,0 +1,20 @@
+@use '../abstracts/_variables.scss' as *;
+
+/* defino un light y dark mode */
+.light {
+    .text{
+      color: $dark-900;
+    }
+    .background{
+      background-color: $dark-000;
+    }
+  }
+  
+  .dark {
+    .text{
+      color: $dark-000;
+    }
+    .background{
+        background-color: $dark-700;
+    }
+  }
