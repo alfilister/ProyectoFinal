@@ -64,14 +64,11 @@ const MyComponent = () => {
 
     if (!error) {
       const { id } = paymentMethod;
-      const { data } = await axios.post(
-        "http://localhost:3001/api/orders/checkout",
-        {
-          order_id,
-          id,
-          amount: amount * 100,
-        }
-      );
+      const { data } = await axios.post("/api/orders/checkout", {
+        order_id,
+        id,
+        amount: amount * 100,
+      });
 
       if (data.status !== "payment recieved") {
         Swal.fire({
