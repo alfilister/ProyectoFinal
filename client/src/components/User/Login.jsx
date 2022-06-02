@@ -7,10 +7,10 @@ export default function LoginButton() {
 
   return (
     <div className="containerLogin">
-      <div >
-    <button id='button' className="log" onClick={() => loginWithRedirect()}>
-      Iniciar Sesion
-    </button>
+      <div>
+        <button id="button" className="log" onClick={() => loginWithRedirect()}>
+          Loggin
+        </button>
       </div>
     </div>
   );

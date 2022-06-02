@@ -8,9 +8,11 @@ const getUser = async () => {
     db_mock_data.users.forEach(async (user) => {
       await User.findOrCreate({
         where: {
+          email: user.email.toLocaleLowerCase(),
+        },
+        defaults: {
           fullName: user.fullName,
           password: user.password,
-          email: user.email,
           role: user.role,
           id_document: user.id_document,
         },
@@ -32,9 +34,9 @@ const getUserById = async (idUser) => {
 };
 
 const updateUser = async (body) => {
-  const { fullName, email, id_document, password, image, role , access} = body;
+  const { fullName, email, id_document, password, image, role, access } = body;
 
-  console.log('soy el body' ,body)
+  console.log("soy el body", body);
 
   const selectedUser = await User.findAll({
     where: { email: email },
@@ -47,9 +49,7 @@ const updateUser = async (body) => {
     password,
     image,
     role,
-    access
-
-
+    access,
   });
 
   await selectedUser[0].save();

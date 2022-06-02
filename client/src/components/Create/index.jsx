@@ -17,25 +17,25 @@ function validate(input) {
   // let urlValidate = /\.(gif|jpeg|jpg|png|webp)$/i;
 
   if (!input.name) {
-    errors.name = "Requiere Nombre";
+    errors.name = "Name required";
   } else if (input.name.length < 2 || input.name.length > 50) {
-    errors.name = "Minimo 2 caracteres";
+    errors.name = "At least 2 characters";
   } else if (!nameRequiere.test(input.name)) {
-    errors.name = "Solo letras, numeros y guiones";
+    errors.name = "Only words, numbers and hiphens";
   }
   if (!input.price || input.price === 0) {
-    errors.price = "Ingrese precio";
+    errors.price = "Price required";
   } else if (!numbers.test(input.price)) {
-    errors.price = "El precio debe ser un numero positivo";
+    errors.price = "Price must be a positive number";
   }
   if (!input.stock || input.stock === 0) {
-    errors.stock = "Ingrese Stock";
+    errors.stock = "Set Stock";
   } else if (!numbers.test(input.stock)) {
-    errors.stock = "El stock deberia ser minimo 1";
+    errors.stock = "Stock at least one";
   }
 
   if (input.categories.length === 0) {
-    errors.categories = "Se requiere al menos una categoria";
+    errors.categories = "At least one category";
   }
   return errors;
 }
@@ -155,15 +155,13 @@ const Create = () => {
     <div className="formContainer">
       <br />
       <div className="form">
-        <div className="tituloCargar">
-          <h1>Cargar datos de articulo</h1>
-        </div>
         <form onSubmit={(e) => handleSubmit(e)}>
-          <div className="elementosForm">
-            <label>Nombre : </label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Name : </label>
             <input
+              className="form-control"
               type="text"
-              placeholder="ingrese nombre producto"
+              placeholder="set product name"
               value={input.name}
               name="name"
               required
@@ -173,9 +171,10 @@ const Create = () => {
           <div className="form-group">
             {errors.name && <div className="form-errors">{errors.name}</div>}
           </div>
-          <div className="elementosForm">
-            <label>Imagen principal:</label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Main Image:</label>
             <input
+              className="form-control"
               onChange={(event) => {
                 getImage(event);
               }}
@@ -184,9 +183,10 @@ const Create = () => {
               accept="image/png, image/jpeg"
             ></input>
           </div>
-          <div className="elementosForm">
-            <label>Mas imagenes:</label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Aux Images:</label>
             <input
+              className="form-control"
               onChange={(event) => {
                 getMuchImages(event);
               }}
@@ -197,11 +197,12 @@ const Create = () => {
             ></input>
           </div>
 
-          <div className="elementosForm">
-            <label>precio : </label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Price : </label>
             <input
+              className="form-control"
               type="text"
-              placeholder="precio"
+              placeholder="price"
               value={input.price}
               required
               name="price"
@@ -212,11 +213,12 @@ const Create = () => {
             {errors.price && <div className="form-errors">{errors.price}</div>}
           </div>
 
-          <div className="elementosForm">
-            <label>descripcion : </label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Description : </label>
             <input
+              className="form-control"
               type="text"
-              placeholder="ingrese descripcion"
+              placeholder="set description"
               value={input.description}
               name="description"
               required
@@ -224,28 +226,30 @@ const Create = () => {
             />
           </div>
 
-          <div className="elementosForm">
-            <label>discount : </label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Discount : </label>
             <input
+              className="form-control"
               type="number"
               step="5"
               min="0"
               max="10"
-              placeholder="rating"
+              placeholder="discount"
               value={input.discount}
               name="discount"
               onChange={handleChangeInput}
             />
           </div>
 
-          <div className="elementosForm">
-            <label>Stock : </label>
+          <div className="elementosForm mb-3">
+            <label className="form-label">Stock : </label>
             <input
+              className="form-control"
               type="number"
               step="1"
               min="0"
               max="5"
-              placeholder="rating"
+              placeholder="stock"
               value={input.stock}
               name="stock"
               required
@@ -260,8 +264,9 @@ const Create = () => {
             <div className="form-group-cb">
               {categories.map((e) => {
                 return (
-                  <div className="divgroup" key={e.id}>
+                  <div className="divgroup mb-3" key={e.id}>
                     <input
+                      className="form-check-input"
                       type="checkbox"
                       name={e.name}
                       value={e.name}
@@ -269,14 +274,22 @@ const Create = () => {
                       key={e.name}
                       onChange={(e) => handleSelect(e)}
                     ></input>
-                    <label key={e.id * 100}>{e.name}</label>
+                    <label
+                      className="form-label form-check-label"
+                      key={e.id * 100}
+                    >
+                      {e.name}
+                    </label>
                   </div>
                 );
               })}
             </div>
           </div>
 
-          <button type="submit"> Add Product </button>
+          <button className="btn btn-primary" type="submit">
+            {" "}
+            Add Product{" "}
+          </button>
         </form>
       </div>
     </div>
