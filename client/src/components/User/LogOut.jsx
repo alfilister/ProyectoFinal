@@ -18,7 +18,7 @@ export default function LogOutButton() {
     <div className="containerLogOut">
       <div>
         <button id="button" className="reg" onClick={(e) => handleOut(e)}>
-          Cerrar Sesion{" "}
+          Logout{" "}
         </button>
       </div>
     </div>
