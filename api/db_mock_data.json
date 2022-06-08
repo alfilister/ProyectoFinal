@@ -96,7 +96,7 @@
 			"discount": 20,
 			"stock": 5,
 			"price": 995,
-			"featured": true,
+			"featured": false,
 			"rating": 5,
 			"categories": ["laptops", "tablets", "gamers", "accessories"]
 		},
@@ -129,13 +129,13 @@
 			"discount": 5,
 			"stock": 100,
 			"price": 798.95,
-			"featured": true,
+			"featured": false,
 			"rating": 5,
 			"categories": ["accessories"]
 		},
 		
 		{
-			"name": "Samsung Galaxy S22 Ultra 5G SM-R908N 256GB/512GB/1TB ",
+			"name": "Samsung Galaxy S22 Ultra 5G",
 			"image": "https://i.ebayimg.com/images/g/I5MAAOSwQGFiGGY1/s-l1600.jpg",
 			"aux_images": [
 				"https://i.ebayimg.com/images/g/5~wAAOSweXViGGei/s-l500.jpg",
@@ -150,7 +150,7 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Motorola One 5G Ace | 2021 |Hazy Silver",
+			"name": "Motorola One 5G Ace |Hazy Silver",
 			"image": "https://m.media-amazon.com/images/I/71GbORP-umL._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/71G4o6h4WpL._AC_SL1500_.jpg",
@@ -195,7 +195,7 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Google Pixel 3 XL Unlocked Smartphone - 64GB Memory ",
+			"name": "Google Pixel 3 XL Unlocked Smartphone",
 			"image": "https://m.media-amazon.com/images/I/61YNb0vcezS._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/61uuTBlYyKS._AC_SL1500_.jpg",
@@ -225,7 +225,7 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Xiaomi Redmi Note 9 Pro Smartphone con 6.67 DotDisplay, 6 GB  ",
+			"name": "Xiaomi Redmi Note 9 Pro Smartphone",
 			"image": "https://m.media-amazon.com/images/I/61EE6j8GHvL._AC_SL1000_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/71l3coNp4bL._AC_SL1500_.jpg",
@@ -263,7 +263,7 @@
 			"discount": 5,
 			"stock": 30,
 			"price": 129.95,
-			"featured": true,
+			"featured": false,
 			"rating": 4.3,
 			"categories": ["tablets"]
 		},{
@@ -277,7 +277,7 @@
 			"discount": 0,
 			"stock": 5,
 			"price": 119.99,
-			"featured": true,
+			"featured": false,
 			"rating": 3.3,
 			"categories": ["tablets"]
 		},{
@@ -391,7 +391,7 @@
 			"discount": 0,
 			"stock": 60,
 			"price": 482.90,
-			"featured": true,
+			"featured": false,
 			"rating": 4.2,
 			"categories": ["laptops", "gamers"]
 		},{
@@ -478,7 +478,7 @@
 			"discount": 10,
 			"stock": 60,
 			"price": 1219.00,
-			"featured": true,
+			"featured": false,
 			"rating": 5.0,
 			"categories": ["gamers"]
 		},
@@ -538,7 +538,7 @@
 			"discount": 0,
 			"stock": 50,
 			"price": 149.99,
-			"featured": true,
+			"featured": false,
 			"rating": 4.2,
 			"categories": ["gamers", "accessories"]
 		}

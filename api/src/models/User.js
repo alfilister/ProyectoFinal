@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize")
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
         // allowNull: false,
       },
       password: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
       email: {
         type: DataTypes.STRING,
@@ -18,18 +18,18 @@ module.exports = (sequelize) => {
       id_document: {
         type: DataTypes.BIGINT,
       },
-      role : {
-        type : DataTypes.STRING,
-        defaultValue : 'User'
+      role: {
+        type: DataTypes.STRING,
+        defaultValue: "Admin",
       },
-      image : {
-        type : DataTypes.TEXT
+      image: {
+        type: DataTypes.TEXT,
       },
-      access : {
-        type : DataTypes.STRING,
-        defaultValue : 'Authorized'
-      }      
+      access: {
+        type: DataTypes.STRING,
+        defaultValue: "Authorized",
+      },
     },
     { timestamps: false, createdAt: false, updatedAt: false }
-  )
-}
+  );
+};

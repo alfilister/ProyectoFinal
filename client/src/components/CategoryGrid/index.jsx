@@ -15,7 +15,7 @@ function CategoryGrid() {
     <div className="categoryGrid">
       {!categories[0] ? (
         <div>
-          <h2 className="h2">Loading Categories...</h2>
+          <h2 className="h2"></h2>
           <img
             src="https://i.imgur.com/EQSYdeQ.gif"
             alt="Loading..."

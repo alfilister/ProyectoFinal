@@ -1,12 +1,21 @@
 @use "../abstracts/_variables.scss" as *;
 
 .home {
-  background-color: $dark-700;
+  background-image: url("../assets/background1.jpg");
+  background-size: contain;
+  font-family: "MuseoModerno", cursive;
+
+  .bannerHome {
+    background-image: url("./../../../public/bannerecmcll.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 53vh;
+    width: 100vw;
+  }
 
   .catText {
     background-color: $dark-000;
     height: 2em;
-    padding-top: 0.7em;
     text-align: center;
     font-size: 2em;
     font-weight: 300;

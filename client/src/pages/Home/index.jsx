@@ -5,6 +5,7 @@ import PersonalizedSuggest from "../../components/PersonalizedSuggest";
 const Home = () => {
   return (
     <div className="home">
+      <div className="bannerHome"></div>
       <PersonalizedSuggest />
       <CardSlider />
     </div>

@@ -23,7 +23,6 @@ import {
 import Nav from "./components/Nav";
 import Checkout from "./pages/Checkout";
 import Favorites from "./pages/Favorites";
-import CategoryGrid from "./components/CategoryGrid";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +39,6 @@ function App() {
   return (
     <div>
       <Nav />
-      <CategoryGrid />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error404 />} />

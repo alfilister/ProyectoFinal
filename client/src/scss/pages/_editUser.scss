@@ -2,7 +2,8 @@
 
 .editUser {
   background-color: $dark-500;
-  height: max-content;
+  overflow: scroll;
+  height: 100vh;
   padding: 2em;
   .profileInfo {
     display: flex;

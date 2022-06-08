@@ -38,9 +38,6 @@ function Category() {
       <body>
         <div className="leftColumn">
           <div className="filter">
-            <div className="blackBtn">
-              <button onClick={(e) => handleBack(e)}>Back to home</button>
-            </div>
             <Filters setSorted={setSorted} sorted={sorted} />
           </div>
           <div className="textInvite">

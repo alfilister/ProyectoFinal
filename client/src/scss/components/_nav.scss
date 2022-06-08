@@ -1,119 +1,128 @@
 @use "../abstracts/_variables.scss" as *;
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.divNavbar {
-  display: grid;
-  grid-template-columns: 4fr 2fr 3fr 1fr;
-  width: 100vw;
-  background-color: $dark-500;
-  height: 5rem;
+.generalNav {
+  font-family: "MuseoModerno", cursive;
+  background-image: url("../assets/land3.jpg");
 
-  .divSeachYLogo {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    .logo {
+  .divNavbar {
+    display: grid;
+    grid-template-columns: 4fr 2fr 3fr 1fr;
+    width: 100vw;
+
+    height: 5rem;
+
+    .divSeachYLogo {
+      height: 100%;
       display: flex;
-      .logoImg {
-        height: 3rem;
+      justify-content: flex-start;
+      align-items: center;
+      .logo {
+        display: flex;
+        .logoImg {
+          height: 3rem;
+          width: fit-content;
+          border-radius: 50%;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .tituloPag {
+        text-transform: uppercase;
+        color: $red-000;
+        text-decoration: none;
+      }
+    }
+
+    .logeo {
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      .autenticated {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    .prflContainer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .btnProfileUser {
+        background-color: rgba($color: $dark-800, $alpha: 0.5);
+        padding: 0.3em;
+        border-radius: 15px;
+
+        border: none;
+        color: $red-000;
+        font-size: 1.2em;
         width: fit-content;
-        border-radius: 50%;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-      }
-      &:hover {
-        cursor: pointer;
+        height: fit-content;
+
+        &:hover {
+          cursor: pointer;
+        }
+        &:active {
+          background-color: $red-000;
+          color: $dark-500;
+          transition: ease 0.5s;
+        }
       }
     }
-    .tituloPag {
-      text-transform: uppercase;
-      font-family: $fuente-titulo;
-      color: $red-000;
-      text-decoration: none;
-    }
-  }
-
-  .logeo {
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-
-    .autenticated {
+    .cartBtnNav {
       display: flex;
       flex-direction: row;
-    }
-  }
-
-  .prflContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    .btnProfileUser {
-      background-color: rgba($color: $dark-800, $alpha: 0.5);
-      padding: 0.3em;
-      border-radius: 15px;
-
-      border: none;
-      color: $red-000;
-      font-size: 1.2em;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 100%;
       width: fit-content;
-      height: fit-content;
+
+      .fa-cart-shopping {
+        color: $dark-000;
+        font-size: 50px;
+        position: relative;
+        &:hover {
+          color: $dark-700;
+          transition: 0.5s ease;
+        }
+        &:active {
+          color: $red-000;
+        }
+      }
+
+      .cartCounter {
+        position: absolute;
+        top: 15%;
+        left: 40%;
+        font-size: 0.3em;
+        font-weight: bold;
+        color: $red-000;
+      }
 
       &:hover {
         cursor: pointer;
       }
-      &:active {
-        background-color: $red-000;
-        color: $dark-500;
-        transition: ease 0.5s;
-      }
     }
-  }
-  .cartBtnNav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    margin-left: 100%;
-    width: fit-content;
 
-    .fa-cart-shopping {
-      color: $dark-000;
-      font-size: 50px;
-      position: relative;
+    .favDiv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $red-200;
+      font-size: 40px;
+
       &:hover {
-        color: $dark-700;
-        transition: 0.5s ease;
+        color: $red-100;
+        transition: 0.5s ease-in-out;
       }
-      &:active {
-        color: $red-000;
-      }
-    }
-
-    .cartCounter {
-      position: absolute;
-      top: 15%;
-      left: 40%;
-      font-size: 0.3em;
-      font-weight: bold;
-      color: $red-000;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .favDiv {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: $red-200;
-    font-size: 40px;
-
-    &:hover {
-      color: $red-100;
-      transition: 0.5s ease-in-out;
     }
   }
 }
+
+// .catGrid{
+
+// }
