@@ -42,7 +42,9 @@ function PersonalizedSuggest() {
         <div></div>
       ) : (
         <>
-          <h3 className="h3">Special selection for you</h3>
+          <div className="h3">
+            <h3>Special selection for you</h3>
+          </div>
           <Swiper
             className="swiperFeatured"
             loop={false}

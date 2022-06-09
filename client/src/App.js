@@ -36,23 +36,25 @@ function App() {
 		dispatch(firstSetCount());
 	}, [dispatch]);
 
-	return (
-		<div>
-			<Nav />
-			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="*" element={<Error404 />} />
-				<Route path="/producto/:id" element={<Detail />} />
-				<Route path="/category/:categoryName" element={<Category />} />
-				<Route path="/controlPanel" element={<ControlPanel />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/checkout" element={<Checkout />} />
-				<Route path="/reviewsPost" element={<ProductReview />} />
-				<Route path="/EditUser" element={<EditarUser />} />
-				<Route path="/favorites" element={<Favorites />} />
-			</Routes>
-		</div>
-	);
+
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Error404 />} />
+        <Route path="/producto/:id" element={<Detail />} />
+        <Route path="/category/:categoryName" element={<Category />} />
+        <Route path="/controlPanel" element={<ControlPanel />} />
+        <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/reviewsPost" element={<ProductReview />} />
+        <Route path="/EditUser" element={<EditarUser />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+    </div>
+  );
+
 }
 
 export default App;

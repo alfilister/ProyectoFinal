@@ -15,7 +15,7 @@ function CardSlider() {
     <div className="cardSlider">
       {!featuredOnes[0] ? (
         <div className="loadingStatus">
-          <h2>Loading Featured Items...</h2>
+          <h2></h2>
           <img
             src="https://i.imgur.com/EQSYdeQ.gif"
             alt="Loading..."
@@ -24,7 +24,9 @@ function CardSlider() {
         </div>
       ) : (
         <>
-          <h3 className="h3">Check our featured items</h3>
+          <div className="h3">
+            <h3>Check our featured items</h3>
+          </div>
           <Swiper
             className="swiperFeatured"
             loop={true}

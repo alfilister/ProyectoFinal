@@ -30,7 +30,7 @@ const CardsContainer = () => {
       <div className="cardContainer">
         {!currentProducts[0] ? (
           <div>
-            <h2 className="h2">CARGANDO PRODUCTOS...</h2>
+            <h2 className="h2"></h2>
             <img
               src="https://i.imgur.com/EQSYdeQ.gif"
               alt="Loading..."
