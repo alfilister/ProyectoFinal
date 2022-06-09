@@ -135,7 +135,9 @@
 		},
 		
 		{
+
 			"name": "Samsung Galaxy S22 Ultra 5G",
+
 			"image": "https://i.ebayimg.com/images/g/I5MAAOSwQGFiGGY1/s-l1600.jpg",
 			"aux_images": [
 				"https://i.ebayimg.com/images/g/5~wAAOSweXViGGei/s-l500.jpg",
@@ -150,7 +152,9 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Motorola One 5G Ace |Hazy Silver",
+
+			"name": "Motorola One 5G Ace ",
+
 			"image": "https://m.media-amazon.com/images/I/71GbORP-umL._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/71G4o6h4WpL._AC_SL1500_.jpg",
@@ -180,7 +184,7 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Apple iPhone 11 Pro, 256GB, Midnight Green ",
+			"name": "Apple iPhone 11 Pro, 256GB ",
 			"image": "https://m.media-amazon.com/images/I/81AaNJqE+wS._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/51bvOBgFHGS._AC_SL1500_.jpg",
@@ -195,7 +199,9 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Google Pixel 3 XL Unlocked Smartphone",
+
+			"name": "Google Pixel 3 XL Unlocked ",
+
 			"image": "https://m.media-amazon.com/images/I/61YNb0vcezS._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/61uuTBlYyKS._AC_SL1500_.jpg",
@@ -210,7 +216,7 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Xperia 1 III - 5G Smartphone with 120Hz  ",
+			"name": "Xperia 1 III - 5G Smartphone",
 			"image": "https://m.media-amazon.com/images/I/71YvGj855+L._AC_SL1500_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/61vrnxMNXuL._AC_SL1500_.jpg",
@@ -225,7 +231,9 @@
 			"categories": ["cellphones"]
 		},
 		{
-			"name": "Xiaomi Redmi Note 9 Pro Smartphone",
+
+			"name": "Xiaomi Redmi Note 9 Pro",
+
 			"image": "https://m.media-amazon.com/images/I/61EE6j8GHvL._AC_SL1000_.jpg",
 			"aux_images": [
 				"https://m.media-amazon.com/images/I/71l3coNp4bL._AC_SL1500_.jpg",
@@ -555,7 +563,7 @@
 			"password": "Cristian12",
 			"email": "Cristian@correo.com",
 			"id_document": 12,
-			"role": "Admin"
+			"role": "User"
 		},
 		{
 			"fullName": "Danilo",
@@ -569,7 +577,7 @@
 			"password": "Jota34",
 			"email": "Jota@correo.com",
 			"id_document": 34,
-			"role": "Admin"
+			"role": "User"
 		},
 		{
 			"fullName": "Rodri",
@@ -583,7 +591,7 @@
 			"password": "Camilo56",
 			"email": "Camilo@correo.com",
 			"id_document": 56,
-			"role": "Admin"
+			"role": "User"
 		}
 	],
 	"reviews": [

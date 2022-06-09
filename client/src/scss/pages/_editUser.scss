@@ -1,6 +1,7 @@
 @use "../abstracts/_variables.scss" as *;
 
 .editUser {
+
   background-color: $dark-500;
   overflow: scroll;
   height: 100vh;
@@ -180,4 +181,5 @@
       }
     }
   }
+
 }

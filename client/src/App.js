@@ -13,28 +13,29 @@ import EditarUser from "./components/User/EditarUser";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import {
-  getProducts,
-  getCategories,
-  getReviewsProduct,
-  getOrdersFromDb,
-  getAllUsers,
-  firstSetCount,
+	getProducts,
+	getCategories,
+	getReviewsProduct,
+	getOrdersFromDb,
+	getAllUsers,
+	firstSetCount,
 } from "./redux/actions";
 import Nav from "./components/Nav";
 import Checkout from "./pages/Checkout";
 import Favorites from "./pages/Favorites";
 
 function App() {
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCategories());
-    setTimeout(() => dispatch(getProducts()), 900);
-    dispatch(getProducts());
-    dispatch(getReviewsProduct());
-    setTimeout(() => dispatch(getOrdersFromDb()), 50);
-    dispatch(firstSetCount());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(getCategories());
+		setTimeout(() => dispatch(getProducts()), 900);
+		dispatch(getProducts());
+		dispatch(getReviewsProduct());
+		setTimeout(() => dispatch(getOrdersFromDb()), 50);
+		dispatch(firstSetCount());
+	}, [dispatch]);
+
 
   return (
     <div>
@@ -53,6 +54,7 @@ function App() {
       </Routes>
     </div>
   );
+
 }
 
 export default App;
