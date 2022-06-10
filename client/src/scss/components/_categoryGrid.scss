@@ -1,9 +1,6 @@
 @use "../abstracts/_variables.scss" as *;
 
-
 .categoryGrid {
-<<<<<<< HEAD
-
   background-color: $dark-400;
   display: flex;
   flex-direction: row;
@@ -11,44 +8,23 @@
   padding-top: 0.2em;
   height: 2em;
 
-
   .categoryTab {
     color: $dark-200;
     font-size: 0.7rem;
-=======
-	background-color: $dark-500;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	height: 3em;
 
-	.categoryTab {
-		color: $dark-200;
-		font-size: 0.7rem;
->>>>>>> parent of 4e6cf67... Revert "Ultimas modificaciones (Odio bootstrap)"
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto 3em;
 
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: auto 3em;
-
-<<<<<<< HEAD
     h2 {
       font-size: 2em;
       font-family: "MuseoModerno", cursive;
     }
-
 
     &:hover {
       color: $dark-000;
       cursor: pointer;
     }
   }
-=======
-		&:hover {
-			color: $dark-000;
-			cursor: pointer;
-		}
-	}
->>>>>>> parent of 4e6cf67... Revert "Ultimas modificaciones (Odio bootstrap)"
 }
