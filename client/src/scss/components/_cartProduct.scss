@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: left;
-
   margin: 1em;
   padding: 2em;
   width: fit-content;
@@ -12,11 +11,16 @@
   border-radius: 15px;
   width: 800px;
 
-
   .imgCart {
     max-width: 100px;
     max-height: 100px;
     cursor: pointer;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+    }
   }
 
   .cartInfo {
@@ -28,9 +32,7 @@
     h3 {
       margin: 0 auto;
       text-align: center;
-
       font-size: 1.3em;
-
     }
   }
 
@@ -43,6 +45,7 @@
       height: 2em;
       width: 1.5em;
       margin: 0 0.5em;
+      border-radius: 5px;
     }
   }
 
