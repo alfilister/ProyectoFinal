@@ -49,7 +49,9 @@ const Card = ({
   return (
     <div className={featured === false ? "card" : "cardFeatured"}>
       {featured && <div className="featTag">⭐</div>}
-      <h3>{name}</h3>
+      <div className="itemTitle">
+        <h3>{name}</h3>
+      </div>
       <div className={stock ? "img" : "noStockImg"}>
         <img src={image} alt="Main" />
         <img

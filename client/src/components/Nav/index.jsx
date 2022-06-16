@@ -19,6 +19,7 @@ import {
 
 import { useEffect } from "react";
 import { postUser } from "../../redux/actions";
+import CategoryGrid from "../CategoryGrid";
 
 const Nav = ({ setCurrentPage }) => {
   const navigate = useNavigate();
@@ -65,14 +66,15 @@ const Nav = ({ setCurrentPage }) => {
   };
 
   return (
-    <div className="divNavbar">
-      <div className="divSeachYLogo">
-        <div onClick={() => handleHome()} className="logo">
-          <img className="logoImg" src={logo} alt="imagenLogo" />
-          <h2 className="tituloPag">E-commerCell</h2>
+    <div className="generalNav">
+      <div className="divNavbar">
+        <div className="divSeachYLogo">
+          <div onClick={() => handleHome()} className="logo">
+            <img className="logoImg" src={logo} alt="imagenLogo" />
+            <h2 className="tituloPag">E-commerCell</h2>
+          </div>
         </div>
-      </div>
-      {/*       {isAuthenticated ? (
+        {/*       {isAuthenticated ? (
         <div className="prflContainer">
           <button
             className="btnProfileUser"
@@ -84,27 +86,31 @@ const Nav = ({ setCurrentPage }) => {
       ) : (
         <div></div>
       )} */}
-      <div className="logeo">
-        {isAuthenticated ? (
-          <>
-            <div className="autenticated">
-              <LogOutButton className="estiloSesion" />
-              <Profile className="estiloProfile" />
+        <div className="logeo">
+          {isAuthenticated ? (
+            <>
+              <div className="autenticated">
+                <LogOutButton className="estiloSesion" />
+                <Profile className="estiloProfile" />
+              </div>
+            </>
+          ) : (
+            <div className="loginButton">
+              <LoginButton />
             </div>
-          </>
-        ) : (
-          <div className="loginButton">
-            <LoginButton />
-          </div>
-        )}
+          )}
+        </div>
+        <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
+          <i class="fa-solid fa-cart-shopping">
+            <p className="cartCounter">{cartCounter}</p>
+          </i>
+        </div>
+        <div className="favDiv">
+          <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
+        </div>
       </div>
-      <div className="cartBtnNav" onClick={(e) => handleCart(e)}>
-        <i class="fa-solid fa-cart-shopping">
-          <p className="cartCounter">{cartCounter}</p>
-        </i>
-      </div>
-      <div className="favDiv">
-        <i class="fa-solid fa-heart" onClick={(e) => handleFav(e)}></i>
+      <div className="catGrid">
+        <CategoryGrid />
       </div>
     </div>
   );

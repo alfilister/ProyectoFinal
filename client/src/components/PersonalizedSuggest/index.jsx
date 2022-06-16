@@ -37,12 +37,14 @@ function PersonalizedSuggest() {
   console.log(toShow);
 
   return (
-    <div className="cardSlider">
+    <div className="suggestSlider">
       {!verifiedLog ? (
         <div></div>
       ) : (
         <>
-          <h3 className="h3">Special selection for you</h3>
+          <div className="h3">
+            <h3>Special selection for you</h3>
+          </div>
           <Swiper
             className="swiperFeatured"
             loop={false}

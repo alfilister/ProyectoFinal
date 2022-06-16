@@ -1,7 +1,8 @@
 @use "../abstracts/_variables.scss" as *;
 
 .cardSlider {
-  margin: 0.5em;
+  margin: 0 0.5em 0 0.5em;
+  padding-top: 1em;
 
   .loadingStatus {
     display: flex;
@@ -11,10 +12,16 @@
   }
 
   .h3 {
-    color: $dark-100;
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 0.5em;
+      border-radius: 15px;
+    }
   }
 
   .swiperFeatured {
@@ -41,4 +48,8 @@
       background-color: $red-000;
     }
   }
+}
+
+.suggestSlider {
+  @extend .cardSlider;
 }

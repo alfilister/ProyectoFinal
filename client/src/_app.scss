@@ -20,6 +20,7 @@
 @use "./scss/components/manageUsers";
 @use "./scss/components/manageOrder";
 @use "./scss/components/menuAdmin";
+@use "./scss/components/personalizedSuggest";
 
 /* pages */
 @use "./scss/pages/created";
@@ -32,4 +33,3 @@
 @use "./scss/pages/editUser";
 @use "./scss/pages/fav";
 @use "./scss/pages/admin";
-

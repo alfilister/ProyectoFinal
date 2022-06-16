@@ -19,14 +19,21 @@
     box-shadow: 2px 2px 15px #000000, -2px -2px 15px $red-600;
   }
 
-  h3 {
-    text-align: center;
-    font-size: larger;
-    padding-top: 1.1em;
-    height: 4rem;
-    margin: 10px 5px;
-  }
+  .itemTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 
+    h3 {
+      text-align: center;
+      font-size: larger;
+      padding-top: 0.8em;
+      width: 100%;
+      height: 4rem;
+      margin: 10px 5px;
+    }
+  }
   .img {
     display: flex;
     flex-direction: column;
@@ -177,8 +184,8 @@
 
   .featTag {
     position: absolute;
-    top: 4%;
-    left: 85%;
+    top: 15%;
+    left: 88%;
     font-size: xx-large;
   }
 

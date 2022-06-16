@@ -1,7 +1,11 @@
 @use "../abstracts/_variables.scss" as *;
 
 .allChktPg {
-  background-color: $dark-500;
+  background-image: url("../assets/background1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: scroll;
   height: 100vh;
   display: flex;
   align-items: flex-start;
@@ -12,8 +16,11 @@
   margin-top: 2em;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 500px;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.149);
+  padding: 2em;
+  border-radius: 15px;
 
   h2 {
     text-align: center;
@@ -59,6 +66,9 @@
       &:active {
         background-color: rgb(5, 5, 55);
         color: $red-000;
+      }
+      &:focus {
+        cursor: wait;
       }
     }
   }

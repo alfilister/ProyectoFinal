@@ -1,76 +1,78 @@
 @use "../abstracts/_variables.scss" as *;
 
 .categoryPage {
-	background-color: $dark-700;
-	height: 100%;
-	min-height: 100vh;
 
-	body {
-		background-color: $dark-700;
-	}
-	.categoryTitle {
-		height: 5vh;
-		background-color: $dark-600;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		h1 {
-			color: $dark-000;
-			text-align: center;
-			font-size: x-large;
-			padding-top: 0.3em;
-		}
-	}
+  height: 100%;
+  min-height: 100vh;
 
-	body {
-		display: grid;
-		width: 100%;
-		grid-template-columns: 30% 70%;
 
-		.leftColumn {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: flex-start;
-			margin-left: 1.5vw;
+  .categoryTitle {
+    height: 5vh;
+    background-color: $dark-600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      color: $dark-000;
+      text-align: center;
+      font-size: x-large;
+      font-family: "MuseoModerno", cursive;
+      padding-top: 0.3em;
+    }
+  }
 
-			.filter {
-				height: fit-content;
-				width: 98%;
-				max-width: 300px;
+  body {
+    background-image: url("../assets/background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 
-				background-color: $dark-600;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 30% 70%;
 
-				margin: 5em 0 0 0.5em;
-				border-radius: 20px;
+    .leftColumn {
+      background-color: rgba(0, 0, 0, 0.505);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 1.5vw;
 
-				.blackBtn {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-				}
-			}
+      .filter {
+        height: fit-content;
+        width: 98%;
+        max-width: 300px;
+        background-color: rgba(240, 255, 255, 0.075);
 
-			.textInvite {
-				h2 {
-					color: $dark-000;
-					text-align: center;
-					margin: 1em 0 0.5em 0;
-				}
-			}
+        margin: 5em 0 0 0.5em;
+        border-radius: 20px;
 
-			.suggestedProduct {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: flex-start;
-			}
-		}
+        .blackBtn {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+      }
 
-		.cardContainer {
-			background-color: inherit;
-			margin-left: 0.5vw;
-		}
-	}
+      .textInvite {
+        h2 {
+          color: $dark-000;
+          text-align: center;
+          margin: 1em 0 0.5em 0;
+        }
+      }
+
+      .suggestedProduct {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+    }
+
+    .cardContainer {
+      margin-left: 0.5vw;
+    }
+  }
 }

@@ -1,8 +1,15 @@
 @use "../abstracts/_variables.scss" as *;
 
 .favPage {
+  background-image: url("../assets/background1.jpg");
+  background-size: cover;
+  overflow: scroll;
+  height: 100vh;
+  font-family: "MuseoModerno", cursive;
+
   h1 {
+    padding: 1em;
+    color: whitesmoke;
     text-align: center;
-    margin: 2em auto;
   }
 }
